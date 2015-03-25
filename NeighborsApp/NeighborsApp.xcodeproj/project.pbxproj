@@ -15,6 +15,12 @@
 		5BB6553F1AC31464007E0F85 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BB6553E1AC31464007E0F85 /* Images.xcassets */; };
 		5BB655421AC31464007E0F85 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BB655401AC31464007E0F85 /* LaunchScreen.xib */; };
 		5BB6554E1AC31464007E0F85 /* NeighborsAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB6554D1AC31464007E0F85 /* NeighborsAppTests.m */; };
+		5BB655631AC316AC007E0F85 /* NBRTabbarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB655621AC316AC007E0F85 /* NBRTabbarController.m */; };
+		5BB655671AC316FF007E0F85 /* NBRBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB655661AC316FF007E0F85 /* NBRBaseViewController.m */; };
+		5BB6556A1AC31727007E0F85 /* NBRPersonalCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB655691AC31727007E0F85 /* NBRPersonalCenterViewController.m */; };
+		5BB6556D1AC3173E007E0F85 /* NBRServeiesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB6556C1AC3173E007E0F85 /* NBRServeiesViewController.m */; };
+		5BB655701AC31753007E0F85 /* NBRMyMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB6556F1AC31753007E0F85 /* NBRMyMessageViewController.m */; };
+		5BB655731AC31768007E0F85 /* NBRFriendCircleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB655721AC31768007E0F85 /* NBRFriendCircleViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +49,18 @@
 		5BB655471AC31464007E0F85 /* NeighborsAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NeighborsAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BB6554C1AC31464007E0F85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5BB6554D1AC31464007E0F85 /* NeighborsAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NeighborsAppTests.m; sourceTree = "<group>"; };
+		5BB655611AC316AC007E0F85 /* NBRTabbarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NBRTabbarController.h; path = ViewControllers/NBRTabbarController/NBRTabbarController.h; sourceTree = "<group>"; };
+		5BB655621AC316AC007E0F85 /* NBRTabbarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NBRTabbarController.m; path = ViewControllers/NBRTabbarController/NBRTabbarController.m; sourceTree = "<group>"; };
+		5BB655651AC316FF007E0F85 /* NBRBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NBRBaseViewController.h; path = ViewControllers/NBRBaseViewController/NBRBaseViewController.h; sourceTree = "<group>"; };
+		5BB655661AC316FF007E0F85 /* NBRBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NBRBaseViewController.m; path = ViewControllers/NBRBaseViewController/NBRBaseViewController.m; sourceTree = "<group>"; };
+		5BB655681AC31727007E0F85 /* NBRPersonalCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NBRPersonalCenterViewController.h; path = ViewControllers/NBRPersonalCenterViewController/NBRPersonalCenterViewController.h; sourceTree = "<group>"; };
+		5BB655691AC31727007E0F85 /* NBRPersonalCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NBRPersonalCenterViewController.m; path = ViewControllers/NBRPersonalCenterViewController/NBRPersonalCenterViewController.m; sourceTree = "<group>"; };
+		5BB6556B1AC3173E007E0F85 /* NBRServeiesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NBRServeiesViewController.h; path = ViewControllers/NBRServeiesViewController/NBRServeiesViewController.h; sourceTree = "<group>"; };
+		5BB6556C1AC3173E007E0F85 /* NBRServeiesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NBRServeiesViewController.m; path = ViewControllers/NBRServeiesViewController/NBRServeiesViewController.m; sourceTree = "<group>"; };
+		5BB6556E1AC31753007E0F85 /* NBRMyMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NBRMyMessageViewController.h; path = ViewControllers/NBRMyMessageViewController/NBRMyMessageViewController.h; sourceTree = "<group>"; };
+		5BB6556F1AC31753007E0F85 /* NBRMyMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NBRMyMessageViewController.m; path = ViewControllers/NBRMyMessageViewController/NBRMyMessageViewController.m; sourceTree = "<group>"; };
+		5BB655711AC31768007E0F85 /* NBRFriendCircleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NBRFriendCircleViewController.h; path = ViewControllers/NBRFriendCircleViewController/NBRFriendCircleViewController.h; sourceTree = "<group>"; };
+		5BB655721AC31768007E0F85 /* NBRFriendCircleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NBRFriendCircleViewController.m; path = ViewControllers/NBRFriendCircleViewController/NBRFriendCircleViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +84,9 @@
 		5BB655221AC31464007E0F85 = {
 			isa = PBXGroup;
 			children = (
+				5BB6555D1AC31588007E0F85 /* Ext */,
+				5BB6555E1AC31593007E0F85 /* Business */,
+				5BB655571AC31505007E0F85 /* ViewControllers */,
 				5BB6552D1AC31464007E0F85 /* NeighborsApp */,
 				5BB6554A1AC31464007E0F85 /* NeighborsAppTests */,
 				5BB6552C1AC31464007E0F85 /* Products */,
@@ -122,6 +143,103 @@
 				5BB6554C1AC31464007E0F85 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5BB655571AC31505007E0F85 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				5BB655641AC316D9007E0F85 /* NBRBaseViewController */,
+				5BB6555C1AC31567007E0F85 /* NBRPersonalCenterViewController */,
+				5BB6555B1AC3155B007E0F85 /* NBRServeiesViewController */,
+				5BB655591AC31525007E0F85 /* NBRMyMessageViewController */,
+				5BB6555A1AC31536007E0F85 /* NBRFriendCircleViewController */,
+				5BB655581AC3150D007E0F85 /* NBRTabbarController */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		5BB655581AC3150D007E0F85 /* NBRTabbarController */ = {
+			isa = PBXGroup;
+			children = (
+				5BB655611AC316AC007E0F85 /* NBRTabbarController.h */,
+				5BB655621AC316AC007E0F85 /* NBRTabbarController.m */,
+			);
+			name = NBRTabbarController;
+			sourceTree = "<group>";
+		};
+		5BB655591AC31525007E0F85 /* NBRMyMessageViewController */ = {
+			isa = PBXGroup;
+			children = (
+				5BB6556E1AC31753007E0F85 /* NBRMyMessageViewController.h */,
+				5BB6556F1AC31753007E0F85 /* NBRMyMessageViewController.m */,
+			);
+			name = NBRMyMessageViewController;
+			sourceTree = "<group>";
+		};
+		5BB6555A1AC31536007E0F85 /* NBRFriendCircleViewController */ = {
+			isa = PBXGroup;
+			children = (
+				5BB655711AC31768007E0F85 /* NBRFriendCircleViewController.h */,
+				5BB655721AC31768007E0F85 /* NBRFriendCircleViewController.m */,
+			);
+			name = NBRFriendCircleViewController;
+			sourceTree = "<group>";
+		};
+		5BB6555B1AC3155B007E0F85 /* NBRServeiesViewController */ = {
+			isa = PBXGroup;
+			children = (
+				5BB6556B1AC3173E007E0F85 /* NBRServeiesViewController.h */,
+				5BB6556C1AC3173E007E0F85 /* NBRServeiesViewController.m */,
+			);
+			name = NBRServeiesViewController;
+			sourceTree = "<group>";
+		};
+		5BB6555C1AC31567007E0F85 /* NBRPersonalCenterViewController */ = {
+			isa = PBXGroup;
+			children = (
+				5BB655681AC31727007E0F85 /* NBRPersonalCenterViewController.h */,
+				5BB655691AC31727007E0F85 /* NBRPersonalCenterViewController.m */,
+			);
+			name = NBRPersonalCenterViewController;
+			sourceTree = "<group>";
+		};
+		5BB6555D1AC31588007E0F85 /* Ext */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Ext;
+			sourceTree = "<group>";
+		};
+		5BB6555E1AC31593007E0F85 /* Business */ = {
+			isa = PBXGroup;
+			children = (
+				5BB655601AC315F0007E0F85 /* Entiy */,
+				5BB6555F1AC315E4007E0F85 /* Request */,
+			);
+			name = Business;
+			sourceTree = "<group>";
+		};
+		5BB6555F1AC315E4007E0F85 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Request;
+			sourceTree = "<group>";
+		};
+		5BB655601AC315F0007E0F85 /* Entiy */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Entiy;
+			sourceTree = "<group>";
+		};
+		5BB655641AC316D9007E0F85 /* NBRBaseViewController */ = {
+			isa = PBXGroup;
+			children = (
+				5BB655651AC316FF007E0F85 /* NBRBaseViewController.h */,
+				5BB655661AC316FF007E0F85 /* NBRBaseViewController.m */,
+			);
+			name = NBRBaseViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -224,10 +342,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BB655671AC316FF007E0F85 /* NBRBaseViewController.m in Sources */,
+				5BB655731AC31768007E0F85 /* NBRFriendCircleViewController.m in Sources */,
+				5BB655631AC316AC007E0F85 /* NBRTabbarController.m in Sources */,
 				5BB6553A1AC31464007E0F85 /* SecondViewController.m in Sources */,
 				5BB655341AC31464007E0F85 /* AppDelegate.m in Sources */,
 				5BB655371AC31464007E0F85 /* FirstViewController.m in Sources */,
+				5BB6556D1AC3173E007E0F85 /* NBRServeiesViewController.m in Sources */,
+				5BB655701AC31753007E0F85 /* NBRMyMessageViewController.m in Sources */,
 				5BB655311AC31464007E0F85 /* main.m in Sources */,
+				5BB6556A1AC31727007E0F85 /* NBRPersonalCenterViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
