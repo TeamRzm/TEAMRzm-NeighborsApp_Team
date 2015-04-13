@@ -1,0 +1,62 @@
+//
+//  NeighborsApp.pch
+//  NeighborsApp
+//
+//  Created by Martin.Ren on 15/4/13.
+//  Copyright (c) 2015年 Martin.Ren. All rights reserved.
+//
+
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+
+#endif
+
+#define kNBR_TABLEVIEW_CELL_NOIDENTIFIER @"NBR_TABLEVIEW_CELL_NOIDENTIFIER"
+#define kNBR_SCREEN_W [UIScreen mainScreen].bounds.size.width
+#define kNBR_SCREEN_H [UIScreen mainScreen].bounds.size.height
+
+//转换16进制颜色
+#define UIColorFromRGB(rgbValue) ([UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0])
+
+#define kNBR_DEFAULT_FONT_NAME       @"STHeitiSC-Light"
+#define kNBR_DEFAULT_FONT_NAME_BLOD  @"STHeitiSC-Medium"
+
+//背景灰
+#define kNBR_ProjectColor_BackGroundGray  UIColorFromRGB(0xEFEFEF)
+
+//浅灰
+#define kNBR_ProjectColor_LightGray       UIColorFromRGB(0xE5E5E5)
+
+//边线浅灰
+#define kNBR_ProjectColor_LineLightGray   UIColorFromRGB(0xD1D1D1)
+
+//中灰
+#define kNBR_ProjectColor_MidGray         UIColorFromRGB(0x999999)
+
+//深灰
+#define kNBR_ProjectColor_DeepGray        UIColorFromRGB(0x666666)
+
+//深黑
+#define kNBR_ProjectColor_DeepBlack       UIColorFromRGB(0x2E2E2E)
+
+//标准红
+#define kNBR_ProjectColor_StandRed        UIColorFromRGB(0xFB4747)
+
+//标准蓝
+#define kNBR_ProjectColor_StandBlue       UIColorFromRGB(0x404A58)
+
+//标准绿
+#define kNBR_ProjectColor_StandGreen      UIColorFromRGB(0x8ECD4B)
+
+//标准青
+#define kNBR_ProjectColor_StandGreen2     UIColorFromRGB(0x77D0DE)
+
+//标配青
+#define kNBR_ProjectColor_GenerallyGreen  UIColorFromRGB(0x7FC6C8)
+
+//标配红
+#define kNBR_ProjectColor_GenerallyRed    UIColorFromRGB(0xF89594)
+
+//标配蓝
+#define kNBR_ProjectColor_GenerallyBlue   UIColorFromRGB(0x95ADCD)

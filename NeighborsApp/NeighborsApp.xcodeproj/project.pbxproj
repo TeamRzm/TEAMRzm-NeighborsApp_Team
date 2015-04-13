@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B8B158A1ADC0BDE00AA87A2 /* NBRLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8B15881ADC0BDE00AA87A2 /* NBRLoginViewController.m */; };
+		5B8B158B1ADC0BDE00AA87A2 /* NBRLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B8B15891ADC0BDE00AA87A2 /* NBRLoginViewController.xib */; };
+		5B8B158F1ADC164900AA87A2 /* NBRBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8B158D1ADC164900AA87A2 /* NBRBaseViewController.m */; };
+		5B8B15901ADC164900AA87A2 /* NBRBaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B8B158E1ADC164900AA87A2 /* NBRBaseViewController.xib */; };
+		5B8B15A01ADC17CB00AA87A2 /* EGOCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8B15941ADC17CB00AA87A2 /* EGOCache.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		5B8B15A11ADC17CB00AA87A2 /* EGOImageButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8B15971ADC17CB00AA87A2 /* EGOImageButton.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		5B8B15A21ADC17CB00AA87A2 /* EGOImageLoadConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8B159A1ADC17CB00AA87A2 /* EGOImageLoadConnection.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		5B8B15A31ADC17CB00AA87A2 /* EGOImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8B159C1ADC17CB00AA87A2 /* EGOImageLoader.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		5B8B15A41ADC17CB00AA87A2 /* EGOImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8B159F1ADC17CB00AA87A2 /* EGOImageView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		5B8B15B01ADC21FF00AA87A2 /* NBRNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8B15AF1ADC21FF00AA87A2 /* NBRNavigationBar.m */; };
+		5B8B15B41ADC236700AA87A2 /* DefaultRes.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B8B15B31ADC236700AA87A2 /* DefaultRes.xcassets */; };
 		5BB655311AC31464007E0F85 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB655301AC31464007E0F85 /* main.m */; };
 		5BB655341AC31464007E0F85 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB655331AC31464007E0F85 /* AppDelegate.m */; };
 		5BB655371AC31464007E0F85 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB655361AC31464007E0F85 /* FirstViewController.m */; };
@@ -16,7 +27,6 @@
 		5BB655421AC31464007E0F85 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BB655401AC31464007E0F85 /* LaunchScreen.xib */; };
 		5BB6554E1AC31464007E0F85 /* NeighborsAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB6554D1AC31464007E0F85 /* NeighborsAppTests.m */; };
 		5BB655631AC316AC007E0F85 /* NBRTabbarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB655621AC316AC007E0F85 /* NBRTabbarController.m */; };
-		5BB655671AC316FF007E0F85 /* NBRBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB655661AC316FF007E0F85 /* NBRBaseViewController.m */; };
 		5BB6556A1AC31727007E0F85 /* NBRPersonalCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB655691AC31727007E0F85 /* NBRPersonalCenterViewController.m */; };
 		5BB6556D1AC3173E007E0F85 /* NBRServeiesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB6556C1AC3173E007E0F85 /* NBRServeiesViewController.m */; };
 		5BB655701AC31753007E0F85 /* NBRMyMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB6556F1AC31753007E0F85 /* NBRMyMessageViewController.m */; };
@@ -85,6 +95,26 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5B8B15871ADC0BDE00AA87A2 /* NBRLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NBRLoginViewController.h; path = ViewControllers/NBRLoginViewController/NBRLoginViewController.h; sourceTree = "<group>"; };
+		5B8B15881ADC0BDE00AA87A2 /* NBRLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NBRLoginViewController.m; path = ViewControllers/NBRLoginViewController/NBRLoginViewController.m; sourceTree = "<group>"; };
+		5B8B15891ADC0BDE00AA87A2 /* NBRLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NBRLoginViewController.xib; path = ViewControllers/NBRLoginViewController/NBRLoginViewController.xib; sourceTree = "<group>"; };
+		5B8B158C1ADC164900AA87A2 /* NBRBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NBRBaseViewController.h; path = ViewControllers/NBRBaseViewController/NBRBaseViewController.h; sourceTree = "<group>"; };
+		5B8B158D1ADC164900AA87A2 /* NBRBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NBRBaseViewController.m; path = ViewControllers/NBRBaseViewController/NBRBaseViewController.m; sourceTree = "<group>"; };
+		5B8B158E1ADC164900AA87A2 /* NBRBaseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NBRBaseViewController.xib; path = ViewControllers/NBRBaseViewController/NBRBaseViewController.xib; sourceTree = "<group>"; };
+		5B8B15931ADC17CB00AA87A2 /* EGOCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOCache.h; sourceTree = "<group>"; };
+		5B8B15941ADC17CB00AA87A2 /* EGOCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGOCache.m; sourceTree = "<group>"; };
+		5B8B15961ADC17CB00AA87A2 /* EGOImageButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOImageButton.h; sourceTree = "<group>"; };
+		5B8B15971ADC17CB00AA87A2 /* EGOImageButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGOImageButton.m; sourceTree = "<group>"; };
+		5B8B15991ADC17CB00AA87A2 /* EGOImageLoadConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOImageLoadConnection.h; sourceTree = "<group>"; };
+		5B8B159A1ADC17CB00AA87A2 /* EGOImageLoadConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGOImageLoadConnection.m; sourceTree = "<group>"; };
+		5B8B159B1ADC17CB00AA87A2 /* EGOImageLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOImageLoader.h; sourceTree = "<group>"; };
+		5B8B159C1ADC17CB00AA87A2 /* EGOImageLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGOImageLoader.m; sourceTree = "<group>"; };
+		5B8B159E1ADC17CB00AA87A2 /* EGOImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOImageView.h; sourceTree = "<group>"; };
+		5B8B159F1ADC17CB00AA87A2 /* EGOImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGOImageView.m; sourceTree = "<group>"; };
+		5B8B15A51ADC1C9F00AA87A2 /* NeighborsApp.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NeighborsApp.pch; sourceTree = SOURCE_ROOT; };
+		5B8B15AE1ADC21FF00AA87A2 /* NBRNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NBRNavigationBar.h; path = MyUIViews/NBRNavigationBar.h; sourceTree = "<group>"; };
+		5B8B15AF1ADC21FF00AA87A2 /* NBRNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NBRNavigationBar.m; path = MyUIViews/NBRNavigationBar.m; sourceTree = "<group>"; };
+		5B8B15B31ADC236700AA87A2 /* DefaultRes.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = DefaultRes.xcassets; path = Resource/DefaultRes.xcassets; sourceTree = "<group>"; };
 		5BB6552B1AC31464007E0F85 /* NeighborsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NeighborsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BB6552F1AC31464007E0F85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5BB655301AC31464007E0F85 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -102,8 +132,6 @@
 		5BB6554D1AC31464007E0F85 /* NeighborsAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NeighborsAppTests.m; sourceTree = "<group>"; };
 		5BB655611AC316AC007E0F85 /* NBRTabbarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NBRTabbarController.h; path = ViewControllers/NBRTabbarController/NBRTabbarController.h; sourceTree = "<group>"; };
 		5BB655621AC316AC007E0F85 /* NBRTabbarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NBRTabbarController.m; path = ViewControllers/NBRTabbarController/NBRTabbarController.m; sourceTree = "<group>"; };
-		5BB655651AC316FF007E0F85 /* NBRBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NBRBaseViewController.h; path = ViewControllers/NBRBaseViewController/NBRBaseViewController.h; sourceTree = "<group>"; };
-		5BB655661AC316FF007E0F85 /* NBRBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NBRBaseViewController.m; path = ViewControllers/NBRBaseViewController/NBRBaseViewController.m; sourceTree = "<group>"; };
 		5BB655681AC31727007E0F85 /* NBRPersonalCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NBRPersonalCenterViewController.h; path = ViewControllers/NBRPersonalCenterViewController/NBRPersonalCenterViewController.h; sourceTree = "<group>"; };
 		5BB655691AC31727007E0F85 /* NBRPersonalCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NBRPersonalCenterViewController.m; path = ViewControllers/NBRPersonalCenterViewController/NBRPersonalCenterViewController.m; sourceTree = "<group>"; };
 		5BB6556B1AC3173E007E0F85 /* NBRServeiesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NBRServeiesViewController.h; path = ViewControllers/NBRServeiesViewController/NBRServeiesViewController.h; sourceTree = "<group>"; };
@@ -239,7 +267,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5BB655221AC31464007E0F85 = {
+		5B8B15861ADC0B5A00AA87A2 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
 				5BD83D211AD6217400D1A3EC /* Foundation.framework */,
@@ -257,6 +285,92 @@
 				5BD83D091AD6213500D1A3EC /* libstdc++.6.0.9.dylib */,
 				5BD83D071AD6213000D1A3EC /* AudioToolbox.framework */,
 				5BD83D051AD6212C00D1A3EC /* Security.framework */,
+			);
+			name = Framework;
+			sourceTree = "<group>";
+		};
+		5B8B15911ADC17CB00AA87A2 /* EGOImageLoad */ = {
+			isa = PBXGroup;
+			children = (
+				5B8B15921ADC17CB00AA87A2 /* EGOCache */,
+				5B8B15951ADC17CB00AA87A2 /* EGOImageButton */,
+				5B8B15981ADC17CB00AA87A2 /* EGOImageLoader */,
+				5B8B159D1ADC17CB00AA87A2 /* EGOImageView */,
+			);
+			path = EGOImageLoad;
+			sourceTree = "<group>";
+		};
+		5B8B15921ADC17CB00AA87A2 /* EGOCache */ = {
+			isa = PBXGroup;
+			children = (
+				5B8B15931ADC17CB00AA87A2 /* EGOCache.h */,
+				5B8B15941ADC17CB00AA87A2 /* EGOCache.m */,
+			);
+			path = EGOCache;
+			sourceTree = "<group>";
+		};
+		5B8B15951ADC17CB00AA87A2 /* EGOImageButton */ = {
+			isa = PBXGroup;
+			children = (
+				5B8B15961ADC17CB00AA87A2 /* EGOImageButton.h */,
+				5B8B15971ADC17CB00AA87A2 /* EGOImageButton.m */,
+			);
+			path = EGOImageButton;
+			sourceTree = "<group>";
+		};
+		5B8B15981ADC17CB00AA87A2 /* EGOImageLoader */ = {
+			isa = PBXGroup;
+			children = (
+				5B8B15991ADC17CB00AA87A2 /* EGOImageLoadConnection.h */,
+				5B8B159A1ADC17CB00AA87A2 /* EGOImageLoadConnection.m */,
+				5B8B159B1ADC17CB00AA87A2 /* EGOImageLoader.h */,
+				5B8B159C1ADC17CB00AA87A2 /* EGOImageLoader.m */,
+			);
+			path = EGOImageLoader;
+			sourceTree = "<group>";
+		};
+		5B8B159D1ADC17CB00AA87A2 /* EGOImageView */ = {
+			isa = PBXGroup;
+			children = (
+				5B8B159E1ADC17CB00AA87A2 /* EGOImageView.h */,
+				5B8B159F1ADC17CB00AA87A2 /* EGOImageView.m */,
+			);
+			path = EGOImageView;
+			sourceTree = "<group>";
+		};
+		5B8B15A61ADC1DB600AA87A2 /* NBRLoginViewController */ = {
+			isa = PBXGroup;
+			children = (
+				5B8B15871ADC0BDE00AA87A2 /* NBRLoginViewController.h */,
+				5B8B15881ADC0BDE00AA87A2 /* NBRLoginViewController.m */,
+				5B8B15891ADC0BDE00AA87A2 /* NBRLoginViewController.xib */,
+			);
+			name = NBRLoginViewController;
+			sourceTree = "<group>";
+		};
+		5B8B15AD1ADC21A900AA87A2 /* MyUIViews */ = {
+			isa = PBXGroup;
+			children = (
+				5B8B15AE1ADC21FF00AA87A2 /* NBRNavigationBar.h */,
+				5B8B15AF1ADC21FF00AA87A2 /* NBRNavigationBar.m */,
+			);
+			name = MyUIViews;
+			sourceTree = "<group>";
+		};
+		5B8B15B21ADC233600AA87A2 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				5B8B15B31ADC236700AA87A2 /* DefaultRes.xcassets */,
+			);
+			name = Resource;
+			sourceTree = "<group>";
+		};
+		5BB655221AC31464007E0F85 = {
+			isa = PBXGroup;
+			children = (
+				5B8B15B21ADC233600AA87A2 /* Resource */,
+				5B8B15AD1ADC21A900AA87A2 /* MyUIViews */,
+				5B8B15861ADC0B5A00AA87A2 /* Framework */,
 				5BB6555D1AC31588007E0F85 /* Ext */,
 				5BB6555E1AC31593007E0F85 /* Business */,
 				5BB655571AC31505007E0F85 /* ViewControllers */,
@@ -297,6 +411,7 @@
 			children = (
 				5BB6552F1AC31464007E0F85 /* Info.plist */,
 				5BB655301AC31464007E0F85 /* main.m */,
+				5B8B15A51ADC1C9F00AA87A2 /* NeighborsApp.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -327,6 +442,7 @@
 				5BB655591AC31525007E0F85 /* NBRMyMessageViewController */,
 				5BB6555A1AC31536007E0F85 /* NBRFriendCircleViewController */,
 				5BB655581AC3150D007E0F85 /* NBRTabbarController */,
+				5B8B15A61ADC1DB600AA87A2 /* NBRLoginViewController */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -379,6 +495,7 @@
 		5BB6555D1AC31588007E0F85 /* Ext */ = {
 			isa = PBXGroup;
 			children = (
+				5B8B15911ADC17CB00AA87A2 /* EGOImageLoad */,
 				5BD83C9E1AD61F4B00D1A3EC /* Category */,
 				5BD83CB71AD61F4B00D1A3EC /* SBJson */,
 				5BD83C4E1AD61EF600D1A3EC /* ASIHTTPRequest */,
@@ -412,8 +529,9 @@
 		5BB655641AC316D9007E0F85 /* NBRBaseViewController */ = {
 			isa = PBXGroup;
 			children = (
-				5BB655651AC316FF007E0F85 /* NBRBaseViewController.h */,
-				5BB655661AC316FF007E0F85 /* NBRBaseViewController.m */,
+				5B8B158C1ADC164900AA87A2 /* NBRBaseViewController.h */,
+				5B8B158D1ADC164900AA87A2 /* NBRBaseViewController.m */,
+				5B8B158E1ADC164900AA87A2 /* NBRBaseViewController.xib */,
 			);
 			name = NBRBaseViewController;
 			sourceTree = "<group>";
@@ -647,8 +765,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B8B15B41ADC236700AA87A2 /* DefaultRes.xcassets in Resources */,
 				5BB6553D1AC31464007E0F85 /* Main.storyboard in Resources */,
 				5BB655421AC31464007E0F85 /* LaunchScreen.xib in Resources */,
+				5B8B15901ADC164900AA87A2 /* NBRBaseViewController.xib in Resources */,
+				5B8B158B1ADC0BDE00AA87A2 /* NBRLoginViewController.xib in Resources */,
 				5BB6553F1AC31464007E0F85 /* Images.xcassets in Resources */,
 				5BD83C9C1AD61EF600D1A3EC /* README-GHUnit in Resources */,
 			);
@@ -669,25 +790,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				5BD83D231AD6223900D1A3EC /* SBJsonParser.m in Sources */,
-				5BB655671AC316FF007E0F85 /* NBRBaseViewController.m in Sources */,
+				5B8B15A01ADC17CB00AA87A2 /* EGOCache.m in Sources */,
 				5BD83CE41AD61F4B00D1A3EC /* SBJsonStreamParserAdapter.m in Sources */,
 				5BD83C871AD61EF600D1A3EC /* ASIAuthenticationDialog.m in Sources */,
 				5BD83C971AD61EF600D1A3EC /* ASIS3BucketObject.m in Sources */,
 				5BD83C901AD61EF600D1A3EC /* ASICloudFilesContainer.m in Sources */,
 				5BD83C951AD61EF600D1A3EC /* ASICloudFilesRequest.m in Sources */,
 				5BD83CEB1AD61F4B00D1A3EC /* SBJsonWriter.m in Sources */,
+				5B8B15B01ADC21FF00AA87A2 /* NBRNavigationBar.m in Sources */,
 				5BD83CE61AD61F4B00D1A3EC /* SBJsonStreamWriter.m in Sources */,
 				5BD83C961AD61EF600D1A3EC /* ASIS3Bucket.m in Sources */,
 				5BD83CE01AD61F4B00D1A3EC /* NSString+SBJSON.m in Sources */,
 				5BD83C8A1AD61EF600D1A3EC /* ASIDownloadCache.m in Sources */,
 				5BD83C921AD61EF600D1A3EC /* ASICloudFilesContainerXMLParserDelegate.m in Sources */,
 				5BD83C8B1AD61EF600D1A3EC /* ASIFormDataRequest.m in Sources */,
+				5B8B15A31ADC17CB00AA87A2 /* EGOImageLoader.m in Sources */,
 				5BD83C8E1AD61EF600D1A3EC /* ASINetworkQueue.m in Sources */,
 				5BB655731AC31768007E0F85 /* NBRFriendCircleViewController.m in Sources */,
 				5BD83C9A1AD61EF600D1A3EC /* ASIS3Request.m in Sources */,
+				5B8B158A1ADC0BDE00AA87A2 /* NBRLoginViewController.m in Sources */,
 				5BB655631AC316AC007E0F85 /* NBRTabbarController.m in Sources */,
 				5BD83C9B1AD61EF600D1A3EC /* ASIS3ServiceRequest.m in Sources */,
 				5BD83CE71AD61F4B00D1A3EC /* SBJsonStreamWriterAccumulator.m in Sources */,
+				5B8B15A11ADC17CB00AA87A2 /* EGOImageButton.m in Sources */,
 				5BD83CE51AD61F4B00D1A3EC /* SBJsonStreamParserState.m in Sources */,
 				5BB6553A1AC31464007E0F85 /* SecondViewController.m in Sources */,
 				5BD83CE81AD61F4B00D1A3EC /* SBJsonStreamWriterState.m in Sources */,
@@ -698,6 +823,8 @@
 				5BB6556D1AC3173E007E0F85 /* NBRServeiesViewController.m in Sources */,
 				5BD83C931AD61EF600D1A3EC /* ASICloudFilesObject.m in Sources */,
 				5BD83C941AD61EF600D1A3EC /* ASICloudFilesObjectRequest.m in Sources */,
+				5B8B15A41ADC17CB00AA87A2 /* EGOImageView.m in Sources */,
+				5B8B15A21ADC17CB00AA87A2 /* EGOImageLoadConnection.m in Sources */,
 				5BD83C881AD61EF600D1A3EC /* ASIDataCompressor.m in Sources */,
 				5BD83C8F1AD61EF600D1A3EC /* ASICloudFilesCDNRequest.m in Sources */,
 				5BD83CEA1AD61F4B00D1A3EC /* SBJsonUTF8Stream.m in Sources */,
@@ -706,6 +833,7 @@
 				5BD83C9D1AD61EF600D1A3EC /* Reachability.m in Sources */,
 				5BD83CE21AD61F4B00D1A3EC /* SBJsonStreamParser.m in Sources */,
 				5BB655701AC31753007E0F85 /* NBRMyMessageViewController.m in Sources */,
+				5B8B158F1ADC164900AA87A2 /* NBRBaseViewController.m in Sources */,
 				5BD83C8D1AD61EF600D1A3EC /* ASIInputStream.m in Sources */,
 				5BD83C891AD61EF600D1A3EC /* ASIDataDecompressor.m in Sources */,
 				5BD83CDF1AD61F4B00D1A3EC /* NSObject+SBJSON.m in Sources */,
@@ -834,6 +962,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = NeighborsApp.pch;
 				INFOPLIST_FILE = NeighborsApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -844,6 +974,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = NeighborsApp.pch;
 				INFOPLIST_FILE = NeighborsApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

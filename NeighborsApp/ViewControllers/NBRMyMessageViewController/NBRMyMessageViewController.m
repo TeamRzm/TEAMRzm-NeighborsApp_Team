@@ -7,6 +7,7 @@
 //
 
 #import "NBRMyMessageViewController.h"
+#import "NBRLoginViewController.h"
 
 @interface NBRMyMessageViewController ()
 
@@ -34,4 +35,14 @@
 }
 */
 
+- (IBAction)leftBarButtonItemActions:(id)sender
+{
+    NBRLoginViewController *nVC = [[NBRLoginViewController alloc] initWithNibName:@"NBRLoginViewController" bundle:nil];
+    
+    UINavigationController *nNavVC = [[UINavigationController alloc] initWithRootViewController:nVC];
+    
+    [self.tabBarController presentViewController:nNavVC animated:YES completion:^{
+        
+    }];
+}
 @end
