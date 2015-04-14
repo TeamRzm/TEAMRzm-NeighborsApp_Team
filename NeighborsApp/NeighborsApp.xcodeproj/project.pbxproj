@@ -21,13 +21,24 @@
 		5B6D31731ADCE747009A922A /* bannerSuccess@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B6D31691ADCE747009A922A /* bannerSuccess@2x.png */; };
 		5B6D31821ADCE822009A922A /* excalmatoryIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B6D31761ADCE822009A922A /* excalmatoryIcon.png */; };
 		5B6D31831ADCE822009A922A /* libPodsUIImageHelpers.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B6D31771ADCE822009A922A /* libPodsUIImageHelpers.a */; };
-		5B6D31841ADCE822009A922A /* SIAlertView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5B6D31781ADCE822009A922A /* SIAlertView.bundle */; };
 		5B6D31851ADCE822009A922A /* SIAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6D317A1ADCE822009A922A /* SIAlertView.m */; };
 		5B6D31861ADCE822009A922A /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6D31811ADCE822009A922A /* UIView+Toast.m */; };
 		5B6D318C1ADD1BC4009A922A /* ConversationEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6D318B1ADD1BC4009A922A /* ConversationEntity.m */; };
 		5B6D318F1ADD1BE4009A922A /* MessageEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6D318E1ADD1BE4009A922A /* MessageEntity.m */; };
 		5B6D31921ADD1C4A009A922A /* IMUserEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6D31911ADD1C4A009A922A /* IMUserEntity.m */; };
 		5B6D31951ADD34F8009A922A /* UIView+TopTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6D31941ADD34F8009A922A /* UIView+TopTag.m */; };
+		5B6D31A31ADD5433009A922A /* button-cancel-d.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B6D31971ADD5433009A922A /* button-cancel-d.png */; };
+		5B6D31A41ADD5433009A922A /* button-cancel-d@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B6D31981ADD5433009A922A /* button-cancel-d@2x.png */; };
+		5B6D31A51ADD5433009A922A /* button-cancel.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B6D31991ADD5433009A922A /* button-cancel.png */; };
+		5B6D31A61ADD5433009A922A /* button-cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B6D319A1ADD5433009A922A /* button-cancel@2x.png */; };
+		5B6D31A71ADD5433009A922A /* button-default-d.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B6D319B1ADD5433009A922A /* button-default-d.png */; };
+		5B6D31A81ADD5433009A922A /* button-default-d@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B6D319C1ADD5433009A922A /* button-default-d@2x.png */; };
+		5B6D31A91ADD5433009A922A /* button-default.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B6D319D1ADD5433009A922A /* button-default.png */; };
+		5B6D31AA1ADD5433009A922A /* button-default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B6D319E1ADD5433009A922A /* button-default@2x.png */; };
+		5B6D31AB1ADD5433009A922A /* button-destructive-d.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B6D319F1ADD5433009A922A /* button-destructive-d.png */; };
+		5B6D31AC1ADD5433009A922A /* button-destructive-d@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B6D31A01ADD5433009A922A /* button-destructive-d@2x.png */; };
+		5B6D31AD1ADD5433009A922A /* button-destructive.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B6D31A11ADD5433009A922A /* button-destructive.png */; };
+		5B6D31AE1ADD5433009A922A /* button-destructive@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B6D31A21ADD5433009A922A /* button-destructive@2x.png */; };
 		5B8B158A1ADC0BDE00AA87A2 /* NBRLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8B15881ADC0BDE00AA87A2 /* NBRLoginViewController.m */; };
 		5B8B158B1ADC0BDE00AA87A2 /* NBRLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B8B15891ADC0BDE00AA87A2 /* NBRLoginViewController.xib */; };
 		5B8B158F1ADC164900AA87A2 /* NBRBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8B158D1ADC164900AA87A2 /* NBRBaseViewController.m */; };
@@ -136,7 +147,6 @@
 		5B6D31691ADCE747009A922A /* bannerSuccess@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bannerSuccess@2x.png"; sourceTree = "<group>"; };
 		5B6D31761ADCE822009A922A /* excalmatoryIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = excalmatoryIcon.png; sourceTree = "<group>"; };
 		5B6D31771ADCE822009A922A /* libPodsUIImageHelpers.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libPodsUIImageHelpers.a; sourceTree = "<group>"; };
-		5B6D31781ADCE822009A922A /* SIAlertView.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SIAlertView.bundle; sourceTree = "<group>"; };
 		5B6D31791ADCE822009A922A /* SIAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIAlertView.h; sourceTree = "<group>"; };
 		5B6D317A1ADCE822009A922A /* SIAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIAlertView.m; sourceTree = "<group>"; };
 		5B6D317B1ADCE822009A922A /* UIImage+Blur.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Blur.h"; sourceTree = "<group>"; };
@@ -153,6 +163,18 @@
 		5B6D31911ADD1C4A009A922A /* IMUserEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IMUserEntity.m; path = IMSystem/IMUserEntity.m; sourceTree = "<group>"; };
 		5B6D31931ADD34F8009A922A /* UIView+TopTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+TopTag.h"; path = "MyUIViews/UIView+TopTag.h"; sourceTree = "<group>"; };
 		5B6D31941ADD34F8009A922A /* UIView+TopTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+TopTag.m"; path = "MyUIViews/UIView+TopTag.m"; sourceTree = "<group>"; };
+		5B6D31971ADD5433009A922A /* button-cancel-d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-cancel-d.png"; sourceTree = "<group>"; };
+		5B6D31981ADD5433009A922A /* button-cancel-d@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-cancel-d@2x.png"; sourceTree = "<group>"; };
+		5B6D31991ADD5433009A922A /* button-cancel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-cancel.png"; sourceTree = "<group>"; };
+		5B6D319A1ADD5433009A922A /* button-cancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-cancel@2x.png"; sourceTree = "<group>"; };
+		5B6D319B1ADD5433009A922A /* button-default-d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-default-d.png"; sourceTree = "<group>"; };
+		5B6D319C1ADD5433009A922A /* button-default-d@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-default-d@2x.png"; sourceTree = "<group>"; };
+		5B6D319D1ADD5433009A922A /* button-default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-default.png"; sourceTree = "<group>"; };
+		5B6D319E1ADD5433009A922A /* button-default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-default@2x.png"; sourceTree = "<group>"; };
+		5B6D319F1ADD5433009A922A /* button-destructive-d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-destructive-d.png"; sourceTree = "<group>"; };
+		5B6D31A01ADD5433009A922A /* button-destructive-d@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-destructive-d@2x.png"; sourceTree = "<group>"; };
+		5B6D31A11ADD5433009A922A /* button-destructive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-destructive.png"; sourceTree = "<group>"; };
+		5B6D31A21ADD5433009A922A /* button-destructive@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-destructive@2x.png"; sourceTree = "<group>"; };
 		5B8B15871ADC0BDE00AA87A2 /* NBRLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NBRLoginViewController.h; path = ViewControllers/NBRLoginViewController/NBRLoginViewController.h; sourceTree = "<group>"; };
 		5B8B15881ADC0BDE00AA87A2 /* NBRLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NBRLoginViewController.m; path = ViewControllers/NBRLoginViewController/NBRLoginViewController.m; sourceTree = "<group>"; };
 		5B8B15891ADC0BDE00AA87A2 /* NBRLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NBRLoginViewController.xib; path = ViewControllers/NBRLoginViewController/NBRLoginViewController.xib; sourceTree = "<group>"; };
@@ -361,9 +383,9 @@
 		5B6D31751ADCE822009A922A /* SIAlertView */ = {
 			isa = PBXGroup;
 			children = (
+				5B6D31961ADD5433009A922A /* res */,
 				5B6D31761ADCE822009A922A /* excalmatoryIcon.png */,
 				5B6D31771ADCE822009A922A /* libPodsUIImageHelpers.a */,
-				5B6D31781ADCE822009A922A /* SIAlertView.bundle */,
 				5B6D31791ADCE822009A922A /* SIAlertView.h */,
 				5B6D317A1ADCE822009A922A /* SIAlertView.m */,
 				5B6D317B1ADCE822009A922A /* UIImage+Blur.h */,
@@ -396,6 +418,25 @@
 				5B6D318B1ADD1BC4009A922A /* ConversationEntity.m */,
 			);
 			name = IMSystem;
+			sourceTree = "<group>";
+		};
+		5B6D31961ADD5433009A922A /* res */ = {
+			isa = PBXGroup;
+			children = (
+				5B6D31971ADD5433009A922A /* button-cancel-d.png */,
+				5B6D31981ADD5433009A922A /* button-cancel-d@2x.png */,
+				5B6D31991ADD5433009A922A /* button-cancel.png */,
+				5B6D319A1ADD5433009A922A /* button-cancel@2x.png */,
+				5B6D319B1ADD5433009A922A /* button-default-d.png */,
+				5B6D319C1ADD5433009A922A /* button-default-d@2x.png */,
+				5B6D319D1ADD5433009A922A /* button-default.png */,
+				5B6D319E1ADD5433009A922A /* button-default@2x.png */,
+				5B6D319F1ADD5433009A922A /* button-destructive-d.png */,
+				5B6D31A01ADD5433009A922A /* button-destructive-d@2x.png */,
+				5B6D31A11ADD5433009A922A /* button-destructive.png */,
+				5B6D31A21ADD5433009A922A /* button-destructive@2x.png */,
+			);
+			path = res;
 			sourceTree = "<group>";
 		};
 		5B8B15861ADC0B5A00AA87A2 /* Framework */ = {
@@ -909,23 +950,34 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B8B15B41ADC236700AA87A2 /* DefaultRes.xcassets in Resources */,
-				5B6D31841ADCE822009A922A /* SIAlertView.bundle in Resources */,
 				5BB6553D1AC31464007E0F85 /* Main.storyboard in Resources */,
 				5B6D316E1ADCE747009A922A /* bannerFailure.png in Resources */,
 				5B6D31721ADCE747009A922A /* bannerSuccess.png in Resources */,
+				5B6D31AC1ADD5433009A922A /* button-destructive-d@2x.png in Resources */,
 				5B8B15BA1ADCBA4A00AA87A2 /* NBRForgetPwdViewController.xib in Resources */,
 				5B6D31711ADCE747009A922A /* bannerNotify@2x.png in Resources */,
 				5BB655421AC31464007E0F85 /* LaunchScreen.xib in Resources */,
+				5B6D31A41ADD5433009A922A /* button-cancel-d@2x.png in Resources */,
 				5B6D316D1ADCE747009A922A /* bannerAlert@2x.png in Resources */,
 				5B6D316F1ADCE747009A922A /* bannerFailure@2x.png in Resources */,
 				5B8B15901ADC164900AA87A2 /* NBRBaseViewController.xib in Resources */,
 				5B8B158B1ADC0BDE00AA87A2 /* NBRLoginViewController.xib in Resources */,
+				5B6D31AE1ADD5433009A922A /* button-destructive@2x.png in Resources */,
+				5B6D31A31ADD5433009A922A /* button-cancel-d.png in Resources */,
 				5BB6553F1AC31464007E0F85 /* Images.xcassets in Resources */,
 				5B6D31821ADCE822009A922A /* excalmatoryIcon.png in Resources */,
 				5B6D31701ADCE747009A922A /* bannerNotify.png in Resources */,
+				5B6D31A61ADD5433009A922A /* button-cancel@2x.png in Resources */,
+				5B6D31AD1ADD5433009A922A /* button-destructive.png in Resources */,
+				5B6D31A91ADD5433009A922A /* button-default.png in Resources */,
+				5B6D31AB1ADD5433009A922A /* button-destructive-d.png in Resources */,
 				5B6D31591ADCDFF6009A922A /* NBRRegViewController.xib in Resources */,
+				5B6D31A71ADD5433009A922A /* button-default-d.png in Resources */,
+				5B6D31A81ADD5433009A922A /* button-default-d@2x.png in Resources */,
 				5B6D31731ADCE747009A922A /* bannerSuccess@2x.png in Resources */,
+				5B6D31A51ADD5433009A922A /* button-cancel.png in Resources */,
 				5B6D316C1ADCE747009A922A /* bannerAlert.png in Resources */,
+				5B6D31AA1ADD5433009A922A /* button-default@2x.png in Resources */,
 				5BD83C9C1AD61EF600D1A3EC /* README-GHUnit in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
