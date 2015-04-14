@@ -28,8 +28,6 @@
     NSMutableArray      *leftTableViewDateSource;
     NSMutableArray      *rightTableViewDateSource;
     
-    NSInteger           segmentIndex;
-    
 #ifdef CONFIG_TEST_DATE
     NSMutableArray  *testUsers;
     NSMutableArray *testMessagees;
@@ -82,6 +80,30 @@
         newEntity.lastMessage = testMessagees[i];
         [leftTableViewDateSource addObject:newEntity];
     }
+    
+    rightTableViewDateSource = [[NSMutableArray alloc] initWithArray:@[
+                                                                      @{@"新家园小区"     : @[
+                                                                                leftTableViewDateSource[0],
+                                                                                leftTableViewDateSource[1],
+                                                                                leftTableViewDateSource[2],
+                                                                                leftTableViewDateSource[3]]
+                                                                        },
+                                                                      
+                                                                      @{@"米兰春天"      : @[
+                                                                                leftTableViewDateSource[4],
+                                                                                leftTableViewDateSource[5],
+                                                                                leftTableViewDateSource[6],
+                                                                                leftTableViewDateSource[7]]
+                                                                        },
+                                                                      
+                                                                      @{@"湘江世纪城小区" : @[
+                                                                                leftTableViewDateSource[4],
+                                                                                leftTableViewDateSource[5],
+                                                                                leftTableViewDateSource[6],
+                                                                                leftTableViewDateSource[7]]
+                                                                        },
+                                                                      ]];
+    
 }
 #endif
 
@@ -92,15 +114,13 @@
     leftTableViewDateSource     = [[NSMutableArray alloc] init];
     rightTableViewDateSource    = [[NSMutableArray alloc] init];
     
-    segmentIndex = 0;
-    
     self.view.backgroundColor = kNBR_ProjectColor_BackGroundGray;
     
 #ifdef CONFIG_TEST_DATE
     [self initTestDate];
 #endif
     
-    segmentChangedView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kNBR_SCREEN_W, 40.0f)];
+    segmentChangedView = [[UIView alloc] initWithFrame:CGRectMake(0, 64, kNBR_SCREEN_W, 40.0f)];
     
     UIView *breakLineView = [[UIView alloc] initWithFrame:CGRectMake(0, 39, kNBR_SCREEN_W, 1.0f)];
     breakLineView.backgroundColor = UIColorFromRGB(0xCBD3DB);
@@ -114,6 +134,9 @@
     leftChagnedLable.textColor = kNBR_ProjectColor_DeepGray;
     leftChagnedLable.backgroundColor = kNBR_ProjectColor_BackGroundGray;
     leftChagnedLable.text = @"我的消息";
+    leftChagnedLable.userInteractionEnabled = YES;
+    UITapGestureRecognizer *leftChangedGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(leftMenuChangedAction:)];
+    [leftChagnedLable addGestureRecognizer:leftChangedGesture];
     
     rightChangedLabel = [[UILabel alloc] initWithFrame:CGRectMake(kNBR_SCREEN_W / 2.0f, 0, kNBR_SCREEN_W / 2.0f, 40.0f)];
     rightChangedLabel.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME_BLOD size:14.0f];
@@ -121,6 +144,9 @@
     rightChangedLabel.textColor = kNBR_ProjectColor_DeepGray;
     rightChangedLabel.backgroundColor = kNBR_ProjectColor_BackGroundGray;
     rightChangedLabel.text = @"我的邻居";
+    rightChangedLabel.userInteractionEnabled = YES;
+    UITapGestureRecognizer *rightChangedGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(rightMenuChangedAction:)];
+    [rightChangedLabel addGestureRecognizer:rightChangedGesture];
     
     [segmentChangedView addSubview:leftChagnedLable];
     [segmentChangedView addSubview:rightChangedLabel];
@@ -128,30 +154,54 @@
     [segmentChangedView addSubview:selectTagView];
     
     //容器
-    boundScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, kNBR_SCREEN_W * 2.0f, kNBR_SCREEN_H)];
+    boundScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 64 + 40, kNBR_SCREEN_W, kNBR_SCREEN_H - 64 - 40 - 49)];
+    boundScrollView.contentSize = CGSizeMake(kNBR_SCREEN_W * 2.0f, kNBR_SCREEN_H);
+    boundScrollView.scrollEnabled = NO;
+    boundScrollView.showsHorizontalScrollIndicator = NO;
+    boundScrollView.pagingEnabled = YES;
     
     //我的消息
-    leftTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 40.0f, kNBR_SCREEN_W, kNBR_SCREEN_H - 40.0f - 49 - 25) style:UITableViewStyleGrouped];
+    leftTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kNBR_SCREEN_W, kNBR_SCREEN_H - 64 - 40 - 49) style:UITableViewStyleGrouped];
     leftTableView.backgroundColor = kNBR_ProjectColor_BackGroundGray;
     leftTableView.delegate = self;
     leftTableView.dataSource = self;
     
     //我的邻居
-    rightTableView = [[UITableView alloc] initWithFrame:CGRectMake(kNBR_SCREEN_W, 40.0f, kNBR_SCREEN_W, kNBR_SCREEN_H - 40.0f - 49 - 25) style:UITableViewStyleGrouped];
+    rightTableView = [[UITableView alloc] initWithFrame:CGRectMake(kNBR_SCREEN_W, 0, kNBR_SCREEN_W, kNBR_SCREEN_H - 64 - 40 - 49) style:UITableViewStylePlain];
     rightTableView.backgroundColor = kNBR_ProjectColor_BackGroundGray;
     rightTableView.delegate = self;
     rightTableView.dataSource = self;
     
-    [boundScrollView addSubview:segmentChangedView];
     [boundScrollView addSubview:leftTableView];
     [boundScrollView addSubview:rightTableView];
     
+    [self.view addSubview:segmentChangedView];
     [self.view addSubview:boundScrollView];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void) leftMenuChangedAction : (id) sender
+{
+    //切换到我的消息
+    [boundScrollView setContentOffset:CGPointMake(0, 0) animated:YES];
+    
+    [UIView animateWithDuration:.25f animations:^{
+        selectTagView.frame = CGRectMake(0, 38.0f, kNBR_SCREEN_W / 2.0f, 2.0f);
+    }];
+
+}
+
+- (void) rightMenuChangedAction : (id) sender
+{
+    //切换到我的邻居
+    [boundScrollView setContentOffset:CGPointMake(kNBR_SCREEN_W, 0) animated:YES];
+    [UIView animateWithDuration:.25f animations:^{
+        selectTagView.frame = CGRectMake(kNBR_SCREEN_W / 2.0f, 38.0f, kNBR_SCREEN_W / 2.0f, 2.0f);
+    }];
 }
 
 /*
@@ -179,37 +229,76 @@
 #pragma mark UITabelViewDelegate
 - (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
 {
-    if (segmentIndex == 0)
+    if (tableView == leftTableView)
     {
         return 1;
     }
-    else
+    else if (tableView == rightTableView)
     {
-        return 1;
+        return rightTableViewDateSource.count;
     }
+    
+    return 1.0f;
 }
+
+- (CGFloat) tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 0.1f;
+}
+
 
 - (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    if (section == 0)
+    if (tableView == leftTableView)
     {
         return 0.1f;
+    }
+    else if (tableView == rightTableView)
+    {
+        return 35.0f;
     }
     
     return 0.0f;
 }
 
+- (UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    if (tableView == leftTableView)
+    {
+        return [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+    }
+    
+    NSDictionary *sectionDictory = rightTableViewDateSource[section];
+    
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kNBR_SCREEN_W, 35.0f)];
+    UIImageView *iconView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 35.0f / 2.0f - 18.5f / 2.0f, 14, 18.5)];
+    iconView.image = [UIImage imageNamed:@"xiaoQuAddressIcon"];
+    headerView.backgroundColor = kNBR_ProjectColor_BackGroundGray;
+    [headerView addSubview:iconView];
+    
+    UILabel *sectionTitleView = [[UILabel alloc] initWithFrame:CGRectMake(30, 0, kNBR_SCREEN_W - 30.0f, 35.0f)];
+    sectionTitleView.text = sectionDictory.allKeys[0];
+    sectionTitleView.textColor = UIColorFromRGB(0x2283CA);
+    sectionTitleView.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME_BLOD size:13.0f];
+    [headerView addSubview:sectionTitleView];
+    
+    return headerView;
+}
+
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (segmentIndex == 0)
+    if (tableView == leftTableView)
     {
         return leftTableViewDateSource.count;
     }
-    else
+    else if (tableView == rightTableView)
     {
         return rightTableViewDateSource.count;
     }
+    
+    return 1;
 }
+
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -221,7 +310,7 @@
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kNBR_TABLEVIEW_CELL_NOIDENTIFIER];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    if (segmentIndex == 0)
+    if (tableView == leftTableView)
     {
         ConversationEntity *subConversation = leftTableViewDateSource[indexPath.row];
     
@@ -266,6 +355,31 @@
         [cell.contentView addSubview:titleLable];
         [cell.contentView addSubview:contentLable];
         [cell.contentView addSubview:revieTimeLable];
+    }
+    else if (tableView == rightTableView)
+    {
+        NSDictionary *sectionDictory = rightTableViewDateSource[indexPath.section];
+        ConversationEntity *subConversation = sectionDictory.allValues[0][indexPath.row];
+        
+        //头像
+        EGOImageView *avterImgView = [[EGOImageView alloc] initWithPlaceholderImage: [UIImage imageNamed:subConversation.lastMessage.from.avterUrl]];
+        avterImgView.frame = CGRectMake(10.0f, 56 / 2.0f - 43 / 2.0f, 43, 43);
+        avterImgView.layer.cornerRadius = avterImgView.frame.size.width / 2.0f;
+        avterImgView.layer.masksToBounds = YES;
+        [cell.contentView addSubview:avterImgView];
+        
+        
+        //标题
+        UILabel *titleLable = [[UILabel alloc] initWithFrame:CGRectMake(68.0f,
+                                                                        0,
+                                                                        kNBR_SCREEN_W - 68.0f - 10,
+                                                                        56.0f)];
+        titleLable.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME_BLOD size:15.0f];
+        titleLable.textColor = kNBR_ProjectColor_DeepGray;
+        titleLable.text = subConversation.lastMessage.from.nickName;
+
+        [cell.contentView addSubview:avterImgView];
+        [cell.contentView addSubview:titleLable];
     }
     
     return cell;
