@@ -27,6 +27,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"NavgationBarBackGroundImg"] forBarMetrics:UIBarMetricsDefault];
+    
+    [[UINavigationBar appearance] setTitleTextAttributes:@{
+                                                           NSForegroundColorAttributeName  : UIColorFromRGB(0xFFFFFF),
+                                                           NSFontAttributeName             : [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME_BLOD size:18.0f],
+                                                           }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -42,6 +49,7 @@
 - (void) setDoneStyleTextFile : (UITextField*) _textFiled
 {
     _textFiled.returnKeyType = UIReturnKeyDone;
+    _textFiled.clearButtonMode = UITextFieldViewModeWhileEditing;
     [_textFiled addTarget:self action:@selector(resignFirstResponderWithView:) forControlEvents:UIControlEventEditingDidEndOnExit];
 }
 

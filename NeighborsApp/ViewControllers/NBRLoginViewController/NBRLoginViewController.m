@@ -7,6 +7,7 @@
 //
 
 #import "NBRLoginViewController.h"
+#import "NBRForgetPwdViewController.h"
 
 @interface NBRLoginViewController ()
 {
@@ -37,10 +38,6 @@
     self.headPicImageView.layer.cornerRadius = self.headPicImageView.frame.size.width / 2.0f;
     self.headPicImageView.layer.masksToBounds = YES;
     
-//    UIImage *s = [UIImage imageNamed:@"t_heardImgICon"];
-//    
-//    self.headPicImageView.placeholderImage = [UIImage imageNamed:@"t_heardImgICon"];
-    
     userNameTextField = [[UITextField alloc] initWithFrame:CGRectMake(15, 0, kNBR_SCREEN_W - 30, 44.0f)];
     userNameTextField.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME size:14.0f];
     userNameTextField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
@@ -56,6 +53,18 @@
     [self setDoneStyleTextFile:pwdTextField];
     
     tableViewDateSource = @[userNameTextField,pwdTextField];
+    
+    
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(forgetPwdButtonAction:)];
+    [self.forgetPwdLable addGestureRecognizer:tapGesture];
+    self.forgetPwdLable.userInteractionEnabled = YES;
+}
+
+- (void) forgetPwdButtonAction : (id) _sender
+{
+    NBRForgetPwdViewController *nVC = [[NBRForgetPwdViewController alloc] initWithNibName:@"NBRForgetPwdViewController" bundle:nil];
+    
+    [self.navigationController pushViewController:nVC animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -22,6 +22,11 @@
 #define kNBR_DEFAULT_FONT_NAME       @"STHeitiSC-Light"
 #define kNBR_DEFAULT_FONT_NAME_BLOD  @"STHeitiSC-Medium"
 
+//白色
+#define kNBR_ProjectColor_StandWhite      UIColorFromRGB(0xFFFFFF)
+//标准蓝
+#define kNBR_ProjectColor_StandBlue       UIColorFromRGB(0x3596DD)
+
 //背景灰
 #define kNBR_ProjectColor_BackGroundGray  UIColorFromRGB(0xEFEFEF)
 
@@ -42,9 +47,6 @@
 
 //标准红
 #define kNBR_ProjectColor_StandRed        UIColorFromRGB(0xFB4747)
-
-//标准蓝
-#define kNBR_ProjectColor_StandBlue       UIColorFromRGB(0x404A58)
 
 //标准绿
 #define kNBR_ProjectColor_StandGreen      UIColorFromRGB(0x8ECD4B)

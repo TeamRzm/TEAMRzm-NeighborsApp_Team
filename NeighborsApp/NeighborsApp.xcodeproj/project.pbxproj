@@ -18,6 +18,8 @@
 		5B8B15A41ADC17CB00AA87A2 /* EGOImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8B159F1ADC17CB00AA87A2 /* EGOImageView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		5B8B15B01ADC21FF00AA87A2 /* NBRNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8B15AF1ADC21FF00AA87A2 /* NBRNavigationBar.m */; };
 		5B8B15B41ADC236700AA87A2 /* DefaultRes.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B8B15B31ADC236700AA87A2 /* DefaultRes.xcassets */; };
+		5B8B15B91ADCBA4A00AA87A2 /* NBRForgetPwdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8B15B71ADCBA4A00AA87A2 /* NBRForgetPwdViewController.m */; };
+		5B8B15BA1ADCBA4A00AA87A2 /* NBRForgetPwdViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B8B15B81ADCBA4A00AA87A2 /* NBRForgetPwdViewController.xib */; };
 		5BB655311AC31464007E0F85 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB655301AC31464007E0F85 /* main.m */; };
 		5BB655341AC31464007E0F85 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB655331AC31464007E0F85 /* AppDelegate.m */; };
 		5BB655371AC31464007E0F85 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB655361AC31464007E0F85 /* FirstViewController.m */; };
@@ -115,6 +117,9 @@
 		5B8B15AE1ADC21FF00AA87A2 /* NBRNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NBRNavigationBar.h; path = MyUIViews/NBRNavigationBar.h; sourceTree = "<group>"; };
 		5B8B15AF1ADC21FF00AA87A2 /* NBRNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NBRNavigationBar.m; path = MyUIViews/NBRNavigationBar.m; sourceTree = "<group>"; };
 		5B8B15B31ADC236700AA87A2 /* DefaultRes.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = DefaultRes.xcassets; path = Resource/DefaultRes.xcassets; sourceTree = "<group>"; };
+		5B8B15B61ADCBA4A00AA87A2 /* NBRForgetPwdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NBRForgetPwdViewController.h; path = ViewControllers/NBRLoginViewController/NBRForgetPwdViewController.h; sourceTree = "<group>"; };
+		5B8B15B71ADCBA4A00AA87A2 /* NBRForgetPwdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NBRForgetPwdViewController.m; path = ViewControllers/NBRLoginViewController/NBRForgetPwdViewController.m; sourceTree = "<group>"; };
+		5B8B15B81ADCBA4A00AA87A2 /* NBRForgetPwdViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NBRForgetPwdViewController.xib; path = ViewControllers/NBRLoginViewController/NBRForgetPwdViewController.xib; sourceTree = "<group>"; };
 		5BB6552B1AC31464007E0F85 /* NeighborsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NeighborsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BB6552F1AC31464007E0F85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5BB655301AC31464007E0F85 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -344,6 +349,9 @@
 				5B8B15871ADC0BDE00AA87A2 /* NBRLoginViewController.h */,
 				5B8B15881ADC0BDE00AA87A2 /* NBRLoginViewController.m */,
 				5B8B15891ADC0BDE00AA87A2 /* NBRLoginViewController.xib */,
+				5B8B15B61ADCBA4A00AA87A2 /* NBRForgetPwdViewController.h */,
+				5B8B15B71ADCBA4A00AA87A2 /* NBRForgetPwdViewController.m */,
+				5B8B15B81ADCBA4A00AA87A2 /* NBRForgetPwdViewController.xib */,
 			);
 			name = NBRLoginViewController;
 			sourceTree = "<group>";
@@ -767,6 +775,7 @@
 			files = (
 				5B8B15B41ADC236700AA87A2 /* DefaultRes.xcassets in Resources */,
 				5BB6553D1AC31464007E0F85 /* Main.storyboard in Resources */,
+				5B8B15BA1ADCBA4A00AA87A2 /* NBRForgetPwdViewController.xib in Resources */,
 				5BB655421AC31464007E0F85 /* LaunchScreen.xib in Resources */,
 				5B8B15901ADC164900AA87A2 /* NBRBaseViewController.xib in Resources */,
 				5B8B158B1ADC0BDE00AA87A2 /* NBRLoginViewController.xib in Resources */,
@@ -814,6 +823,7 @@
 				5BD83CE71AD61F4B00D1A3EC /* SBJsonStreamWriterAccumulator.m in Sources */,
 				5B8B15A11ADC17CB00AA87A2 /* EGOImageButton.m in Sources */,
 				5BD83CE51AD61F4B00D1A3EC /* SBJsonStreamParserState.m in Sources */,
+				5B8B15B91ADCBA4A00AA87A2 /* NBRForgetPwdViewController.m in Sources */,
 				5BB6553A1AC31464007E0F85 /* SecondViewController.m in Sources */,
 				5BD83CE81AD61F4B00D1A3EC /* SBJsonStreamWriterState.m in Sources */,
 				5BD83C8C1AD61EF600D1A3EC /* ASIHTTPRequest.m in Sources */,

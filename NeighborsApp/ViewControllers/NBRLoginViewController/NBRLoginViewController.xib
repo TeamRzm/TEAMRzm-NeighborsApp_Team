@@ -61,7 +61,7 @@
                     </state>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2HN-oc-tQF">
-                    <rect key="frame" x="8" y="58" width="120" height="21"/>
+                    <rect key="frame" x="8" y="68" width="120" height="21"/>
                     <attributedString key="attributedText">
                         <fragment content="忘记密码?">
                             <attributes>
