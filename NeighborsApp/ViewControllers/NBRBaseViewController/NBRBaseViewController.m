@@ -30,10 +30,47 @@
     
     [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"NavgationBarBackGroundImg"] forBarMetrics:UIBarMetricsDefault];
     
+    [[UINavigationBar appearance] setTintColor:kNBR_ProjectColor_StandWhite];
+    
     [[UINavigationBar appearance] setTitleTextAttributes:@{
                                                            NSForegroundColorAttributeName  : UIColorFromRGB(0xFFFFFF),
                                                            NSFontAttributeName             : [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME_BLOD size:18.0f],
                                                            }];
+    
+    self.view.backgroundColor = kNBR_ProjectColor_BackGroundGray;
+    
+    UIBarButtonItem *backButtonItem = [[UIBarButtonItem alloc] init];
+    
+    [backButtonItem setTitleTextAttributes:@{
+                                             NSForegroundColorAttributeName  : UIColorFromRGB(0xFFFFFF),
+                                             NSFontAttributeName             : [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME_BLOD size:15.0f],
+                                             }
+                                  forState:UIControlStateNormal];
+    
+    self.navigationItem.backBarButtonItem = backButtonItem;
+    
+}
+
+- (void) showBannerMsgWithString : (NSString *)_msg tappedBlock:(void (^)(ALAlertBanner *alertBanner))tappedBlock
+{
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    ALAlertBanner *banner = [ALAlertBanner alertBannerForView:appDelegate.window style:ALAlertBannerStyleWarning position:ALAlertBannerPositionBottom title:@"温馨提示" subtitle:_msg tappedBlock:^(ALAlertBanner *alertBanner)
+                             {
+                                 tappedBlock(alertBanner);
+                             }];
+    
+    banner.secondsToShow = 3.0f;
+    banner.showAnimationDuration = .25f;
+    banner.hideAnimationDuration = .25f;
+    [banner show];
+}
+
+- (void) showBannerMsgWithString : (NSString*) _msg
+{
+    [self showBannerMsgWithString:_msg tappedBlock:^(ALAlertBanner *alertBanner) {
+        [alertBanner hide];
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -8,7 +8,7 @@
 
 #import "NBRLoginViewController.h"
 #import "NBRForgetPwdViewController.h"
-
+#import "NBRRegViewController.h"
 @interface NBRLoginViewController ()
 {
     UITextField     *userNameTextField;
@@ -49,11 +49,11 @@
     pwdTextField.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME size:14.0f];
     pwdTextField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     pwdTextField.textColor = kNBR_ProjectColor_DeepGray;
-    pwdTextField.placeholder = @"密码";
+    pwdTextField.placeholder = @"请输入登陆密码";
+    pwdTextField.secureTextEntry = YES;
     [self setDoneStyleTextFile:pwdTextField];
     
     tableViewDateSource = @[userNameTextField,pwdTextField];
-    
     
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(forgetPwdButtonAction:)];
     [self.forgetPwdLable addGestureRecognizer:tapGesture];
@@ -104,4 +104,29 @@
 }
 */
 
+- (IBAction)regButtonAction:(id)sender
+{
+    NBRRegViewController *nVC = [[NBRRegViewController alloc] initWithNibName:@"NBRForgetPwdViewController" bundle:nil];
+    
+    [self.navigationController pushViewController:nVC animated:YES];
+}
+
+- (IBAction)loginButtonAction:(id)sender
+{
+    if (userNameTextField.text.length <= 0)
+    {
+        [self showBannerMsgWithString:@"账号/手机号码"];
+        return ;
+    }
+    
+    if (pwdTextField.text.length <= 0)
+    {
+        [self showBannerMsgWithString:@"请输密码"];
+        return ;
+    }
+    
+    [self.navigationController dismissViewControllerAnimated:YES completion:^{
+        [self showBannerMsgWithString:@"登录成功"];
+    }];
+}
 @end

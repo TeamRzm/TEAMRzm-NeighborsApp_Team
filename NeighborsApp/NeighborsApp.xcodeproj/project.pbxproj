@@ -7,6 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B6D31581ADCDFF6009A922A /* NBRRegViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6D31561ADCDFF6009A922A /* NBRRegViewController.m */; };
+		5B6D31591ADCDFF6009A922A /* NBRRegViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B6D31571ADCDFF6009A922A /* NBRRegViewController.xib */; };
+		5B6D316A1ADCE747009A922A /* ALAlertBanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6D315E1ADCE747009A922A /* ALAlertBanner.m */; };
+		5B6D316B1ADCE747009A922A /* ALAlertBannerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6D31601ADCE747009A922A /* ALAlertBannerManager.m */; };
+		5B6D316C1ADCE747009A922A /* bannerAlert.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B6D31621ADCE747009A922A /* bannerAlert.png */; };
+		5B6D316D1ADCE747009A922A /* bannerAlert@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B6D31631ADCE747009A922A /* bannerAlert@2x.png */; };
+		5B6D316E1ADCE747009A922A /* bannerFailure.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B6D31641ADCE747009A922A /* bannerFailure.png */; };
+		5B6D316F1ADCE747009A922A /* bannerFailure@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B6D31651ADCE747009A922A /* bannerFailure@2x.png */; };
+		5B6D31701ADCE747009A922A /* bannerNotify.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B6D31661ADCE747009A922A /* bannerNotify.png */; };
+		5B6D31711ADCE747009A922A /* bannerNotify@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B6D31671ADCE747009A922A /* bannerNotify@2x.png */; };
+		5B6D31721ADCE747009A922A /* bannerSuccess.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B6D31681ADCE747009A922A /* bannerSuccess.png */; };
+		5B6D31731ADCE747009A922A /* bannerSuccess@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B6D31691ADCE747009A922A /* bannerSuccess@2x.png */; };
+		5B6D31821ADCE822009A922A /* excalmatoryIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B6D31761ADCE822009A922A /* excalmatoryIcon.png */; };
+		5B6D31831ADCE822009A922A /* libPodsUIImageHelpers.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B6D31771ADCE822009A922A /* libPodsUIImageHelpers.a */; };
+		5B6D31841ADCE822009A922A /* SIAlertView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5B6D31781ADCE822009A922A /* SIAlertView.bundle */; };
+		5B6D31851ADCE822009A922A /* SIAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6D317A1ADCE822009A922A /* SIAlertView.m */; };
+		5B6D31861ADCE822009A922A /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6D31811ADCE822009A922A /* UIView+Toast.m */; };
 		5B8B158A1ADC0BDE00AA87A2 /* NBRLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8B15881ADC0BDE00AA87A2 /* NBRLoginViewController.m */; };
 		5B8B158B1ADC0BDE00AA87A2 /* NBRLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B8B15891ADC0BDE00AA87A2 /* NBRLoginViewController.xib */; };
 		5B8B158F1ADC164900AA87A2 /* NBRBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8B158D1ADC164900AA87A2 /* NBRBaseViewController.m */; };
@@ -97,6 +114,33 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5B6D31551ADCDFF6009A922A /* NBRRegViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NBRRegViewController.h; path = ViewControllers/NBRLoginViewController/NBRRegViewController.h; sourceTree = "<group>"; };
+		5B6D31561ADCDFF6009A922A /* NBRRegViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NBRRegViewController.m; path = ViewControllers/NBRLoginViewController/NBRRegViewController.m; sourceTree = "<group>"; };
+		5B6D31571ADCDFF6009A922A /* NBRRegViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NBRRegViewController.xib; path = ViewControllers/NBRLoginViewController/NBRRegViewController.xib; sourceTree = "<group>"; };
+		5B6D315C1ADCE747009A922A /* ALAlertBanner+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ALAlertBanner+Private.h"; sourceTree = "<group>"; };
+		5B6D315D1ADCE747009A922A /* ALAlertBanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALAlertBanner.h; sourceTree = "<group>"; };
+		5B6D315E1ADCE747009A922A /* ALAlertBanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALAlertBanner.m; sourceTree = "<group>"; };
+		5B6D315F1ADCE747009A922A /* ALAlertBannerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALAlertBannerManager.h; sourceTree = "<group>"; };
+		5B6D31601ADCE747009A922A /* ALAlertBannerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALAlertBannerManager.m; sourceTree = "<group>"; };
+		5B6D31621ADCE747009A922A /* bannerAlert.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bannerAlert.png; sourceTree = "<group>"; };
+		5B6D31631ADCE747009A922A /* bannerAlert@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bannerAlert@2x.png"; sourceTree = "<group>"; };
+		5B6D31641ADCE747009A922A /* bannerFailure.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bannerFailure.png; sourceTree = "<group>"; };
+		5B6D31651ADCE747009A922A /* bannerFailure@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bannerFailure@2x.png"; sourceTree = "<group>"; };
+		5B6D31661ADCE747009A922A /* bannerNotify.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bannerNotify.png; sourceTree = "<group>"; };
+		5B6D31671ADCE747009A922A /* bannerNotify@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bannerNotify@2x.png"; sourceTree = "<group>"; };
+		5B6D31681ADCE747009A922A /* bannerSuccess.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bannerSuccess.png; sourceTree = "<group>"; };
+		5B6D31691ADCE747009A922A /* bannerSuccess@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bannerSuccess@2x.png"; sourceTree = "<group>"; };
+		5B6D31761ADCE822009A922A /* excalmatoryIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = excalmatoryIcon.png; sourceTree = "<group>"; };
+		5B6D31771ADCE822009A922A /* libPodsUIImageHelpers.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libPodsUIImageHelpers.a; sourceTree = "<group>"; };
+		5B6D31781ADCE822009A922A /* SIAlertView.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SIAlertView.bundle; sourceTree = "<group>"; };
+		5B6D31791ADCE822009A922A /* SIAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIAlertView.h; sourceTree = "<group>"; };
+		5B6D317A1ADCE822009A922A /* SIAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIAlertView.m; sourceTree = "<group>"; };
+		5B6D317B1ADCE822009A922A /* UIImage+Blur.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Blur.h"; sourceTree = "<group>"; };
+		5B6D317C1ADCE822009A922A /* UIImage+ImageWithColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageWithColor.h"; sourceTree = "<group>"; };
+		5B6D317D1ADCE822009A922A /* UIImage+Screenshot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Screenshot.h"; sourceTree = "<group>"; };
+		5B6D317E1ADCE822009A922A /* UIImage-Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage-Helpers.h"; sourceTree = "<group>"; };
+		5B6D31801ADCE822009A922A /* UIView+Toast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Toast.h"; sourceTree = "<group>"; };
+		5B6D31811ADCE822009A922A /* UIView+Toast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Toast.m"; sourceTree = "<group>"; };
 		5B8B15871ADC0BDE00AA87A2 /* NBRLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NBRLoginViewController.h; path = ViewControllers/NBRLoginViewController/NBRLoginViewController.h; sourceTree = "<group>"; };
 		5B8B15881ADC0BDE00AA87A2 /* NBRLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NBRLoginViewController.m; path = ViewControllers/NBRLoginViewController/NBRLoginViewController.m; sourceTree = "<group>"; };
 		5B8B15891ADC0BDE00AA87A2 /* NBRLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NBRLoginViewController.xib; path = ViewControllers/NBRLoginViewController/NBRLoginViewController.xib; sourceTree = "<group>"; };
@@ -251,6 +295,7 @@
 				5BD83D1A1AD6216000D1A3EC /* libiconv.dylib in Frameworks */,
 				5BD83D181AD6215B00D1A3EC /* libsqlite3.dylib in Frameworks */,
 				5BD83D161AD6215500D1A3EC /* AVFoundation.framework in Frameworks */,
+				5B6D31831ADCE822009A922A /* libPodsUIImageHelpers.a in Frameworks */,
 				5BD83D141AD6214F00D1A3EC /* CoreLocation.framework in Frameworks */,
 				5BD83D121AD6214B00D1A3EC /* CFNetwork.framework in Frameworks */,
 				5BD83D101AD6214700D1A3EC /* QuartzCore.framework in Frameworks */,
@@ -272,6 +317,62 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5B6D315B1ADCE747009A922A /* ALAlertBanner */ = {
+			isa = PBXGroup;
+			children = (
+				5B6D315C1ADCE747009A922A /* ALAlertBanner+Private.h */,
+				5B6D315D1ADCE747009A922A /* ALAlertBanner.h */,
+				5B6D315E1ADCE747009A922A /* ALAlertBanner.m */,
+				5B6D315F1ADCE747009A922A /* ALAlertBannerManager.h */,
+				5B6D31601ADCE747009A922A /* ALAlertBannerManager.m */,
+				5B6D31611ADCE747009A922A /* Images */,
+			);
+			name = ALAlertBanner;
+			path = Ext/ALAlertBanner;
+			sourceTree = "<group>";
+		};
+		5B6D31611ADCE747009A922A /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				5B6D31621ADCE747009A922A /* bannerAlert.png */,
+				5B6D31631ADCE747009A922A /* bannerAlert@2x.png */,
+				5B6D31641ADCE747009A922A /* bannerFailure.png */,
+				5B6D31651ADCE747009A922A /* bannerFailure@2x.png */,
+				5B6D31661ADCE747009A922A /* bannerNotify.png */,
+				5B6D31671ADCE747009A922A /* bannerNotify@2x.png */,
+				5B6D31681ADCE747009A922A /* bannerSuccess.png */,
+				5B6D31691ADCE747009A922A /* bannerSuccess@2x.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		5B6D31751ADCE822009A922A /* SIAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				5B6D31761ADCE822009A922A /* excalmatoryIcon.png */,
+				5B6D31771ADCE822009A922A /* libPodsUIImageHelpers.a */,
+				5B6D31781ADCE822009A922A /* SIAlertView.bundle */,
+				5B6D31791ADCE822009A922A /* SIAlertView.h */,
+				5B6D317A1ADCE822009A922A /* SIAlertView.m */,
+				5B6D317B1ADCE822009A922A /* UIImage+Blur.h */,
+				5B6D317C1ADCE822009A922A /* UIImage+ImageWithColor.h */,
+				5B6D317D1ADCE822009A922A /* UIImage+Screenshot.h */,
+				5B6D317E1ADCE822009A922A /* UIImage-Helpers.h */,
+			);
+			name = SIAlertView;
+			path = Ext/SIAlertView;
+			sourceTree = "<group>";
+		};
+		5B6D317F1ADCE822009A922A /* UIView+Toast */ = {
+			isa = PBXGroup;
+			children = (
+				5B6D31801ADCE822009A922A /* UIView+Toast.h */,
+				5B6D31811ADCE822009A922A /* UIView+Toast.m */,
+			);
+			name = "UIView+Toast";
+			path = "Ext/UIView+Toast";
+			sourceTree = "<group>";
+		};
 		5B8B15861ADC0B5A00AA87A2 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
@@ -352,6 +453,9 @@
 				5B8B15B61ADCBA4A00AA87A2 /* NBRForgetPwdViewController.h */,
 				5B8B15B71ADCBA4A00AA87A2 /* NBRForgetPwdViewController.m */,
 				5B8B15B81ADCBA4A00AA87A2 /* NBRForgetPwdViewController.xib */,
+				5B6D31551ADCDFF6009A922A /* NBRRegViewController.h */,
+				5B6D31561ADCDFF6009A922A /* NBRRegViewController.m */,
+				5B6D31571ADCDFF6009A922A /* NBRRegViewController.xib */,
 			);
 			name = NBRLoginViewController;
 			sourceTree = "<group>";
@@ -503,6 +607,9 @@
 		5BB6555D1AC31588007E0F85 /* Ext */ = {
 			isa = PBXGroup;
 			children = (
+				5B6D31751ADCE822009A922A /* SIAlertView */,
+				5B6D317F1ADCE822009A922A /* UIView+Toast */,
+				5B6D315B1ADCE747009A922A /* ALAlertBanner */,
 				5B8B15911ADC17CB00AA87A2 /* EGOImageLoad */,
 				5BD83C9E1AD61F4B00D1A3EC /* Category */,
 				5BD83CB71AD61F4B00D1A3EC /* SBJson */,
@@ -774,12 +881,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B8B15B41ADC236700AA87A2 /* DefaultRes.xcassets in Resources */,
+				5B6D31841ADCE822009A922A /* SIAlertView.bundle in Resources */,
 				5BB6553D1AC31464007E0F85 /* Main.storyboard in Resources */,
+				5B6D316E1ADCE747009A922A /* bannerFailure.png in Resources */,
+				5B6D31721ADCE747009A922A /* bannerSuccess.png in Resources */,
 				5B8B15BA1ADCBA4A00AA87A2 /* NBRForgetPwdViewController.xib in Resources */,
+				5B6D31711ADCE747009A922A /* bannerNotify@2x.png in Resources */,
 				5BB655421AC31464007E0F85 /* LaunchScreen.xib in Resources */,
+				5B6D316D1ADCE747009A922A /* bannerAlert@2x.png in Resources */,
+				5B6D316F1ADCE747009A922A /* bannerFailure@2x.png in Resources */,
 				5B8B15901ADC164900AA87A2 /* NBRBaseViewController.xib in Resources */,
 				5B8B158B1ADC0BDE00AA87A2 /* NBRLoginViewController.xib in Resources */,
 				5BB6553F1AC31464007E0F85 /* Images.xcassets in Resources */,
+				5B6D31821ADCE822009A922A /* excalmatoryIcon.png in Resources */,
+				5B6D31701ADCE747009A922A /* bannerNotify.png in Resources */,
+				5B6D31591ADCDFF6009A922A /* NBRRegViewController.xib in Resources */,
+				5B6D31731ADCE747009A922A /* bannerSuccess@2x.png in Resources */,
+				5B6D316C1ADCE747009A922A /* bannerAlert.png in Resources */,
 				5BD83C9C1AD61EF600D1A3EC /* README-GHUnit in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -798,6 +916,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B6D31581ADCDFF6009A922A /* NBRRegViewController.m in Sources */,
 				5BD83D231AD6223900D1A3EC /* SBJsonParser.m in Sources */,
 				5B8B15A01ADC17CB00AA87A2 /* EGOCache.m in Sources */,
 				5BD83CE41AD61F4B00D1A3EC /* SBJsonStreamParserAdapter.m in Sources */,
@@ -806,6 +925,7 @@
 				5BD83C901AD61EF600D1A3EC /* ASICloudFilesContainer.m in Sources */,
 				5BD83C951AD61EF600D1A3EC /* ASICloudFilesRequest.m in Sources */,
 				5BD83CEB1AD61F4B00D1A3EC /* SBJsonWriter.m in Sources */,
+				5B6D31851ADCE822009A922A /* SIAlertView.m in Sources */,
 				5B8B15B01ADC21FF00AA87A2 /* NBRNavigationBar.m in Sources */,
 				5BD83CE61AD61F4B00D1A3EC /* SBJsonStreamWriter.m in Sources */,
 				5BD83C961AD61EF600D1A3EC /* ASIS3Bucket.m in Sources */,
@@ -820,6 +940,8 @@
 				5B8B158A1ADC0BDE00AA87A2 /* NBRLoginViewController.m in Sources */,
 				5BB655631AC316AC007E0F85 /* NBRTabbarController.m in Sources */,
 				5BD83C9B1AD61EF600D1A3EC /* ASIS3ServiceRequest.m in Sources */,
+				5B6D31861ADCE822009A922A /* UIView+Toast.m in Sources */,
+				5B6D316A1ADCE747009A922A /* ALAlertBanner.m in Sources */,
 				5BD83CE71AD61F4B00D1A3EC /* SBJsonStreamWriterAccumulator.m in Sources */,
 				5B8B15A11ADC17CB00AA87A2 /* EGOImageButton.m in Sources */,
 				5BD83CE51AD61F4B00D1A3EC /* SBJsonStreamParserState.m in Sources */,
@@ -827,6 +949,7 @@
 				5BB6553A1AC31464007E0F85 /* SecondViewController.m in Sources */,
 				5BD83CE81AD61F4B00D1A3EC /* SBJsonStreamWriterState.m in Sources */,
 				5BD83C8C1AD61EF600D1A3EC /* ASIHTTPRequest.m in Sources */,
+				5B6D316B1ADCE747009A922A /* ALAlertBannerManager.m in Sources */,
 				5BB655341AC31464007E0F85 /* AppDelegate.m in Sources */,
 				5BB655371AC31464007E0F85 /* FirstViewController.m in Sources */,
 				5BD83CE91AD61F4B00D1A3EC /* SBJsonTokeniser.m in Sources */,
@@ -976,6 +1099,10 @@
 				GCC_PREFIX_HEADER = NeighborsApp.pch;
 				INFOPLIST_FILE = NeighborsApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Ext/SIAlertView",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -988,6 +1115,10 @@
 				GCC_PREFIX_HEADER = NeighborsApp.pch;
 				INFOPLIST_FILE = NeighborsApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Ext/SIAlertView",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

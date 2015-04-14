@@ -28,7 +28,7 @@
 #define kNBR_ProjectColor_StandBlue       UIColorFromRGB(0x3596DD)
 
 //背景灰
-#define kNBR_ProjectColor_BackGroundGray  UIColorFromRGB(0xEFEFEF)
+#define kNBR_ProjectColor_BackGroundGray  UIColorFromRGB(0xF2F3F7)
 
 //浅灰
 #define kNBR_ProjectColor_LightGray       UIColorFromRGB(0xE5E5E5)

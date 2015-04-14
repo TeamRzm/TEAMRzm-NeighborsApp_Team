@@ -7,10 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AppDelegate.h"
+#import "ALAlertBanner.h"
+#import "SIAlertView.h"
 
 @interface NBRBaseViewController : UIViewController
 
 - (void) resignFirstResponderWithView : (UIView*) _resgignView;
 - (void) setDoneStyleTextFile : (UITextField*) _textFiled;
+
+- (void) showBannerMsgWithString : (NSString*) _msg;
+
+- (void) showBannerMsgWithString : (NSString *)_msg tappedBlock:(void (^)(ALAlertBanner *alertBanner))tappedBlock;
 
 @end

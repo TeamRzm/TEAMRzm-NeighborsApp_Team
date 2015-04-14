@@ -19,4 +19,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *forgetPwdLable;
 @property (weak, nonatomic) IBOutlet UITableView *boundTabView;
 
+- (IBAction)loginButtonAction:(id)sender;
+- (IBAction)regButtonAction:(id)sender;
+
 @end
