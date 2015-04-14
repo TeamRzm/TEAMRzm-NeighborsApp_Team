@@ -12,6 +12,9 @@
 
 #endif
 
+
+#define CONFIG_TEST_DATE
+
 #define kNBR_TABLEVIEW_CELL_NOIDENTIFIER @"NBR_TABLEVIEW_CELL_NOIDENTIFIER"
 #define kNBR_SCREEN_W [UIScreen mainScreen].bounds.size.width
 #define kNBR_SCREEN_H [UIScreen mainScreen].bounds.size.height

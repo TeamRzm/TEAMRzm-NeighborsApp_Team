@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 #import "ALAlertBanner.h"
 #import "SIAlertView.h"
+#import "UIView+TopTag.h"
 
 @interface NBRBaseViewController : UIViewController
 

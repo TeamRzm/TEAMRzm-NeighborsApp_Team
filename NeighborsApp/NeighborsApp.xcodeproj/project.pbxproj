@@ -24,6 +24,10 @@
 		5B6D31841ADCE822009A922A /* SIAlertView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5B6D31781ADCE822009A922A /* SIAlertView.bundle */; };
 		5B6D31851ADCE822009A922A /* SIAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6D317A1ADCE822009A922A /* SIAlertView.m */; };
 		5B6D31861ADCE822009A922A /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6D31811ADCE822009A922A /* UIView+Toast.m */; };
+		5B6D318C1ADD1BC4009A922A /* ConversationEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6D318B1ADD1BC4009A922A /* ConversationEntity.m */; };
+		5B6D318F1ADD1BE4009A922A /* MessageEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6D318E1ADD1BE4009A922A /* MessageEntity.m */; };
+		5B6D31921ADD1C4A009A922A /* IMUserEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6D31911ADD1C4A009A922A /* IMUserEntity.m */; };
+		5B6D31951ADD34F8009A922A /* UIView+TopTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6D31941ADD34F8009A922A /* UIView+TopTag.m */; };
 		5B8B158A1ADC0BDE00AA87A2 /* NBRLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8B15881ADC0BDE00AA87A2 /* NBRLoginViewController.m */; };
 		5B8B158B1ADC0BDE00AA87A2 /* NBRLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B8B15891ADC0BDE00AA87A2 /* NBRLoginViewController.xib */; };
 		5B8B158F1ADC164900AA87A2 /* NBRBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8B158D1ADC164900AA87A2 /* NBRBaseViewController.m */; };
@@ -141,6 +145,14 @@
 		5B6D317E1ADCE822009A922A /* UIImage-Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage-Helpers.h"; sourceTree = "<group>"; };
 		5B6D31801ADCE822009A922A /* UIView+Toast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Toast.h"; sourceTree = "<group>"; };
 		5B6D31811ADCE822009A922A /* UIView+Toast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Toast.m"; sourceTree = "<group>"; };
+		5B6D318A1ADD1BC4009A922A /* ConversationEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConversationEntity.h; path = IMSystem/ConversationEntity.h; sourceTree = "<group>"; };
+		5B6D318B1ADD1BC4009A922A /* ConversationEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConversationEntity.m; path = IMSystem/ConversationEntity.m; sourceTree = "<group>"; };
+		5B6D318D1ADD1BE4009A922A /* MessageEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MessageEntity.h; path = IMSystem/MessageEntity.h; sourceTree = "<group>"; };
+		5B6D318E1ADD1BE4009A922A /* MessageEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MessageEntity.m; path = IMSystem/MessageEntity.m; sourceTree = "<group>"; };
+		5B6D31901ADD1C4A009A922A /* IMUserEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IMUserEntity.h; path = IMSystem/IMUserEntity.h; sourceTree = "<group>"; };
+		5B6D31911ADD1C4A009A922A /* IMUserEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IMUserEntity.m; path = IMSystem/IMUserEntity.m; sourceTree = "<group>"; };
+		5B6D31931ADD34F8009A922A /* UIView+TopTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+TopTag.h"; path = "MyUIViews/UIView+TopTag.h"; sourceTree = "<group>"; };
+		5B6D31941ADD34F8009A922A /* UIView+TopTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+TopTag.m"; path = "MyUIViews/UIView+TopTag.m"; sourceTree = "<group>"; };
 		5B8B15871ADC0BDE00AA87A2 /* NBRLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NBRLoginViewController.h; path = ViewControllers/NBRLoginViewController/NBRLoginViewController.h; sourceTree = "<group>"; };
 		5B8B15881ADC0BDE00AA87A2 /* NBRLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NBRLoginViewController.m; path = ViewControllers/NBRLoginViewController/NBRLoginViewController.m; sourceTree = "<group>"; };
 		5B8B15891ADC0BDE00AA87A2 /* NBRLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NBRLoginViewController.xib; path = ViewControllers/NBRLoginViewController/NBRLoginViewController.xib; sourceTree = "<group>"; };
@@ -373,6 +385,19 @@
 			path = "Ext/UIView+Toast";
 			sourceTree = "<group>";
 		};
+		5B6D31891ADD1B8C009A922A /* IMSystem */ = {
+			isa = PBXGroup;
+			children = (
+				5B6D31901ADD1C4A009A922A /* IMUserEntity.h */,
+				5B6D31911ADD1C4A009A922A /* IMUserEntity.m */,
+				5B6D318D1ADD1BE4009A922A /* MessageEntity.h */,
+				5B6D318E1ADD1BE4009A922A /* MessageEntity.m */,
+				5B6D318A1ADD1BC4009A922A /* ConversationEntity.h */,
+				5B6D318B1ADD1BC4009A922A /* ConversationEntity.m */,
+			);
+			name = IMSystem;
+			sourceTree = "<group>";
+		};
 		5B8B15861ADC0B5A00AA87A2 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
@@ -465,6 +490,8 @@
 			children = (
 				5B8B15AE1ADC21FF00AA87A2 /* NBRNavigationBar.h */,
 				5B8B15AF1ADC21FF00AA87A2 /* NBRNavigationBar.m */,
+				5B6D31931ADD34F8009A922A /* UIView+TopTag.h */,
+				5B6D31941ADD34F8009A922A /* UIView+TopTag.m */,
 			);
 			name = MyUIViews;
 			sourceTree = "<group>";
@@ -480,6 +507,7 @@
 		5BB655221AC31464007E0F85 = {
 			isa = PBXGroup;
 			children = (
+				5B6D31891ADD1B8C009A922A /* IMSystem */,
 				5B8B15B21ADC233600AA87A2 /* Resource */,
 				5B8B15AD1ADC21A900AA87A2 /* MyUIViews */,
 				5B8B15861ADC0B5A00AA87A2 /* Framework */,
@@ -923,6 +951,7 @@
 				5BD83C871AD61EF600D1A3EC /* ASIAuthenticationDialog.m in Sources */,
 				5BD83C971AD61EF600D1A3EC /* ASIS3BucketObject.m in Sources */,
 				5BD83C901AD61EF600D1A3EC /* ASICloudFilesContainer.m in Sources */,
+				5B6D31951ADD34F8009A922A /* UIView+TopTag.m in Sources */,
 				5BD83C951AD61EF600D1A3EC /* ASICloudFilesRequest.m in Sources */,
 				5BD83CEB1AD61F4B00D1A3EC /* SBJsonWriter.m in Sources */,
 				5B6D31851ADCE822009A922A /* SIAlertView.m in Sources */,
@@ -939,6 +968,7 @@
 				5BD83C9A1AD61EF600D1A3EC /* ASIS3Request.m in Sources */,
 				5B8B158A1ADC0BDE00AA87A2 /* NBRLoginViewController.m in Sources */,
 				5BB655631AC316AC007E0F85 /* NBRTabbarController.m in Sources */,
+				5B6D31921ADD1C4A009A922A /* IMUserEntity.m in Sources */,
 				5BD83C9B1AD61EF600D1A3EC /* ASIS3ServiceRequest.m in Sources */,
 				5B6D31861ADCE822009A922A /* UIView+Toast.m in Sources */,
 				5B6D316A1ADCE747009A922A /* ALAlertBanner.m in Sources */,
@@ -955,6 +985,7 @@
 				5BD83CE91AD61F4B00D1A3EC /* SBJsonTokeniser.m in Sources */,
 				5BB6556D1AC3173E007E0F85 /* NBRServeiesViewController.m in Sources */,
 				5BD83C931AD61EF600D1A3EC /* ASICloudFilesObject.m in Sources */,
+				5B6D318C1ADD1BC4009A922A /* ConversationEntity.m in Sources */,
 				5BD83C941AD61EF600D1A3EC /* ASICloudFilesObjectRequest.m in Sources */,
 				5B8B15A41ADC17CB00AA87A2 /* EGOImageView.m in Sources */,
 				5B8B15A21ADC17CB00AA87A2 /* EGOImageLoadConnection.m in Sources */,
@@ -971,6 +1002,7 @@
 				5BD83C891AD61EF600D1A3EC /* ASIDataDecompressor.m in Sources */,
 				5BD83CDF1AD61F4B00D1A3EC /* NSObject+SBJSON.m in Sources */,
 				5BD83C991AD61EF600D1A3EC /* ASIS3ObjectRequest.m in Sources */,
+				5B6D318F1ADD1BE4009A922A /* MessageEntity.m in Sources */,
 				5BB655311AC31464007E0F85 /* main.m in Sources */,
 				5BB6556A1AC31727007E0F85 /* NBRPersonalCenterViewController.m in Sources */,
 				5BD83C981AD61EF600D1A3EC /* ASIS3BucketRequest.m in Sources */,
