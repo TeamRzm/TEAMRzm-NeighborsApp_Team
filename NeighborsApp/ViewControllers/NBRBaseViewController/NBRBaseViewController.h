@@ -11,6 +11,7 @@
 #import "ALAlertBanner.h"
 #import "SIAlertView.h"
 #import "UIView+TopTag.h"
+#import "SBJson.h"
 
 @interface NBRBaseViewController : UIViewController
 

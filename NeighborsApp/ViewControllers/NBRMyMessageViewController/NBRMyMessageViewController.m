@@ -8,6 +8,7 @@
 
 #import "NBRMyMessageViewController.h"
 #import "NBRLoginViewController.h"
+#import "NBRConversationViewController.h"
 
 #import "IMUserEntity.h"
 #import "MessageEntity.h"
@@ -383,5 +384,12 @@
     }
     
     return cell;
+}
+
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NBRConversationViewController *nVC = [[NBRConversationViewController alloc] initWithNibName:@"NBRConversationViewController" bundle:nil];
+    nVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:nVC animated:YES];
 }
 @end

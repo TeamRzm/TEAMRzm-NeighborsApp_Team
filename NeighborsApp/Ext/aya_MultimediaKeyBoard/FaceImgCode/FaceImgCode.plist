@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>pinglun_weixiao.png</key>
+	<string>微笑</string>
+	<key>pinglun_piezui.png</key>
+	<string>撇嘴</string>
+	<key>pinglun_dengyan.png</key>
+	<string>瞪眼</string>
+	<key>pinglun_jingya.png</key>
+	<string>惊讶</string>
+	<key>pinglun_nanguo.png</key>
+	<string>难过</string>
+	<key>pinglun_ciya.png</key>
+	<string>呲牙</string>
+	<key>pinglun_zhuakuang.png</key>
+	<string>抓狂</string>
+	<key>pinglun_bishi.png</key>
+	<string>鄙视</string>
+	<key>pinglun_huaixiao.png</key>
+	<string>坏笑</string>
+	<key>pinglun_deyi.png</key>
+	<string>得意</string>
+	<key>pinglun_kun.png</key>
+	<string>困</string>
+	<key>pinglun_tiaopi.png</key>
+	<string>调皮</string>
+	<key>pinglun_qiang.png</key>
+	<string>坚强</string>
+	<key>pinglun_daku.png</key>
+	<string>大哭</string>
+	<key>pinglun_youxian.png</key>
+	<string>悠闲</string>
+	<key>pinglun_tushetou.png</key>
+	<string>吐舌头</string>
+	<key>pinglun_se.png</key>
+	<string>色</string>
+	<key>pinglun_yukuai.png</key>
+	<string>愉快</string>
+	<key>pinglun_paomeiyan.png</key>
+	<string>抛媚眼</string>
+	<key>pinglun_fanu.png</key>
+	<string>发怒</string>
+	<key>pinglun_tianshi.png</key>
+	<string>天使</string>
+	<key>pinglun_haixiu.png</key>
+	<string>害羞</string>
+	<key>pinglun_ganga.png</key>
+	<string>尴尬</string>
+	<key>pinglun_kuaikule.png</key>
+	<string>快哭了</string>
+	<key>pinglun_zan.png</key>
+	<string>赞</string>
+	<key>pinglun_wuyu.png</key>
+	<string>无语</string>
+	<key>pinglun_shengqi.png</key>
+	<string>生气</string>
+</dict>
+</plist>
