@@ -28,14 +28,21 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"NavgationBarBackGroundImg"] forBarMetrics:UIBarMetricsDefault];
-    
-    [[UINavigationBar appearance] setTintColor:kNBR_ProjectColor_StandWhite];
-    
-    [[UINavigationBar appearance] setTitleTextAttributes:@{
-                                                           NSForegroundColorAttributeName  : UIColorFromRGB(0xFFFFFF),
-                                                           NSFontAttributeName             : [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME_BLOD size:18.0f],
-                                                           }];
+//    CGSize imageSize = CGSizeMake(50, 50);
+//    UIGraphicsBeginImageContextWithOptions(imageSize, 0, [UIScreen mainScreen].scale);
+//    [kNBR_ProjectColor_StandBlue set];
+//    UIRectFill(CGRectMake(0, 0, imageSize.width, imageSize.height));
+//    UIImage *pressedColorImg = UIGraphicsGetImageFromCurrentImageContext();
+//    UIGraphicsEndImageContext();
+//    
+//    [[UINavigationBar appearance] setBackgroundImage:pressedColorImg forBarMetrics:UIBarMetricsDefault];
+//    
+//    [[UINavigationBar appearance] setTintColor:kNBR_ProjectColor_StandWhite];
+//    
+//    [[UINavigationBar appearance] setTitleTextAttributes:@{
+//                                                           NSForegroundColorAttributeName  : UIColorFromRGB(0xFFFFFF),
+//                                                           NSFontAttributeName             : [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME_BLOD size:18.0f],
+//                                                           }];
     
     self.view.backgroundColor = kNBR_ProjectColor_BackGroundGray;
     
