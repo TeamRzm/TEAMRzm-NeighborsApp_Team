@@ -28,13 +28,59 @@
     tagView.textAlignment = NSTextAlignmentCenter;
     tagView.layer.masksToBounds = YES;
     tagView.tag = 0xAAAA;
+    tagView.alpha = 0.0f;
+    
+    [UIView animateWithDuration:.25f animations:^{
+        tagView.alpha = 1.0f;
+    } completion:^(BOOL finished) {
+        
+    }];
 
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:.25f];
     tagView.text = _tagString;
-    [UIView commitAnimations];
     
     return tagView;
+}
+
+- (void) addTopTagNumberView : (NSString*) _tagString fixOrigin : (CGPoint) _point
+{
+    if (nil == _tagString || [_tagString isEqualToString:@"0"])
+    {
+        [UIView animateWithDuration:0.25f animations:^{
+            [self viewWithTag:0xAAAA].alpha = 0.0f;
+        } completion:^(BOOL finished) {
+            if ([self viewWithTag:0xAAAA])
+            {
+                [[self viewWithTag:0xAAAA] removeFromSuperview];
+            }
+        }];
+        
+        return;
+    }
+    
+    if ([self viewWithTag:0xAAAA])
+    {
+        [[self viewWithTag:0xAAAA] removeFromSuperview];
+    }
+    
+    UIView *tagView = [UIView CreateTopTagNumberView:_tagString];
+    
+    tagView.frame = CGRectMake(self.frame.size.width - 15.0f / 2.0f + _point.x, _point.y, 15.0f, 15.0f);
+    
+    [self addSubview:tagView];
+    
+    tagView.alpha = 0.0f;
+    
+    [UIView animateWithDuration:.25f animations:^{
+        tagView.alpha = 1.0f;
+    } completion:^(BOOL finished) {
+        
+    }];
+
+}
+
+- (void) addTopTagNumberView : (NSString*) _tagString
+{
+    [self addTopTagNumberView:_tagString fixOrigin:CGPointMake(0, 0)];
 }
 
 @end

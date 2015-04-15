@@ -24,6 +24,8 @@
     
     [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"NavgationBarBackGroundImg"] forBarMetrics:UIBarMetricsDefault];
     
+    [[UINavigationBar appearance] setTintColor:kNBR_ProjectColor_StandWhite];
+    
     [[UINavigationBar appearance] setTitleTextAttributes:@{
                                                             NSForegroundColorAttributeName  : UIColorFromRGB(0xFFFFFF),
                                                             NSFontAttributeName             : [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME_BLOD size:18.0f],

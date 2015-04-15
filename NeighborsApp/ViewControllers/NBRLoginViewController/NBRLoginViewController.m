@@ -125,8 +125,9 @@
         return ;
     }
     
+    [self showBannerMsgWithString:@"登录成功"];
     [self.navigationController dismissViewControllerAnimated:YES completion:^{
-        [self showBannerMsgWithString:@"登录成功"];
+
     }];
 }
 @end

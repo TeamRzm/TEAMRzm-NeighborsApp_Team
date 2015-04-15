@@ -12,4 +12,8 @@
 
 + (UIView*) CreateTopTagNumberView : (NSString*) _tagString;
 
+- (void) addTopTagNumberView : (NSString*) _tagString;
+
+- (void) addTopTagNumberView : (NSString*) _tagString fixOrigin : (CGPoint) _point;
+
 @end

@@ -799,7 +799,7 @@
     
     timenum=30;
     timerRecode=[NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(UserIsRecodering) userInfo:nil repeats:YES];
-    [_RecodeTimeLabel setText:[NSString stringWithFormat:@"%ld",timenum]];
+    [_RecodeTimeLabel setText:[NSString stringWithFormat:@"%d",timenum]];
     
 }
 -(void)UserIsRecodering
@@ -807,7 +807,7 @@
     if(timenum>0)
     {
         timenum=timenum-1;
-        [_RecodeTimeLabel setText:[NSString stringWithFormat:@"%ld",timenum]];
+        [_RecodeTimeLabel setText:[NSString stringWithFormat:@"%d",timenum]];
     }
     else
     {
@@ -1219,6 +1219,8 @@
 }
 - (void) dealloc
 {
+//            [self addObserver:self forKeyPath:@"commentImgDate" options:NSKeyValueObservingOptionNew context:Nil];
+    [self removeObserver:self forKeyPath:@"commentImgDate"];
     [inputTextView removeObserver:self forKeyPath:@"contentSize"];
     [powerSetTimer invalidate];
     [timerRecode invalidate];

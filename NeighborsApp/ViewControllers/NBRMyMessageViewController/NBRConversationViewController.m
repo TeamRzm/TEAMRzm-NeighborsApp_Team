@@ -252,13 +252,13 @@
     
     [boundTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:messageDateSources.count-1 inSection:0] animated:YES scrollPosition:UITableViewScrollPositionBottom];
     
-    if (_string.length <= 0 && _keyboard.commentImgDate == nil)
-    {
-        UIAlertView *noInputAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Alert.Title", @"") message:@"亲，请输入评论内容。" delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles: nil];
-        [noInputAlert show];
-        
-        return ;
-    }
+//    if (_string.length <= 0 && _keyboard.commentImgDate == nil)
+//    {
+//        UIAlertView *noInputAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Alert.Title", @"") message:@"亲，请输入评论内容。" delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles: nil];
+//        [noInputAlert show];
+//        
+//        return ;
+//    }
 }
 
 - (void) ayaKeyBoard:(aya_MultimediaKeyBoard*) _keyboard willSelectOtherBoardIndex : (NSInteger) _index
@@ -269,6 +269,11 @@
 -(void)ayaKeyBoard:(aya_MultimediaKeyBoard *)_keyboard quikLookImg:(UIImage *)_limg
 {
     return ;
+}
+
+- (void) dealloc
+{
+    return;
 }
 
 
