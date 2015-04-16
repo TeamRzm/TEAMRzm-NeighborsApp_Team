@@ -190,6 +190,9 @@
 		5B8B15B41ADC236700AA87A2 /* DefaultRes.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B8B15B31ADC236700AA87A2 /* DefaultRes.xcassets */; };
 		5B8B15B91ADCBA4A00AA87A2 /* NBRForgetPwdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8B15B71ADCBA4A00AA87A2 /* NBRForgetPwdViewController.m */; };
 		5B8B15BA1ADCBA4A00AA87A2 /* NBRForgetPwdViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B8B15B81ADCBA4A00AA87A2 /* NBRForgetPwdViewController.xib */; };
+		5B955BEC1ADFD98A00E8B335 /* NBRServeiesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B955BEB1ADFD98900E8B335 /* NBRServeiesViewController.xib */; };
+		5B955BEF1ADFE1EE00E8B335 /* FriendCircleContentEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B955BEE1ADFE1EE00E8B335 /* FriendCircleContentEntity.m */; };
+		5B955BF21ADFE42600E8B335 /* CommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B955BF11ADFE42600E8B335 /* CommentTableViewCell.m */; };
 		5BB655311AC31464007E0F85 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB655301AC31464007E0F85 /* main.m */; };
 		5BB655341AC31464007E0F85 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB655331AC31464007E0F85 /* AppDelegate.m */; };
 		5BB655371AC31464007E0F85 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB655361AC31464007E0F85 /* FirstViewController.m */; };
@@ -490,6 +493,11 @@
 		5B8B15B61ADCBA4A00AA87A2 /* NBRForgetPwdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NBRForgetPwdViewController.h; path = ViewControllers/NBRLoginViewController/NBRForgetPwdViewController.h; sourceTree = "<group>"; };
 		5B8B15B71ADCBA4A00AA87A2 /* NBRForgetPwdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NBRForgetPwdViewController.m; path = ViewControllers/NBRLoginViewController/NBRForgetPwdViewController.m; sourceTree = "<group>"; };
 		5B8B15B81ADCBA4A00AA87A2 /* NBRForgetPwdViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NBRForgetPwdViewController.xib; path = ViewControllers/NBRLoginViewController/NBRForgetPwdViewController.xib; sourceTree = "<group>"; };
+		5B955BEB1ADFD98900E8B335 /* NBRServeiesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NBRServeiesViewController.xib; path = ViewControllers/NBRServeiesViewController/NBRServeiesViewController.xib; sourceTree = "<group>"; };
+		5B955BED1ADFE1EE00E8B335 /* FriendCircleContentEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FriendCircleContentEntity.h; path = ViewControllers/NBRFriendCircleViewController/FriendCircleContentEntity.h; sourceTree = "<group>"; };
+		5B955BEE1ADFE1EE00E8B335 /* FriendCircleContentEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FriendCircleContentEntity.m; path = ViewControllers/NBRFriendCircleViewController/FriendCircleContentEntity.m; sourceTree = "<group>"; };
+		5B955BF01ADFE42600E8B335 /* CommentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentTableViewCell.h; path = ViewControllers/NBRFriendCircleViewController/CommentTableViewCell.h; sourceTree = "<group>"; };
+		5B955BF11ADFE42600E8B335 /* CommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentTableViewCell.m; path = ViewControllers/NBRFriendCircleViewController/CommentTableViewCell.m; sourceTree = "<group>"; };
 		5BB6552B1AC31464007E0F85 /* NeighborsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NeighborsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BB6552F1AC31464007E0F85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5BB655301AC31464007E0F85 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -1198,6 +1206,10 @@
 			children = (
 				5BB655711AC31768007E0F85 /* NBRFriendCircleViewController.h */,
 				5BB655721AC31768007E0F85 /* NBRFriendCircleViewController.m */,
+				5B955BF01ADFE42600E8B335 /* CommentTableViewCell.h */,
+				5B955BF11ADFE42600E8B335 /* CommentTableViewCell.m */,
+				5B955BED1ADFE1EE00E8B335 /* FriendCircleContentEntity.h */,
+				5B955BEE1ADFE1EE00E8B335 /* FriendCircleContentEntity.m */,
 			);
 			name = NBRFriendCircleViewController;
 			sourceTree = "<group>";
@@ -1207,6 +1219,7 @@
 			children = (
 				5BB6556B1AC3173E007E0F85 /* NBRServeiesViewController.h */,
 				5BB6556C1AC3173E007E0F85 /* NBRServeiesViewController.m */,
+				5B955BEB1ADFD98900E8B335 /* NBRServeiesViewController.xib */,
 			);
 			name = NBRServeiesViewController;
 			sourceTree = "<group>";
@@ -1534,6 +1547,7 @@
 				5B4ADE061ADE305300810165 /* chatting_setmode_biaoqing_btn_normal.png in Resources */,
 				5B4ADE0B1ADE305300810165 /* keyboardBg.png in Resources */,
 				5B6D32451ADDFE43009A922A /* Expression_31@2x.png in Resources */,
+				5B955BEC1ADFD98A00E8B335 /* NBRServeiesViewController.xib in Resources */,
 				5B6D322D1ADDFE43009A922A /* Expression_105@2x.png in Resources */,
 				5B6D32861ADDFE43009A922A /* Expression_90@2x.png in Resources */,
 				5B6D32651ADDFE43009A922A /* Expression_60@2x.png in Resources */,
@@ -1668,6 +1682,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B6D31581ADCDFF6009A922A /* NBRRegViewController.m in Sources */,
+				5B955BEF1ADFE1EE00E8B335 /* FriendCircleContentEntity.m in Sources */,
 				5BD83D231AD6223900D1A3EC /* SBJsonParser.m in Sources */,
 				5B8B15A01ADC17CB00AA87A2 /* EGOCache.m in Sources */,
 				5B4ADE051ADE305300810165 /* aya_MultimediaKeyBoard.m in Sources */,
@@ -1701,6 +1716,7 @@
 				5B6D31861ADCE822009A922A /* UIView+Toast.m in Sources */,
 				5B6D316A1ADCE747009A922A /* ALAlertBanner.m in Sources */,
 				5B4ADE321ADE308C00810165 /* Recorder.m in Sources */,
+				5B955BF21ADFE42600E8B335 /* CommentTableViewCell.m in Sources */,
 				5BD83CE71AD61F4B00D1A3EC /* SBJsonStreamWriterAccumulator.m in Sources */,
 				5B4ADE3B1ADE30CE00810165 /* FaceImgCode.m in Sources */,
 				5B8B15A11ADC17CB00AA87A2 /* EGOImageButton.m in Sources */,
@@ -1862,6 +1878,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Hunan Zhangshang Tech Co., Ltd.";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = NeighborsApp.pch;
 				INFOPLIST_FILE = NeighborsApp/Info.plist;
@@ -1872,6 +1889,8 @@
 					"$(PROJECT_DIR)/Ext/RecoderLib/include",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "5830866C-B49F-4251-827A-909F4249C672";
+				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Debug;
 		};
@@ -1879,6 +1898,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Hunan Zhangshang Tech Co., Ltd.";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = NeighborsApp.pch;
 				INFOPLIST_FILE = NeighborsApp/Info.plist;
@@ -1888,7 +1908,10 @@
 					"$(PROJECT_DIR)/Ext/SIAlertView",
 					"$(PROJECT_DIR)/Ext/RecoderLib/include",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "5830866C-B49F-4251-827A-909F4249C672";
+				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Release;
 		};
