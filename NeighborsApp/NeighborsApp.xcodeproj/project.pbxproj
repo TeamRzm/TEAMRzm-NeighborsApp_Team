@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B332AC11AE18018002A0A73 /* ActivityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B332AC01AE18018002A0A73 /* ActivityTableViewCell.m */; };
+		5B332AC41AE181EA002A0A73 /* ActivityDateEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B332AC31AE181EA002A0A73 /* ActivityDateEntity.m */; };
 		5B4ADE051ADE305300810165 /* aya_MultimediaKeyBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4ADDF71ADE305300810165 /* aya_MultimediaKeyBoard.m */; };
 		5B4ADE061ADE305300810165 /* chatting_setmode_biaoqing_btn_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B4ADDF81ADE305300810165 /* chatting_setmode_biaoqing_btn_normal.png */; };
 		5B4ADE071ADE305300810165 /* chatting_setmode_keyboard_btn_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B4ADDF91ADE305300810165 /* chatting_setmode_keyboard_btn_normal.png */; };
@@ -270,6 +272,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5B332ABF1AE18018002A0A73 /* ActivityTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActivityTableViewCell.h; path = ViewControllers/NBRFriendCircleViewController/ActivityTableViewCell.h; sourceTree = "<group>"; };
+		5B332AC01AE18018002A0A73 /* ActivityTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ActivityTableViewCell.m; path = ViewControllers/NBRFriendCircleViewController/ActivityTableViewCell.m; sourceTree = "<group>"; };
+		5B332AC21AE181EA002A0A73 /* ActivityDateEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActivityDateEntity.h; path = ViewControllers/NBRFriendCircleViewController/ActivityDateEntity.h; sourceTree = "<group>"; };
+		5B332AC31AE181EA002A0A73 /* ActivityDateEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ActivityDateEntity.m; path = ViewControllers/NBRFriendCircleViewController/ActivityDateEntity.m; sourceTree = "<group>"; };
 		5B4ADDF61ADE305300810165 /* aya_MultimediaKeyBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aya_MultimediaKeyBoard.h; sourceTree = "<group>"; };
 		5B4ADDF71ADE305300810165 /* aya_MultimediaKeyBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = aya_MultimediaKeyBoard.m; sourceTree = "<group>"; };
 		5B4ADDF81ADE305300810165 /* chatting_setmode_biaoqing_btn_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chatting_setmode_biaoqing_btn_normal.png; sourceTree = "<group>"; };
@@ -1210,6 +1216,10 @@
 				5B955BF11ADFE42600E8B335 /* CommentTableViewCell.m */,
 				5B955BED1ADFE1EE00E8B335 /* FriendCircleContentEntity.h */,
 				5B955BEE1ADFE1EE00E8B335 /* FriendCircleContentEntity.m */,
+				5B332ABF1AE18018002A0A73 /* ActivityTableViewCell.h */,
+				5B332AC01AE18018002A0A73 /* ActivityTableViewCell.m */,
+				5B332AC21AE181EA002A0A73 /* ActivityDateEntity.h */,
+				5B332AC31AE181EA002A0A73 /* ActivityDateEntity.m */,
 			);
 			name = NBRFriendCircleViewController;
 			sourceTree = "<group>";
@@ -1714,6 +1724,7 @@
 				5B4ADE0C1ADE305300810165 /* NSString+ContverHtml.m in Sources */,
 				5BD83C9B1AD61EF600D1A3EC /* ASIS3ServiceRequest.m in Sources */,
 				5B6D31861ADCE822009A922A /* UIView+Toast.m in Sources */,
+				5B332AC11AE18018002A0A73 /* ActivityTableViewCell.m in Sources */,
 				5B6D316A1ADCE747009A922A /* ALAlertBanner.m in Sources */,
 				5B4ADE321ADE308C00810165 /* Recorder.m in Sources */,
 				5B955BF21ADFE42600E8B335 /* CommentTableViewCell.m in Sources */,
@@ -1731,6 +1742,7 @@
 				5BB655341AC31464007E0F85 /* AppDelegate.m in Sources */,
 				5BB655371AC31464007E0F85 /* FirstViewController.m in Sources */,
 				5B4ADE351ADE308C00810165 /* wavreader.mm in Sources */,
+				5B332AC41AE181EA002A0A73 /* ActivityDateEntity.m in Sources */,
 				5BD83CE91AD61F4B00D1A3EC /* SBJsonTokeniser.m in Sources */,
 				5BB6556D1AC3173E007E0F85 /* NBRServeiesViewController.m in Sources */,
 				5B4ADE331ADE308C00810165 /* Transcoding.mm in Sources */,
@@ -1888,6 +1900,7 @@
 					"$(PROJECT_DIR)/Ext/SIAlertView",
 					"$(PROJECT_DIR)/Ext/RecoderLib/include",
 				);
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "5830866C-B49F-4251-827A-909F4249C672";
 				VALID_ARCHS = "armv7 armv7s";
@@ -1908,7 +1921,7 @@
 					"$(PROJECT_DIR)/Ext/SIAlertView",
 					"$(PROJECT_DIR)/Ext/RecoderLib/include",
 				);
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "5830866C-B49F-4251-827A-909F4249C672";
 				VALID_ARCHS = "armv7 armv7s";

@@ -11,19 +11,20 @@
 @interface CommentTableViewCell()
 {
     FriendCircleContentEntity *entity;
-    EGOImageView *avterImageView;
-    UILabel       *nikeNameLable;
-    UILabel       *contentLable;
-    UILabel       *addressLable;
-    UILabel       *commitDateLable;
-    UILabel       *loogCountLable;
-    UILabel       *pointApprovesLable;
-    UILabel       *contentCountLable;
 }
 
 @end
 
 @implementation CommentTableViewCell
+
+@synthesize avterImageView;
+@synthesize nikeNameLable;
+@synthesize contentLable;
+@synthesize addressLable;
+@synthesize commitDateLable;
+@synthesize loogCountLable;
+@synthesize pointApprovesLable;
+@synthesize contentCountLable;
 
 - (id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -56,7 +57,7 @@
                                                               5,
                                                               kNBR_SCREEN_W - (43 + 10 * 3),
                                                               25.0f)];
-    nikeNameLable.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME size:14.0f];
+    nikeNameLable.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME size:15.0f];
     nikeNameLable.textColor = kNBR_ProjectColor_StandBlue;
     nikeNameLable.text = entity.nickName;
     nikeNameLable.autoresizingMask = NO;
@@ -72,7 +73,7 @@
     contentViewStyle.paragraphSpacing = 3.0f;
     
     //format attribute string dict
-    UIFont *contentFont = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME size:13.0f];
+    UIFont *contentFont = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME size:14.0f];
     
     NSDictionary *formatDict = @{
                                  NSFontAttributeName               : contentFont,
@@ -214,7 +215,78 @@
 
 + (CGFloat) heightWithEntity : (FriendCircleContentEntity*) _dateEntity
 {
-    return 40.0f;
+    FriendCircleContentEntity *entity = _dateEntity;
+    //头像
+    EGOImageView *avterImageView = [[EGOImageView alloc] initWithPlaceholderImage:[UIImage imageNamed:entity.avterURL]];
+    avterImageView.frame = CGRectMake(10, 5, 43.0f, 43.0f);
+    
+    //昵称
+    UILabel *nikeNameLable = [[UILabel alloc] initWithFrame:CGRectMake(63,
+                                                              5,
+                                                              kNBR_SCREEN_W - (43 + 10 * 3),
+                                                              25.0f)];
+    
+    //内容
+    NSMutableParagraphStyle *contentViewStyle = [[NSMutableParagraphStyle alloc] init];
+    contentViewStyle.lineHeightMultiple = 1;
+    contentViewStyle.lineSpacing = 4.0f;
+    contentViewStyle.paragraphSpacing = 3.0f;
+    
+    //format attribute string dict
+    UIFont *contentFont = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME size:14];
+    
+    NSDictionary *formatDict = @{
+                                 NSFontAttributeName               : contentFont,
+                                 NSParagraphStyleAttributeName     : contentViewStyle,
+                                 NSForegroundColorAttributeName    : kNBR_ProjectColor_DeepBlack,
+                                 };
+    
+    CGRect contentStringSize = [entity.content boundingRectWithSize:CGSizeMake(kNBR_SCREEN_W - (43 + 10 * 3), 1000)
+                                                            options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading
+                                                         attributes:formatDict
+                                                            context:nil];
+    
+    NSMutableAttributedString *attString = [[NSMutableAttributedString alloc] initWithString:entity.content];
+    
+    [attString addAttributes:formatDict range:NSMakeRange(0, entity.content.length)];
+    
+    UILabel *contentLable = [[UILabel alloc] initWithFrame:CGRectMake(nikeNameLable.frame.origin.x, nikeNameLable.frame.origin.y + CGRectGetHeight(nikeNameLable.frame), contentStringSize.size.width, contentStringSize.size.height)];
+    
+    //图片
+    CGSize singleImgSize = CGSizeMake((kNBR_SCREEN_W - (43 + 10 * 3) - 10) / 3.0f,
+                                      (kNBR_SCREEN_W - (43 + 10 * 3) - 10) / 3.0f);
+    
+    //小区定位尖脚logo
+    NSInteger yIndex = entity.contentImgURLList.count > 9 ? 9 :entity.contentImgURLList.count;
+    
+    UIImageView *addressLogo = [[UIImageView alloc] initWithFrame:CGRectMake(contentLable.frame.origin.x,
+                                                                             contentLable.frame.origin.y + contentLable.frame.size.height + (yIndex / 3) * singleImgSize.height + 10 + 5.5,
+                                                                             8.5, 11)];
+    addressLogo.image = [UIImage imageNamed:@"xiaoQuAddressIcon"];
+    
+    //地点
+    UIFont *addressContentFont = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME size:12.0f];
+    CGSize addressStringSize = [entity.address sizeWithAttributes:@{NSFontAttributeName : addressContentFont}];
+    
+    UILabel *addressLable = [[UILabel alloc] initWithFrame:CGRectMake(contentLable.frame.origin.x + 11,
+                                                             contentLable.frame.origin.y + contentLable.frame.size.height + (yIndex / 3) * singleImgSize.height + 10 + 5,
+                                                             addressStringSize.width,
+                                                             addressStringSize.height)];
+    
+    //时间
+    CGSize commitDateStringSize = [entity.address sizeWithAttributes:@{NSFontAttributeName : addressContentFont}];
+    UILabel *commitDateLable = [[UILabel alloc] initWithFrame:CGRectMake(addressLable.frame.origin.x + addressStringSize.width + 10,
+                                                                addressLable.frame.origin.y + (CGRectGetHeight(addressLable.frame) / 2.0f) - commitDateStringSize.height / 2.0f + 1,
+                                                                commitDateStringSize.width,
+                                                                commitDateStringSize.height)];
+    //查看次数，点赞数量，回复数量
+    UIView *bottonView = [[UIView alloc] initWithFrame:CGRectMake(addressLogo.frame.origin.x,
+                                                                  commitDateLable.frame.origin.y + commitDateLable.frame.size.height + 5,
+                                                                  kNBR_SCREEN_W - (43 + 10 * 3),
+                                                                  16)];
+    
+    return bottonView.frame.origin.y + CGRectGetHeight(bottonView.frame) + 15;
+
 }
 
 @end

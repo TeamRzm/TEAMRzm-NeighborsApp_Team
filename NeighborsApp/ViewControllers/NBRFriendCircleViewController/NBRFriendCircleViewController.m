@@ -8,15 +8,13 @@
 
 #import "NBRFriendCircleViewController.h"
 #import "CommentTableViewCell.h"
+#import "ActivityTableViewCell.h"
 
 @interface NBRFriendCircleViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
     UIScrollView    *boundScrollView;
     UITableView     *subTableView[3];
     UILabel         *segmentLabel[3];
-    
-    NSMutableArray *leftTableViewDateSource;
-    NSMutableArray *rightTableViewDateSource;
     
     UIView *segmentChangedView;
     UIView *selectTagView;
@@ -28,8 +26,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    leftTableViewDateSource     = [[NSMutableArray alloc] init];
-    rightTableViewDateSource    = [[NSMutableArray alloc] init];
     
     self.view.backgroundColor = kNBR_ProjectColor_BackGroundGray;
     
@@ -62,13 +58,15 @@
         [segmentChangedView addSubview:segmentLabel[i]];
         
         //表格
-        subTableView[i] = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kNBR_SCREEN_W, kNBR_SCREEN_H - 64 - 40 - 49) style:UITableViewStyleGrouped];
+        subTableView[i] = [[UITableView alloc] initWithFrame:CGRectMake(i * kNBR_SCREEN_W, 0, kNBR_SCREEN_W, kNBR_SCREEN_H - 64 - 40 - 49) style:UITableViewStyleGrouped];
         subTableView[i].backgroundColor = kNBR_ProjectColor_BackGroundGray;
         subTableView[i].delegate = self;
         subTableView[i].dataSource = self;
         [boundScrollView addSubview:subTableView[i]];
     }
     
+    //单独配置表格
+    [subTableView[1] setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
     UIView *breakLineView = [[UIView alloc] initWithFrame:CGRectMake(0, 39, kNBR_SCREEN_W, 1.0f)];
     breakLineView.backgroundColor = UIColorFromRGB(0xCBD3DB);		
@@ -111,12 +109,24 @@
 
 - (CGFloat) tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
-    return 0.1f;
+    if (subTableView[1] == tableView)
+    {
+        return 5.0f;
+    }
+    return 0.0f;
 }
 
 
 - (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
+    if (subTableView[1] == tableView && section == 0)
+    {
+        return 10.0f;
+    }
+    else if (subTableView[1] == tableView)
+    {
+        return 5.0f;
+    }
     return 0.1f;
 }
 
@@ -127,26 +137,74 @@
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 450;
+    if(tableView == subTableView[0] || tableView == subTableView[2])
+    {
+        FriendCircleContentEntity *entity = [[FriendCircleContentEntity alloc] init];
+        entity.avterURL = @"t_avter_9";
+        entity.content = @"《规定》深入贯彻习主席系列重要讲话精神特别是关于加强纪律建设的重要指示，紧紧围绕实现党在新形势下的强军目标，认真落实依法治军、从严治军要求，对严格军队党员领导干部纪律约束作出明确规定，是新形势下严格党员领导干部纪律约束、加强军队纪律建设的重要指导性文件。";
+        entity.contentImgURLList = @[@"t_avter_5",@"t_avter_6",@"t_avter_7",@"t_avter_8",@"t_avter_1",@"t_avter_2",@"t_avter_3",@"t_avter_4",@"t_avter_0"];
+        entity.address = @"新家园小区";
+        entity.nickName = @"邻家小妹";
+        entity.commitDate = @"5分钟前";
+        entity.lookCount = @"2031";
+        entity.pointApproves = @"232";
+        entity.commentCount = @"14";
+        
+        return [CommentTableViewCell heightWithEntity:entity];
+    }
+    else if (tableView == subTableView[1])
+    {
+        ActivityDateEntity *entity = [[ActivityDateEntity alloc] init];
+        entity.backGounrdUrl = @"testActityBackGound";
+        entity.regDate = @"4月1日－4月30日";
+        entity.leftTagStr = @"16/20";
+        entity.titile = @"小区相亲大会";
+        entity.commitDate = @"2014年3月25日";
+        entity.price = @"0";
+        entity.activityState = ACTIVITY_STATE_STARTING;
+        
+        return [ActivityTableViewCell heightWithEntity:entity];
+    }
+    return 0.0f;
 }
 
 
 - (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    CommentTableViewCell *cell = [[CommentTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kNBR_TABLEVIEW_CELL_NOIDENTIFIER];
-    
-    FriendCircleContentEntity *entity = [[FriendCircleContentEntity alloc] init];
-    entity.avterURL = @"t_avter_9";
-    entity.content = @"《规定》深入贯彻习主席系列重要讲话精神特别是关于加强纪律建设的重要指示，紧紧围绕实现党在新形势下的强军目标，认真落实依法治军、从严治军要求，对严格军队党员领导干部纪律约束作出明确规定，是新形势下严格党员领导干部纪律约束、加强军队纪律建设的重要指导性文件。";
-    entity.contentImgURLList = @[@"t_avter_5",@"t_avter_6",@"t_avter_7",@"t_avter_8",@"t_avter_1",@"t_avter_2",@"t_avter_3",@"t_avter_4",@"t_avter_0"];
-    entity.address = @"新家园小区";
-    entity.nickName = @"邻家小妹";
-    entity.commitDate = @"5分钟前";
-    entity.lookCount = @"2031";
-    entity.pointApproves = @"232";
-    entity.commentCount = @"14";
-    [cell setDateEntity:entity];
-    return cell;
+    if(tableView == subTableView[0] || tableView == subTableView[2])
+    {
+        CommentTableViewCell *cell = [[CommentTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kNBR_TABLEVIEW_CELL_NOIDENTIFIER];
+        
+        FriendCircleContentEntity *entity = [[FriendCircleContentEntity alloc] init];
+        entity.avterURL = @"t_avter_9";
+        entity.content = @"《规定》深入贯彻习主席系列重要讲话精神特别是关于加强纪律建设的重要指示，紧紧围绕实现党在新形势下的强军目标，认真落实依法治军、从严治军要求，对严格军队党员领导干部纪律约束作出明确规定，是新形势下严格党员领导干部纪律约束、加强军队纪律建设的重要指导性文件。";
+        entity.contentImgURLList = @[@"t_avter_5",@"t_avter_6",@"t_avter_7",@"t_avter_8",@"t_avter_1",@"t_avter_2",@"t_avter_3",@"t_avter_4",@"t_avter_0"];
+        entity.address = @"新家园小区";
+        entity.nickName = @"邻家小妹";
+        entity.commitDate = @"5分钟前";
+        entity.lookCount = @"2031";
+        entity.pointApproves = @"232";
+        entity.commentCount = @"14";
+        [cell setDateEntity:entity];
+        return cell;
+    }
+    else
+    {
+        ActivityDateEntity *entity = [[ActivityDateEntity alloc] init];
+        entity.backGounrdUrl = @"testActityBackGound";
+        entity.regDate = @"4月1日－4月30日";
+        entity.leftTagStr = @"16/20";
+        entity.titile = @"小区相亲大会";
+        entity.commitDate = @"2014年3月25日";
+        entity.price = @"0";
+        entity.activityState = ACTIVITY_STATE_STARTING;
+
+        ActivityTableViewCell *cell = [[ActivityTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kNBR_TABLEVIEW_CELL_NOIDENTIFIER];
+        
+        [cell configWithEntity:entity];
+        
+        return cell;
+    }
 }
 
 @end

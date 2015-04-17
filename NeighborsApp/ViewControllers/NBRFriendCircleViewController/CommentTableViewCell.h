@@ -10,28 +10,18 @@
 #import "EGOImageView.h"
 #import "FriendCircleContentEntity.h"
 
-/*
- //头像URL
- @property (nonatomic, copy) NSString *avterURL;
- //内容
- @property (nonatomic, copy) NSString *content;
- //发布的图片URL
- @property (nonatomic, copy) NSArray *contentImgURLList;
- //地址
- @property (nonatomic, copy) NSString *address;
- //时间
- @property (nonatomic, copy) NSString *commitDate;
- //查看次数
- @property (nonatomic, copy) NSString *lookCount;
- //点赞次数
- @property (nonatomic, copy) NSString *pointApproves;
- //评论数量
- @property (nonatomic, copy) NSString *commentCount;
- */
-
 @interface CommentTableViewCell : UITableViewCell
 
 - (void) setDateEntity : (FriendCircleContentEntity*) _dateEntity;
+
+@property (nonatomic, strong) EGOImageView  *avterImageView;
+@property (nonatomic, strong) UILabel       *nikeNameLable;
+@property (nonatomic, strong) UILabel       *contentLable;
+@property (nonatomic, strong) UILabel       *addressLable;
+@property (nonatomic, strong) UILabel       *commitDateLable;
+@property (nonatomic, strong) UILabel       *loogCountLable;
+@property (nonatomic, strong) UILabel       *pointApprovesLable;
+@property (nonatomic, strong) UILabel       *contentCountLable;
 
 + (CGFloat) heightWithEntity : (FriendCircleContentEntity*) _dateEntity;
 
