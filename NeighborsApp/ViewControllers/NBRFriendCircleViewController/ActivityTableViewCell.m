@@ -118,7 +118,7 @@
     
     UILabel *priceLable = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetWidth(activityMaskView.frame) - 45, 0, 45, CGRectGetHeight(activityMaskView.frame))];
     priceLable.textColor = kNBR_ProjectColor_StandWhite;
-    priceLable.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME_BLOD size:11.0f];
+    priceLable.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME_BLOD size:12.0f];
     priceLable.textAlignment = NSTextAlignmentCenter;
     [activityMaskView addSubview:priceLable];
     
@@ -140,9 +140,38 @@
     bottomView.layer.borderColor = kNBR_ProjectColor_LightGray.CGColor;
     [self.contentView addSubview:bottomView];
     
-    return ;
-    
     //标题
+    //titleLogo
+    UIImageView *titleLogo = [[UIImageView alloc] initWithFrame:CGRectMake(5, CGRectGetHeight(bottomView.frame) / 2.0f - 13.0f / 2.0f, 13.0f, 13.0f)];
+    titleLogo.image = [UIImage imageNamed:@"huodong"];
+    [bottomView addSubview:titleLogo];
+    
+    UILabel *titleLable = [[UILabel alloc] initWithFrame:CGRectMake(5 + 5 + 13, 0, CGRectGetWidth(bottomView.frame) - 23, CGRectGetHeight(bottomView.frame))];
+    titleLable.textColor = kNBR_ProjectColor_DeepBlack;
+    titleLable.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME size:13.0f];
+    titleLable.text = _entity.titile;
+    [bottomView addSubview:titleLable];
+    
+    //时间
+    UIFont *dateCommitLableFont = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME size:12.0f];
+    
+    CGSize dataCommitStringSize = [_entity.commitDate sizeWithAttributes:@{
+                                                                           NSFontAttributeName : dateCommitLableFont,
+                                                                           }];
+    
+    UILabel *dateCommitLable = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetWidth(bottomView.frame) - dataCommitStringSize.width - 5, 0, dataCommitStringSize.width, CGRectGetHeight(bottomView.frame))];
+    dateCommitLable.textColor = kNBR_ProjectColor_DeepBlack;
+    dateCommitLable.font = dateCommitLableFont;
+    dateCommitLable.textAlignment = NSTextAlignmentRight;
+    dateCommitLable.text = _entity.commitDate;
+    [bottomView addSubview:dateCommitLable];
+    
+    UIImageView *dateLogo = [[UIImageView alloc] initWithFrame:CGRectMake(CGRectGetWidth(bottomView.frame) - dataCommitStringSize.width - 5 - 18, CGRectGetHeight(bottomView.frame) / 2.0f - 13.0f / 2.0f, 13.0f, 13.0f)];
+    dateLogo.image = [UIImage imageNamed:@"shijian"];
+    [bottomView addSubview:dateLogo];
+    
+    
+    return;
 }
 
 @end

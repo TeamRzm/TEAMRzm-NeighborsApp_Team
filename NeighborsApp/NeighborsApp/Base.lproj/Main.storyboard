@@ -51,7 +51,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="消息" id="MEe-5F-Sqc"/>
+                    <tabBarItem key="tabBarItem" title="消息" image="xiaoxi" id="MEe-5F-Sqc">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-4"/>
+                    </tabBarItem>
                     <navigationItem key="navigationItem" title="消息" id="HzN-aK-2ke">
                         <barButtonItem key="leftBarButtonItem" style="plain" systemItem="reply" id="2LO-i2-pif">
                             <connections>
@@ -73,7 +75,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="服务" id="To4-Lb-oHm"/>
+                    <tabBarItem key="tabBarItem" title="服务" image="fuwutab" id="To4-Lb-oHm">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-4"/>
+                    </tabBarItem>
                     <navigationItem key="navigationItem" title="服务" id="RbO-oa-jBc"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Goj-k4-zof" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -89,7 +93,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="亲邻圈" id="aeh-hJ-RRq"/>
+                    <tabBarItem key="tabBarItem" title="亲邻圈" image="qinlingquan" id="aeh-hJ-RRq">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-4"/>
+                    </tabBarItem>
                     <navigationItem key="navigationItem" title="亲邻圈" id="GHg-wc-TuD"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QQB-Wf-VBp" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -156,7 +162,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="我的" id="9zb-1i-tUN"/>
+                    <tabBarItem key="tabBarItem" title="我的" image="wode" id="9zb-1i-tUN">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-4"/>
+                    </tabBarItem>
                     <navigationItem key="navigationItem" title="我的" id="Gfs-7v-433"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q0W-st-hef" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -164,6 +172,12 @@
             <point key="canvasLocation" x="746" y="595"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="fuwutab" width="23" height="23"/>
+        <image name="qinlingquan" width="23" height="23"/>
+        <image name="wode" width="23" height="23"/>
+        <image name="xiaoxi" width="23" height="23"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

@@ -196,7 +196,6 @@
     [bottonView addSubview:lookCountLable];
     [bottonView addSubview:zanCountLable];
     [bottonView addSubview:commentCountLable];
-    
 
 }
 

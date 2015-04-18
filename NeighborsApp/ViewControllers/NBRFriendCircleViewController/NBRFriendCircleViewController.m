@@ -78,6 +78,16 @@
     [segmentChangedView addSubview:selectTagView];
     [self.view addSubview:segmentChangedView];
     [self.view addSubview:boundScrollView];
+    
+    
+    //右上角的发布按钮
+    UIBarButtonItem *rightAddItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"tianjia01"] style:UIBarButtonItemStylePlain target:self action:@selector(rightBarbuttonAction:)];
+    self.navigationItem.rightBarButtonItem = rightAddItem;
+}
+
+- (void) rightBarbuttonAction : (id) sender
+{
+    return ;
 }
 
 - (void) segmentChangedWithIndex : (UITapGestureRecognizer*) gesture
