@@ -9,6 +9,7 @@
 #import "NBRFriendCircleViewController.h"
 #import "CommentTableViewCell.h"
 #import "ActivityTableViewCell.h"
+#import "CommitNewContentViewController.h"
 
 @interface NBRFriendCircleViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
@@ -87,6 +88,10 @@
 
 - (void) rightBarbuttonAction : (id) sender
 {
+    CommitNewContentViewController *nVC = [[CommitNewContentViewController alloc] initWithNibName:nil bundle:nil];
+    nVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:nVC animated:YES];
+    
     return ;
 }
 

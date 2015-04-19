@@ -83,4 +83,31 @@
     [self addTopTagNumberView:_tagString fixOrigin:CGPointMake(0, 0)];
 }
 
++ (UIView*) CreateAddButtonWithFrame : (CGRect) buttonFrame color : (UIColor*) _color
+{
+    UIView *addView = [[UIView alloc] initWithFrame:buttonFrame];
+    
+    addView.layer.cornerRadius = 3.0f;
+    addView.layer.masksToBounds = YES;
+    addView.layer.borderColor = _color.CGColor;
+    addView.layer.borderWidth = 1.0f;
+    
+    UIView *hView = [[UIView alloc] initWithFrame:CGRectMake(CGRectGetWidth(buttonFrame) / 2.0f - 4.0f / 2.0f,
+                                                             CGRectGetHeight(buttonFrame) * .2f,
+                                                             4.0f,
+                                                             CGRectGetWidth(buttonFrame) * .6f)];
+    hView.backgroundColor = _color;
+    [addView addSubview:hView];
+    
+    UIView *wView = [[UIView alloc] initWithFrame:CGRectMake(CGRectGetWidth(buttonFrame) * .2f,
+                                                             CGRectGetHeight(buttonFrame) / 2.0f - 4.0f / 2.0f,
+                                                             CGRectGetHeight(buttonFrame) * .6f,
+                                                             4.0f)];
+
+    wView.backgroundColor = _color;
+    [addView addSubview:wView];
+    
+    return addView;
+}
+
 @end

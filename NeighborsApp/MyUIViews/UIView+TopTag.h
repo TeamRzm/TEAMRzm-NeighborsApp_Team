@@ -16,4 +16,6 @@
 
 - (void) addTopTagNumberView : (NSString*) _tagString fixOrigin : (CGPoint) _point;
 
++ (UIView*) CreateAddButtonWithFrame : (CGRect) buttonFrame color : (UIColor*) _color;
+
 @end
