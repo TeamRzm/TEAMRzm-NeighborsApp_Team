@@ -10,8 +10,10 @@
 #import "CommentTableViewCell.h"
 #import "ActivityTableViewCell.h"
 #import "CommitNewContentViewController.h"
+#import "CommitActivityContentViewController.h"
+#import "XHImageViewer.h"
 
-@interface NBRFriendCircleViewController ()<UITableViewDataSource,UITableViewDelegate>
+@interface NBRFriendCircleViewController ()<UITableViewDataSource,UITableViewDelegate,CommentTableViewCellDelegate,XHImageViewerDelegate>
 {
     UIScrollView    *boundScrollView;
     UITableView     *subTableView[3];
@@ -19,6 +21,8 @@
     
     UIView *segmentChangedView;
     UIView *selectTagView;
+    
+    NSInteger     currentSegmentIndex;
 }
 @end
 
@@ -88,21 +92,50 @@
 
 - (void) rightBarbuttonAction : (id) sender
 {
-    CommitNewContentViewController *nVC = [[CommitNewContentViewController alloc] initWithNibName:nil bundle:nil];
-    nVC.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:nVC animated:YES];
+    switch (currentSegmentIndex)
+    {
+        case 0:
+        {
+            CommitNewContentViewController *nVC = [[CommitNewContentViewController alloc] initWithNibName:nil bundle:nil];
+            nVC.title = @"发布里手帮";
+            nVC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:nVC animated:YES];
+        }
+            break;
+
+        case 1:
+        {
+            CommitActivityContentViewController *nVC = [[CommitActivityContentViewController alloc] initWithNibName:nil bundle:nil];
+            nVC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:nVC animated:YES];
+            
+        }
+            break;
+
+        case 2:
+        {
+            CommitNewContentViewController *nVC = [[CommitNewContentViewController alloc] initWithNibName:nil bundle:nil];
+            nVC.title = @"发布安全预警";
+            nVC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:nVC animated:YES];
+        }
+            break;
+            
+        default:
+            break;
+    }
     
     return ;
 }
 
 - (void) segmentChangedWithIndex : (UITapGestureRecognizer*) gesture
 {
-    NSInteger _index = gesture.view.tag;
+    currentSegmentIndex = gesture.view.tag;
     
-    [boundScrollView setContentOffset:CGPointMake(_index * kNBR_SCREEN_W, 0) animated:YES];
+    [boundScrollView setContentOffset:CGPointMake(currentSegmentIndex * kNBR_SCREEN_W, 0) animated:YES];
     
     [UIView animateWithDuration:.25f animations:^{
-        selectTagView.frame = CGRectMake(_index * kNBR_SCREEN_W / 3.0f, 38.0f, kNBR_SCREEN_W / 3.0f, 2.0f);
+        selectTagView.frame = CGRectMake(currentSegmentIndex * kNBR_SCREEN_W / 3.0f, 38.0f, kNBR_SCREEN_W / 3.0f, 2.0f);
     }];
 }
 
@@ -189,7 +222,7 @@
     if(tableView == subTableView[0] || tableView == subTableView[2])
     {
         CommentTableViewCell *cell = [[CommentTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kNBR_TABLEVIEW_CELL_NOIDENTIFIER];
-        
+        cell.delegate = self;
         FriendCircleContentEntity *entity = [[FriendCircleContentEntity alloc] init];
         entity.avterURL = @"t_avter_9";
         entity.content = @"《规定》深入贯彻习主席系列重要讲话精神特别是关于加强纪律建设的重要指示，紧紧围绕实现党在新形势下的强军目标，认真落实依法治军、从严治军要求，对严格军队党员领导干部纪律约束作出明确规定，是新形势下严格党员领导干部纪律约束、加强军队纪律建设的重要指导性文件。";
@@ -221,5 +254,18 @@
         return cell;
     }
 }
+
+- (void) commentTableViewCell : (CommentTableViewCell*) _cell tapSubImageViews : (UIImageView*) tapView allSubImageViews : (NSMutableArray *) _allSubImageviews
+{
+    XHImageViewer *imageViewer = [[XHImageViewer alloc] init];
+    imageViewer.delegate = self;
+    [imageViewer showWithImageViews:_allSubImageviews selectedView:tapView];
+}
+
+- (void)imageViewer:(XHImageViewer *)imageViewer  willDismissWithSelectedView:(UIImageView*)selectedView
+{
+    return ;
+}
+
 
 @end

@@ -11,6 +11,8 @@
 @interface CommentTableViewCell()
 {
     FriendCircleContentEntity *entity;
+    
+    NSMutableArray  *subImageViews;
 }
 
 @end
@@ -42,6 +44,8 @@
 
 - (void) configView
 {
+    subImageViews = [[NSMutableArray alloc] init];
+    
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     self.backgroundColor = [UIColor whiteColor];
     
@@ -107,14 +111,21 @@
         {
             return ;
         }
+        
         EGOImageView *subImageView = [[EGOImageView alloc] initWithPlaceholderImage:[UIImage imageNamed:entity.contentImgURLList[i]]];
         subImageView.frame = CGRectMake( nikeNameLable.frame.origin.x + (i % 3) * singleImgSize.width,
                                          contentLable.frame.origin.y + contentLable.frame.size.height + (i / 3) * singleImgSize.height + 10,
                                          singleImgSize.width - 2, singleImgSize.height - 2);
         subImageView.layer.borderColor = kNBR_ProjectColor_LightGray.CGColor;
         subImageView.layer.borderWidth = 0.5f;
+        subImageView.userInteractionEnabled = YES;
+        
+        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapSubImageView:)];
+        [subImageView addGestureRecognizer:tapGesture];
+        
         [contentImageViews addObject:subImageView];
         [self.contentView addSubview:subImageView];
+        [subImageViews addObject:subImageView];
     }
     
     //小区定位尖脚logo
@@ -286,6 +297,15 @@
     
     return bottonView.frame.origin.y + CGRectGetHeight(bottonView.frame) + 15;
 
+}
+
+
+- (void) tapSubImageView : (UIGestureRecognizer*) _gesture
+{
+    if (self.delegate)
+    {
+        [self.delegate commentTableViewCell:self tapSubImageViews:(UIImageView*)_gesture.view allSubImageViews:subImageViews];
+    }
 }
 
 @end

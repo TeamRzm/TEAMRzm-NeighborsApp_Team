@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B1500E11AE3BDD10033CEA2 /* CommitActivityContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1500E01AE3BDD10033CEA2 /* CommitActivityContentViewController.m */; };
 		5B332AC11AE18018002A0A73 /* ActivityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B332AC01AE18018002A0A73 /* ActivityTableViewCell.m */; };
 		5B332AC41AE181EA002A0A73 /* ActivityDateEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B332AC31AE181EA002A0A73 /* ActivityDateEntity.m */; };
 		5B332AC71AE26294002A0A73 /* CommitNewContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B332AC61AE26294002A0A73 /* CommitNewContentViewController.m */; };
@@ -307,6 +308,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5B1500DF1AE3BDD10033CEA2 /* CommitActivityContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommitActivityContentViewController.h; path = ViewControllers/NBRFriendCircleViewController/CommitActivityContentViewController.h; sourceTree = "<group>"; };
+		5B1500E01AE3BDD10033CEA2 /* CommitActivityContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommitActivityContentViewController.m; path = ViewControllers/NBRFriendCircleViewController/CommitActivityContentViewController.m; sourceTree = "<group>"; };
 		5B332ABF1AE18018002A0A73 /* ActivityTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActivityTableViewCell.h; path = ViewControllers/NBRFriendCircleViewController/ActivityTableViewCell.h; sourceTree = "<group>"; };
 		5B332AC01AE18018002A0A73 /* ActivityTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ActivityTableViewCell.m; path = ViewControllers/NBRFriendCircleViewController/ActivityTableViewCell.m; sourceTree = "<group>"; };
 		5B332AC21AE181EA002A0A73 /* ActivityDateEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActivityDateEntity.h; path = ViewControllers/NBRFriendCircleViewController/ActivityDateEntity.h; sourceTree = "<group>"; };
@@ -1415,6 +1418,8 @@
 				5B332AC31AE181EA002A0A73 /* ActivityDateEntity.m */,
 				5B332AC51AE26294002A0A73 /* CommitNewContentViewController.h */,
 				5B332AC61AE26294002A0A73 /* CommitNewContentViewController.m */,
+				5B1500DF1AE3BDD10033CEA2 /* CommitActivityContentViewController.h */,
+				5B1500E01AE3BDD10033CEA2 /* CommitActivityContentViewController.m */,
 			);
 			name = NBRFriendCircleViewController;
 			sourceTree = "<group>";
@@ -1968,6 +1973,7 @@
 				5B332B031AE2F647002A0A73 /* NSBundle+CTAssetsPickerController.m in Sources */,
 				5B8B15A11ADC17CB00AA87A2 /* EGOImageButton.m in Sources */,
 				5BD83CE51AD61F4B00D1A3EC /* SBJsonStreamParserState.m in Sources */,
+				5B1500E11AE3BDD10033CEA2 /* CommitActivityContentViewController.m in Sources */,
 				5B8B15B91ADCBA4A00AA87A2 /* NBRForgetPwdViewController.m in Sources */,
 				5B4ADE341ADE308C00810165 /* TranscodingDefine.mm in Sources */,
 				5BB6553A1AC31464007E0F85 /* SecondViewController.m in Sources */,

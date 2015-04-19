@@ -208,7 +208,7 @@ const NSInteger CommitImageViewWidthCount     = 5;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title = @"发布里手帮";
+//    self.title = @"发布里手帮";
     
     selectImgDatas = [[NSMutableArray alloc] init];
     
