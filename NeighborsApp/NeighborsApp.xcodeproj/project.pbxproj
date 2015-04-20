@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5B1500E11AE3BDD10033CEA2 /* CommitActivityContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1500E01AE3BDD10033CEA2 /* CommitActivityContentViewController.m */; };
+		5B1500E41AE3F97E0033CEA2 /* ComentDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1500E31AE3F97E0033CEA2 /* ComentDetailViewController.m */; };
+		5B1500E71AE415370033CEA2 /* SubCommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1500E61AE415370033CEA2 /* SubCommentTableViewCell.m */; };
 		5B332AC11AE18018002A0A73 /* ActivityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B332AC01AE18018002A0A73 /* ActivityTableViewCell.m */; };
 		5B332AC41AE181EA002A0A73 /* ActivityDateEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B332AC31AE181EA002A0A73 /* ActivityDateEntity.m */; };
 		5B332AC71AE26294002A0A73 /* CommitNewContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B332AC61AE26294002A0A73 /* CommitNewContentViewController.m */; };
@@ -244,6 +246,7 @@
 		5BB6556D1AC3173E007E0F85 /* NBRServeiesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB6556C1AC3173E007E0F85 /* NBRServeiesViewController.m */; };
 		5BB655701AC31753007E0F85 /* NBRMyMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB6556F1AC31753007E0F85 /* NBRMyMessageViewController.m */; };
 		5BB655731AC31768007E0F85 /* NBRFriendCircleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB655721AC31768007E0F85 /* NBRFriendCircleViewController.m */; };
+		5BB8297B1AE5748B00877995 /* CommentEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB8297A1AE5748B00877995 /* CommentEntity.m */; };
 		5BD83C871AD61EF600D1A3EC /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BD83C511AD61EF600D1A3EC /* ASIAuthenticationDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		5BD83C881AD61EF600D1A3EC /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BD83C541AD61EF600D1A3EC /* ASIDataCompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		5BD83C891AD61EF600D1A3EC /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BD83C561AD61EF600D1A3EC /* ASIDataDecompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -310,6 +313,10 @@
 /* Begin PBXFileReference section */
 		5B1500DF1AE3BDD10033CEA2 /* CommitActivityContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommitActivityContentViewController.h; path = ViewControllers/NBRFriendCircleViewController/CommitActivityContentViewController.h; sourceTree = "<group>"; };
 		5B1500E01AE3BDD10033CEA2 /* CommitActivityContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommitActivityContentViewController.m; path = ViewControllers/NBRFriendCircleViewController/CommitActivityContentViewController.m; sourceTree = "<group>"; };
+		5B1500E21AE3F97E0033CEA2 /* ComentDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComentDetailViewController.h; path = ViewControllers/NBRFriendCircleViewController/ComentDetailViewController.h; sourceTree = "<group>"; };
+		5B1500E31AE3F97E0033CEA2 /* ComentDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComentDetailViewController.m; path = ViewControllers/NBRFriendCircleViewController/ComentDetailViewController.m; sourceTree = "<group>"; };
+		5B1500E51AE415370033CEA2 /* SubCommentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SubCommentTableViewCell.h; path = ViewControllers/NBRFriendCircleViewController/SubCommentTableViewCell.h; sourceTree = "<group>"; };
+		5B1500E61AE415370033CEA2 /* SubCommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SubCommentTableViewCell.m; path = ViewControllers/NBRFriendCircleViewController/SubCommentTableViewCell.m; sourceTree = "<group>"; };
 		5B332ABF1AE18018002A0A73 /* ActivityTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActivityTableViewCell.h; path = ViewControllers/NBRFriendCircleViewController/ActivityTableViewCell.h; sourceTree = "<group>"; };
 		5B332AC01AE18018002A0A73 /* ActivityTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ActivityTableViewCell.m; path = ViewControllers/NBRFriendCircleViewController/ActivityTableViewCell.m; sourceTree = "<group>"; };
 		5B332AC21AE181EA002A0A73 /* ActivityDateEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActivityDateEntity.h; path = ViewControllers/NBRFriendCircleViewController/ActivityDateEntity.h; sourceTree = "<group>"; };
@@ -631,6 +638,8 @@
 		5BB6556F1AC31753007E0F85 /* NBRMyMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NBRMyMessageViewController.m; path = ViewControllers/NBRMyMessageViewController/NBRMyMessageViewController.m; sourceTree = "<group>"; };
 		5BB655711AC31768007E0F85 /* NBRFriendCircleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NBRFriendCircleViewController.h; path = ViewControllers/NBRFriendCircleViewController/NBRFriendCircleViewController.h; sourceTree = "<group>"; };
 		5BB655721AC31768007E0F85 /* NBRFriendCircleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NBRFriendCircleViewController.m; path = ViewControllers/NBRFriendCircleViewController/NBRFriendCircleViewController.m; sourceTree = "<group>"; };
+		5BB829791AE5748B00877995 /* CommentEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentEntity.h; path = ViewControllers/NBRFriendCircleViewController/CommentEntity.h; sourceTree = "<group>"; };
+		5BB8297A1AE5748B00877995 /* CommentEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentEntity.m; path = ViewControllers/NBRFriendCircleViewController/CommentEntity.m; sourceTree = "<group>"; };
 		5BD83C501AD61EF600D1A3EC /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
 		5BD83C511AD61EF600D1A3EC /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
 		5BD83C521AD61EF600D1A3EC /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
@@ -1420,6 +1429,12 @@
 				5B332AC61AE26294002A0A73 /* CommitNewContentViewController.m */,
 				5B1500DF1AE3BDD10033CEA2 /* CommitActivityContentViewController.h */,
 				5B1500E01AE3BDD10033CEA2 /* CommitActivityContentViewController.m */,
+				5B1500E21AE3F97E0033CEA2 /* ComentDetailViewController.h */,
+				5B1500E31AE3F97E0033CEA2 /* ComentDetailViewController.m */,
+				5B1500E51AE415370033CEA2 /* SubCommentTableViewCell.h */,
+				5B1500E61AE415370033CEA2 /* SubCommentTableViewCell.m */,
+				5BB829791AE5748B00877995 /* CommentEntity.h */,
+				5BB8297A1AE5748B00877995 /* CommentEntity.m */,
 			);
 			name = NBRFriendCircleViewController;
 			sourceTree = "<group>";
@@ -1947,6 +1962,7 @@
 				5BD83C8A1AD61EF600D1A3EC /* ASIDownloadCache.m in Sources */,
 				5BD83C921AD61EF600D1A3EC /* ASICloudFilesContainerXMLParserDelegate.m in Sources */,
 				5BD83C8B1AD61EF600D1A3EC /* ASIFormDataRequest.m in Sources */,
+				5B1500E71AE415370033CEA2 /* SubCommentTableViewCell.m in Sources */,
 				5B332B021AE2F647002A0A73 /* CTAssetsViewControllerTransition.m in Sources */,
 				5B8B15A31ADC17CB00AA87A2 /* EGOImageLoader.m in Sources */,
 				5BD83C8E1AD61EF600D1A3EC /* ASINetworkQueue.m in Sources */,
@@ -1959,6 +1975,7 @@
 				5BB655631AC316AC007E0F85 /* NBRTabbarController.m in Sources */,
 				5B6D31921ADD1C4A009A922A /* IMUserEntity.m in Sources */,
 				5B4ADE0C1ADE305300810165 /* NSString+ContverHtml.m in Sources */,
+				5BB8297B1AE5748B00877995 /* CommentEntity.m in Sources */,
 				5BD83C9B1AD61EF600D1A3EC /* ASIS3ServiceRequest.m in Sources */,
 				5B6D31861ADCE822009A922A /* UIView+Toast.m in Sources */,
 				5B332AC11AE18018002A0A73 /* ActivityTableViewCell.m in Sources */,
@@ -1987,6 +2004,7 @@
 				5B6D316B1ADCE747009A922A /* ALAlertBannerManager.m in Sources */,
 				5B332AFC1AE2F647002A0A73 /* CTAssetsGroupViewController.m in Sources */,
 				5BB655341AC31464007E0F85 /* AppDelegate.m in Sources */,
+				5B1500E41AE3F97E0033CEA2 /* ComentDetailViewController.m in Sources */,
 				5B332B041AE2F647002A0A73 /* NSDateFormatter+timeIntervalFormatter.m in Sources */,
 				5B332B441AE3A8C0002A0A73 /* XHFileAttribute.m in Sources */,
 				5BB655371AC31464007E0F85 /* FirstViewController.m in Sources */,

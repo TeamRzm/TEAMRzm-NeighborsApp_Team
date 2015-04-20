@@ -12,6 +12,7 @@
 #import "CommitNewContentViewController.h"
 #import "CommitActivityContentViewController.h"
 #import "XHImageViewer.h"
+#import "ComentDetailViewController.h"
 
 @interface NBRFriendCircleViewController ()<UITableViewDataSource,UITableViewDelegate,CommentTableViewCellDelegate,XHImageViewerDelegate>
 {
@@ -27,6 +28,16 @@
 @end
 
 @implementation NBRFriendCircleViewController
+
+- (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+//    CGFloat newValue = (CGFloat)(change[@"new"]);
+//    CGFloat oldValue = (CGFloat)(change[@"old"]);
+//    
+//    
+//    
+//    return ;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -44,6 +55,7 @@
     boundScrollView.scrollEnabled = NO;
     boundScrollView.showsHorizontalScrollIndicator = NO;
     boundScrollView.pagingEnabled = YES;
+//    [boundScrollView addObserver:self forKeyPath:@"contentOffset.x" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
     
     segmentChangedView = [[UIView alloc] initWithFrame:CGRectMake(0, 64, kNBR_SCREEN_W, 40.0f)];
     
@@ -255,6 +267,18 @@
     }
 }
 
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (currentSegmentIndex == 0 || currentSegmentIndex == 2)
+    {
+        ComentDetailViewController *nVC = [[ComentDetailViewController alloc] initWithNibName:nil bundle:nil];
+        nVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:nVC animated:YES];
+    }
+    
+    return ;
+}
+
 - (void) commentTableViewCell : (CommentTableViewCell*) _cell tapSubImageViews : (UIImageView*) tapView allSubImageViews : (NSMutableArray *) _allSubImageviews
 {
     XHImageViewer *imageViewer = [[XHImageViewer alloc] init];
@@ -264,6 +288,7 @@
 
 - (void)imageViewer:(XHImageViewer *)imageViewer  willDismissWithSelectedView:(UIImageView*)selectedView
 {
+    
     return ;
 }
 
