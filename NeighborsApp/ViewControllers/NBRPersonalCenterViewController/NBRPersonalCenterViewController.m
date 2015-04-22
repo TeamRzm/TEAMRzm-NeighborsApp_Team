@@ -216,7 +216,7 @@
                                     @[
                                         @"PlotCertListViewController", //小区认证
                                         @"", //好友分享
-                                        @"", //意见反馈
+                                        @"FeedBackViewController", //意见反馈
                                         ],
                                     
                                     @[

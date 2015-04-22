@@ -10,6 +10,7 @@
 		5B10A79F1AE79FFD0034FA63 /* ActivityDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B10A79E1AE79FFD0034FA63 /* ActivityDetailViewController.m */; };
 		5B10A7A21AE800D20034FA63 /* PlotCertListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B10A7A11AE800D20034FA63 /* PlotCertListViewController.m */; };
 		5B10A7A51AE80F770034FA63 /* AddPlotCertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B10A7A41AE80F770034FA63 /* AddPlotCertViewController.m */; };
+		5B10A7AA1AE813630034FA63 /* FeedBackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B10A7A91AE813630034FA63 /* FeedBackViewController.m */; };
 		5B1500E11AE3BDD10033CEA2 /* CommitActivityContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1500E01AE3BDD10033CEA2 /* CommitActivityContentViewController.m */; };
 		5B1500E41AE3F97E0033CEA2 /* ComentDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1500E31AE3F97E0033CEA2 /* ComentDetailViewController.m */; };
 		5B1500E71AE415370033CEA2 /* SubCommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1500E61AE415370033CEA2 /* SubCommentTableViewCell.m */; };
@@ -320,6 +321,8 @@
 		5B10A7A11AE800D20034FA63 /* PlotCertListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlotCertListViewController.m; path = ViewControllers/NBRPersonalCenterViewController/PlotCertListViewController.m; sourceTree = "<group>"; };
 		5B10A7A31AE80F760034FA63 /* AddPlotCertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddPlotCertViewController.h; path = ViewControllers/NBRPersonalCenterViewController/AddPlotCertViewController.h; sourceTree = "<group>"; };
 		5B10A7A41AE80F770034FA63 /* AddPlotCertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddPlotCertViewController.m; path = ViewControllers/NBRPersonalCenterViewController/AddPlotCertViewController.m; sourceTree = "<group>"; };
+		5B10A7A81AE813630034FA63 /* FeedBackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FeedBackViewController.h; path = ViewControllers/NBRPersonalCenterViewController/FeedBackViewController.h; sourceTree = "<group>"; };
+		5B10A7A91AE813630034FA63 /* FeedBackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FeedBackViewController.m; path = ViewControllers/NBRPersonalCenterViewController/FeedBackViewController.m; sourceTree = "<group>"; };
 		5B1500DF1AE3BDD10033CEA2 /* CommitActivityContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommitActivityContentViewController.h; path = ViewControllers/NBRFriendCircleViewController/CommitActivityContentViewController.h; sourceTree = "<group>"; };
 		5B1500E01AE3BDD10033CEA2 /* CommitActivityContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommitActivityContentViewController.m; path = ViewControllers/NBRFriendCircleViewController/CommitActivityContentViewController.m; sourceTree = "<group>"; };
 		5B1500E21AE3F97E0033CEA2 /* ComentDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComentDetailViewController.h; path = ViewControllers/NBRFriendCircleViewController/ComentDetailViewController.h; sourceTree = "<group>"; };
@@ -790,6 +793,15 @@
 				5B10A7A41AE80F770034FA63 /* AddPlotCertViewController.m */,
 			);
 			name = Plot;
+			sourceTree = "<group>";
+		};
+		5B10A7A71AE8133A0034FA63 /* FeedBack */ = {
+			isa = PBXGroup;
+			children = (
+				5B10A7A81AE813630034FA63 /* FeedBackViewController.h */,
+				5B10A7A91AE813630034FA63 /* FeedBackViewController.m */,
+			);
+			name = FeedBack;
 			sourceTree = "<group>";
 		};
 		5B332AD11AE2F647002A0A73 /* CTAssetsPickerController */ = {
@@ -1476,6 +1488,7 @@
 			children = (
 				5BB655681AC31727007E0F85 /* NBRPersonalCenterViewController.h */,
 				5BB655691AC31727007E0F85 /* NBRPersonalCenterViewController.m */,
+				5B10A7A71AE8133A0034FA63 /* FeedBack */,
 				5B10A7A61AE80F7E0034FA63 /* Plot */,
 			);
 			name = NBRPersonalCenterViewController;
@@ -2063,6 +2076,7 @@
 				5BD83CDF1AD61F4B00D1A3EC /* NSObject+SBJSON.m in Sources */,
 				5B332B011AE2F647002A0A73 /* CTAssetsViewController.m in Sources */,
 				5BD83C991AD61EF600D1A3EC /* ASIS3ObjectRequest.m in Sources */,
+				5B10A7AA1AE813630034FA63 /* FeedBackViewController.m in Sources */,
 				5B6D318F1ADD1BE4009A922A /* MessageEntity.m in Sources */,
 				5B332B421AE3A8C0002A0A73 /* UIImageView+XHURLDownload.m in Sources */,
 				5B332AF61AE2F647002A0A73 /* ALAsset+assetType.m in Sources */,

@@ -42,8 +42,8 @@
     //format attribute string dict
     NSMutableParagraphStyle *contentViewStyle = [[NSMutableParagraphStyle alloc] init];
     contentViewStyle.lineHeightMultiple = 1;
-    contentViewStyle.lineSpacing = 4.0f;
-    contentViewStyle.paragraphSpacing = 3.0f;
+    contentViewStyle.lineSpacing = 3.0f;
+    contentViewStyle.paragraphSpacing = 2.0f;
     
     UIFont *contentFont = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME size:13];
     
@@ -68,7 +68,7 @@
                                                                       contentStringSize.size.width,
                                                                       contentStringSize.size.height)];
     contentLable.font = contentFont;
-    contentLable.textColor = UIColorFromRGB(0x999999);
+    contentLable.textColor = kNBR_ProjectColor_DeepBlack;
     contentLable.numberOfLines = 0;
     contentLable.attributedText = attString;
     
@@ -95,8 +95,8 @@
     //format attribute string dict
     NSMutableParagraphStyle *contentViewStyle = [[NSMutableParagraphStyle alloc] init];
     contentViewStyle.lineHeightMultiple = 1;
-    contentViewStyle.lineSpacing = 4.0f;
-    contentViewStyle.paragraphSpacing = 3.0f;
+    contentViewStyle.lineSpacing = 3.0f;
+    contentViewStyle.paragraphSpacing = 2.0f;
     
     UIFont *contentFont = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME size:13];
     
