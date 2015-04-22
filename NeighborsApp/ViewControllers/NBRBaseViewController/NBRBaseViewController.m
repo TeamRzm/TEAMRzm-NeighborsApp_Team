@@ -94,6 +94,8 @@
 {
     _textFiled.returnKeyType = UIReturnKeyDone;
     _textFiled.clearButtonMode = UITextFieldViewModeWhileEditing;
+    _textFiled.textColor = kNBR_ProjectColor_DeepGray;
+    _textFiled.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     [_textFiled addTarget:self action:@selector(resignFirstResponderWithView:) forControlEvents:UIControlEventEditingDidEndOnExit];
 }
 

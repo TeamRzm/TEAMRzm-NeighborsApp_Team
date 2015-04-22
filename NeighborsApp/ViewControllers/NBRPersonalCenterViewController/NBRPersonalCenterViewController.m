@@ -212,6 +212,40 @@
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSArray *nVCClassesLinkList = @[
+                                    @[
+                                        @"PlotCertListViewController", //小区认证
+                                        @"", //好友分享
+                                        @"", //意见反馈
+                                        ],
+                                    
+                                    @[
+                                        @"", //个性设置
+                                        ],
+                                    
+                                    @[
+                                        @"", //版本检测
+                                        @"", //免责声明
+                                        @"", //关于我们
+                                        ],
+                                    ];
+    
+    NSString *nVCClassName = nVCClassesLinkList[indexPath.section][indexPath.row];
+    
+    if (nVCClassName && nVCClassName.length > 0)
+    {
+        NBRBaseViewController *nVC =  [((NBRBaseViewController*)[NSClassFromString(nVCClassName) alloc]) initWithNibName:nil bundle:nil];
+        nVC.hidesBottomBarWhenPushed = YES;
+        
+        if (nVC)
+        {
+            [self.navigationController pushViewController:nVC animated:YES];
+            
+            return ;
+        }
+        
+    }
+    
     NSDictionary *cellDict = boundTableViewDateSource[indexPath.section][indexPath.row];
     [self showBannerMsgWithString:[NSString stringWithFormat:@"\"%@\"模块，即将推出,敬请期待。",cellDict[@"Title"]]];
 }
