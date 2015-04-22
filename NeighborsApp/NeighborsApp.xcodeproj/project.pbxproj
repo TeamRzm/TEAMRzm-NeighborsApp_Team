@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B10A79F1AE79FFD0034FA63 /* ActivityDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B10A79E1AE79FFD0034FA63 /* ActivityDetailViewController.m */; };
 		5B1500E11AE3BDD10033CEA2 /* CommitActivityContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1500E01AE3BDD10033CEA2 /* CommitActivityContentViewController.m */; };
 		5B1500E41AE3F97E0033CEA2 /* ComentDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1500E31AE3F97E0033CEA2 /* ComentDetailViewController.m */; };
 		5B1500E71AE415370033CEA2 /* SubCommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1500E61AE415370033CEA2 /* SubCommentTableViewCell.m */; };
@@ -311,6 +312,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5B10A79D1AE79FFD0034FA63 /* ActivityDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActivityDetailViewController.h; path = ViewControllers/NBRFriendCircleViewController/ActivityDetailViewController.h; sourceTree = "<group>"; };
+		5B10A79E1AE79FFD0034FA63 /* ActivityDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ActivityDetailViewController.m; path = ViewControllers/NBRFriendCircleViewController/ActivityDetailViewController.m; sourceTree = "<group>"; };
 		5B1500DF1AE3BDD10033CEA2 /* CommitActivityContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommitActivityContentViewController.h; path = ViewControllers/NBRFriendCircleViewController/CommitActivityContentViewController.h; sourceTree = "<group>"; };
 		5B1500E01AE3BDD10033CEA2 /* CommitActivityContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommitActivityContentViewController.m; path = ViewControllers/NBRFriendCircleViewController/CommitActivityContentViewController.m; sourceTree = "<group>"; };
 		5B1500E21AE3F97E0033CEA2 /* ComentDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComentDetailViewController.h; path = ViewControllers/NBRFriendCircleViewController/ComentDetailViewController.h; sourceTree = "<group>"; };
@@ -1435,6 +1438,8 @@
 				5B1500E61AE415370033CEA2 /* SubCommentTableViewCell.m */,
 				5BB829791AE5748B00877995 /* CommentEntity.h */,
 				5BB8297A1AE5748B00877995 /* CommentEntity.m */,
+				5B10A79D1AE79FFD0034FA63 /* ActivityDetailViewController.h */,
+				5B10A79E1AE79FFD0034FA63 /* ActivityDetailViewController.m */,
 			);
 			name = NBRFriendCircleViewController;
 			sourceTree = "<group>";
@@ -2007,6 +2012,7 @@
 				5B1500E41AE3F97E0033CEA2 /* ComentDetailViewController.m in Sources */,
 				5B332B041AE2F647002A0A73 /* NSDateFormatter+timeIntervalFormatter.m in Sources */,
 				5B332B441AE3A8C0002A0A73 /* XHFileAttribute.m in Sources */,
+				5B10A79F1AE79FFD0034FA63 /* ActivityDetailViewController.m in Sources */,
 				5BB655371AC31464007E0F85 /* FirstViewController.m in Sources */,
 				5B4ADE351ADE308C00810165 /* wavreader.mm in Sources */,
 				5B332AC41AE181EA002A0A73 /* ActivityDateEntity.m in Sources */,

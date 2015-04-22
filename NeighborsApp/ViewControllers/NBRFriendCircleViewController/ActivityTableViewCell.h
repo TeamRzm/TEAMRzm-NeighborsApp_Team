@@ -13,7 +13,9 @@
 @interface ActivityTableViewCell : UITableViewCell
 
 - (void) configWithEntity : (ActivityDateEntity*) _entity;
+- (void) configWithEntity : (ActivityDateEntity*) _entity isDetail : (BOOL) _isDetail;
 
 + (CGFloat) heightWithEntity : (ActivityDateEntity *) _entity;
++ (CGFloat) heightWithEntity : (ActivityDateEntity *) _entity isDetail : (BOOL) _isDetail;
 
 @end

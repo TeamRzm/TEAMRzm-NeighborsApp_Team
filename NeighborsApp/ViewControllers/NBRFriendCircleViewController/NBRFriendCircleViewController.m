@@ -13,6 +13,7 @@
 #import "CommitActivityContentViewController.h"
 #import "XHImageViewer.h"
 #import "ComentDetailViewController.h"
+#import "ActivityDetailViewController.h"
 
 @interface NBRFriendCircleViewController ()<UITableViewDataSource,UITableViewDelegate,CommentTableViewCellDelegate,XHImageViewerDelegate>
 {
@@ -51,7 +52,7 @@
     
     //容器
     boundScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 64 + 40, kNBR_SCREEN_W, kNBR_SCREEN_H - 64 - 40 - 49)];
-    boundScrollView.contentSize = CGSizeMake(kNBR_SCREEN_W * 2.0f, kNBR_SCREEN_H);
+    boundScrollView.contentSize = CGSizeMake(kNBR_SCREEN_W * 3.0f, kNBR_SCREEN_H);
     boundScrollView.scrollEnabled = NO;
     boundScrollView.showsHorizontalScrollIndicator = NO;
     boundScrollView.pagingEnabled = YES;
@@ -169,24 +170,12 @@
 
 - (CGFloat) tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
-    if (subTableView[1] == tableView)
-    {
-        return 5.0f;
-    }
-    return 0.0f;
+    return 0.1f;
 }
 
 
 - (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    if (subTableView[1] == tableView && section == 0)
-    {
-        return 10.0f;
-    }
-    else if (subTableView[1] == tableView)
-    {
-        return 5.0f;
-    }
     return 0.1f;
 }
 
@@ -272,6 +261,12 @@
     if (currentSegmentIndex == 0 || currentSegmentIndex == 2)
     {
         ComentDetailViewController *nVC = [[ComentDetailViewController alloc] initWithNibName:nil bundle:nil];
+        nVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:nVC animated:YES];
+    }
+    else if (currentSegmentIndex == 1)
+    {
+        ActivityDetailViewController *nVC = [[ActivityDetailViewController alloc] initWithNibName:nil bundle:nil];
         nVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:nVC animated:YES];
     }

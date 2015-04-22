@@ -32,14 +32,27 @@
     // Configure the view for the selected state
 }
 
-+ (CGFloat) heightWithEntity : (ActivityDateEntity *) _entity
++ (CGFloat) heightWithEntity:(ActivityDateEntity *)_entity isDetail:(BOOL)_isDetail
 {
-    return 20.0f + 150.0f + 32.0f;
+    if (_isDetail)
+    {
+        return 20.0f + 150.0f;
+    }
+    else
+    {
+        return 20.0f + 150.0f + 32.0f;
+    }
 }
 
-- (void) configWithEntity : (ActivityDateEntity*) _entity
++ (CGFloat) heightWithEntity : (ActivityDateEntity *) _entity
+{
+    return [ActivityTableViewCell heightWithEntity:_entity isDetail:NO];
+}
+
+- (void) configWithEntity : (ActivityDateEntity*) _entity isDetail : (BOOL) _isDetail
 {
     self.selectionStyle = UITableViewCellSelectionStyleNone;
+    self.backgroundColor = [UIColor whiteColor];
     
     //活动海报
     activityBackGoundImageView = [[EGOImageView alloc] initWithPlaceholderImage:[UIImage imageNamed:_entity.backGounrdUrl]];
@@ -64,10 +77,10 @@
                                  NSForegroundColorAttributeName    : kNBR_ProjectColor_StandWhite,
                                  };
     
-//    CGRect contentStringSize = [_entity.leftTagStr boundingRectWithSize:CGSizeMake(CGRectGetWidth(leftTagImageView.frame), 1000)
-//                                                                options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading
-//                                                             attributes:formatDict
-//                                                                context:nil];
+    //    CGRect contentStringSize = [_entity.leftTagStr boundingRectWithSize:CGSizeMake(CGRectGetWidth(leftTagImageView.frame), 1000)
+    //                                                                options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading
+    //                                                             attributes:formatDict
+    //                                                                context:nil];
     
     NSMutableAttributedString *attString = [[NSMutableAttributedString alloc] initWithString:_entity.leftTagStr];
     
@@ -134,44 +147,52 @@
     }
     [activityMaskView addSubview:priceLable];
     
-    bottomView = [[UIView alloc] initWithFrame:CGRectMake(10, CGRectGetHeight(activityBackGoundImageView.frame) + 10 - 1, CGRectGetWidth(activityBackGoundImageView.frame), 32.0f)];
-    bottomView.layer.borderWidth = 0.5f;
-    bottomView.backgroundColor = kNBR_ProjectColor_StandWhite;
-    bottomView.layer.borderColor = kNBR_ProjectColor_LightGray.CGColor;
-    [self.contentView addSubview:bottomView];
+    if (!_isDetail)
+    {
+        bottomView = [[UIView alloc] initWithFrame:CGRectMake(10, CGRectGetHeight(activityBackGoundImageView.frame) + 10 - 1, CGRectGetWidth(activityBackGoundImageView.frame), 32.0f)];
+        bottomView.layer.borderWidth = 0.5f;
+        bottomView.backgroundColor = kNBR_ProjectColor_StandWhite;
+        bottomView.layer.borderColor = kNBR_ProjectColor_LightGray.CGColor;
+        [self.contentView addSubview:bottomView];
     
-    //标题
-    //titleLogo
-    UIImageView *titleLogo = [[UIImageView alloc] initWithFrame:CGRectMake(5, CGRectGetHeight(bottomView.frame) / 2.0f - 13.0f / 2.0f, 13.0f, 13.0f)];
-    titleLogo.image = [UIImage imageNamed:@"huodong"];
-    [bottomView addSubview:titleLogo];
     
-    UILabel *titleLable = [[UILabel alloc] initWithFrame:CGRectMake(5 + 5 + 13, 0, CGRectGetWidth(bottomView.frame) - 23, CGRectGetHeight(bottomView.frame))];
-    titleLable.textColor = kNBR_ProjectColor_DeepBlack;
-    titleLable.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME size:13.0f];
-    titleLable.text = _entity.titile;
-    [bottomView addSubview:titleLable];
-    
-    //时间
-    UIFont *dateCommitLableFont = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME size:12.0f];
-    
-    CGSize dataCommitStringSize = [_entity.commitDate sizeWithAttributes:@{
-                                                                           NSFontAttributeName : dateCommitLableFont,
-                                                                           }];
-    
-    UILabel *dateCommitLable = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetWidth(bottomView.frame) - dataCommitStringSize.width - 5, 0, dataCommitStringSize.width, CGRectGetHeight(bottomView.frame))];
-    dateCommitLable.textColor = kNBR_ProjectColor_DeepBlack;
-    dateCommitLable.font = dateCommitLableFont;
-    dateCommitLable.textAlignment = NSTextAlignmentRight;
-    dateCommitLable.text = _entity.commitDate;
-    [bottomView addSubview:dateCommitLable];
-    
-    UIImageView *dateLogo = [[UIImageView alloc] initWithFrame:CGRectMake(CGRectGetWidth(bottomView.frame) - dataCommitStringSize.width - 5 - 18, CGRectGetHeight(bottomView.frame) / 2.0f - 13.0f / 2.0f, 13.0f, 13.0f)];
-    dateLogo.image = [UIImage imageNamed:@"shijian"];
-    [bottomView addSubview:dateLogo];
-    
+        //标题
+        //titleLogo
+        UIImageView *titleLogo = [[UIImageView alloc] initWithFrame:CGRectMake(5, CGRectGetHeight(bottomView.frame) / 2.0f - 13.0f / 2.0f, 13.0f, 13.0f)];
+        titleLogo.image = [UIImage imageNamed:@"huodong"];
+        [bottomView addSubview:titleLogo];
+        
+        UILabel *titleLable = [[UILabel alloc] initWithFrame:CGRectMake(5 + 5 + 13, 0, CGRectGetWidth(bottomView.frame) - 23, CGRectGetHeight(bottomView.frame))];
+        titleLable.textColor = kNBR_ProjectColor_DeepBlack;
+        titleLable.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME size:13.0f];
+        titleLable.text = _entity.titile;
+        [bottomView addSubview:titleLable];
+        
+        //时间
+        UIFont *dateCommitLableFont = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME size:12.0f];
+        
+        CGSize dataCommitStringSize = [_entity.commitDate sizeWithAttributes:@{
+                                                                               NSFontAttributeName : dateCommitLableFont,
+                                                                               }];
+        
+        UILabel *dateCommitLable = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetWidth(bottomView.frame) - dataCommitStringSize.width - 5, 0, dataCommitStringSize.width, CGRectGetHeight(bottomView.frame))];
+        dateCommitLable.textColor = kNBR_ProjectColor_DeepBlack;
+        dateCommitLable.font = dateCommitLableFont;
+        dateCommitLable.textAlignment = NSTextAlignmentRight;
+        dateCommitLable.text = _entity.commitDate;
+        [bottomView addSubview:dateCommitLable];
+        
+        UIImageView *dateLogo = [[UIImageView alloc] initWithFrame:CGRectMake(CGRectGetWidth(bottomView.frame) - dataCommitStringSize.width - 5 - 18, CGRectGetHeight(bottomView.frame) / 2.0f - 13.0f / 2.0f, 13.0f, 13.0f)];
+        dateLogo.image = [UIImage imageNamed:@"shijian"];
+        [bottomView addSubview:dateLogo];
+    }
     
     return;
+}
+
+- (void) configWithEntity : (ActivityDateEntity*) _entity
+{
+    [self configWithEntity:_entity isDetail:NO];
 }
 
 @end

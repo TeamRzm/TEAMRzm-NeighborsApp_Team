@@ -43,7 +43,7 @@
 #define kNBR_ProjectColor_MidGray         UIColorFromRGB(0x999999)
 
 //深灰
-#define kNBR_ProjectColor_DeepGray        UIColorFromRGB(0x666666)
+#define kNBR_ProjectColor_DeepGray        UIColorFromRGB(0x535353)
 
 //深黑
 #define kNBR_ProjectColor_DeepBlack       UIColorFromRGB(0x2E2E2E)
