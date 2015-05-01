@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Default</key>
+	<dict>
+		<key>Path</key>
+		<string></string>
+		<key>Port</key>
+		<string></string>
+		<key>HostName</key>
+		<string>http://api.qinlin.joolin.net</string>
+	</dict>
+	<key>Test</key>
+	<dict>
+		<key>Path</key>
+		<string></string>
+		<key>Port</key>
+		<string></string>
+		<key>HostName</key>
+		<string>http://api.qinlin.joolin.net</string>
+	</dict>
+</dict>
+</plist>
