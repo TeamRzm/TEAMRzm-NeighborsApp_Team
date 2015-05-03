@@ -13,11 +13,13 @@
 
 @interface AppSessionMrg : NSObject
 
-@property (nonatomic, strong) UserEntity *userEntity;
-
+@property (nonatomic, strong, setter=saveLoginState:) UserEntity *userEntity;
 
 + (AppSessionMrg*) shareInstance;
 
+- (BOOL)    userIsLogin;
+- (void)    userLogout;
+- (void)    saveLoginState : (UserEntity*) _entity;
 - (void)    setSessionValue : (id) _value withKey : (NSString*) _key isSandBox : (BOOL) _inSandBox;
 - (id)      getSessionWithKey : (NSString*) _key;
 - (BOOL)    removeSessionWithKey : (NSString*) _key;

@@ -37,4 +37,26 @@
     return self;
 }
 
+- (NSDictionary*) dictEntity
+{
+    NSMutableDictionary *resultDict = [[NSMutableDictionary alloc] init];
+    
+    
+    Ivar*           ivarList;
+    unsigned int    ivarCount;
+    
+    ivarList = class_copyIvarList([self class], &ivarCount);
+    
+    for (int i = 0; i < ivarCount; i++)
+    {
+        Ivar subIvar = ivarList[i];
+        
+        NSString *ivarName = [[NSString stringWithUTF8String:ivar_getName(subIvar)] substringFromIndex:1];
+        
+        resultDict[ivarName] = object_getIvar(self, subIvar);
+    }
+    
+    return resultDict;
+}
+
 @end

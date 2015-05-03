@@ -9,7 +9,9 @@
 #import "NBRBaseViewController.h"
 
 @interface NBRBaseViewController ()
+{
 
+}
 @end
 
 @implementation NBRBaseViewController
@@ -102,8 +104,27 @@
 - (void) setDefaultRequestFaild : (ASIHTTPRequest*) _request
 {
     [_request setFailedBlock:^{
+        [self removeLoadingView];
         [self showBannerMsgWithString:@"网络连接失败，请您检查您的网络设置"];
     }];
+}
+
+- (void) addLoadingView
+{
+    [KVNProgress showWithParameters:@{
+                                      KVNProgressViewParameterStatus: @"正在加载...",
+                                      KVNProgressViewParameterBackgroundType: @(KVNProgressBackgroundTypeSolid),
+                                      KVNProgressViewParameterFullScreen: @(NO)
+                                      }];
+    
+    return ;
+}
+
+- (void) removeLoadingView
+{
+    [KVNProgress dismiss];
+    
+    return ;
 }
 
 /*

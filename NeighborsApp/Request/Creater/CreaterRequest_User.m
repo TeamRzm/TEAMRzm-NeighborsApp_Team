@@ -46,7 +46,7 @@
     ASIHTTPRequest *request = [CreaterRequest_User GetRequestWithMethod:@"/api.user/login.cmd"
                                                               parmsDict:parmsDict
                                                           requestMethod:REQUEST_METHOD_POST];
-    request.cachePolicy = ASIOnlyLoadIfNotCachedCachePolicy;
+    request.cachePolicy = ASIDoNotReadFromCacheCachePolicy;
     
     return request;
 }

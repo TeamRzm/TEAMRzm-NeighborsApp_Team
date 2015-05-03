@@ -147,6 +147,8 @@
     
     [blockRequest setCompletionBlock:^{
         
+        [self removeLoadingView];
+        
         NSDictionary *responseDict = [blockRequest.responseString JSONValue];
         
         if ([CreaterRequest_User CheckErrorResponse:responseDict errorAlertInViewController:self])
@@ -168,5 +170,6 @@
     [self setDefaultRequestFaild:blockRequest];
     
     [loginRequest startAsynchronous];
+    [self addLoadingView];
 }
 @end

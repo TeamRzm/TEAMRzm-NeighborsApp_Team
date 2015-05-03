@@ -12,4 +12,6 @@
 
 - (id) initWithDict : (NSDictionary*) _entityDict;
 
+- (NSDictionary*) dictEntity;
+
 @end

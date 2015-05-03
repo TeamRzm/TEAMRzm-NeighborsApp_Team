@@ -60,6 +60,10 @@
 		5B38BA4E1AF5DECF00775F64 /* NSString+base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B38BA4D1AF5DECF00775F64 /* NSString+base64.m */; };
 		5B38BA521AF61B1D00775F64 /* UserEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B38BA511AF61B1D00775F64 /* UserEntity.m */; };
 		5B38BA551AF61F6A00775F64 /* AbsEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B38BA541AF61F6A00775F64 /* AbsEntity.m */; };
+		5B38BA621AF652CE00775F64 /* UIImage+KVNEmpty.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B38BA5A1AF652CE00775F64 /* UIImage+KVNEmpty.m */; };
+		5B38BA631AF652CE00775F64 /* UIImage+KVNImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B38BA5C1AF652CE00775F64 /* UIImage+KVNImageEffects.m */; };
+		5B38BA641AF652CE00775F64 /* KVNProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B38BA5F1AF652CE00775F64 /* KVNProgress.m */; };
+		5B38BA651AF652CE00775F64 /* KVNProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B38BA611AF652CE00775F64 /* KVNProgressView.xib */; };
 		5B3FFC521AF3C26C0071D77A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B3FFC511AF3C26C0071D77A /* SystemConfiguration.framework */; };
 		5B3FFC541AF3C27B0071D77A /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B3FFC531AF3C27B0071D77A /* CoreTelephony.framework */; };
 		5B3FFC591AF3C2AD0071D77A /* libXG-SDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B3FFC561AF3C2AD0071D77A /* libXG-SDK.a */; };
@@ -431,6 +435,13 @@
 		5B38BA511AF61B1D00775F64 /* UserEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserEntity.m; path = Request/Entity/UserEntity.m; sourceTree = "<group>"; };
 		5B38BA531AF61F6A00775F64 /* AbsEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AbsEntity.h; path = Request/Entity/AbsEntity.h; sourceTree = "<group>"; };
 		5B38BA541AF61F6A00775F64 /* AbsEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AbsEntity.m; path = Request/Entity/AbsEntity.m; sourceTree = "<group>"; };
+		5B38BA591AF652CE00775F64 /* UIImage+KVNEmpty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+KVNEmpty.h"; sourceTree = "<group>"; };
+		5B38BA5A1AF652CE00775F64 /* UIImage+KVNEmpty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+KVNEmpty.m"; sourceTree = "<group>"; };
+		5B38BA5B1AF652CE00775F64 /* UIImage+KVNImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+KVNImageEffects.h"; sourceTree = "<group>"; };
+		5B38BA5C1AF652CE00775F64 /* UIImage+KVNImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+KVNImageEffects.m"; sourceTree = "<group>"; };
+		5B38BA5E1AF652CE00775F64 /* KVNProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KVNProgress.h; sourceTree = "<group>"; };
+		5B38BA5F1AF652CE00775F64 /* KVNProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KVNProgress.m; sourceTree = "<group>"; };
+		5B38BA611AF652CE00775F64 /* KVNProgressView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KVNProgressView.xib; sourceTree = "<group>"; };
 		5B3FFC511AF3C26C0071D77A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		5B3FFC531AF3C27B0071D77A /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		5B3FFC561AF3C2AD0071D77A /* libXG-SDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libXG-SDK.a"; sourceTree = "<group>"; };
@@ -965,6 +976,45 @@
 				5B38BA511AF61B1D00775F64 /* UserEntity.m */,
 			);
 			name = Entity;
+			sourceTree = "<group>";
+		};
+		5B38BA571AF652CE00775F64 /* KVNProgress */ = {
+			isa = PBXGroup;
+			children = (
+				5B38BA581AF652CE00775F64 /* Categories */,
+				5B38BA5D1AF652CE00775F64 /* Classes */,
+				5B38BA601AF652CE00775F64 /* Resources */,
+			);
+			name = KVNProgress;
+			path = Ext/KVNProgress;
+			sourceTree = "<group>";
+		};
+		5B38BA581AF652CE00775F64 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				5B38BA591AF652CE00775F64 /* UIImage+KVNEmpty.h */,
+				5B38BA5A1AF652CE00775F64 /* UIImage+KVNEmpty.m */,
+				5B38BA5B1AF652CE00775F64 /* UIImage+KVNImageEffects.h */,
+				5B38BA5C1AF652CE00775F64 /* UIImage+KVNImageEffects.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		5B38BA5D1AF652CE00775F64 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				5B38BA5E1AF652CE00775F64 /* KVNProgress.h */,
+				5B38BA5F1AF652CE00775F64 /* KVNProgress.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		5B38BA601AF652CE00775F64 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5B38BA611AF652CE00775F64 /* KVNProgressView.xib */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		5B3FFC551AF3C2AD0071D77A /* XGSDK */ = {
@@ -1602,6 +1652,7 @@
 		5BB6555D1AC31588007E0F85 /* Ext */ = {
 			isa = PBXGroup;
 			children = (
+				5B38BA571AF652CE00775F64 /* KVNProgress */,
 				5B3FFC551AF3C2AD0071D77A /* XGSDK */,
 				5B332B241AE3A8C0002A0A73 /* XHImageViewer */,
 				5B332AD11AE2F647002A0A73 /* CTAssetsPickerController */,
@@ -1957,6 +2008,7 @@
 				5B6D328D1ADDFE43009A922A /* Expression_97@2x.png in Resources */,
 				5B8B15BA1ADCBA4A00AA87A2 /* NBRForgetPwdViewController.xib in Resources */,
 				5B6D31711ADCE747009A922A /* bannerNotify@2x.png in Resources */,
+				5B38BA651AF652CE00775F64 /* KVNProgressView.xib in Resources */,
 				5B4ADE061ADE305300810165 /* chatting_setmode_biaoqing_btn_normal.png in Resources */,
 				5B4ADE0B1ADE305300810165 /* keyboardBg.png in Resources */,
 				5B6D32451ADDFE43009A922A /* Expression_31@2x.png in Resources */,
@@ -2147,6 +2199,7 @@
 				5BB8297B1AE5748B00877995 /* CommentEntity.m in Sources */,
 				5BD83C9B1AD61EF600D1A3EC /* ASIS3ServiceRequest.m in Sources */,
 				5B6D31861ADCE822009A922A /* UIView+Toast.m in Sources */,
+				5B38BA641AF652CE00775F64 /* KVNProgress.m in Sources */,
 				5B38BA521AF61B1D00775F64 /* UserEntity.m in Sources */,
 				5B332AC11AE18018002A0A73 /* ActivityTableViewCell.m in Sources */,
 				5B332B051AE2F647002A0A73 /* UIImage+CTAssetsPickerController.m in Sources */,
@@ -2181,6 +2234,7 @@
 				5B38BA411AF4E01D00775F64 /* CreaterRequest_Base.m in Sources */,
 				5B332B041AE2F647002A0A73 /* NSDateFormatter+timeIntervalFormatter.m in Sources */,
 				5B332B441AE3A8C0002A0A73 /* XHFileAttribute.m in Sources */,
+				5B38BA621AF652CE00775F64 /* UIImage+KVNEmpty.m in Sources */,
 				5B10A79F1AE79FFD0034FA63 /* ActivityDetailViewController.m in Sources */,
 				5BB655371AC31464007E0F85 /* FirstViewController.m in Sources */,
 				5B4ADE351ADE308C00810165 /* wavreader.mm in Sources */,
@@ -2213,6 +2267,7 @@
 				5B8B158F1ADC164900AA87A2 /* NBRBaseViewController.m in Sources */,
 				5BD83C8D1AD61EF600D1A3EC /* ASIInputStream.m in Sources */,
 				5BD83C891AD61EF600D1A3EC /* ASIDataDecompressor.m in Sources */,
+				5B38BA631AF652CE00775F64 /* UIImage+KVNImageEffects.m in Sources */,
 				5B332B471AE3A8C0002A0A73 /* XHZoomingImageView.m in Sources */,
 				5BD83CDF1AD61F4B00D1A3EC /* NSObject+SBJSON.m in Sources */,
 				5B332B011AE2F647002A0A73 /* CTAssetsViewController.m in Sources */,

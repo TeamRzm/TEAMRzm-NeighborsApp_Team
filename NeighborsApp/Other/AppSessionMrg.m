@@ -10,6 +10,8 @@
 
 #define SANDBOX_SESSION_KEY @"SANDBOX_SESSION_KEY"
 
+#define SANDBOX_SESSION_USER_ENTITY @"SANDBOX_SESSION_USER_ENTITY"
+
 @interface AppSessionMrg()
 {
     NSMutableDictionary *sessionDict;
@@ -40,6 +42,28 @@
     return NO;
 }
 
+- (void)    userLogout
+{
+    _userEntity = nil;
+    
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:SANDBOX_SESSION_USER_ENTITY];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    return ;
+}
+
+- (BOOL)    userIsLogin
+{
+    if (_userEntity && _userEntity.token.length > 0)
+    {
+        return YES;
+    }
+    else
+    {
+        return NO;
+    }
+}
+
 - (id) init
 {
     self = [super init];
@@ -50,6 +74,13 @@
         if (![self readFromSandBox])
         {
             sandBoxSessionDict = [[NSMutableDictionary alloc] init];
+        }
+        
+        NSDictionary *userentityDict = [[NSUserDefaults standardUserDefaults] objectForKey:SANDBOX_SESSION_USER_ENTITY];
+        
+        if (userentityDict)
+        {
+            _userEntity = [[UserEntity alloc] initWithDict:userentityDict];
         }
     }
     return self;
@@ -65,6 +96,14 @@
     }
     
     return shareInstanceAppSectionMrgObject;
+}
+
+- (void) saveLoginState : (UserEntity*) _entity
+{
+    _userEntity = _entity;
+    
+    [[NSUserDefaults standardUserDefaults] setObject:[_entity dictEntity] forKey:SANDBOX_SESSION_USER_ENTITY];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (void)    setSessionValue : (id) _value withKey : (NSString*) _key isSandBox : (BOOL) _inSandBox

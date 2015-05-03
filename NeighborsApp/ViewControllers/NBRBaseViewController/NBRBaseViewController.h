@@ -13,6 +13,7 @@
 #import "UIView+TopTag.h"
 #import "SBJson.h"
 #import "ASIHTTPRequest.h"
+#import "KVNProgress.h"
 
 @interface NBRBaseViewController : UIViewController
 
@@ -24,5 +25,9 @@
 - (void) showBannerMsgWithString : (NSString *)_msg tappedBlock:(void (^)(ALAlertBanner *alertBanner))tappedBlock;
 
 - (void) setDefaultRequestFaild : (ASIHTTPRequest*) _request;
+
+- (void) addLoadingView;
+
+- (void) removeLoadingView;
 
 @end
