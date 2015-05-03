@@ -24,5 +24,10 @@
                                                 verify : (NSString*) _verify
                                               clientId : (NSString*) _clientId;
 
+//忘记密码
++ (ASIHTTPRequest*) CreateForgotPwdRequestWithUserName : (NSString*) _userName
+                                              password : (NSString*) _password
+                                                verify : (NSString*) _verify;
+
 
 @end

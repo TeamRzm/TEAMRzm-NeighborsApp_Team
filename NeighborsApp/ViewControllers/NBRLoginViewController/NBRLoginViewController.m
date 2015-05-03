@@ -12,6 +12,8 @@
 #import "CreaterRequest_User.h"
 #import "UserEntity.h"
 
+#define NBRLOGIN_VIEWCONTROLLER_REMEBER_USERNAME @"NBRLOGIN_VIEWCONTROLLER_REMEBER_USERNAME"
+
 @interface NBRLoginViewController ()
 {
     UITextField     *userNameTextField;
@@ -48,6 +50,7 @@
     userNameTextField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     userNameTextField.textColor = kNBR_ProjectColor_DeepGray;
     userNameTextField.placeholder = @"账号/手机号码";
+    userNameTextField.text = [[NSUserDefaults standardUserDefaults] valueForKey:NBRLOGIN_VIEWCONTROLLER_REMEBER_USERNAME];
     [self setDoneStyleTextFile:userNameTextField];
     
     pwdTextField = [[UITextField alloc] initWithFrame:CGRectMake(15, 0, kNBR_SCREEN_W - 30, 44.0f)];
@@ -63,6 +66,8 @@
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(forgetPwdButtonAction:)];
     [self.forgetPwdLable addGestureRecognizer:tapGesture];
     self.forgetPwdLable.userInteractionEnabled = YES;
+    
+    [self setNavgationBarLeftButtonIsDissmissViewController];
 }
 
 - (void) forgetPwdButtonAction : (id) _sender
@@ -129,6 +134,10 @@
         [self showBannerMsgWithString:@"请输密码"];
         return ;
     }
+    
+    //记录账号
+    [[NSUserDefaults standardUserDefaults] setValue:userNameTextField.text forKey:NBRLOGIN_VIEWCONTROLLER_REMEBER_USERNAME];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     
     NSString *randVeriftCode = [NSString stringWithFormat:@"%6d", (int)rand() % 1000000];
     

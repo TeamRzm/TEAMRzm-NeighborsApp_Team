@@ -7,17 +7,18 @@
 //
 
 #import "NBRForgetPwdViewController.h"
+#import "CreaterRequest_Verify.h"
+#import "CreaterRequest_User.h"
 
 @interface NBRForgetPwdViewController ()
 {
     UILabel            *getCheckCodeButton;
     
-    
-    NSArray             *tableViewDateSource;
-    NSArray             *tableViewCellTitles;
-    
     NSDate              *checkCodeButtomTimerStartTime;
     NSTimer             *checkCodeButtonTimer;
+    
+    ASIHTTPRequest      *verifyRequest;
+    ASIHTTPRequest      *forgotPwdRequest;
 }
 @end
 
@@ -38,14 +39,14 @@
     nickTextField.placeholder = @"请输入昵称";
     [self setDoneStyleTextFile:nickTextField];
     
-    phoneNumberTextField = [[UITextField alloc] initWithFrame:CGRectMake(55, 0, 145, 44.0f)];
+    phoneNumberTextField = [[UITextField alloc] initWithFrame:CGRectMake(55, 0, 260, 44.0f)];
     phoneNumberTextField.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME size:14.0f];
     phoneNumberTextField.textColor = kNBR_ProjectColor_DeepGray;
     phoneNumberTextField.placeholder = @"请输入手机号码";
     [self setDoneStyleTextFile:phoneNumberTextField];
     
     
-    checkCodeTextField = [[UITextField alloc] initWithFrame:CGRectMake(55, 0, 260, 44.0f)];
+    checkCodeTextField = [[UITextField alloc] initWithFrame:CGRectMake(55, 0, 145, 44.0f)];
     checkCodeTextField.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME size:14.0f];
     checkCodeTextField.textColor = kNBR_ProjectColor_DeepGray;
     checkCodeTextField.placeholder = @"请输入验证码";
@@ -83,12 +84,12 @@
     
     
     tableViewDateSource = @[
-                            @[nickTextField,phoneNumberTextField,checkCodeTextField],
+                            @[phoneNumberTextField,checkCodeTextField],
                             @[pwdTextField,rePwdTextField],
                             ];
     
     tableViewCellTitles = @[
-                            @[@"昵称",@"手机号",@"验证码"],
+                            @[@"手机号",@"验证码"],
                             @[@"密码",@"确认"],
                             ];
 }
@@ -127,7 +128,37 @@
 
 - (void) senderCheckCode
 {
-    [self checkCodeButtonTimerAction];
+    if (phoneNumberTextField.text.length <= 0)
+    {
+        [self showBannerMsgWithString:@"请输入手机号"];
+        
+        return ;
+    }
+    
+    verifyRequest = [CreaterRequest_Verify CreateVerifyRequestWithPhone:phoneNumberTextField.text type:@"0" flag:@"1"];
+    
+    __weak ASIHTTPRequest *blockRequest = verifyRequest;
+    
+    [blockRequest setCompletionBlock:^{
+        
+        NSDictionary *responseDict = [blockRequest.responseString JSONValue];
+        
+        if ([CreaterRequest_Verify CheckErrorResponse:responseDict errorAlertInViewController:self])
+        {
+            [self showBannerMsgWithString:responseDict[@"data"][@"code"][@"message"]];
+            
+            [self checkCodeButtonTimerAction];
+        }
+        else
+        {
+            NSLog(@"%@", blockRequest.responseString);
+        }
+    }];
+    
+    [self setDefaultRequestFaild:blockRequest];
+    
+    [blockRequest startAsynchronous];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -195,16 +226,78 @@
     [cell.contentView addSubview:titleLable];
     [cell.contentView addSubview:tableViewDateSource[indexPath.section][indexPath.row]];
     
-    if (indexPath.section == 0 && indexPath.row == 1)
+    if ([titleLable.text isEqualToString:@"验证码"])
     {
         [cell.contentView addSubview:getCheckCodeButton];
     }
-    
     return cell;
 }
 
 - (IBAction)commitButtonTouchUpInSide:(id)sender
 {
+    if (phoneNumberTextField.text.length <= 0)
+    {
+        [self showBannerMsgWithString:@"请输入手机号"];
+        
+        return ;
+    }
     
+    if (checkCodeTextField.text.length <= 0)
+    {
+        [self showBannerMsgWithString:@"请输入验证码"];
+        
+        return ;
+    }
+    
+    if (pwdTextField.text.length <= 0)
+    {
+        [self showBannerMsgWithString:@"请输入登陆密码"];
+        
+        return ;
+    }
+    
+    if (rePwdTextField.text.length <= 0)
+    {
+        [self showBannerMsgWithString:@"请输入再次登陆密码"];
+        
+        return ;
+    }
+    
+    if (![pwdTextField.text isEqualToString:rePwdTextField.text])
+    {
+        [self showBannerMsgWithString:@"两次输入的登陆密码不一致"];
+        
+        return ;
+    }
+
+    
+    forgotPwdRequest = [CreaterRequest_User CreateForgotPwdRequestWithUserName:phoneNumberTextField.text
+                                                                      password:[rePwdTextField.text encodeBase64PasswordStringWithVerift:checkCodeTextField.text]
+                                                                        verify:checkCodeTextField.text];
+    
+    __weak ASIHTTPRequest* blockRequest = forgotPwdRequest;
+    
+    
+    [blockRequest setCompletionBlock:^{
+        [self removeLoadingView];
+        
+        NSDictionary *responseDict = [blockRequest.responseString JSONValue];
+        
+        if ([CreaterRequest_Verify CheckErrorResponse:responseDict errorAlertInViewController:self])
+        {
+            [self showBannerMsgWithString:responseDict[@"data"][@"code"][@"message"]];
+            
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+        else
+        {
+            NSLog(@"%@", blockRequest.responseString);
+        }
+    }];
+    
+    [self setDefaultRequestFaild:blockRequest];
+    
+    [forgotPwdRequest startAsynchronous];
+    [self addLoadingView];
 }
 @end

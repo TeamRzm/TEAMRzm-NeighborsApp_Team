@@ -15,6 +15,9 @@
     UITextField         *pwdTextField;
     UITextField         *rePwdTextField;
     UITextField         *nickTextField;
+    
+    NSArray             *tableViewDateSource;
+    NSArray             *tableViewCellTitles;
 }
 @property (weak, nonatomic) IBOutlet UIButton *commitButton;
 @property (strong, nonatomic) IBOutlet UIView *commitButtonView;

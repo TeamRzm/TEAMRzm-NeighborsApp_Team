@@ -51,4 +51,22 @@
     return request;
 }
 
++ (ASIHTTPRequest*) CreateForgotPwdRequestWithUserName : (NSString*) _userName
+                                              password : (NSString*) _password
+                                                verify : (NSString*) _verify
+{
+    NSDictionary *parmsDict = @{
+                                @"username" : _userName,
+                                @"password" : _password,
+                                @"verify"   : _verify,
+                                };
+    
+    ASIHTTPRequest *request = [CreaterRequest_User GetRequestWithMethod:@"/api.user/forgot.cmd"
+                                                              parmsDict:parmsDict
+                                                          requestMethod:REQUEST_METHOD_POST];
+    request.cachePolicy = ASIDoNotReadFromCacheCachePolicy;
+    
+    return request;
+}
+
 @end

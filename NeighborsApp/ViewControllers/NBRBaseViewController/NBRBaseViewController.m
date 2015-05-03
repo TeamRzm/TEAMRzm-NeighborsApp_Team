@@ -26,6 +26,26 @@
     return self;
 }
 
+- (void) dissmissLeftButtonAction
+{
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
+}
+
+- (void) setNavgationBarLeftButtonIsDissmissViewController
+{
+    UIButton *dissmissButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    dissmissButton.frame = CGRectMake(0, 0, 12, 19.5);
+    [dissmissButton setImage:[UIImage imageNamed:@"backFlag"] forState:UIControlStateNormal];
+    [dissmissButton addTarget:self action:@selector(dissmissLeftButtonAction) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithCustomView:dissmissButton];
+    
+    self.navigationItem.leftBarButtonItem = leftButton;
+    
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.

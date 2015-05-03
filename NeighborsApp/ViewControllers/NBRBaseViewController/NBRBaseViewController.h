@@ -30,4 +30,6 @@
 
 - (void) removeLoadingView;
 
+- (void) setNavgationBarLeftButtonIsDissmissViewController;
+
 @end

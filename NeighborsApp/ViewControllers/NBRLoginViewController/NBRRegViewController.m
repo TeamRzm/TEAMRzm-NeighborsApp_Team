@@ -23,6 +23,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"注册";
+    
+    tableViewDateSource = @[
+                            @[nickTextField,phoneNumberTextField,checkCodeTextField],
+                            @[pwdTextField,rePwdTextField],
+                            ];
+    
+    tableViewCellTitles = @[
+                            @[@"昵称",@"手机号",@"验证码"],
+                            @[@"密码",@"确认"],
+                            ];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -119,6 +129,7 @@
     
     
     [blockRequest setCompletionBlock:^{
+        [self addLoadingView];
         NSDictionary *responseDict = [blockRequest.responseString JSONValue];
         
         if ([CreaterRequest_Verify CheckErrorResponse:responseDict errorAlertInViewController:self])
@@ -134,6 +145,7 @@
     [self setDefaultRequestFaild:blockRequest];
     
     [regRequest startAsynchronous];
+    [self removeLoadingView];
     
     return;
 }
