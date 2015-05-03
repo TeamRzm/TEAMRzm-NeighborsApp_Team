@@ -10,4 +10,21 @@
 
 @implementation Server
 
+- (NSString*) createRequestServerURL
+{
+    NSMutableString *url = [[NSMutableString alloc] initWithString:self.hostName];
+    
+    if (self.port && self.port.length > 0)
+    {
+        [url appendFormat:@":%@", self.port];
+    }
+    
+    if (self.path && self.path.length > 0)
+    {
+        [url appendFormat:@"\%@", self.path];
+    }
+    
+    return url;
+}
+
 @end

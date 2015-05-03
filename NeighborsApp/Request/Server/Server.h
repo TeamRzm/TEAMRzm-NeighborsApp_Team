@@ -13,4 +13,7 @@
 @property (nonatomic, copy) NSString* hostName;
 @property (nonatomic, copy) NSString* port;
 @property (nonatomic, copy) NSString* path;
+
+- (NSString*) createRequestServerURL;
+
 @end

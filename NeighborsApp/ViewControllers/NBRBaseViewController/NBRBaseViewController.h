@@ -12,6 +12,7 @@
 #import "SIAlertView.h"
 #import "UIView+TopTag.h"
 #import "SBJson.h"
+#import "ASIHTTPRequest.h"
 
 @interface NBRBaseViewController : UIViewController
 
@@ -21,5 +22,7 @@
 - (void) showBannerMsgWithString : (NSString*) _msg;
 
 - (void) showBannerMsgWithString : (NSString *)_msg tappedBlock:(void (^)(ALAlertBanner *alertBanner))tappedBlock;
+
+- (void) setDefaultRequestFaild : (ASIHTTPRequest*) _request;
 
 @end

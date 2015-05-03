@@ -9,6 +9,9 @@
 #import "NBRLoginViewController.h"
 #import "NBRForgetPwdViewController.h"
 #import "NBRRegViewController.h"
+#import "CreaterRequest_User.h"
+#import "UserEntity.h"
+
 @interface NBRLoginViewController ()
 {
     UITextField     *userNameTextField;
@@ -16,6 +19,8 @@
     
     
     NSArray         *tableViewDateSource;
+    
+    ASIHTTPRequest  *loginRequest;
 }
 @end
 
@@ -125,9 +130,43 @@
         return ;
     }
     
-    [self showBannerMsgWithString:@"登录成功"];
-    [self.navigationController dismissViewControllerAnimated:YES completion:^{
-
+    NSString *randVeriftCode = [NSString stringWithFormat:@"%6d", (int)rand() % 1000000];
+    
+    NSString *clientID = [[AppSessionMrg shareInstance] getSessionWithKey:XG_CLIENT_ID];
+    
+    if (!clientID)
+    {
+        clientID = @"ABCDEFG123456890";
+    }
+    
+    loginRequest = [CreaterRequest_User CreateUserLoginRequestWithUserName:userNameTextField.text
+                                                                  password:[pwdTextField.text encodeMD5PasswordStringWithCheckCode:randVeriftCode]
+                                                                    verify:randVeriftCode
+                                                                  clientId:clientID];
+    __weak ASIHTTPRequest *blockRequest = loginRequest;
+    
+    [blockRequest setCompletionBlock:^{
+        
+        NSDictionary *responseDict = [blockRequest.responseString JSONValue];
+        
+        if ([CreaterRequest_User CheckErrorResponse:responseDict errorAlertInViewController:self])
+        {
+            UserEntity *userEntity = [[UserEntity alloc] initWithDict:responseDict[@"data"][@"result"]];
+            
+            [AppSessionMrg shareInstance].userEntity = userEntity;
+            
+            [self showBannerMsgWithString:responseDict[@"data"][@"code"][@"message"]];
+            
+            [self.navigationController dismissViewControllerAnimated:YES completion:^{
+                
+            }];
+            
+            return ;
+        }
     }];
+    
+    [self setDefaultRequestFaild:blockRequest];
+    
+    [loginRequest startAsynchronous];
 }
 @end

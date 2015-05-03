@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "Server.h"
 
+#define CURRENT_SERVER ([RequestServerConfig shareInstance].getCurrentServer)
+
 @interface RequestServerConfig : NSObject
 
 + (RequestServerConfig*) shareInstance;
@@ -18,5 +20,6 @@
 - (NSArray*) getAllServerName;
 - (void)     changedServerWithIndex : (NSInteger) _index;
 - (void)     changedServerWithName : (NSString*) _name;
+- (NSString*)getCurrentHostUrl;
 
 @end

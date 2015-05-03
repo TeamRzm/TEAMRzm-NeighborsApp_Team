@@ -99,6 +99,13 @@
     [_textFiled addTarget:self action:@selector(resignFirstResponderWithView:) forControlEvents:UIControlEventEditingDidEndOnExit];
 }
 
+- (void) setDefaultRequestFaild : (ASIHTTPRequest*) _request
+{
+    [_request setFailedBlock:^{
+        [self showBannerMsgWithString:@"网络连接失败，请您检查您的网络设置"];
+    }];
+}
+
 /*
 #pragma mark - Navigation
 

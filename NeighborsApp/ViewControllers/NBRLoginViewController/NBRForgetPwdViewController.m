@@ -10,15 +10,14 @@
 
 @interface NBRForgetPwdViewController ()
 {
-    UITextField         *phoneNumberTextField;
-    UITextField         *checkCodeTextField;
-    UITextField         *pwdTextField;
-    UITextField         *rePwdTextField;
-    UIButton            *getCheckCodeButton;
+    UILabel            *getCheckCodeButton;
     
     
     NSArray             *tableViewDateSource;
     NSArray             *tableViewCellTitles;
+    
+    NSDate              *checkCodeButtomTimerStartTime;
+    NSTimer             *checkCodeButtonTimer;
 }
 @end
 
@@ -33,15 +32,20 @@
     self.commitButton.layer.cornerRadius = 5.0f;
     self.commitButton.layer.masksToBounds = YES;
     
+    nickTextField = [[UITextField alloc] initWithFrame:CGRectMake(55, 0, 260, 44.0f)];
+    nickTextField.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME size:14.0f];
+    nickTextField.textColor = kNBR_ProjectColor_DeepGray;
+    nickTextField.placeholder = @"请输入昵称";
+    [self setDoneStyleTextFile:nickTextField];
     
-    phoneNumberTextField = [[UITextField alloc] initWithFrame:CGRectMake(55, 0, 260, 44.0f)];
+    phoneNumberTextField = [[UITextField alloc] initWithFrame:CGRectMake(55, 0, 145, 44.0f)];
     phoneNumberTextField.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME size:14.0f];
     phoneNumberTextField.textColor = kNBR_ProjectColor_DeepGray;
     phoneNumberTextField.placeholder = @"请输入手机号码";
     [self setDoneStyleTextFile:phoneNumberTextField];
     
     
-    checkCodeTextField = [[UITextField alloc] initWithFrame:CGRectMake(55, 0, 145, 44.0f)];
+    checkCodeTextField = [[UITextField alloc] initWithFrame:CGRectMake(55, 0, 260, 44.0f)];
     checkCodeTextField.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME size:14.0f];
     checkCodeTextField.textColor = kNBR_ProjectColor_DeepGray;
     checkCodeTextField.placeholder = @"请输入验证码";
@@ -65,23 +69,65 @@
     [self setDoneStyleTextFile:rePwdTextField];
     
     
-    getCheckCodeButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    getCheckCodeButton.frame = CGRectMake(200, 0.0f, 320.0f - 200, 44.0f);
+    getCheckCodeButton = [[UILabel alloc] initWithFrame:CGRectMake(200, 0.0f, 320.0f - 200, 44.0f)];
     getCheckCodeButton.backgroundColor = kNBR_ProjectColor_StandBlue;
-    getCheckCodeButton.titleLabel.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME_BLOD size:13.0f];
-    [getCheckCodeButton setTitleColor:kNBR_ProjectColor_StandWhite forState:UIControlStateNormal];
-    [getCheckCodeButton setTitle:@"获取验证码" forState:UIControlStateNormal];
+    getCheckCodeButton.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME_BLOD size:13.0f];
+    getCheckCodeButton.numberOfLines = 0;
+    getCheckCodeButton.textAlignment = NSTextAlignmentCenter;
+    getCheckCodeButton.textColor = kNBR_ProjectColor_StandWhite;
+    getCheckCodeButton.text = @"获取验证码";
+    getCheckCodeButton.userInteractionEnabled = YES;
+    
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(senderCheckCode)];
+    [getCheckCodeButton addGestureRecognizer:tapGesture];
     
     
     tableViewDateSource = @[
-                            @[phoneNumberTextField,checkCodeTextField],
+                            @[nickTextField,phoneNumberTextField,checkCodeTextField],
                             @[pwdTextField,rePwdTextField],
                             ];
     
     tableViewCellTitles = @[
-                            @[@"手机号",@"验证码"],
+                            @[@"昵称",@"手机号",@"验证码"],
                             @[@"密码",@"确认"],
                             ];
+}
+
+- (void) timerIntervalAction
+{
+    NSTimeInterval timeIntervalFromStartTime = [checkCodeButtomTimerStartTime timeIntervalSinceDate:[NSDate date]];
+    
+    NSInteger sec = (int)(60.0f + timeIntervalFromStartTime);
+    
+    NSString *buttonTitle;
+    
+    if (sec > 0)
+    {
+        buttonTitle = [NSString stringWithFormat:@"重新获取验证码\n(%d)秒", sec];
+        getCheckCodeButton.userInteractionEnabled = NO;
+    }
+    else
+    {
+        buttonTitle = @"获取验证码";
+        getCheckCodeButton.userInteractionEnabled = YES;
+        checkCodeButtonTimer.fireDate = [NSDate distantFuture];
+    }
+    
+    getCheckCodeButton.text = buttonTitle;
+}
+
+- (void) checkCodeButtonTimerAction
+{
+    checkCodeButtonTimer = [NSTimer scheduledTimerWithTimeInterval:.5f target:self selector:@selector(timerIntervalAction) userInfo:nil repeats:YES];
+    
+    checkCodeButtonTimer.fireDate = [NSDate date];
+    
+    checkCodeButtomTimerStartTime = [NSDate date];
+}
+
+- (void) senderCheckCode
+{
+    [self checkCodeButtonTimerAction];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -157,4 +203,8 @@
     return cell;
 }
 
+- (IBAction)commitButtonTouchUpInSide:(id)sender
+{
+    
+}
 @end

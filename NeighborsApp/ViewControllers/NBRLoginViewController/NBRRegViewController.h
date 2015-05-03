@@ -10,4 +10,6 @@
 
 @interface NBRRegViewController : NBRForgetPwdViewController
 
+- (IBAction)commitButtonTouchUpInSide:(id)sender;
+
 @end

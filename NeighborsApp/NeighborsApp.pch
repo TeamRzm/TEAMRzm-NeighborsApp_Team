@@ -9,7 +9,10 @@
 #ifdef __OBJC__
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
-
+#import "NSString+CheckFormat.h"
+#import "NSString+MD5.h"
+#import "NSString+XHMD5.h"
+#import "AppSessionMrg.h"
 #endif
 
 

@@ -60,19 +60,31 @@
 {
     Server *newServer = [[Server alloc] init];
     
-    if ([_dict.allValues containsObject:@"HostName"])
+    if ([_dict.allKeys containsObject:@"HostName"])
     {
         newServer.hostName = _dict[@"HostName"];
     }
+    else
+    {
+        newServer.hostName = @"";
+    }
     
-    if ([_dict.allValues containsObject:@"Path"])
+    if ([_dict.allKeys containsObject:@"Path"])
     {
         newServer.path = _dict[@"Path"];
     }
-    
-    if ([_dict.allValues containsObject:@"Port"])
+    else
     {
-        newServer.path = _dict[@"Port"];
+        newServer.path = @"";
+    }
+    
+    if ([_dict.allKeys containsObject:@"Port"])
+    {
+        newServer.port = _dict[@"Port"];
+    }
+    else
+    {
+        newServer.port = @"";
     }
     
     return newServer;
@@ -98,6 +110,11 @@
 - (void)     changedServerWithName : (NSString*) _name
 {
     currentSelectServerName = configDict[_name];
+}
+
+- (NSString*)getCurrentHostUrl
+{
+    return [self getCurrentServer].createRequestServerURL;
 }
 
 @end

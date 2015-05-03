@@ -7,8 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "UserEntity.h"
+
+#define XG_CLIENT_ID @"XG_CLIENT_ID"
 
 @interface AppSessionMrg : NSObject
+
+@property (nonatomic, strong) UserEntity *userEntity;
+
 
 + (AppSessionMrg*) shareInstance;
 
