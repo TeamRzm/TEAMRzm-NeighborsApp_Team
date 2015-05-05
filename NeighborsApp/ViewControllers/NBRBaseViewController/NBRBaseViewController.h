@@ -14,6 +14,7 @@
 #import "SBJson.h"
 #import "ASIHTTPRequest.h"
 #import "KVNProgress.h"
+#import "EGOImageView.h"
 
 @interface NBRBaseViewController : UIViewController
 
@@ -31,5 +32,7 @@
 - (void) removeLoadingView;
 
 - (void) setNavgationBarLeftButtonIsDissmissViewController;
+
+- (void) takePhoto;
 
 @end

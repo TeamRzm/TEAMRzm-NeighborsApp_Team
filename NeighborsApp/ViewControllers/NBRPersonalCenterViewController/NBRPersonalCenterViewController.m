@@ -158,7 +158,7 @@
 - (void) gotoUserInfoViewController
 {
     NBRUserInfoViewController *nVC = [[NBRUserInfoViewController alloc] initWithNibName:nil bundle:nil];
-    
+    nVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:nVC animated:YES];
 }
 

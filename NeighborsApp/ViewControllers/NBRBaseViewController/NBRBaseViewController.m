@@ -7,10 +7,12 @@
 //
 
 #import "NBRBaseViewController.h"
+#import "CTAssetsPickerController.h"
 
-@interface NBRBaseViewController ()
+@interface NBRBaseViewController ()<UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,CTAssetsPickerControllerDelegate>
 {
-
+    CTAssetsPickerController *imageSelectPicker;
+    NSMutableArray           *selectImgDatas;
 }
 @end
 
@@ -31,6 +33,43 @@
     [self dismissViewControllerAnimated:YES completion:^{
         
     }];
+}
+
+- (void) takePhoto
+{
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"请选择来源" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"拍照",@"照片库", nil];
+    actionSheet.tag = 0xAAAAAA;
+    [actionSheet showInView:self.view];
+}
+
+- (void) actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    if (actionSheet.tag == 0xAAAAAA)
+    {
+        if (buttonIndex == 0)
+        {
+            UIImagePickerController * picker = [[UIImagePickerController alloc] init];
+            picker.delegate = self;
+            picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+            [self.navigationController presentViewController:picker animated:YES completion:^{
+                
+            }];
+            
+            return ;
+        }
+        else if (buttonIndex == 1)
+        {
+            imageSelectPicker = [[CTAssetsPickerController alloc] init];
+            imageSelectPicker.assetsFilter         = [ALAssetsFilter allAssets];
+            imageSelectPicker.showsCancelButton    = (UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad);
+            imageSelectPicker.delegate             = self;
+            imageSelectPicker.selectedAssets       = [NSMutableArray arrayWithArray:selectImgDatas];
+            
+            [self presentViewController:imageSelectPicker animated:YES completion:nil];
+            
+            return ;
+        }
+    }
 }
 
 - (void) setNavgationBarLeftButtonIsDissmissViewController
@@ -145,6 +184,81 @@
     [KVNProgress dismiss];
     
     return ;
+}
+
+- (BOOL)assetsPickerController:(CTAssetsPickerController *)picker isDefaultAssetsGroup:(ALAssetsGroup *)group
+{
+    return ([[group valueForProperty:ALAssetsGroupPropertyType] integerValue] == ALAssetsGroupSavedPhotos);
+}
+
+- (void)assetsPickerController:(CTAssetsPickerController *)picker didFinishPickingAssets:(NSArray *)assets
+{
+    selectImgDatas = [[NSMutableArray alloc] initWithArray:assets];
+    
+    [imageSelectPicker.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    
+    return ;
+}
+
+- (BOOL)assetsPickerController:(CTAssetsPickerController *)picker shouldEnableAsset:(ALAsset *)asset
+{
+    // Enable video clips if they are at least 5s
+    if ([[asset valueForProperty:ALAssetPropertyType] isEqual:ALAssetTypeVideo])
+    {
+        NSTimeInterval duration = [[asset valueForProperty:ALAssetPropertyDuration] doubleValue];
+        return lround(duration) >= 5;
+    }
+    else
+    {
+        return YES;
+    }
+}
+
+- (BOOL)assetsPickerController:(CTAssetsPickerController *)picker shouldSelectAsset:(ALAsset *)asset
+{
+    if (picker.selectedAssets.count >= 10)
+    {
+        UIAlertView *alertView =
+        [[UIAlertView alloc] initWithTitle:@"Attention"
+                                   message:@"Please select not more than 10 assets"
+                                  delegate:nil
+                         cancelButtonTitle:nil
+                         otherButtonTitles:@"OK", nil];
+        
+        [alertView show];
+    }
+    
+    if (!asset.defaultRepresentation)
+    {
+        UIAlertView *alertView =
+        [[UIAlertView alloc] initWithTitle:@"Attention"
+                                   message:@"Your asset has not yet been downloaded to your device"
+                                  delegate:nil
+                         cancelButtonTitle:nil
+                         otherButtonTitles:@"OK", nil];
+        
+        [alertView show];
+    }
+    
+    return (picker.selectedAssets.count < 10 && asset.defaultRepresentation != nil);
+}
+
+#pragma mark - UIImagePickerControllerDelegate
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    NSString *mediaType = [info objectForKey:UIImagePickerControllerMediaType];
+    
+    if ([mediaType isEqualToString:@"public.image"])
+    {
+        UIImage *originImage = [info objectForKey:UIImagePickerControllerOriginalImage];
+        
+        //        EditImageViewController *edit_vc = [[EditImageViewController alloc] init];
+        //        [edit_vc setSourceImg:originImage];
+        //        [edit_vc setEditImageDelegate:self];
+        //        [picker pushViewController:edit_vc animated:YES];
+    }
+    return;
 }
 
 /*
