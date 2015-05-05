@@ -18,6 +18,11 @@
 
 #define CONFIG_TEST_DATE
 
+#define ITOS(i) ([NSString stringWithFormat:@"%d", i])
+
+#define kNBR_PAGE_SIZE 20
+#define kNBR_PAGE_SIZE_STR @"20"
+
 #define kNBR_TABLEVIEW_CELL_NOIDENTIFIER @"NBR_TABLEVIEW_CELL_NOIDENTIFIER"
 #define kNBR_SCREEN_W [UIScreen mainScreen].bounds.size.width
 #define kNBR_SCREEN_H [UIScreen mainScreen].bounds.size.height

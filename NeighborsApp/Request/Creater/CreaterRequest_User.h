@@ -29,5 +29,8 @@
                                               password : (NSString*) _password
                                                 verify : (NSString*) _verify;
 
+//获取用户信息
++ (ASIHTTPRequest*) CreateUserInfoRequest;
+
 
 @end

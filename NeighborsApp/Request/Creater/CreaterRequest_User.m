@@ -69,4 +69,17 @@
     return request;
 }
 
++ (ASIHTTPRequest*) CreateUserInfoRequest
+{
+    NSDictionary *parmsDict = @{
+                                };
+    
+    ASIHTTPRequest *request = [CreaterRequest_User GetRequestWithMethod:@"/api.user/info.cmd"
+                                                              parmsDict:parmsDict
+                                                          requestMethod:REQUEST_METHOD_POST];
+    request.cachePolicy = ASIDoNotReadFromCacheCachePolicy;
+    
+    return request;
+}
+
 @end

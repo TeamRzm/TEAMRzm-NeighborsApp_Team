@@ -32,6 +32,18 @@
         }
     }
     
+    if ([AppSessionMrg shareInstance].userEntity.token.length > 0)
+    {
+        if (_parmsDict.count == 0)
+        {
+            [requestURL appendFormat:@"?token=%@", [AppSessionMrg shareInstance].userEntity.token];
+        }
+        else
+        {
+            [requestURL appendFormat:@"&token=%@", [AppSessionMrg shareInstance].userEntity.token];
+        }
+    }
+    
     NSString *utf8String = [requestURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
     NSURL *url = [NSURL URLWithString:utf8String];

@@ -7,6 +7,7 @@
 //
 
 #import "NBRPersonalCenterViewController.h"
+#import "NBRUserInfoViewController.h"
 #import "EGOImageView.h"
 
 @interface NBRPersonalCenterViewController ()<UITableViewDataSource, UITableViewDelegate>
@@ -108,6 +109,11 @@
     avterImageView.layer.cornerRadius = 3.0f;
     avterImageView.layer.masksToBounds = YES;
     avterImageView.frame = CGRectMake(10, 79 / 2.0f - 50.0f / 2.0f, 50, 50);
+    avterImageView.userInteractionEnabled = YES;
+    
+    UITapGestureRecognizer *avterImageViewGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(gotoUserInfoViewController)];
+    [avterImageView addGestureRecognizer:avterImageViewGesture];
+    
     [tableViewHeadView addSubview:avterImageView];
     
     //昵称
@@ -147,6 +153,13 @@
     [tableViewHeadView addSubview:breakLineContent4];
     
     boundTableView.tableHeaderView = tableViewHeadView;
+}
+
+- (void) gotoUserInfoViewController
+{
+    NBRUserInfoViewController *nVC = [[NBRUserInfoViewController alloc] initWithNibName:nil bundle:nil];
+    
+    [self.navigationController pushViewController:nVC animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

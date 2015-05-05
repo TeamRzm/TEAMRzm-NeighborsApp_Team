@@ -261,6 +261,11 @@ const NSInteger CommitImageViewWidthCount     = 5;
     boundTableView.tableFooterView = tableViewFootView;
 }
 
+- (void) commentNewContent
+{
+    
+}
+
 - (void) changedCheckBox : (UICheckBox*) sender
 {
     if (sender == checkBox1 && checkBox1.check)

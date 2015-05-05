@@ -64,6 +64,7 @@
 		5B38BA631AF652CE00775F64 /* UIImage+KVNImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B38BA5C1AF652CE00775F64 /* UIImage+KVNImageEffects.m */; };
 		5B38BA641AF652CE00775F64 /* KVNProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B38BA5F1AF652CE00775F64 /* KVNProgress.m */; };
 		5B38BA651AF652CE00775F64 /* KVNProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B38BA611AF652CE00775F64 /* KVNProgressView.xib */; };
+		5B38BA691AF6868900775F64 /* NBRUserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B38BA681AF6868900775F64 /* NBRUserInfoViewController.m */; };
 		5B3FFC521AF3C26C0071D77A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B3FFC511AF3C26C0071D77A /* SystemConfiguration.framework */; };
 		5B3FFC541AF3C27B0071D77A /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B3FFC531AF3C27B0071D77A /* CoreTelephony.framework */; };
 		5B3FFC591AF3C2AD0071D77A /* libXG-SDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B3FFC561AF3C2AD0071D77A /* libXG-SDK.a */; };
@@ -322,6 +323,7 @@
 		5BD83D201AD6216F00D1A3EC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD83D1F1AD6216F00D1A3EC /* UIKit.framework */; };
 		5BD83D221AD6217400D1A3EC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD83D211AD6217400D1A3EC /* Foundation.framework */; };
 		5BD83D231AD6223900D1A3EC /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BD83CBE1AD61F4B00D1A3EC /* SBJsonParser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		5BED3BD71AF8FD0E00AA8001 /* CreaterRequest_Logroll.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BED3BD61AF8FD0E00AA8001 /* CreaterRequest_Logroll.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -442,6 +444,8 @@
 		5B38BA5E1AF652CE00775F64 /* KVNProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KVNProgress.h; sourceTree = "<group>"; };
 		5B38BA5F1AF652CE00775F64 /* KVNProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KVNProgress.m; sourceTree = "<group>"; };
 		5B38BA611AF652CE00775F64 /* KVNProgressView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KVNProgressView.xib; sourceTree = "<group>"; };
+		5B38BA671AF6868900775F64 /* NBRUserInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NBRUserInfoViewController.h; path = ViewControllers/NBRPersonalCenterViewController/NBRUserInfoViewController.h; sourceTree = "<group>"; };
+		5B38BA681AF6868900775F64 /* NBRUserInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NBRUserInfoViewController.m; path = ViewControllers/NBRPersonalCenterViewController/NBRUserInfoViewController.m; sourceTree = "<group>"; };
 		5B3FFC511AF3C26C0071D77A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		5B3FFC531AF3C27B0071D77A /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		5B3FFC561AF3C2AD0071D77A /* libXG-SDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libXG-SDK.a"; sourceTree = "<group>"; };
@@ -801,6 +805,8 @@
 		5BD83D1D1AD6216A00D1A3EC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		5BD83D1F1AD6216F00D1A3EC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5BD83D211AD6217400D1A3EC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		5BED3BD51AF8FD0E00AA8001 /* CreaterRequest_Logroll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreaterRequest_Logroll.h; path = Request/Creater/CreaterRequest_Logroll.h; sourceTree = "<group>"; };
+		5BED3BD61AF8FD0E00AA8001 /* CreaterRequest_Logroll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreaterRequest_Logroll.m; path = Request/Creater/CreaterRequest_Logroll.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -963,6 +969,8 @@
 				5B38BA3D1AF4E00100775F64 /* CreaterRequest_User.m */,
 				5B38BA451AF5028400775F64 /* CreaterRequest_Verify.h */,
 				5B38BA461AF5028400775F64 /* CreaterRequest_Verify.m */,
+				5BED3BD51AF8FD0E00AA8001 /* CreaterRequest_Logroll.h */,
+				5BED3BD61AF8FD0E00AA8001 /* CreaterRequest_Logroll.m */,
 			);
 			name = Creater;
 			sourceTree = "<group>";
@@ -1015,6 +1023,15 @@
 				5B38BA611AF652CE00775F64 /* KVNProgressView.xib */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		5B38BA661AF6864D00775F64 /* Infomation */ = {
+			isa = PBXGroup;
+			children = (
+				5B38BA671AF6868900775F64 /* NBRUserInfoViewController.h */,
+				5B38BA681AF6868900775F64 /* NBRUserInfoViewController.m */,
+			);
+			name = Infomation;
 			sourceTree = "<group>";
 		};
 		5B3FFC551AF3C2AD0071D77A /* XGSDK */ = {
@@ -1639,6 +1656,7 @@
 		5BB6555C1AC31567007E0F85 /* NBRPersonalCenterViewController */ = {
 			isa = PBXGroup;
 			children = (
+				5B38BA661AF6864D00775F64 /* Infomation */,
 				5BB655681AC31727007E0F85 /* NBRPersonalCenterViewController.h */,
 				5BB655691AC31727007E0F85 /* NBRPersonalCenterViewController.m */,
 				5B10A7A71AE8133A0034FA63 /* FeedBack */,
@@ -2266,6 +2284,7 @@
 				5BB655701AC31753007E0F85 /* NBRMyMessageViewController.m in Sources */,
 				5B8B158F1ADC164900AA87A2 /* NBRBaseViewController.m in Sources */,
 				5BD83C8D1AD61EF600D1A3EC /* ASIInputStream.m in Sources */,
+				5BED3BD71AF8FD0E00AA8001 /* CreaterRequest_Logroll.m in Sources */,
 				5BD83C891AD61EF600D1A3EC /* ASIDataDecompressor.m in Sources */,
 				5B38BA631AF652CE00775F64 /* UIImage+KVNImageEffects.m in Sources */,
 				5B332B471AE3A8C0002A0A73 /* XHZoomingImageView.m in Sources */,
@@ -2280,6 +2299,7 @@
 				5BB6556A1AC31727007E0F85 /* NBRPersonalCenterViewController.m in Sources */,
 				5BD83C981AD61EF600D1A3EC /* ASIS3BucketRequest.m in Sources */,
 				5B6D32961ADDFE43009A922A /* TTTAttributedLabel.m in Sources */,
+				5B38BA691AF6868900775F64 /* NBRUserInfoViewController.m in Sources */,
 				5B332B451AE3A8C0002A0A73 /* XHImageViewer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

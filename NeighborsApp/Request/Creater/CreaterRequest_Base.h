@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "RequestServerConfig.h"
 #import "ASIHTTPRequest.h"
+#import "AppSessionMrg.h"
 
 @class NBRBaseViewController;
 

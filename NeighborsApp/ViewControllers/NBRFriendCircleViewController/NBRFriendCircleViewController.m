@@ -15,6 +15,8 @@
 #import "ComentDetailViewController.h"
 #import "ActivityDetailViewController.h"
 
+#import "CreaterRequest_Logroll.h"
+
 @interface NBRFriendCircleViewController ()<UITableViewDataSource,UITableViewDelegate,CommentTableViewCellDelegate,XHImageViewerDelegate>
 {
     UIScrollView    *boundScrollView;
@@ -25,6 +27,11 @@
     UIView *selectTagView;
     
     NSInteger     currentSegmentIndex;
+    
+    NSMutableArray  *boundTableViewDateSource[3];
+    NSInteger       dataIndex[3];
+    
+    ASIHTTPRequest  *listRequest[3];
 }
 @end
 
@@ -56,12 +63,14 @@
     boundScrollView.scrollEnabled = NO;
     boundScrollView.showsHorizontalScrollIndicator = NO;
     boundScrollView.pagingEnabled = YES;
-//    [boundScrollView addObserver:self forKeyPath:@"contentOffset.x" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
     
     segmentChangedView = [[UIView alloc] initWithFrame:CGRectMake(0, 64, kNBR_SCREEN_W, 40.0f)];
     
     for (int i = 0; i < 3; i++)
     {
+        //datesource
+        boundTableViewDateSource[i] = [[NSMutableArray alloc] init];
+        
         //segment
         segmentLabel[i] = [[UILabel alloc] initWithFrame:CGRectMake(i * kNBR_SCREEN_W / 3.0f, 0, kNBR_SCREEN_W / 3.0f, 40.0f)];
         segmentLabel[i].font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME_BLOD size:13.0f];
@@ -101,6 +110,8 @@
     //右上角的发布按钮
     UIBarButtonItem *rightAddItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"tianjia01"] style:UIBarButtonItemStylePlain target:self action:@selector(rightBarbuttonAction:)];
     self.navigationItem.rightBarButtonItem = rightAddItem;
+    
+    [self requestList0];
 }
 
 - (void) rightBarbuttonAction : (id) sender
@@ -285,6 +296,30 @@
 {
     
     return ;
+}
+
+#pragma mark Request
+- (void) requestList0
+{
+    listRequest[0] = [CreaterRequest_Logroll CreateLogrollRequestWithIndex:ITOS(dataIndex[0]) size:kNBR_PAGE_SIZE_STR accepted:@"-1" isMy:@"0"];
+    
+    __weak ASIHTTPRequest *blockRequest = listRequest[0];
+    
+    [blockRequest setCompletionBlock:^{
+        [self removeLoadingView];
+        NSDictionary *responseDict = [blockRequest.responseString JSONValue];
+        
+        if ([CreaterRequest_Logroll CheckErrorResponse:responseDict errorAlertInViewController:self])
+        {
+            return ;
+        }
+    }];
+    
+    [self setDefaultRequestFaild:blockRequest];
+    
+    [blockRequest startAsynchronous];
+    [self addLoadingView];
+    
 }
 
 
