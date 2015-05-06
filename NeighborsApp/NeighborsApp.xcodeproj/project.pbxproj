@@ -324,6 +324,8 @@
 		5BD83D221AD6217400D1A3EC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD83D211AD6217400D1A3EC /* Foundation.framework */; };
 		5BD83D231AD6223900D1A3EC /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BD83CBE1AD61F4B00D1A3EC /* SBJsonParser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		5BED3BD71AF8FD0E00AA8001 /* CreaterRequest_Logroll.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BED3BD61AF8FD0E00AA8001 /* CreaterRequest_Logroll.m */; };
+		5BED3BDB1AFA4EC300AA8001 /* FileUpLoadHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BED3BDA1AFA4EC300AA8001 /* FileUpLoadHelper.m */; };
+		5BED3BDE1AFA66B100AA8001 /* CreaterRequest_File.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BED3BDD1AFA66B100AA8001 /* CreaterRequest_File.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -807,6 +809,10 @@
 		5BD83D211AD6217400D1A3EC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5BED3BD51AF8FD0E00AA8001 /* CreaterRequest_Logroll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreaterRequest_Logroll.h; path = Request/Creater/CreaterRequest_Logroll.h; sourceTree = "<group>"; };
 		5BED3BD61AF8FD0E00AA8001 /* CreaterRequest_Logroll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreaterRequest_Logroll.m; path = Request/Creater/CreaterRequest_Logroll.m; sourceTree = "<group>"; };
+		5BED3BD91AFA4EC300AA8001 /* FileUpLoadHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileUpLoadHelper.h; path = Other/FileUpLoadHelper.h; sourceTree = "<group>"; };
+		5BED3BDA1AFA4EC300AA8001 /* FileUpLoadHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FileUpLoadHelper.m; path = Other/FileUpLoadHelper.m; sourceTree = "<group>"; };
+		5BED3BDC1AFA66B100AA8001 /* CreaterRequest_File.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreaterRequest_File.h; path = Request/Creater/CreaterRequest_File.h; sourceTree = "<group>"; };
+		5BED3BDD1AFA66B100AA8001 /* CreaterRequest_File.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreaterRequest_File.m; path = Request/Creater/CreaterRequest_File.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -971,6 +977,8 @@
 				5B38BA461AF5028400775F64 /* CreaterRequest_Verify.m */,
 				5BED3BD51AF8FD0E00AA8001 /* CreaterRequest_Logroll.h */,
 				5BED3BD61AF8FD0E00AA8001 /* CreaterRequest_Logroll.m */,
+				5BED3BDC1AFA66B100AA8001 /* CreaterRequest_File.h */,
+				5BED3BDD1AFA66B100AA8001 /* CreaterRequest_File.m */,
 			);
 			name = Creater;
 			sourceTree = "<group>";
@@ -1056,6 +1064,8 @@
 				5B38BA491AF5D4D700775F64 /* NSString+MD5.m */,
 				5B38BA4C1AF5DECF00775F64 /* NSString+base64.h */,
 				5B38BA4D1AF5DECF00775F64 /* NSString+base64.m */,
+				5BED3BD91AFA4EC300AA8001 /* FileUpLoadHelper.h */,
+				5BED3BDA1AFA4EC300AA8001 /* FileUpLoadHelper.m */,
 			);
 			name = Other;
 			sourceTree = "<group>";
@@ -2172,6 +2182,7 @@
 			files = (
 				5B6D31581ADCDFF6009A922A /* NBRRegViewController.m in Sources */,
 				5B332AC71AE26294002A0A73 /* CommitNewContentViewController.m in Sources */,
+				5BED3BDB1AFA4EC300AA8001 /* FileUpLoadHelper.m in Sources */,
 				5B955BEF1ADFE1EE00E8B335 /* FriendCircleContentEntity.m in Sources */,
 				5BD83D231AD6223900D1A3EC /* SBJsonParser.m in Sources */,
 				5B8B15A01ADC17CB00AA87A2 /* EGOCache.m in Sources */,
@@ -2290,6 +2301,7 @@
 				5B332B471AE3A8C0002A0A73 /* XHZoomingImageView.m in Sources */,
 				5BD83CDF1AD61F4B00D1A3EC /* NSObject+SBJSON.m in Sources */,
 				5B332B011AE2F647002A0A73 /* CTAssetsViewController.m in Sources */,
+				5BED3BDE1AFA66B100AA8001 /* CreaterRequest_File.m in Sources */,
 				5BD83C991AD61EF600D1A3EC /* ASIS3ObjectRequest.m in Sources */,
 				5B10A7AA1AE813630034FA63 /* FeedBackViewController.m in Sources */,
 				5B6D318F1ADD1BE4009A922A /* MessageEntity.m in Sources */,

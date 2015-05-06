@@ -11,6 +11,7 @@
 #import "UICheckBox.h"
 #import "CTAssetsPickerController.h"
 #import "XHImageViewer.h"
+#import "FileUpLoadHelper.h"
 
 const CGFloat   CommitImageViewHeightAndWidth = 62.8;
 const NSInteger CommitImageViewWidthCount     = 5;
@@ -263,7 +264,7 @@ const NSInteger CommitImageViewWidthCount     = 5;
 
 - (void) commentNewContent
 {
-    
+
 }
 
 - (void) changedCheckBox : (UICheckBox*) sender

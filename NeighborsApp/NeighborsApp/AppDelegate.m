@@ -11,6 +11,8 @@
 #import "XGSetting.h"
 #import "AppSessionMrg.h"
 
+#import "FileUpLoadHelper.h"
+
 #define _IPHONE80_ 80000
 
 @interface AppDelegate ()
