@@ -29,8 +29,20 @@
                                               password : (NSString*) _password
                                                 verify : (NSString*) _verify;
 
+//修改密码
++ (ASIHTTPRequest*) CreateUpdatePwdRequestWithOpwd : (NSString*) _opwd
+                                          password : (NSString*) _password
+                                            verify : (NSString*) _verify;
+
 //获取用户信息
 + (ASIHTTPRequest*) CreateUserInfoRequest;
 
+//更新用户信息
++ (ASIHTTPRequest*) CreateUpdateRequestWithPhone : (NSString*) _phone
+                                             sex : (NSString*) _sex
+                                        nickName : (NSString*) _nickName
+                                          avatar : (NSString*) _avatar
+                                       signature : (NSString*) _signature
+                                           habit : (NSString*) _habit;
 
 @end

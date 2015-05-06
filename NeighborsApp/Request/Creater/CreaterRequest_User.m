@@ -82,4 +82,46 @@
     return request;
 }
 
++ (ASIHTTPRequest*) CreateUpdatePwdRequestWithOpwd : (NSString*) _opwd
+                                          password : (NSString*) _password
+                                            verify : (NSString*) _verify
+{
+    NSDictionary *parmsDict = @{
+                                @"opwd"     : _opwd,
+                                @"password" : _password,
+                                @"verify"   : _verify,
+                                };
+    
+    ASIHTTPRequest *request = [CreaterRequest_User GetRequestWithMethod:@"/api.user/updatePwd.cmd"
+                                                              parmsDict:parmsDict
+                                                          requestMethod:REQUEST_METHOD_POST];
+    request.cachePolicy = ASIDoNotReadFromCacheCachePolicy;
+    
+    return request;
+}
+
+//更新用户信息
++ (ASIHTTPRequest*) CreateUpdateRequestWithPhone : (NSString*) _phone
+                                             sex : (NSString*) _sex
+                                        nickName : (NSString*) _nickName
+                                          avatar : (NSString*) _avatar
+                                       signature : (NSString*) _signature
+                                           habit : (NSString*) _habit
+{
+    NSDictionary *parmsDict = @{
+                                @"phone"       : _phone,
+                                @"sex"         : _sex,
+                                @"nickName"    : _nickName,
+                                @"avatar"      : _avatar,
+                                @"signature"   : _signature,
+                                @"habit"       : _habit,
+                                };
+    
+    ASIHTTPRequest *request = [CreaterRequest_User GetRequestWithMethod:@"/api.user/update.cmd"
+                                                              parmsDict:parmsDict
+                                                          requestMethod:REQUEST_METHOD_POST];
+    request.cachePolicy = ASIDoNotReadFromCacheCachePolicy;
+    
+    return request;
+}
 @end

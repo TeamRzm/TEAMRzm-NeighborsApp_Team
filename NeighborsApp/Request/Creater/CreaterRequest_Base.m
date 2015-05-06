@@ -66,6 +66,7 @@
         case REQUEST_METHOD_POST:
         {
             [request setRequestMethod:@"POST"];
+            [request setCachePolicy:ASIDoNotReadFromCacheCachePolicy];
         }
             break;
             

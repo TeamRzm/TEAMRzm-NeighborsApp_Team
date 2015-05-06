@@ -326,6 +326,11 @@
 		5BED3BD71AF8FD0E00AA8001 /* CreaterRequest_Logroll.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BED3BD61AF8FD0E00AA8001 /* CreaterRequest_Logroll.m */; };
 		5BED3BDB1AFA4EC300AA8001 /* FileUpLoadHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BED3BDA1AFA4EC300AA8001 /* FileUpLoadHelper.m */; };
 		5BED3BDE1AFA66B100AA8001 /* CreaterRequest_File.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BED3BDD1AFA66B100AA8001 /* CreaterRequest_File.m */; };
+		5BED3BE11AFA870900AA8001 /* CreaterRequest_Village.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BED3BE01AFA870900AA8001 /* CreaterRequest_Village.m */; };
+		5BED3BE41AFA886500AA8001 /* CreaterRequest_Region.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BED3BE31AFA886500AA8001 /* CreaterRequest_Region.m */; };
+		5BED3BE71AFA8C3D00AA8001 /* CreaterRequest_Notice.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BED3BE61AFA8C3D00AA8001 /* CreaterRequest_Notice.m */; };
+		5BED3BEA1AFA8EFB00AA8001 /* CreaterRequest_Conv.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BED3BE91AFA8EFB00AA8001 /* CreaterRequest_Conv.m */; };
+		5BED3BED1AFA8FA500AA8001 /* CreaterRequest_Activity.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BED3BEC1AFA8FA500AA8001 /* CreaterRequest_Activity.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -813,6 +818,16 @@
 		5BED3BDA1AFA4EC300AA8001 /* FileUpLoadHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FileUpLoadHelper.m; path = Other/FileUpLoadHelper.m; sourceTree = "<group>"; };
 		5BED3BDC1AFA66B100AA8001 /* CreaterRequest_File.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreaterRequest_File.h; path = Request/Creater/CreaterRequest_File.h; sourceTree = "<group>"; };
 		5BED3BDD1AFA66B100AA8001 /* CreaterRequest_File.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreaterRequest_File.m; path = Request/Creater/CreaterRequest_File.m; sourceTree = "<group>"; };
+		5BED3BDF1AFA870900AA8001 /* CreaterRequest_Village.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreaterRequest_Village.h; path = Request/Creater/CreaterRequest_Village.h; sourceTree = "<group>"; };
+		5BED3BE01AFA870900AA8001 /* CreaterRequest_Village.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreaterRequest_Village.m; path = Request/Creater/CreaterRequest_Village.m; sourceTree = "<group>"; };
+		5BED3BE21AFA886500AA8001 /* CreaterRequest_Region.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreaterRequest_Region.h; path = Request/Creater/CreaterRequest_Region.h; sourceTree = "<group>"; };
+		5BED3BE31AFA886500AA8001 /* CreaterRequest_Region.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreaterRequest_Region.m; path = Request/Creater/CreaterRequest_Region.m; sourceTree = "<group>"; };
+		5BED3BE51AFA8C3D00AA8001 /* CreaterRequest_Notice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreaterRequest_Notice.h; path = Request/Creater/CreaterRequest_Notice.h; sourceTree = "<group>"; };
+		5BED3BE61AFA8C3D00AA8001 /* CreaterRequest_Notice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreaterRequest_Notice.m; path = Request/Creater/CreaterRequest_Notice.m; sourceTree = "<group>"; };
+		5BED3BE81AFA8EFB00AA8001 /* CreaterRequest_Conv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreaterRequest_Conv.h; path = Request/Creater/CreaterRequest_Conv.h; sourceTree = "<group>"; };
+		5BED3BE91AFA8EFB00AA8001 /* CreaterRequest_Conv.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreaterRequest_Conv.m; path = Request/Creater/CreaterRequest_Conv.m; sourceTree = "<group>"; };
+		5BED3BEB1AFA8FA500AA8001 /* CreaterRequest_Activity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreaterRequest_Activity.h; path = Request/Creater/CreaterRequest_Activity.h; sourceTree = "<group>"; };
+		5BED3BEC1AFA8FA500AA8001 /* CreaterRequest_Activity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreaterRequest_Activity.m; path = Request/Creater/CreaterRequest_Activity.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -979,6 +994,16 @@
 				5BED3BD61AF8FD0E00AA8001 /* CreaterRequest_Logroll.m */,
 				5BED3BDC1AFA66B100AA8001 /* CreaterRequest_File.h */,
 				5BED3BDD1AFA66B100AA8001 /* CreaterRequest_File.m */,
+				5BED3BDF1AFA870900AA8001 /* CreaterRequest_Village.h */,
+				5BED3BE01AFA870900AA8001 /* CreaterRequest_Village.m */,
+				5BED3BE21AFA886500AA8001 /* CreaterRequest_Region.h */,
+				5BED3BE31AFA886500AA8001 /* CreaterRequest_Region.m */,
+				5BED3BE51AFA8C3D00AA8001 /* CreaterRequest_Notice.h */,
+				5BED3BE61AFA8C3D00AA8001 /* CreaterRequest_Notice.m */,
+				5BED3BE81AFA8EFB00AA8001 /* CreaterRequest_Conv.h */,
+				5BED3BE91AFA8EFB00AA8001 /* CreaterRequest_Conv.m */,
+				5BED3BEB1AFA8FA500AA8001 /* CreaterRequest_Activity.h */,
+				5BED3BEC1AFA8FA500AA8001 /* CreaterRequest_Activity.m */,
 			);
 			name = Creater;
 			sourceTree = "<group>";
@@ -2214,6 +2239,7 @@
 				5B1500E71AE415370033CEA2 /* SubCommentTableViewCell.m in Sources */,
 				5B332B021AE2F647002A0A73 /* CTAssetsViewControllerTransition.m in Sources */,
 				5B8B15A31ADC17CB00AA87A2 /* EGOImageLoader.m in Sources */,
+				5BED3BE71AFA8C3D00AA8001 /* CreaterRequest_Notice.m in Sources */,
 				5BD83C8E1AD61EF600D1A3EC /* ASINetworkQueue.m in Sources */,
 				5BB655731AC31768007E0F85 /* NBRFriendCircleViewController.m in Sources */,
 				5B6D32951ADDFE43009A922A /* MLEmojiLabel.m in Sources */,
@@ -2226,7 +2252,9 @@
 				5B6D31921ADD1C4A009A922A /* IMUserEntity.m in Sources */,
 				5B4ADE0C1ADE305300810165 /* NSString+ContverHtml.m in Sources */,
 				5BB8297B1AE5748B00877995 /* CommentEntity.m in Sources */,
+				5BED3BE41AFA886500AA8001 /* CreaterRequest_Region.m in Sources */,
 				5BD83C9B1AD61EF600D1A3EC /* ASIS3ServiceRequest.m in Sources */,
+				5BED3BED1AFA8FA500AA8001 /* CreaterRequest_Activity.m in Sources */,
 				5B6D31861ADCE822009A922A /* UIView+Toast.m in Sources */,
 				5B38BA641AF652CE00775F64 /* KVNProgress.m in Sources */,
 				5B38BA521AF61B1D00775F64 /* UserEntity.m in Sources */,
@@ -2277,6 +2305,7 @@
 				5B6D318C1ADD1BC4009A922A /* ConversationEntity.m in Sources */,
 				5B332B461AE3A8C0002A0A73 /* XHViewState.m in Sources */,
 				5BD83C941AD61EF600D1A3EC /* ASICloudFilesObjectRequest.m in Sources */,
+				5BED3BE11AFA870900AA8001 /* CreaterRequest_Village.m in Sources */,
 				5B8B15A41ADC17CB00AA87A2 /* EGOImageView.m in Sources */,
 				5B8B15A21ADC17CB00AA87A2 /* EGOImageLoadConnection.m in Sources */,
 				5B10A7AD1AE81B820034FA63 /* IndividualitySettingViewController.m in Sources */,
@@ -2286,6 +2315,7 @@
 				5BCB05A01AF12280004F9F93 /* RequestServerConfig.m in Sources */,
 				5BD83C8F1AD61EF600D1A3EC /* ASICloudFilesCDNRequest.m in Sources */,
 				5B332ACA1AE268D6002A0A73 /* UITextView+Placeholder.m in Sources */,
+				5BED3BEA1AFA8EFB00AA8001 /* CreaterRequest_Conv.m in Sources */,
 				5BD83CEA1AD61F4B00D1A3EC /* SBJsonUTF8Stream.m in Sources */,
 				5BD83CE31AD61F4B00D1A3EC /* SBJsonStreamParserAccumulator.m in Sources */,
 				5BD83C911AD61EF600D1A3EC /* ASICloudFilesContainerRequest.m in Sources */,
