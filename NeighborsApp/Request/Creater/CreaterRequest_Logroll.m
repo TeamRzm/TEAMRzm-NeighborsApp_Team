@@ -32,7 +32,6 @@
 + (ASIHTTPRequest*) CreateLogrollCommitRequestWithTitle : (NSString*) _title
                                                    info : (NSString*) _info
                                                   files : (NSArray*)  _files
-                                             imageDatas : (NSArray*)  _imageDatas
                                                     tag : (NSString*) _tag
 {
     NSMutableString *filesString = [[NSMutableString alloc] init];
@@ -42,7 +41,12 @@
         [filesString appendFormat:@"%@,", subString];
     }
     
-    NSString *resultFiels = [filesString substringToIndex:filesString.length - 1];
+    NSString *resultFiels = @"";
+    
+    if (filesString.length > 0)
+    {
+        resultFiels = [filesString substringToIndex:filesString.length - 1];
+    }
     
     NSDictionary *parmsDict = @{
                                 @"title"    : _title,
@@ -51,9 +55,9 @@
                                 @"tag"      : _tag,
                                 };
     
-    ASIHTTPRequest *request = [CreaterRequest_Logroll GetRequestWithMethod:@"/api.logroll/list.cmd"
+    ASIHTTPRequest *request = [CreaterRequest_Logroll GetRequestWithMethod:@"/api.logroll/post.cmd"
                                                                  parmsDict:parmsDict
-                                                             requestMethod:REQUEST_METHOD_GET];
+                                                             requestMethod:REQUEST_METHOD_POST];
     
     return request;
 }

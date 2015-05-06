@@ -12,11 +12,12 @@
 #import "CTAssetsPickerController.h"
 #import "XHImageViewer.h"
 #import "FileUpLoadHelper.h"
+#import "CreaterRequest_Logroll.h"
 
 const CGFloat   CommitImageViewHeightAndWidth = 62.8;
 const NSInteger CommitImageViewWidthCount     = 5;
 
-@interface CommitNewContentViewController () <UITableViewDataSource,UITableViewDelegate,UIActionSheetDelegate,CTAssetsPickerControllerDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate,XHImageViewerDelegate>
+@interface CommitNewContentViewController () <UITableViewDataSource,UITableViewDelegate,UIActionSheetDelegate,CTAssetsPickerControllerDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate,XHImageViewerDelegate,FileUpLoadHelperDelegate>
 {
     UITableView *boundTableView;
     
@@ -37,7 +38,12 @@ const NSInteger CommitImageViewWidthCount     = 5;
     
     
     UILongPressGestureRecognizer            *currLongPressGesture;
+    
+    
+    FileUpLoadHelper *uploadHelper;
+    ASIHTTPRequest *commentUploadRequest;
 }
+
 @end
 
 @implementation CommitNewContentViewController
@@ -256,6 +262,7 @@ const NSInteger CommitImageViewWidthCount     = 5;
     commitButton.layer.masksToBounds = YES;
     commitButton.titleLabel.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME_BLOD size:15.0f];
     [commitButton setTitle:@"确认发布" forState:UIControlStateNormal];
+    [commitButton addTarget:self action:@selector(commentNewContent) forControlEvents:UIControlEventTouchUpInside];
     [tableViewFootView addSubview:commitButton];
     
     
@@ -264,7 +271,74 @@ const NSInteger CommitImageViewWidthCount     = 5;
 
 - (void) commentNewContent
 {
+    uploadHelper = [[FileUpLoadHelper alloc] init];
+    uploadHelper.delegate = self;
+    
+    for (int i = 0; i < selectImgDatas.count; i++)
+    {
+        ALAsset *subAsset = selectImgDatas[i];
+        
+        UIImage *image;
+        
+        if (subAsset.defaultRepresentation)
+        {
+            image = [UIImage imageWithCGImage:subAsset.defaultRepresentation.fullScreenImage
+                                        scale:1.0f
+                                  orientation:UIImageOrientationUp];
+        }
+        
+        [uploadHelper addUploadImage:image];
+    }
+    
+    [self addLoadingView];
+    [uploadHelper startUpload];
+}
 
+#pragma mark UploadDelegate
+- (void) fileUpLoadHelper : (FileUpLoadHelper*) _helper downloadedIndex : (NSInteger) _index downloadTotal : (NSInteger) _total
+{
+    return ;
+}
+
+- (void) fileUpLoadHelper : (FileUpLoadHelper*) _helper allDownloadedResponseDictArr : (NSArray*) _dictArr
+{
+    NSMutableArray *filesArr = [[NSMutableArray alloc] init];
+    
+    for (NSDictionary *subDict in _dictArr)
+    {
+        [filesArr addObject:subDict[@"fileId"]];
+    }
+    
+    commentUploadRequest = [CreaterRequest_Logroll CreateLogrollCommitRequestWithTitle:@"NoTitle" info:commentInpuTextView.text files:filesArr tag:@"0"];
+    
+    __weak ASIHTTPRequest *blockRequest = commentUploadRequest;
+    
+    [blockRequest setCompletionBlock:^{
+        
+        [self removeLoadingView];
+        
+        NSDictionary *responseDict = [blockRequest.responseString JSONValue];
+        
+        if ([CreaterRequest_Logroll CheckErrorResponse:responseDict errorAlertInViewController:self])
+        {
+            [self showBannerMsgWithString:responseDict[@"data"][@"result"][@"message"]];
+            return ;
+        }
+        
+        return ;
+    }];
+    
+    [self setDefaultRequestFaild:commentUploadRequest];
+    
+    [commentUploadRequest startAsynchronous];
+    
+    return ;
+}
+
+- (void) fileUpLoadHelper : (FileUpLoadHelper*) _helper downloadedFialdWithIndex : (NSInteger) _index
+{
+    [self removeLoadingView];
+    return ;
 }
 
 - (void) changedCheckBox : (UICheckBox*) sender

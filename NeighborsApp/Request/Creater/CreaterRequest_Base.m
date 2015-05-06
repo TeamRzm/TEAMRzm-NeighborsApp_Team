@@ -36,11 +36,11 @@
     {
         if (_parmsDict.count == 0)
         {
-            [requestURL appendFormat:@"?token=%@", [AppSessionMrg shareInstance].userEntity.token];
+            [requestURL appendFormat:@"?token=%@&imei=", [AppSessionMrg shareInstance].userEntity.token];
         }
         else
         {
-            [requestURL appendFormat:@"&token=%@", [AppSessionMrg shareInstance].userEntity.token];
+            [requestURL appendFormat:@"&token=%@&imei=", [AppSessionMrg shareInstance].userEntity.token];
         }
     }
     

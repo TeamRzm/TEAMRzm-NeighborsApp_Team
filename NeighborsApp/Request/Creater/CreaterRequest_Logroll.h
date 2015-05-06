@@ -20,7 +20,6 @@
 + (ASIHTTPRequest*) CreateLogrollCommitRequestWithTitle : (NSString*) _title
                                                    info : (NSString*) _info
                                                   files : (NSArray*)  _files
-                                             imageDatas : (NSArray*)  _imageDatas
                                                     tag : (NSString*) _tag;
 
 @end

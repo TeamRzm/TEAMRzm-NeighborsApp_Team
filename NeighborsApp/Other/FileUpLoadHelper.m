@@ -69,9 +69,9 @@
     {
         [subRequest clearDelegatesAndCancel];
         
-        if (self.faildBlock)
+        if (self.delegate && [self.delegate respondsToSelector:@selector(fileUpLoadHelper:downloadedFialdWithIndex:)])
         {
-            self.faildBlock(self, updaloadRequests.count, currentUploadIndex);
+            [self.delegate fileUpLoadHelper:self downloadedFialdWithIndex:currentUploadIndex];
         }
     }
 }
@@ -137,9 +137,9 @@
         {
             [self stopUpload];
             
-            if (self.faildBlock)
+            if (self.delegate && [self.delegate respondsToSelector:@selector(fileUpLoadHelper:downloadedFialdWithIndex:)])
             {
-                self.faildBlock(blockSelf, updaloadRequests.count, currentUploadIndex);
+                
             }
         }
         else
@@ -160,9 +160,9 @@
                 {
                     [self stopUpload];
                     
-                    if (self.faildBlock)
+                    if (self.delegate && [self.delegate respondsToSelector:@selector(fileUpLoadHelper:downloadedFialdWithIndex:)])
                     {
-                        self.faildBlock(blockSelf, updaloadRequests.count, currentUploadIndex);
+                        [self.delegate fileUpLoadHelper:self downloadedFialdWithIndex:currentUploadIndex];
                     }
                     
                     return ;
@@ -173,9 +173,9 @@
                                            @"fileId"    : saveInfoRequestResponseDict[@"data"][@"result"][@"fileId"]
                                            }];
                 
-                if (self.everUploadedBlock)
+                if (self.delegate && [self.delegate respondsToSelector:@selector(fileUpLoadHelper:downloadedIndex:downloadTotal:)])
                 {
-                    self.everUploadedBlock(blockSelf, updaloadRequests.count, currentUploadIndex);
+                    [self.delegate fileUpLoadHelper:self downloadedIndex:currentUploadIndex downloadTotal:updaloadRequests.count];
                 }
                 
                 [self nextUploadRequest];
@@ -184,9 +184,9 @@
             [saveInfoRequest setFailedBlock:^{
                 [self stopUpload];
                 
-                if (self.faildBlock)
+                if (self.delegate && [self.delegate respondsToSelector:@selector(fileUpLoadHelper:downloadedFialdWithIndex:)])
                 {
-                    self.faildBlock(blockSelf, updaloadRequests.count, currentUploadIndex);
+                    [self.delegate fileUpLoadHelper:self downloadedFialdWithIndex:currentUploadIndex];
                 }
             }];
             
@@ -197,9 +197,9 @@
     [dataUploadRequest setFailedBlock:^{
         [self stopUpload];
         
-        if (self.faildBlock)
+        if (self.delegate && [self.delegate respondsToSelector:@selector(fileUpLoadHelper:downloadedFialdWithIndex:)])
         {
-            self.faildBlock(blockSelf, updaloadRequests.count, currentUploadIndex);
+            [self.delegate fileUpLoadHelper:self downloadedFialdWithIndex:currentUploadIndex];
         }
     }];
     
@@ -212,9 +212,9 @@
     
     if (currentUploadIndex >= updaloadRequests.count)
     {
-        if (self.allUploadedBlock)
+        if (self.delegate && [self.delegate respondsToSelector:@selector(fileUpLoadHelper:allDownloadedResponseDictArr:)])
         {
-            self.allUploadedBlock(self, updaloadRequests.count, currentUploadIndex, resultDictArr);
+            [self.delegate fileUpLoadHelper:self allDownloadedResponseDictArr:resultDictArr];
         }
         return ;
     }

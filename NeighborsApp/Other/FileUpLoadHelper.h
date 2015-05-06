@@ -11,24 +11,20 @@
 
 @class FileUpLoadHelper;
 
-typedef void (^FileUploadHelperBlock)(FileUpLoadHelper *helper, int sum, int curIndex);
-typedef void (^FileUploadHelperAllFinishedBlock)(FileUpLoadHelper *helper, int sum, int curIndex, NSArray *responseDict);
+@protocol FileUpLoadHelperDelegate <NSObject>
+
+//单个图片下载完成
+- (void) fileUpLoadHelper : (FileUpLoadHelper*) _helper downloadedIndex : (NSInteger) _index downloadTotal : (NSInteger) _total;
+
+- (void) fileUpLoadHelper : (FileUpLoadHelper*) _helper allDownloadedResponseDictArr : (NSArray*) _dictArr;
+
+- (void) fileUpLoadHelper : (FileUpLoadHelper*) _helper downloadedFialdWithIndex : (NSInteger) _index;
+
+@end
 
 @interface FileUpLoadHelper : CreaterRequest_Base
 
-//每一个文件上传成功时调用
-@property (nonatomic, assign) FileUploadHelperBlock everUploadedBlock;
-
-//全部上传成功时候调用
-@property (nonatomic, assign) FileUploadHelperAllFinishedBlock allUploadedBlock;
-
-//出现错误
-@property (nonatomic, assign) FileUploadHelperBlock faildBlock;
-
-
-- (void) setAllUploadedBlock:(FileUploadHelperAllFinishedBlock)allUploadedBlock;
-- (void) setEverUploadedBlock:(FileUploadHelperBlock)everUploadedBlock;
-- (void) setFaildBlock:(FileUploadHelperBlock)faildBlock;
+@property (nonatomic, assign) id<FileUpLoadHelperDelegate> delegate;
 
 - (void) addUploadImage : (UIImage*) _image;
 
