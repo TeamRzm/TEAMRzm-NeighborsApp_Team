@@ -321,7 +321,7 @@ const NSInteger CommitImageViewWidthCount     = 5;
         
         if ([CreaterRequest_Logroll CheckErrorResponse:responseDict errorAlertInViewController:self])
         {
-            [self showBannerMsgWithString:responseDict[@"data"][@"code"][@"message"]];
+            [self showBannerMsgWithString:[responseDict stringWithKeyPath:@"data\\code\\message"]];
             
             [self.navigationController popViewControllerAnimated:YES];
             

@@ -13,6 +13,7 @@
 #import "NSString+MD5.h"
 #import "NSString+XHMD5.h"
 #import "AppSessionMrg.h"
+#import "NSDictionary+SafeObject.h"
 #endif
 
 

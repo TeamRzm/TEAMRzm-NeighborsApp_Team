@@ -8,9 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-@interface SafeNSDictionary : NSDictionary
+@interface NSDictionary(SafePath)
 
-- (id) objectForKey:(id)aKey;
-- (id) valueForKey:(NSString *)key;
+- (NSDictionary*) dictWithKeyPath : (NSString*) _keyPath;
+
+- (NSString*) stringWithKeyPath : (NSString*) _keyPath;
+
+- (NSInteger) numberWithKeyPath : (NSString*) _keyPath;
 
 @end

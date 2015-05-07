@@ -162,11 +162,11 @@
         
         if ([CreaterRequest_User CheckErrorResponse:responseDict errorAlertInViewController:self])
         {
-            UserEntity *userEntity = [[UserEntity alloc] initWithDict:responseDict[@"data"][@"result"]];
+            UserEntity *userEntity = [[UserEntity alloc] initWithDict:[responseDict dictWithKeyPath:@"data\\result"]];
             
             [AppSessionMrg shareInstance].userEntity = userEntity;
             
-            [self showBannerMsgWithString:responseDict[@"data"][@"code"][@"message"]];
+            [self showBannerMsgWithString:[responseDict stringWithKeyPath:@"data\\code\\message"]];
             
             [self.navigationController dismissViewControllerAnimated:YES completion:^{
                 

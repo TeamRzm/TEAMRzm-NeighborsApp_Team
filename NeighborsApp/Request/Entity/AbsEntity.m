@@ -53,7 +53,12 @@
         
         NSString *ivarName = [[NSString stringWithUTF8String:ivar_getName(subIvar)] substringFromIndex:1];
         
-        resultDict[ivarName] = object_getIvar(self, subIvar);
+        id objectIvar = object_getIvar(self, subIvar);
+        
+        if (objectIvar)
+        {
+            resultDict[ivarName] = object_getIvar(self, subIvar);
+        }
     }
     
     return resultDict;

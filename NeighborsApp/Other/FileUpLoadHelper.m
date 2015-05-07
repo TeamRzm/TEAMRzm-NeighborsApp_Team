@@ -133,7 +133,7 @@
         
         NSDictionary *responseDict = [blockRequest.responseString JSONValue];
         
-        if ( ((NSNumber*)responseDict[@"data"][@"code"][@"state"]).integerValue !=0 )
+        if ( [responseDict numberWithKeyPath:@"data\\code\\state"] !=0 )
         {
             [self stopUpload];
             
@@ -144,8 +144,8 @@
         }
         else
         {
-            NSString *sizeString = ITOS(((NSNumber*)responseDict[@"data"][@"result"][@"fileSize"]).integerValue);
-            NSString *typeString = ITOS(((NSNumber*)responseDict[@"data"][@"result"][@"type"]).integerValue);
+            NSString *sizeString = ITOS([responseDict numberWithKeyPath:@"data\\result\\fileSize"]);
+            NSString *typeString = ITOS([responseDict numberWithKeyPath:@"data\\result\\type"]);
             
             __weak ASIHTTPRequest *saveInfoRequest = [CreaterRequest_File CreateSaveFileInfoRequestWithURL:responseDict[@"data"][@"result"][@"url"]
                                                                                                 len:sizeString
@@ -155,8 +155,8 @@
             [saveInfoRequest setCompletionBlock:^{
                 
                 NSDictionary *saveInfoRequestResponseDict = [saveInfoRequest.responseString JSONValue];
-                
-                if ( ((NSNumber*)saveInfoRequestResponseDict[@"data"][@"code"][@"state"]).integerValue !=0 )
+
+                if ( [saveInfoRequestResponseDict stringWithKeyPath:@"data\\code\\state"] !=0 )
                 {
                     [self stopUpload];
                     
@@ -169,8 +169,8 @@
                 }
                 
                 [resultDictArr addObject:@{
-                                           @"url"       : saveInfoRequestResponseDict[@"data"][@"result"][@"url"],
-                                           @"fileId"    : saveInfoRequestResponseDict[@"data"][@"result"][@"fileId"]
+                                           @"url"       : [saveInfoRequestResponseDict stringWithKeyPath:@"data\\result\\url"],
+                                           @"fileId"    : [saveInfoRequestResponseDict stringWithKeyPath:@"data\\result\\fileId"],
                                            }];
                 
                 if (self.delegate && [self.delegate respondsToSelector:@selector(fileUpLoadHelper:downloadedIndex:downloadTotal:)])
