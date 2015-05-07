@@ -62,6 +62,9 @@
 {
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:_url];
     
+    [request setCachePolicy:ASIAskServerIfModifiedCachePolicy];
+    [request setTimeOutSeconds:25];
+    
     switch (_method)
     {
         case REQUEST_METHOD_GET:
@@ -83,8 +86,6 @@
         }
             break;
     }
-    [request setCachePolicy:ASIAskServerIfModifiedCachePolicy];
-    [request setTimeOutSeconds:25];
     
     return request;
 }

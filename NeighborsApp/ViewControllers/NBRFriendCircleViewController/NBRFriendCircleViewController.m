@@ -253,15 +253,14 @@
     {
         return boundTableViewDateSource[2].count;
     }
-    
+
     return 0;
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
-    return 0.1f;
+    return .1f;
 }
-
 
 - (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
@@ -386,29 +385,29 @@
         {
             NSMutableArray *newContentArr = [[NSMutableArray alloc] init];
             
-            for (int i = 0; i < ((NSArray*)(responseDict[@"data"][@"result"][@"data"])).count; i++)
+            for (int i = 0; i < [responseDict arrayWithKeyPath:@"data\\result\\data"].count; i++)
             {
-                NSDictionary *entityDict = responseDict[@"data"][@"result"][@"data"][i];
+                NSDictionary *entityDict = [responseDict arrayWithKeyPath:@"data\\result\\data"][i];
                 
                 FriendCircleContentEntity *newContentEntity = [[FriendCircleContentEntity alloc] init];
                 
                 NSMutableArray *imageList = [[NSMutableArray alloc] init];
                 
-                for (int i = 0; i < ((NSArray*)entityDict[@"files"]).count; i++)
+                for (int i = 0; i < [entityDict arrayWithKeyPath:@"files"].count; i++)
                 {
-                    [imageList addObject:entityDict[@"files"][i][@"url"]];
+                    [imageList addObject:[((NSDictionary*)([entityDict arrayWithKeyPath:@"files"][i])) stringWithKeyPath:@"url"]];
                 }
                 
-                NSString *createdTime = entityDict[@"created"];
+                NSString *createdTime = [entityDict stringWithKeyPath:@"created"];
                 
-                newContentEntity.avterURL           = entityDict[@"userInfo"][@"avatar"];
-                newContentEntity.nickName           = entityDict[@"userInfo"][@"nickName"];
-                newContentEntity.content            = entityDict[@"content"];
+                newContentEntity.avterURL           = [entityDict stringWithKeyPath:@"userInfo\\avatar"];
+                newContentEntity.nickName           = [entityDict stringWithKeyPath:@"userInfo\\nickName"];
+                newContentEntity.content            = [entityDict stringWithKeyPath:@"content"];
                 newContentEntity.contentImgURLList  = imageList;
-                newContentEntity.address            = entityDict[@"village"][@"name"];
+                newContentEntity.address            = [entityDict stringWithKeyPath:@"village\\name"];
                 newContentEntity.commitDate         = [self nowDateStringForDistanceDateString:createdTime];
-                newContentEntity.lookCount          = ITOS(((NSNumber*)entityDict[@"views"]).integerValue);
-                newContentEntity.commentCount       = ITOS(((NSNumber*)entityDict[@"posts"]).integerValue);
+                newContentEntity.lookCount          = ITOS([entityDict numberWithKeyPath:@"views"]);
+                newContentEntity.commentCount       = ITOS([entityDict numberWithKeyPath:@"posts"]);;
                 newContentEntity.pointApproves      = @"";
                 
                 [newContentArr addObject:newContentEntity];

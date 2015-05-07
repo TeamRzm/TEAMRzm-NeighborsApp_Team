@@ -18,20 +18,13 @@
     
     for (NSString *subKey in subKeys)
     {
-        if ([currDict isKindOfClass:[NSDictionary class]])
+        if ([((NSDictionary*)currDict).allKeys containsObject:subKey])
         {
-            if ([((NSDictionary*)currDict).allKeys containsObject:subKey])
-            {
-                currDict = currDict[subKey];
-            }
-            else
-            {
-                return nil;
-            }
+            currDict = currDict[subKey];
         }
         else
         {
-            return nil;
+            return @{};
         }
     }
     
@@ -46,24 +39,38 @@
     
     for (NSString *subKey in subKeys)
     {
-        if ([currDict isKindOfClass:[NSDictionary class]])
+        if ([((NSDictionary*)currDict).allKeys containsObject:subKey])
         {
-            if ([((NSDictionary*)currDict).allKeys containsObject:subKey])
-            {
-                currDict = currDict[subKey];
-            }
-            else
-            {
-                return @"";
-            }
+            currDict = currDict[subKey];
         }
         else
         {
-            return currDict;
+            return @"";
         }
     }
     
-    return @"";
+    return currDict;
+}
+
+- (NSArray*) arrayWithKeyPath : (NSString*) _keyPath
+{
+    NSArray *subKeys = [_keyPath componentsSeparatedByString:@"\\"];
+    
+    id currDict = self;
+    
+    for (NSString *subKey in subKeys)
+    {
+        if ([((NSDictionary*)currDict).allKeys containsObject:subKey])
+        {
+            currDict = currDict[subKey];
+        }
+        else
+        {
+            return 0;
+        }
+    }
+    
+    return currDict;
 }
 
 - (NSInteger) numberWithKeyPath : (NSString*) _keyPath
@@ -74,24 +81,17 @@
     
     for (NSString *subKey in subKeys)
     {
-        if ([currDict isKindOfClass:[NSDictionary class]])
+        if ([((NSDictionary*)currDict).allKeys containsObject:subKey])
         {
-            if ([((NSDictionary*)currDict).allKeys containsObject:subKey])
-            {
-                currDict = currDict[subKey];
-            }
-            else
-            {
-                return 0;
-            }
+            currDict = currDict[subKey];
         }
         else
         {
-            return ((NSNumber*)currDict).integerValue;
+            return 0;
         }
     }
     
-    return 0;
+    return ((NSNumber*)currDict).integerValue;
 }
 
 @end

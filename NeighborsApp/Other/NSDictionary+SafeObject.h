@@ -16,4 +16,6 @@
 
 - (NSInteger) numberWithKeyPath : (NSString*) _keyPath;
 
+- (NSArray*) arrayWithKeyPath : (NSString*) _keyPath;
+
 @end
