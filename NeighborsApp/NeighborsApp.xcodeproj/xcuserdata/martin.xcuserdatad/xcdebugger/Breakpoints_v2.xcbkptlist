@@ -137,13 +137,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ViewControllers/NBRFriendCircleViewController/NBRFriendCircleViewController.m"
-            timestampString = "452696486.076245"
+            filePath = "ViewControllers/NBRPersonalCenterViewController/AddPlotCertViewController.m"
+            timestampString = "452697430.111464"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "330"
-            endingLineNumber = "330"
-            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
+            landmarkName = "-requestList"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -154,45 +154,29 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ViewControllers/NBRFriendCircleViewController/NBRFriendCircleViewController.m"
-            timestampString = "452696486.076245"
+            timestampString = "452711553.067174"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "450"
-            endingLineNumber = "450"
-            landmarkName = "-requestList1WithFlag:"
+            startingLineNumber = "365"
+            endingLineNumber = "365"
+            landmarkName = "-requestList0WithType:"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__54-[NBRFriendCircleViewController requestList1WithFlag:]_block_invoke"
-                  moduleName = "NeighborsApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/martin/Documents/%E4%BA%B2%E9%82%BBApp/SourceCode/NeighborsApp/NeighborsApp/ViewControllers/NBRFriendCircleViewController/NBRFriendCircleViewController.m"
-                  timestampString = "452696486.838292"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "451"
-                  endingLineNumber = "451"
-                  offsetFromSymbolStart = "203">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__54-[NBRFriendCircleViewController requestList1WithFlag:]_block_invoke"
-                  moduleName = "NeighborsApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/martin/Documents/%E4%BA%B2%E9%82%BBApp/SourceCode/NeighborsApp/NeighborsApp/ViewControllers/NBRFriendCircleViewController/NBRFriendCircleViewController.m"
-                  timestampString = "452696486.838541"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "451"
-                  endingLineNumber = "451"
-                  offsetFromSymbolStart = "249">
-               </Location>
-            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ViewControllers/NBRFriendCircleViewController/NBRFriendCircleViewController.m"
+            timestampString = "452711594.346433"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "375"
+            endingLineNumber = "375"
+            landmarkName = "-requestList0WithType:"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

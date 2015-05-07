@@ -17,6 +17,7 @@
 
 #import "CreaterRequest_Logroll.h"
 #import "CreaterRequest_Activity.h"
+#import "CreaterRequest_Show.h"
 
 @interface NBRFriendCircleViewController ()<UITableViewDataSource,UITableViewDelegate,CommentTableViewCellDelegate,XHImageViewerDelegate>
 {
@@ -58,15 +59,15 @@
         case FRIENDCIRCLECONTROLLER_MODE_NONE:
         case FRIENDCIRCLECONTROLLER_MODE_NOMAL:
         {
-            [self requestList0WithAccepted:@"-1" isMy:NO];
+            [self requestList0WithType:@"0"];
+            [self requestList0WithType:@"1"];
             [self requestList1WithFlag:@"0"];
-            [self requestList2WithAccepted:@"-1" isMy:NO];
         }
             break;
             
         case FRIENDCIRCLECONTROLLER_MODE_LOROLL:
         {
-            [self requestList0WithAccepted:@"-1" isMy:NO];
+            [self requestList0WithType:@"0"];
             
             boundScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, kNBR_SCREEN_W, kNBR_SCREEN_H)];
             boundScrollView.contentSize = CGSizeMake(kNBR_SCREEN_W * 1.0f, kNBR_SCREEN_H);
@@ -96,7 +97,7 @@
             
         case FRIENDCIRCLECONTROLLER_MODE_WARNNING:
         {
-            [self requestList2WithAccepted:@"-1" isMy:NO];
+            [self requestList0WithType:@"1"];
             
             boundScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, kNBR_SCREEN_W, kNBR_SCREEN_H)];
             boundScrollView.contentSize = CGSizeMake(kNBR_SCREEN_W * 3.0f, kNBR_SCREEN_H);
@@ -288,14 +289,7 @@
     }
     else if (tableView == subTableView[1])
     {
-        ActivityDateEntity *entity = [[ActivityDateEntity alloc] init];
-        entity.backGounrdUrl = @"testActityBackGound";
-        entity.regDate = @"4月1日－4月30日";
-        entity.leftTagStr = @"16/20";
-        entity.titile = @"小区相亲大会";
-        entity.commitDate = @"2014年3月25日";
-        entity.price = @"0";
-        entity.activityState = ACTIVITY_STATE_STARTING;
+        ActivityDateEntity *entity = boundTableViewDateSource[tableIndex][indexPath.row];
         
         return [ActivityTableViewCell heightWithEntity:entity];
     }
@@ -321,15 +315,8 @@
     }
     else
     {
-        ActivityDateEntity *entity = [[ActivityDateEntity alloc] init];
-        entity.backGounrdUrl = @"testActityBackGound";
-        entity.regDate = @"4月1日－4月30日";
-        entity.leftTagStr = @"16/20";
-        entity.titile = @"小区相亲大会";
-        entity.commitDate = @"2014年3月25日";
-        entity.price = @"0";
-        entity.activityState = ACTIVITY_STATE_STARTING;
-
+        ActivityDateEntity *entity = boundTableViewDateSource[tableIndex][indexPath.row];
+        
         ActivityTableViewCell *cell = [[ActivityTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kNBR_TABLEVIEW_CELL_NOIDENTIFIER];
         
         [cell configWithEntity:entity];
@@ -371,17 +358,19 @@
 
 #pragma mark Request
 
-- (void) requestList0WithAccepted : (NSString*) _accepted isMy : (BOOL) _isMy
+- (void) requestList0WithType : (NSString*) _type
 {
-    listRequest[0] = [CreaterRequest_Logroll CreateLogrollRequestWithIndex:ITOS(dataIndex[0]) size:kNBR_PAGE_SIZE_STR accepted:_accepted isMy:_isMy ? @"1": @"0"];
+    NSInteger requestIndex = _type.integerValue == 0 ? 0 : 2;
     
-    __weak ASIHTTPRequest *blockRequest = listRequest[0];
+    listRequest[requestIndex] = [CreaterRequest_Show CreateShowListRequestWithIndex:ITOS(dataIndex[1]) size:kNBR_PAGE_SIZE_STR type:_type];
+    
+    __weak ASIHTTPRequest *blockRequest = listRequest[requestIndex];
     
     [blockRequest setCompletionBlock:^{
         [self removeLoadingView];
         NSDictionary *responseDict = [blockRequest.responseString JSONValue];
         
-        if ([CreaterRequest_Logroll CheckErrorResponse:responseDict errorAlertInViewController:self])
+        if ([CreaterRequest_Show CheckErrorResponse:responseDict errorAlertInViewController:self])
         {
             NSMutableArray *newContentArr = [[NSMutableArray alloc] init];
             
@@ -409,7 +398,6 @@
                 newContentEntity.lookCount          = ITOS([entityDict numberWithKeyPath:@"views"]);
                 newContentEntity.commentCount       = ITOS([entityDict numberWithKeyPath:@"posts"]);;
                 newContentEntity.pointApproves      = @"";
-                
                 [newContentArr addObject:newContentEntity];
             }
             
@@ -417,11 +405,11 @@
             
             for (int i = 0; i < newContentArr.count; i++)
             {
-                [insertIndexPath addObject:[NSIndexPath indexPathForRow:boundTableViewDateSource[0].count + i inSection:0]];
+                [insertIndexPath addObject:[NSIndexPath indexPathForRow:boundTableViewDateSource[requestIndex].count + i inSection:0]];
             }
             
-            [boundTableViewDateSource[0] addObjectsFromArray:newContentArr];
-            [subTableView[0] insertRowsAtIndexPaths:insertIndexPath withRowAnimation:UITableViewRowAnimationAutomatic];
+            [boundTableViewDateSource[requestIndex] addObjectsFromArray:newContentArr];
+            [subTableView[requestIndex] insertRowsAtIndexPaths:insertIndexPath withRowAnimation:UITableViewRowAnimationAutomatic];
             
             return ;
         }
@@ -445,7 +433,83 @@
         
         if ([CreaterRequest_Activity CheckErrorResponse:responseDict errorAlertInViewController:self])
         {
-            //成功逻辑
+            NSArray *activityListDictArr = [responseDict arrayWithKeyPath:@"data\\result\\data"];
+            
+            NSMutableArray *newActivityArr = [[NSMutableArray alloc] init];
+            
+            for (int i = 0; i < activityListDictArr.count; i++)
+            {
+                NSDictionary *subActivityDict = activityListDictArr[i];
+                
+                NSDateFormatter *mmddFormater = [[NSDateFormatter alloc] init];
+                mmddFormater.dateFormat = @"M月d日";
+                
+                NSDateFormatter *YYMMdHmsFormater = [[NSDateFormatter alloc] init];
+                YYMMdHmsFormater.dateFormat = @"YY年M月d日 HH:mm:ss";
+
+                NSDate *regStrDate = [self dateWithString:[subActivityDict stringWithKeyPath:@"registerStart"]];
+                NSDate *regEndDate = [self dateWithString:[subActivityDict stringWithKeyPath:@"registerEnd"]];
+                NSDate *nowDate = [NSDate date];
+                
+                ActivityDateEntity *newActivityEntity = [[ActivityDateEntity alloc] init];
+                newActivityEntity.backGounrdUrl = @"testActityBackGound"; //图片暂时全部默认
+                newActivityEntity.regDate = [NSString
+                                             stringWithFormat:@"%@-%@",
+                                             [mmddFormater stringFromDate:regStrDate],
+                                             [mmddFormater stringFromDate:regEndDate]];
+                
+                newActivityEntity.leftTagStr = [NSString
+                                                stringWithFormat:@"%d/%d", [subActivityDict
+                                                                            stringWithKeyPath:@"applies"].integerValue, [subActivityDict
+                                                                                                                         stringWithKeyPath:@"joins"].integerValue];
+                
+                newActivityEntity.titile = [subActivityDict stringWithKeyPath:@"title"];
+                newActivityEntity.commitDate = [YYMMdHmsFormater
+                                                stringFromDate:[self
+                                                                dateWithString:[subActivityDict
+                                                                                stringWithKeyPath:@"created"]]];
+                
+                newActivityEntity.price = [subActivityDict stringWithKeyPath:@"fee"];
+                
+                
+                NSDate *strDate = [self dateWithString:[subActivityDict stringWithKeyPath:@"startDate"]];
+                NSDate *endDate = [self dateWithString:[subActivityDict stringWithKeyPath:@"endDate"]];
+                
+                if ([nowDate timeIntervalSince1970] > [regStrDate timeIntervalSince1970] &&
+                    [nowDate timeIntervalSince1970] < [regEndDate timeIntervalSince1970])
+                {
+                    newActivityEntity.activityState = ACTIVITY_STATE_RES;
+                }
+                
+                if ([nowDate timeIntervalSince1970] > [strDate timeIntervalSince1970] &&
+                    [nowDate timeIntervalSince1970] < [endDate timeIntervalSince1970])
+                {
+                    newActivityEntity.activityState = ACTIVITY_STATE_STARTING;
+                }
+                
+                if ([nowDate timeIntervalSince1970] > [endDate timeIntervalSince1970])
+                {
+                    newActivityEntity.activityState = ACTIVITY_STATE_END;
+                }
+                
+                if ([subActivityDict numberWithKeyPath:@"flag"] != 0)
+                {
+                    newActivityEntity.activityState = ACTIVITY_STATE_VAIL;
+                }
+                
+                [newActivityArr addObject:newActivityEntity];
+            }
+            
+            NSMutableArray *insertIndexPath = [[NSMutableArray alloc] init];
+            
+            for (int i = 0; i < newActivityArr.count; i++)
+            {
+                [insertIndexPath addObject:[NSIndexPath indexPathForRow:boundTableViewDateSource[1].count + i inSection:0]];
+            }
+            
+            [boundTableViewDateSource[1] addObjectsFromArray:newActivityArr];
+            [subTableView[1] insertRowsAtIndexPaths:insertIndexPath withRowAnimation:UITableViewRowAnimationAutomatic];
+
             return ;
         }
     }];
@@ -453,11 +517,6 @@
     [self setDefaultRequestFaild:listRequest[1]];
     [self addLoadingView];
     [listRequest[1] startAsynchronous];
-}
-
-- (void) requestList2WithAccepted : (NSString*) _accepted isMy : (BOOL) _isMy
-{
-    
 }
 
 @end

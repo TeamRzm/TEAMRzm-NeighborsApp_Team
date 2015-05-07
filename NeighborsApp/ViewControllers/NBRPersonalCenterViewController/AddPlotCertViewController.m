@@ -7,12 +7,15 @@
 //
 
 #import "AddPlotCertViewController.h"
+#import "CreaterRequest_Village.h"
 
 @interface AddPlotCertViewController () <UITableViewDataSource, UITableViewDelegate>
 {
     UITableView     *boundTableView;
     NSArray         *titlesArr;
     NSArray         *textFieldArr;
+    
+    ASIHTTPRequest  *listAppliesRequest;
 }
 @end
 
@@ -107,4 +110,28 @@
     return cell;
 }
 
+- (void) requestList
+{
+    listAppliesRequest = [CreaterRequest_Village CreateListAppLinesRequest];
+    
+    __weak ASIHTTPRequest *blockReqeust = listAppliesRequest;
+    
+    [blockReqeust setCompletionBlock:^{
+        [self removeLoadingView];
+        
+        NSDictionary *responseDict = [blockReqeust.responseString JSONValue];
+        
+        if ([CreaterRequest_Village CheckErrorResponse:responseDict errorAlertInViewController:self])
+        {
+            //成功
+            return ;
+        }
+    }];
+    
+    [self setDefaultRequestFaild:listAppliesRequest];
+    
+    [blockReqeust startAsynchronous];
+    [self addLoadingView];
+    
+}
 @end

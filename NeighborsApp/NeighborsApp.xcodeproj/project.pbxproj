@@ -270,6 +270,7 @@
 		5BB655701AC31753007E0F85 /* NBRMyMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB6556F1AC31753007E0F85 /* NBRMyMessageViewController.m */; };
 		5BB655731AC31768007E0F85 /* NBRFriendCircleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB655721AC31768007E0F85 /* NBRFriendCircleViewController.m */; };
 		5BB8297B1AE5748B00877995 /* CommentEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB8297A1AE5748B00877995 /* CommentEntity.m */; };
+		5BBAC8A41AFBD14700536F1E /* CreaterRequest_Show.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BBAC8A31AFBD14700536F1E /* CreaterRequest_Show.m */; };
 		5BCB05A01AF12280004F9F93 /* RequestServerConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BCB059F1AF12280004F9F93 /* RequestServerConfig.m */; };
 		5BCB05A31AF122C9004F9F93 /* Server.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BCB05A21AF122C9004F9F93 /* Server.m */; };
 		5BCB05A51AF12681004F9F93 /* RequestServerConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5BCB05A41AF12681004F9F93 /* RequestServerConfig.plist */; };
@@ -718,6 +719,8 @@
 		5BB655721AC31768007E0F85 /* NBRFriendCircleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NBRFriendCircleViewController.m; path = ViewControllers/NBRFriendCircleViewController/NBRFriendCircleViewController.m; sourceTree = "<group>"; };
 		5BB829791AE5748B00877995 /* CommentEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentEntity.h; path = ViewControllers/NBRFriendCircleViewController/CommentEntity.h; sourceTree = "<group>"; };
 		5BB8297A1AE5748B00877995 /* CommentEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentEntity.m; path = ViewControllers/NBRFriendCircleViewController/CommentEntity.m; sourceTree = "<group>"; };
+		5BBAC8A21AFBD14700536F1E /* CreaterRequest_Show.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreaterRequest_Show.h; path = Request/Creater/CreaterRequest_Show.h; sourceTree = "<group>"; };
+		5BBAC8A31AFBD14700536F1E /* CreaterRequest_Show.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreaterRequest_Show.m; path = Request/Creater/CreaterRequest_Show.m; sourceTree = "<group>"; };
 		5BCB059E1AF12280004F9F93 /* RequestServerConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RequestServerConfig.h; path = Request/Server/RequestServerConfig.h; sourceTree = "<group>"; };
 		5BCB059F1AF12280004F9F93 /* RequestServerConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RequestServerConfig.m; path = Request/Server/RequestServerConfig.m; sourceTree = "<group>"; };
 		5BCB05A11AF122C9004F9F93 /* Server.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Server.h; path = Request/Server/Server.h; sourceTree = "<group>"; };
@@ -1007,6 +1010,8 @@
 				5BED3BE91AFA8EFB00AA8001 /* CreaterRequest_Conv.m */,
 				5BED3BEB1AFA8FA500AA8001 /* CreaterRequest_Activity.h */,
 				5BED3BEC1AFA8FA500AA8001 /* CreaterRequest_Activity.m */,
+				5BBAC8A21AFBD14700536F1E /* CreaterRequest_Show.h */,
+				5BBAC8A31AFBD14700536F1E /* CreaterRequest_Show.m */,
 			);
 			name = Creater;
 			sourceTree = "<group>";
@@ -2289,6 +2294,7 @@
 				5BD83C8C1AD61EF600D1A3EC /* ASIHTTPRequest.m in Sources */,
 				5B332B431AE3A8C0002A0A73 /* XHCacheManager.m in Sources */,
 				5B6D316B1ADCE747009A922A /* ALAlertBannerManager.m in Sources */,
+				5BBAC8A41AFBD14700536F1E /* CreaterRequest_Show.m in Sources */,
 				5B332AFC1AE2F647002A0A73 /* CTAssetsGroupViewController.m in Sources */,
 				5B38BA3E1AF4E00100775F64 /* CreaterRequest_User.m in Sources */,
 				5BB655341AC31464007E0F85 /* AppDelegate.m in Sources */,
@@ -2470,7 +2476,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Hunan Zhangshang Tech Co., Ltd.";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Canli Li (KKRUSF25JR)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = NeighborsApp.pch;
 				INFOPLIST_FILE = NeighborsApp/Info.plist;
@@ -2483,7 +2489,7 @@
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "5830866C-B49F-4251-827A-909F4249C672";
+				PROVISIONING_PROFILE = "a6c86b31-6d97-4aea-afb3-a5dfa9fb779e";
 				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Debug;
@@ -2492,7 +2498,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Hunan Zhangshang Tech Co., Ltd.";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Canli Li (KKRUSF25JR)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = NeighborsApp.pch;
 				INFOPLIST_FILE = NeighborsApp/Info.plist;
@@ -2505,7 +2511,7 @@
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "5830866C-B49F-4251-827A-909F4249C672";
+				PROVISIONING_PROFILE = "a6c86b31-6d97-4aea-afb3-a5dfa9fb779e";
 				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Release;

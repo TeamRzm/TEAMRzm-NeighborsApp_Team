@@ -269,8 +269,6 @@
     [dateFormatter setTimeZone:[NSTimeZone systemTimeZone]];
     dateFormatter.dateFormat = @"LLL d,yyyy hh:mm:ss a";
     
-    NSLog(@"%@", [dateFormatter stringFromDate:[dateFormatter dateFromString:@"May 5, 2015 9:53:13 AM"]]);
-    
     NSDate *createdDate = [dateFormatter dateFromString:createdTime];
     NSTimeInterval distanceSec = [[NSDate date] timeIntervalSinceDate:createdDate];
     
@@ -334,13 +332,23 @@
     {
         NSDateFormatter *formarter = [[NSDateFormatter alloc] init];
         
-        formarter.dateFormat = @"YYYY年M月d日 H:mm:ss";
+        formarter.dateFormat = @"YY年M月d日 H:mm:ss";
         
         createdTime = [NSString stringWithFormat:@"%@", [formarter stringFromDate:createdDate]];
     }
     
     return createdTime;
     
+}
+
+
+- (NSDate*) dateWithString : (NSString*) _string
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setTimeZone:[NSTimeZone systemTimeZone]];
+    dateFormatter.dateFormat = @"LLL d,yyyy hh:mm:ss a";
+    
+    return [dateFormatter dateFromString:_string];
 }
 
 @end

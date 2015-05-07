@@ -8,11 +8,14 @@
 
 #import "PlotCertListViewController.h"
 #import "AddPlotCertViewController.h"
+#import "CreaterRequest_Village.h"
 
 @interface PlotCertListViewController ()<UITableViewDataSource, UITableViewDelegate>
 {
     UITableView *boundTableView;
     NSMutableArray *boundTableViewDataSource;
+    
+    ASIHTTPRequest  *listAppliesRequest;
 }
 @end
 
@@ -62,6 +65,8 @@
     [tableViewFootView addSubview:commitButton];
     
     boundTableView.tableFooterView = tableViewFootView;
+    
+    [self requestList];
 }
 
 - (void) addPlotCertButtonAction : (id) sender
@@ -177,5 +182,31 @@
     
     return cell;
 }
+
+- (void) requestList
+{
+    listAppliesRequest = [CreaterRequest_Village CreateListAppLinesRequest];
+    
+    __weak ASIHTTPRequest *blockReqeust = listAppliesRequest;
+    
+    [blockReqeust setCompletionBlock:^{
+        [self removeLoadingView];
+        
+        NSDictionary *responseDict = [blockReqeust.responseString JSONValue];
+        
+        if ([CreaterRequest_Village CheckErrorResponse:responseDict errorAlertInViewController:self])
+        {
+            //成功
+            return ;
+        }
+    }];
+    
+    [self setDefaultRequestFaild:listAppliesRequest];
+    
+    [blockReqeust startAsynchronous];
+    [self addLoadingView];
+    
+}
+
 
 @end
