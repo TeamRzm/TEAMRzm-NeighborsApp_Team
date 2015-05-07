@@ -170,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ViewControllers/NBRFriendCircleViewController/NBRFriendCircleViewController.m"
-            timestampString = "452669956.698775"
+            timestampString = "452670569.037466"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "350"
-            endingLineNumber = "350"
+            startingLineNumber = "340"
+            endingLineNumber = "340"
             landmarkName = "-requestList0"
             landmarkType = "5">
          </BreakpointContent>
@@ -186,11 +186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ViewControllers/NBRFriendCircleViewController/NBRFriendCircleViewController.m"
-            timestampString = "452669617.370608"
+            timestampString = "452670569.037466"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "341"
-            endingLineNumber = "341"
+            startingLineNumber = "331"
+            endingLineNumber = "331"
             landmarkName = "-requestList0"
             landmarkType = "5">
          </BreakpointContent>
