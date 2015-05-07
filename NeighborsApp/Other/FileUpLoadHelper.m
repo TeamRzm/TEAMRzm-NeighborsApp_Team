@@ -122,7 +122,6 @@
     [dataUploadRequest addData:fileData withFileName:@"uploadImg.jpg" andContentType:@"image/jpeg" forKey:@"data"];
     
     __weak ASIFormDataRequest *blockRequest = dataUploadRequest;
-    __weak FileUpLoadHelper *blockSelf = self;
     
     [dataUploadRequest setCompletionBlock:^{
         
@@ -156,7 +155,7 @@
                 
                 NSDictionary *saveInfoRequestResponseDict = [saveInfoRequest.responseString JSONValue];
 
-                if ( [saveInfoRequestResponseDict stringWithKeyPath:@"data\\code\\state"] !=0 )
+                if ( [saveInfoRequestResponseDict numberWithKeyPath:@"data\\code\\state"] !=0 )
                 {
                     [self stopUpload];
                     

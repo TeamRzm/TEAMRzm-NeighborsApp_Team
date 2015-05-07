@@ -24,27 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"小区认证";
-    
-    // Do any additional setup after loading the view.
-    boundTableViewDataSource = [[NSMutableArray alloc] initWithArray:@[
-                                                                       @[
-                                                                           @"新家园小区",
-                                                                           @"汪大海",
-                                                                           @"13812345678"
-                                                                           ],
-                                                                       @[
-                                                                           @"新家园小区",
-                                                                           @"汪大海",
-                                                                           @"13812345678"
-                                                                           ],
-                                                                       @[
-                                                                           @"新家园小区",
-                                                                           @"汪大海",
-                                                                           @"13812345678"
-                                                                           ],
-                                                                       ]];
-    
-    
+
     boundTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kNBR_SCREEN_W, kNBR_SCREEN_H) style:UITableViewStyleGrouped];
     boundTableView.delegate = self;
     boundTableView.dataSource = self;
@@ -126,7 +106,7 @@
     UILabel *plotLable = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, kNBR_SCREEN_W - 40, 30.0f)];
     plotLable.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME_BLOD size:13.0f];
     plotLable.textColor = kNBR_ProjectColor_DeepBlack;
-    plotLable.text = boundTableViewDataSource[indexPath.row][0];
+    plotLable.text = boundTableViewDataSource[indexPath.row][@"name"];
     [cellBoundView addSubview:plotLable];
     
     
@@ -153,19 +133,29 @@
     stateLable.backgroundColor = [UIColor clearColor];
     [cellBoundView addSubview:stateLable];
     
+    switch (((NSNumber*)boundTableViewDataSource[indexPath.row][@"flag"]).integerValue)
+    {
+        case 0: stateLable.text = @"审核通过";  break;
+        case 1: stateLable.text = @"待审核";    break;
+        case 2: stateLable.text = @"审核拒绝";  break;
+            
+        default:
+            break;
+    }
+    
     //实际数据
     //业主姓名
     UILabel *nameCntentLable = [[UILabel alloc] initWithFrame:CGRectMake(70, 30, kNBR_SCREEN_W - 20 - 60, 40.0f)];
     nameCntentLable.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME_BLOD size:13.0f];
     nameCntentLable.textColor = kNBR_ProjectColor_MidGray;
-    nameCntentLable.text = boundTableViewDataSource[indexPath.section][1];
+    nameCntentLable.text = boundTableViewDataSource[indexPath.section][@"contact"];
     [cellBoundView addSubview:nameCntentLable];
     
     //Tel姓名
     UILabel *telCntentLable = [[UILabel alloc] initWithFrame:CGRectMake(70, 70, kNBR_SCREEN_W - 20 - 60, 40.0f)];
     telCntentLable.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME_BLOD size:13.0f];
     telCntentLable.textColor = kNBR_ProjectColor_MidGray;
-    telCntentLable.text = boundTableViewDataSource[indexPath.section][2];
+    telCntentLable.text = boundTableViewDataSource[indexPath.section][@"phone"];
     [cellBoundView addSubview:telCntentLable];
     
     //分割线
@@ -196,7 +186,8 @@
         
         if ([CreaterRequest_Village CheckErrorResponse:responseDict errorAlertInViewController:self])
         {
-            //成功
+            boundTableViewDataSource =  [NSMutableArray arrayWithArray:[responseDict arrayWithKeyPath:@"data\\result"]];
+            [boundTableView reloadData];
             return ;
         }
     }];

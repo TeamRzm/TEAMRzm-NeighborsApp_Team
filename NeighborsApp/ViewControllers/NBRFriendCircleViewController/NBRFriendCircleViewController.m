@@ -327,9 +327,16 @@
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSInteger tableIndex = 0;
+    
+    if (tableView == subTableView[0]) tableIndex = 0;
+    if (tableView == subTableView[1]) tableIndex = 1;
+    if (tableView == subTableView[2]) tableIndex = 2;
+    
     if (currentSegmentIndex == 0 || currentSegmentIndex == 2)
     {
         ComentDetailViewController *nVC = [[ComentDetailViewController alloc] initWithNibName:nil bundle:nil];
+        nVC.dataEntity = boundTableViewDateSource[tableIndex][indexPath.row];
         nVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:nVC animated:YES];
     }
@@ -362,7 +369,8 @@
 {
     NSInteger requestIndex = _type.integerValue == 0 ? 0 : 2;
     
-    listRequest[requestIndex] = [CreaterRequest_Show CreateShowListRequestWithIndex:ITOS(dataIndex[1]) size:kNBR_PAGE_SIZE_STR type:_type];
+//    listRequest[requestIndex] = [CreaterRequest_Show CreateShowListRequestWithIndex:ITOS(dataIndex[1]) size:kNBR_PAGE_SIZE_STR type:_type];
+    listRequest[requestIndex] = [CreaterRequest_Logroll CreateLogrollRequestWithIndex:ITOS(dataIndex[requestIndex]) size:kNBR_PAGE_SIZE_STR accepted:@"-1" isMy:@"0"];
     
     __weak ASIHTTPRequest *blockRequest = listRequest[requestIndex];
     

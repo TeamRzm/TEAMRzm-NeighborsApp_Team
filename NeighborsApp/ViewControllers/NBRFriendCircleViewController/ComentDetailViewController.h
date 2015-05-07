@@ -7,7 +7,10 @@
 //
 
 #import "NBRBaseViewController.h"
+#import "FriendCircleContentEntity.h"
 
 @interface ComentDetailViewController : NBRBaseViewController
+
+@property (nonatomic, strong) FriendCircleContentEntity *dataEntity;
 
 @end

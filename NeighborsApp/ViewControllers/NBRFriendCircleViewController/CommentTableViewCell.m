@@ -152,13 +152,15 @@
         
         EGOImageView *subImageView = [[EGOImageView alloc] initWithPlaceholderImage:[UIImage imageNamed:@""]];
         subImageView.imageURL = [NSURL URLWithString:entity.contentImgURLList[i]];
+        subImageView.contentMode = UIViewContentModeScaleAspectFill;
+        subImageView.layer.masksToBounds = YES;
         
         subImageView.frame = CGRectMake( nikeNameLable.frame.origin.x + (i % widthCount) * singleImgSize.width,
                                          contentLable.frame.origin.y + contentLable.frame.size.height + (i / widthCount) * singleImgSize.height + 10,
                                          singleImgSize.width - 2, singleImgSize.height - 2);
         
-        subImageView.layer.borderColor = kNBR_ProjectColor_LightGray.CGColor;
-        subImageView.layer.borderWidth = 0.5f;
+//        subImageView.layer.borderColor = kNBR_ProjectColor_LightGray.CGColor;
+//        subImageView.layer.borderWidth = 0.5f;
         subImageView.userInteractionEnabled = YES;
         
         UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapSubImageView:)];

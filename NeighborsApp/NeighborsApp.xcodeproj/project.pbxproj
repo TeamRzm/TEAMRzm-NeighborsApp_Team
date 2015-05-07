@@ -271,6 +271,7 @@
 		5BB655731AC31768007E0F85 /* NBRFriendCircleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB655721AC31768007E0F85 /* NBRFriendCircleViewController.m */; };
 		5BB8297B1AE5748B00877995 /* CommentEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB8297A1AE5748B00877995 /* CommentEntity.m */; };
 		5BBAC8A41AFBD14700536F1E /* CreaterRequest_Show.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BBAC8A31AFBD14700536F1E /* CreaterRequest_Show.m */; };
+		5BBAC8A71AFBD6B000536F1E /* SearchPlotListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BBAC8A61AFBD6B000536F1E /* SearchPlotListViewController.m */; };
 		5BCB05A01AF12280004F9F93 /* RequestServerConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BCB059F1AF12280004F9F93 /* RequestServerConfig.m */; };
 		5BCB05A31AF122C9004F9F93 /* Server.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BCB05A21AF122C9004F9F93 /* Server.m */; };
 		5BCB05A51AF12681004F9F93 /* RequestServerConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5BCB05A41AF12681004F9F93 /* RequestServerConfig.plist */; };
@@ -721,6 +722,8 @@
 		5BB8297A1AE5748B00877995 /* CommentEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentEntity.m; path = ViewControllers/NBRFriendCircleViewController/CommentEntity.m; sourceTree = "<group>"; };
 		5BBAC8A21AFBD14700536F1E /* CreaterRequest_Show.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreaterRequest_Show.h; path = Request/Creater/CreaterRequest_Show.h; sourceTree = "<group>"; };
 		5BBAC8A31AFBD14700536F1E /* CreaterRequest_Show.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreaterRequest_Show.m; path = Request/Creater/CreaterRequest_Show.m; sourceTree = "<group>"; };
+		5BBAC8A51AFBD6B000536F1E /* SearchPlotListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchPlotListViewController.h; path = ViewControllers/NBRPersonalCenterViewController/SearchPlotListViewController.h; sourceTree = "<group>"; };
+		5BBAC8A61AFBD6B000536F1E /* SearchPlotListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchPlotListViewController.m; path = ViewControllers/NBRPersonalCenterViewController/SearchPlotListViewController.m; sourceTree = "<group>"; };
 		5BCB059E1AF12280004F9F93 /* RequestServerConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RequestServerConfig.h; path = Request/Server/RequestServerConfig.h; sourceTree = "<group>"; };
 		5BCB059F1AF12280004F9F93 /* RequestServerConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RequestServerConfig.m; path = Request/Server/RequestServerConfig.m; sourceTree = "<group>"; };
 		5BCB05A11AF122C9004F9F93 /* Server.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Server.h; path = Request/Server/Server.h; sourceTree = "<group>"; };
@@ -884,6 +887,8 @@
 				5B10A7A11AE800D20034FA63 /* PlotCertListViewController.m */,
 				5B10A7A31AE80F760034FA63 /* AddPlotCertViewController.h */,
 				5B10A7A41AE80F770034FA63 /* AddPlotCertViewController.m */,
+				5BBAC8A51AFBD6B000536F1E /* SearchPlotListViewController.h */,
+				5BBAC8A61AFBD6B000536F1E /* SearchPlotListViewController.m */,
 			);
 			name = Plot;
 			sourceTree = "<group>";
@@ -2215,6 +2220,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BBAC8A71AFBD6B000536F1E /* SearchPlotListViewController.m in Sources */,
 				5B6D31581ADCDFF6009A922A /* NBRRegViewController.m in Sources */,
 				5B332AC71AE26294002A0A73 /* CommitNewContentViewController.m in Sources */,
 				5BED3BDB1AFA4EC300AA8001 /* FileUpLoadHelper.m in Sources */,

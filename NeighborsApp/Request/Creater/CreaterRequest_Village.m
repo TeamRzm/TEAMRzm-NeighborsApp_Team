@@ -77,7 +77,7 @@
     
     ASIHTTPRequest *request = [CreaterRequest_Village GetRequestWithMethod:@"/api.village/apply.cmd"
                                                                  parmsDict:parmsDict
-                                                             requestMethod:REQUEST_METHOD_GET];
+                                                             requestMethod:REQUEST_METHOD_POST];
     
     return request;
 }
