@@ -3,15 +3,23 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "-[FileUpLoadHelper uploadFile:]:FileUpLoadHelper.m">
-      </ContextState>
-      <ContextState
          contextName = "__31-[FileUpLoadHelper uploadFile:]_block_invoke_2:FileUpLoadHelper.m">
          <PersistentStrings>
             <PersistentString
                value = "saveInfoRequestResponseDict">
             </PersistentString>
          </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "__45-[NBRFriendCircleViewController requestList0]_block_invoke:NBRFriendCircleViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "entityDict[@&quot;created&quot;]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[FileUpLoadHelper uploadFile:]:FileUpLoadHelper.m">
       </ContextState>
       <ContextState
          contextName = "__31-[FileUpLoadHelper uploadFile:]_block_invoke:FileUpLoadHelper.m">

@@ -198,9 +198,10 @@
     //时间
 
     UIFont *commitDateFont = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME size:11.0f];
-    CGSize commitDateStringSize = [entity.address sizeWithAttributes:@{NSFontAttributeName : addressContentFont}];
+    CGSize commitDateStringSize = [entity.commitDate sizeWithAttributes:@{NSFontAttributeName : addressContentFont}];
+    
     commitDateLable = [[UILabel alloc] initWithFrame:CGRectMake(addressLable.frame.origin.x + addressStringSize.width + 10,
-                                                                addressLable.frame.origin.y + (CGRectGetHeight(addressLable.frame) / 2.0f) - commitDateStringSize.height / 2.0f + 1,
+                                                                addressLable.frame.origin.y + (CGRectGetHeight(addressLable.frame) / 2.0f) - commitDateStringSize.height / 2.0f,
                                                                 commitDateStringSize.width,
                                                                 commitDateStringSize.height)];
     commitDateLable.text = entity.commitDate;
@@ -352,7 +353,7 @@
     yIndex = yIndex % widthCount == 0 ? yIndex / widthCount : yIndex / widthCount + 1;
     
     UIImageView *addressLogo = [[UIImageView alloc] initWithFrame:CGRectMake(contentLable.frame.origin.x,
-                                                                             contentLable.frame.origin.y + contentLable.frame.size.height + (yIndex) * singleImgSize.height + 10 + 5.5 + (yIndex > 0 ? singleImgSize.height : 0),
+                                                                             contentLable.frame.origin.y + contentLable.frame.size.height + (yIndex) * singleImgSize.height + 10 + 5.5,
                                                                              8.5,
                                                                              11)];
     addressLogo.image = [UIImage imageNamed:@"xiaoQuAddressIcon"];
@@ -362,7 +363,7 @@
     CGSize addressStringSize = [entity.address sizeWithAttributes:@{NSFontAttributeName : addressContentFont}];
     
     UILabel *addressLable = [[UILabel alloc] initWithFrame:CGRectMake(contentLable.frame.origin.x + 11,
-                                                             contentLable.frame.origin.y + contentLable.frame.size.height + (yIndex) * singleImgSize.height + 10 + 5.5 + (yIndex > 0 ? singleImgSize.height : 0),
+                                                             contentLable.frame.origin.y + contentLable.frame.size.height + (yIndex) * singleImgSize.height + 10 + 5.5,
                                                              addressStringSize.width,
                                                              addressStringSize.height)];
     
