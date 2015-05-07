@@ -164,6 +164,7 @@
         UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapSubImageView:)];
         [subImageView addGestureRecognizer:tapGesture];
         
+        
         [contentImageViews addObject:subImageView];
         [self.contentView addSubview:subImageView];
         [subImageViews addObject:subImageView];
