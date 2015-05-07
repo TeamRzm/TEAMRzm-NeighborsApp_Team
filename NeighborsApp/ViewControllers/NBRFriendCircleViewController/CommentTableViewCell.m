@@ -172,9 +172,12 @@
     //小区定位尖脚logo
     NSInteger yIndex = entity.contentImgURLList.count > 9 ? 9 :entity.contentImgURLList.count;
     
+    yIndex = yIndex % widthCount == 0 ? yIndex / widthCount : yIndex / widthCount + 1;
+    
     UIImageView *addressLogo = [[UIImageView alloc] initWithFrame:CGRectMake(contentLable.frame.origin.x,
-                                                                             contentLable.frame.origin.y + contentLable.frame.size.height + (yIndex / 3) * singleImgSize.height + 10 + 5.5,
-                                                                             8.5, 11)];
+                                                                             contentLable.frame.origin.y + contentLable.frame.size.height + (yIndex) * singleImgSize.height + 10 + 5.5,
+                                                                             8.5,
+                                                                             11)];
     addressLogo.image = [UIImage imageNamed:@"xiaoQuAddressIcon"];
     [self.contentView addSubview:addressLogo];
     
@@ -183,7 +186,7 @@
     CGSize addressStringSize = [entity.address sizeWithAttributes:@{NSFontAttributeName : addressContentFont}];
     
     addressLable = [[UILabel alloc] initWithFrame:CGRectMake(contentLable.frame.origin.x + 11,
-                                                             contentLable.frame.origin.y + contentLable.frame.size.height + (yIndex / 3) * singleImgSize.height + 10 + 5,
+                                                             contentLable.frame.origin.y + contentLable.frame.size.height + (yIndex) * singleImgSize.height + 10 + 5,
                                                              addressStringSize.width,
                                                              addressStringSize.height)];
     addressLable.text = entity.address;
@@ -309,8 +312,6 @@
     
     switch (entity.contentImgURLList.count)
     {
-            break;
-            
         case 1:
         {
             widthCount = 1;
@@ -350,7 +351,7 @@
     yIndex = yIndex % widthCount == 0 ? yIndex / widthCount : yIndex / widthCount + 1;
     
     UIImageView *addressLogo = [[UIImageView alloc] initWithFrame:CGRectMake(contentLable.frame.origin.x,
-                                                                             contentLable.frame.origin.y + contentLable.frame.size.height + (yIndex) * singleImgSize.height + 10 + 5.5,
+                                                                             contentLable.frame.origin.y + contentLable.frame.size.height + (yIndex) * singleImgSize.height + 10 + 5.5 + (yIndex > 0 ? singleImgSize.height : 0),
                                                                              8.5,
                                                                              11)];
     addressLogo.image = [UIImage imageNamed:@"xiaoQuAddressIcon"];
@@ -360,7 +361,7 @@
     CGSize addressStringSize = [entity.address sizeWithAttributes:@{NSFontAttributeName : addressContentFont}];
     
     UILabel *addressLable = [[UILabel alloc] initWithFrame:CGRectMake(contentLable.frame.origin.x + 11,
-                                                             contentLable.frame.origin.y + contentLable.frame.size.height + (yIndex) * singleImgSize.height + 10 + 5,
+                                                             contentLable.frame.origin.y + contentLable.frame.size.height + (yIndex) * singleImgSize.height + 10 + 5.5 + (yIndex > 0 ? singleImgSize.height : 0),
                                                              addressStringSize.width,
                                                              addressStringSize.height)];
     
