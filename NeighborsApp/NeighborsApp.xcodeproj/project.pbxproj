@@ -1018,6 +1018,12 @@
 				5B38BA541AF61F6A00775F64 /* AbsEntity.m */,
 				5B38BA501AF61B1D00775F64 /* UserEntity.h */,
 				5B38BA511AF61B1D00775F64 /* UserEntity.m */,
+				5B955BED1ADFE1EE00E8B335 /* FriendCircleContentEntity.h */,
+				5B955BEE1ADFE1EE00E8B335 /* FriendCircleContentEntity.m */,
+				5B332AC21AE181EA002A0A73 /* ActivityDateEntity.h */,
+				5B332AC31AE181EA002A0A73 /* ActivityDateEntity.m */,
+				5BB829791AE5748B00877995 /* CommentEntity.h */,
+				5BB8297A1AE5748B00877995 /* CommentEntity.m */,
 			);
 			name = Entity;
 			sourceTree = "<group>";
@@ -1661,12 +1667,8 @@
 				5BB655721AC31768007E0F85 /* NBRFriendCircleViewController.m */,
 				5B955BF01ADFE42600E8B335 /* CommentTableViewCell.h */,
 				5B955BF11ADFE42600E8B335 /* CommentTableViewCell.m */,
-				5B955BED1ADFE1EE00E8B335 /* FriendCircleContentEntity.h */,
-				5B955BEE1ADFE1EE00E8B335 /* FriendCircleContentEntity.m */,
 				5B332ABF1AE18018002A0A73 /* ActivityTableViewCell.h */,
 				5B332AC01AE18018002A0A73 /* ActivityTableViewCell.m */,
-				5B332AC21AE181EA002A0A73 /* ActivityDateEntity.h */,
-				5B332AC31AE181EA002A0A73 /* ActivityDateEntity.m */,
 				5B332AC51AE26294002A0A73 /* CommitNewContentViewController.h */,
 				5B332AC61AE26294002A0A73 /* CommitNewContentViewController.m */,
 				5B1500DF1AE3BDD10033CEA2 /* CommitActivityContentViewController.h */,
@@ -1675,8 +1677,6 @@
 				5B1500E31AE3F97E0033CEA2 /* ComentDetailViewController.m */,
 				5B1500E51AE415370033CEA2 /* SubCommentTableViewCell.h */,
 				5B1500E61AE415370033CEA2 /* SubCommentTableViewCell.m */,
-				5BB829791AE5748B00877995 /* CommentEntity.h */,
-				5BB8297A1AE5748B00877995 /* CommentEntity.m */,
 				5B10A79D1AE79FFD0034FA63 /* ActivityDetailViewController.h */,
 				5B10A79E1AE79FFD0034FA63 /* ActivityDetailViewController.m */,
 			);

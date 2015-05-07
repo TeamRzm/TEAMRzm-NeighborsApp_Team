@@ -16,6 +16,7 @@
 #import "ActivityDetailViewController.h"
 
 #import "CreaterRequest_Logroll.h"
+#import "CreaterRequest_Activity.h"
 
 @interface NBRFriendCircleViewController ()<UITableViewDataSource,UITableViewDelegate,CommentTableViewCellDelegate,XHImageViewerDelegate>
 {
@@ -32,20 +33,92 @@
     NSInteger       dataIndex[3];
     
     ASIHTTPRequest  *listRequest[3];
+    
+    FRIENDCIRCLECONTROLLER_MODE viewControllerMode;
 }
 @end
 
 @implementation NBRFriendCircleViewController
+
+- (id) initWithMode : (FRIENDCIRCLECONTROLLER_MODE) _mode
+{
+    self = [super initWithNibName:nil bundle:nil];
+    
+    if (self)
+    {
+        viewControllerMode = _mode;
+    }
+    return self;
+}
+
+- (void) configViewControllerMode
+{
+    switch (viewControllerMode)
+    {
+        case FRIENDCIRCLECONTROLLER_MODE_NONE:
+        case FRIENDCIRCLECONTROLLER_MODE_NOMAL:
+        {
+            [self requestList0WithAccepted:@"-1" isMy:NO];
+            [self requestList1WithFlag:@"0"];
+            [self requestList2WithAccepted:@"-1" isMy:NO];
+        }
+            break;
+            
+        case FRIENDCIRCLECONTROLLER_MODE_LOROLL:
+        {
+            [self requestList0WithAccepted:@"-1" isMy:NO];
+            
+            boundScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, kNBR_SCREEN_W, kNBR_SCREEN_H)];
+            boundScrollView.contentSize = CGSizeMake(kNBR_SCREEN_W * 1.0f, kNBR_SCREEN_H);
+            boundScrollView.contentOffset = CGPointMake(kNBR_SCREEN_W * 0.0f, 0);
+            
+            for (int i = 0; i < 3; i++)
+            {
+                [segmentLabel[i] removeFromSuperview];
+            }
+        }
+            break;
+            
+        case FRIENDCIRCLECONTROLLER_MODE_ACTIVITY:
+        {
+            [self requestList1WithFlag:@"1"];
+            
+            boundScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, kNBR_SCREEN_W, kNBR_SCREEN_H)];
+            boundScrollView.contentSize = CGSizeMake(kNBR_SCREEN_W * 2.0f, kNBR_SCREEN_H);
+            boundScrollView.contentOffset = CGPointMake(kNBR_SCREEN_W * 1.0f, 0);
+            
+            for (int i = 0; i < 3; i++)
+            {
+                [segmentLabel[i] removeFromSuperview];
+            }
+        }
+            break;
+            
+        case FRIENDCIRCLECONTROLLER_MODE_WARNNING:
+        {
+            [self requestList2WithAccepted:@"-1" isMy:NO];
+            
+            boundScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, kNBR_SCREEN_W, kNBR_SCREEN_H)];
+            boundScrollView.contentSize = CGSizeMake(kNBR_SCREEN_W * 3.0f, kNBR_SCREEN_H);
+            boundScrollView.contentOffset = CGPointMake(kNBR_SCREEN_W * 2.0f, 0);
+            
+            for (int i = 0; i < 3; i++)
+            {
+                [segmentLabel[i] removeFromSuperview];
+            }
+        }
+            break;
+            
+        default:
+            break;
+    }
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
     self.view.backgroundColor = kNBR_ProjectColor_BackGroundGray;
-    
-#ifdef CONFIG_TEST_DATE
-//    [self initTestDate];
-#endif
     
     //容器
     boundScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 64 + 40, kNBR_SCREEN_W, kNBR_SCREEN_H - 64 - 40 - 49)];
@@ -101,7 +174,9 @@
     UIBarButtonItem *rightAddItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"tianjia01"] style:UIBarButtonItemStylePlain target:self action:@selector(rightBarbuttonAction:)];
     self.navigationItem.rightBarButtonItem = rightAddItem;
     
-    [self requestList0];
+    [self configViewControllerMode];
+    
+    return ;
 }
 
 - (void) rightBarbuttonAction : (id) sender
@@ -296,9 +371,10 @@
 }
 
 #pragma mark Request
-- (void) requestList0
+
+- (void) requestList0WithAccepted : (NSString*) _accepted isMy : (BOOL) _isMy
 {
-    listRequest[0] = [CreaterRequest_Logroll CreateLogrollRequestWithIndex:ITOS(dataIndex[0]) size:kNBR_PAGE_SIZE_STR accepted:@"-1" isMy:@"0"];
+    listRequest[0] = [CreaterRequest_Logroll CreateLogrollRequestWithIndex:ITOS(dataIndex[0]) size:kNBR_PAGE_SIZE_STR accepted:_accepted isMy:_isMy ? @"1": @"0"];
     
     __weak ASIHTTPRequest *blockRequest = listRequest[0];
     
@@ -325,86 +401,12 @@
                 
                 NSString *createdTime = entityDict[@"created"];
                 
-                NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-                [dateFormatter setTimeZone:[NSTimeZone systemTimeZone]];
-                dateFormatter.dateFormat = @"LLL d,yyyy hh:mm:ss a";
-                
-                NSLog(@"%@", [dateFormatter stringFromDate:[dateFormatter dateFromString:@"May 5, 2015 9:53:13 AM"]]);
-                
-                NSDate *createdDate = [dateFormatter dateFromString:createdTime];
-                NSTimeInterval distanceSec = [[NSDate date] timeIntervalSinceDate:createdDate];
-                
-                NSTimeInterval sec = distanceSec;
-                
-                //六十秒
-                if (sec / 60 < 1)
-                {
-                    createdTime = @"刚刚";
-                }
-                
-                if (sec / 60 > 0)
-                {
-                    createdTime = [NSString stringWithFormat:@"%d分钟前", (int)sec / 60];
-                }
-                
-                if (sec / 3600 > 0)
-                {
-                    createdTime = [NSString stringWithFormat:@"%d小时前", (int)sec / 3600];
-                }
-                
-                //大于六小时，小于24小时
-                if (sec / 3600 > 6.0f && sec / 3600 < 24.0f)
-                {
-                    NSDateFormatter *formarter = [[NSDateFormatter alloc] init];
-                    
-                    formarter.dateFormat = @"今天 H:mm:ss";
-                    
-                    createdTime = [NSString stringWithFormat:@"%@", [formarter stringFromDate:createdDate]];
-                }
-                
-                //大于二十四小时小雨48小时
-                if (sec / 3600 > 24 && sec / 3600 < 48)
-                {
-                    NSDateFormatter *formarter = [[NSDateFormatter alloc] init];
-                    
-                    formarter.dateFormat = @"昨天 H:mm:ss";
-                    
-                    createdTime = [NSString stringWithFormat:@"%@", [formarter stringFromDate:createdDate]];
-                }
-                
-                //大于48小时小于72小时
-                if (sec / 3600 > 24 && sec / 3600 < 72)
-                {
-                    NSDateFormatter *formarter = [[NSDateFormatter alloc] init];
-                    
-                    formarter.dateFormat = @"前天 H:mm:ss";
-                    
-                    createdTime = [NSString stringWithFormat:@"%@", [formarter stringFromDate:createdDate]];
-                }
-                
-                if (sec / 3600 > 72)
-                {
-                    NSDateFormatter *defulatFormat = [[NSDateFormatter alloc] init];
-                    defulatFormat.dateFormat = @"M月d日 H:mm:ss";
-                    createdTime = [NSString stringWithFormat:@"%@", [defulatFormat stringFromDate:createdDate]];
-                }
-                
-                //大于一个月
-                if (sec / 3600 > 24 * 31)
-                {
-                    NSDateFormatter *formarter = [[NSDateFormatter alloc] init];
-                    
-                    formarter.dateFormat = @"YYYY年M月d日 H:mm:ss";
-                    
-                    createdTime = [NSString stringWithFormat:@"%@", [formarter stringFromDate:createdDate]];
-                }
-                
                 newContentEntity.avterURL           = entityDict[@"userInfo"][@"avatar"];
                 newContentEntity.nickName           = entityDict[@"userInfo"][@"nickName"];
                 newContentEntity.content            = entityDict[@"content"];
                 newContentEntity.contentImgURLList  = imageList;
                 newContentEntity.address            = entityDict[@"village"][@"name"];
-                newContentEntity.commitDate         = createdTime;
+                newContentEntity.commitDate         = [self nowDateStringForDistanceDateString:createdTime];
                 newContentEntity.lookCount          = ITOS(((NSNumber*)entityDict[@"views"]).integerValue);
                 newContentEntity.commentCount       = ITOS(((NSNumber*)entityDict[@"posts"]).integerValue);
                 newContentEntity.pointApproves      = @"";
@@ -433,5 +435,30 @@
     
 }
 
+- (void) requestList1WithFlag : (NSString*) _flag
+{
+    listRequest[1] = [CreaterRequest_Activity CreateActivityRequestWithIndex:ITOS(dataIndex[1]) size:kNBR_PAGE_SIZE_STR flag:_flag];
+    
+    __weak ASIHTTPRequest *blockRequest = listRequest[1];
+    
+    [listRequest[1] setCompletionBlock:^{
+        NSDictionary *responseDict = [blockRequest.responseString JSONValue];
+        
+        if ([CreaterRequest_Activity CheckErrorResponse:responseDict errorAlertInViewController:self])
+        {
+            //成功逻辑
+            return ;
+        }
+    }];
+    
+    [self setDefaultRequestFaild:listRequest[1]];
+    [self addLoadingView];
+    [listRequest[1] startAsynchronous];
+}
+
+- (void) requestList2WithAccepted : (NSString*) _accepted isMy : (BOOL) _isMy
+{
+    
+}
 
 @end

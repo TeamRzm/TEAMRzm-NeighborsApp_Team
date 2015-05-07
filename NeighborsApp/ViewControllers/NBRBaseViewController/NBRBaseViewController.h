@@ -35,4 +35,6 @@
 
 - (void) takePhoto;
 
+//获得目标时间距离当前时间的字符串，比如 “x分钟前，x小时前，今天，昨天。等等格式”
+- (NSString*) nowDateStringForDistanceDateString : (NSString*) _dateString;
 @end
