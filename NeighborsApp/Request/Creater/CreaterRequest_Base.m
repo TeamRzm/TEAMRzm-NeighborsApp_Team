@@ -100,7 +100,9 @@
 
 + (BOOL) CheckErrorResponse : (NSDictionary*) _jsonDict errorAlertInViewController : (NBRBaseViewController*) _viewController
 {
-    if ( ((NSNumber*)_jsonDict[@"data"][@"code"][@"state"]).integerValue !=0 )
+
+//    if ( ((NSNumber*)_jsonDict[@"data"][@"code"][@"state"]).integerValue !=0 )
+    if ( [_jsonDict numberWithKeyPath:@"data\\code\\state"] != 0 )
     {
         [_viewController showBannerMsgWithString:_jsonDict[@"data"][@"code"][@"message"]];
         

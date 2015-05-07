@@ -176,7 +176,7 @@
     yIndex = yIndex % widthCount == 0 ? yIndex / widthCount : yIndex / widthCount + 1;
     
     UIImageView *addressLogo = [[UIImageView alloc] initWithFrame:CGRectMake(contentLable.frame.origin.x,
-                                                                             contentLable.frame.origin.y + contentLable.frame.size.height + (yIndex) * singleImgSize.height + 10 + 5.5,
+                                                                             contentLable.frame.origin.y + contentLable.frame.size.height + (yIndex) * singleImgSize.height + (yIndex == 0 ? 0 : 10) + 5.5,
                                                                              8.5,
                                                                              11)];
     addressLogo.image = [UIImage imageNamed:@"xiaoQuAddressIcon"];
@@ -187,7 +187,7 @@
     CGSize addressStringSize = [entity.address sizeWithAttributes:@{NSFontAttributeName : addressContentFont}];
     
     addressLable = [[UILabel alloc] initWithFrame:CGRectMake(contentLable.frame.origin.x + 11,
-                                                             contentLable.frame.origin.y + contentLable.frame.size.height + (yIndex) * singleImgSize.height + 10 + 5,
+                                                             contentLable.frame.origin.y + contentLable.frame.size.height + (yIndex) * singleImgSize.height + (yIndex == 0 ? 0 : 10) + 5,
                                                              addressStringSize.width,
                                                              addressStringSize.height)];
     addressLable.text = entity.address;
@@ -230,7 +230,7 @@
     commentCountImageView.image = [UIImage imageNamed:@"liuyan"];
     
     [bottonView addSubview:lookCountImgView];
-    [bottonView addSubview:zanCountImgView];
+//    [bottonView addSubview:zanCountImgView];
     [bottonView addSubview:commentCountImageView];
     
     
@@ -353,7 +353,7 @@
     yIndex = yIndex % widthCount == 0 ? yIndex / widthCount : yIndex / widthCount + 1;
     
     UIImageView *addressLogo = [[UIImageView alloc] initWithFrame:CGRectMake(contentLable.frame.origin.x,
-                                                                             contentLable.frame.origin.y + contentLable.frame.size.height + (yIndex) * singleImgSize.height + 10 + 5.5,
+                                                                             contentLable.frame.origin.y + contentLable.frame.size.height + (yIndex) * singleImgSize.height + (yIndex == 0 ? 0 : 10) + 5.5,
                                                                              8.5,
                                                                              11)];
     addressLogo.image = [UIImage imageNamed:@"xiaoQuAddressIcon"];
@@ -363,7 +363,7 @@
     CGSize addressStringSize = [entity.address sizeWithAttributes:@{NSFontAttributeName : addressContentFont}];
     
     UILabel *addressLable = [[UILabel alloc] initWithFrame:CGRectMake(contentLable.frame.origin.x + 11,
-                                                             contentLable.frame.origin.y + contentLable.frame.size.height + (yIndex) * singleImgSize.height + 10 + 5.5,
+                                                             contentLable.frame.origin.y + contentLable.frame.size.height + (yIndex) * singleImgSize.height + (yIndex == 0 ? 0 : 10) + 5.5,
                                                              addressStringSize.width,
                                                              addressStringSize.height)];
     
@@ -379,7 +379,7 @@
                                                                   kNBR_SCREEN_W - (43 + 10 * 3),
                                                                   16)];
     
-    return bottonView.frame.origin.y + CGRectGetHeight(bottonView.frame) + 15;
+    return bottonView.frame.origin.y + CGRectGetHeight(bottonView.frame) + 10;
 
 }
 

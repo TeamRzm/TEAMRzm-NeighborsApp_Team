@@ -145,7 +145,7 @@
         
         if ([CreaterRequest_Verify CheckErrorResponse:responseDict errorAlertInViewController:self])
         {
-            [self showBannerMsgWithString:responseDict[@"data"][@"code"][@"message"]];
+            [self showBannerMsgWithString:[responseDict stringWithKeyPath:@"data\\code\\message"]];
             
             [self checkCodeButtonTimerAction];
         }
@@ -285,7 +285,7 @@
         
         if ([CreaterRequest_Verify CheckErrorResponse:responseDict errorAlertInViewController:self])
         {
-            [self showBannerMsgWithString:responseDict[@"data"][@"code"][@"message"]];
+            [self showBannerMsgWithString:[responseDict stringWithKeyPath:@"data\\code\\message"]];
             
             [self.navigationController popViewControllerAnimated:YES];
         }

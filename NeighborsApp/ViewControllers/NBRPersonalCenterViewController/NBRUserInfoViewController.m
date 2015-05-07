@@ -136,10 +136,10 @@ typedef enum
         
         if ([CreaterRequest_User CheckErrorResponse:responseDict errorAlertInViewController:self])
         {
-            ((UITextField*)nomalTextFiedArr[1][0]).text = responseDict[@"data"][@"result"][@"username"];
-            ((UITextField*)nomalTextFiedArr[1][1]).text = responseDict[@"data"][@"result"][@"nickName"];
+            ((UITextField*)nomalTextFiedArr[1][0]).text = [responseDict stringWithKeyPath:@"data\\result\\username"];
+            ((UITextField*)nomalTextFiedArr[1][1]).text = [responseDict stringWithKeyPath:@"data\\result\\nickName"];
             ((UITextField*)nomalTextFiedArr[1][2]).text = @"";
-            ((UITextField*)nomalTextFiedArr[1][3]).text = responseDict[@"data"][@"result"][@"username"];
+            ((UITextField*)nomalTextFiedArr[1][3]).text = [responseDict stringWithKeyPath:@"data\\result\\username"];
             ((UITextField*)nomalTextFiedArr[1][4]).text = @"";
             ((UITextField*)nomalTextFiedArr[1][5]).text = @"";
         }

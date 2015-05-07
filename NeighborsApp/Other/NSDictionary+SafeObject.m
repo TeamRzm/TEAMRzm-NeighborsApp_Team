@@ -8,30 +8,90 @@
 
 #import "NSDictionary+SafeObject.h"
 
-@implementation SafeNSDictionary
+@implementation NSDictionary(SafePath)
 
-- (id) objectForKey:(id)aKey
+- (NSDictionary*) dictWithKeyPath : (NSString*) _keyPath
 {
-    if ([self.allKeys containsObject:aKey])
+    NSArray *subKeys = [_keyPath componentsSeparatedByString:@"\\"];
+    
+    id currDict = self;
+    
+    for (NSString *subKey in subKeys)
     {
-        return self[aKey];
+        if ([currDict isKindOfClass:[NSDictionary class]])
+        {
+            if ([((NSDictionary*)currDict).allKeys containsObject:subKey])
+            {
+                currDict = currDict[subKey];
+            }
+            else
+            {
+                return nil;
+            }
+        }
+        else
+        {
+            return nil;
+        }
     }
-    else
-    {
-        return NULL;
-    }
+    
+    return currDict;
 }
 
-- (id) valueForKey:(NSString *)key
+- (NSString*) stringWithKeyPath : (NSString*) _keyPath
 {
-    if ([self.allKeys containsObject:key])
+    NSArray *subKeys = [_keyPath componentsSeparatedByString:@"\\"];
+    
+    id currDict = self;
+    
+    for (NSString *subKey in subKeys)
     {
-        return self[key];
+        if ([currDict isKindOfClass:[NSDictionary class]])
+        {
+            if ([((NSDictionary*)currDict).allKeys containsObject:subKey])
+            {
+                currDict = currDict[subKey];
+            }
+            else
+            {
+                return @"";
+            }
+        }
+        else
+        {
+            return currDict;
+        }
     }
-    else
+    
+    return @"";
+}
+
+- (NSInteger) numberWithKeyPath : (NSString*) _keyPath
+{
+    NSArray *subKeys = [_keyPath componentsSeparatedByString:@"\\"];
+    
+    id currDict = self;
+    
+    for (NSString *subKey in subKeys)
     {
-        return NULL;
+        if ([currDict isKindOfClass:[NSDictionary class]])
+        {
+            if ([((NSDictionary*)currDict).allKeys containsObject:subKey])
+            {
+                currDict = currDict[subKey];
+            }
+            else
+            {
+                return 0;
+            }
+        }
+        else
+        {
+            return ((NSNumber*)currDict).integerValue;
+        }
     }
+    
+    return 0;
 }
 
 @end
