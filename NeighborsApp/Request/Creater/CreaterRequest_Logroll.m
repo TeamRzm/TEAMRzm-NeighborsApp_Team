@@ -17,7 +17,7 @@
 {
     NSDictionary *parmsDict = @{
                                 @"flag"     : _flag,
-                                @"index"    : _index,
+                                @"index"    : ITOS((_index.integerValue + 1)),
                                 @"size"     : _size,
                                 @"accepted" : _accepted,
                                 };
@@ -34,32 +34,26 @@
                                                   files : (NSArray*)  _files
                                                     tag : (NSString*) _tag
 {
-    NSMutableString *filesString = [[NSMutableString alloc] init];
+    NSMutableString *filesString = [[NSMutableString alloc] initWithString:@""];
     
     for (NSString *subString in _files)
     {
-        [filesString appendFormat:@"%@,", subString];
-    }
-    
-    NSString *resultFiels = @"";
-    
-    if (filesString.length > 0)
-    {
-        resultFiels = [filesString substringToIndex:filesString.length - 1];
+        [filesString appendFormat:@"&files[]=%@", subString];
     }
     
     NSDictionary *parmsDict = @{
                                 @"title"    : _title,
                                 @"info"     : _info,
-                                @"files"    : resultFiels,
                                 @"tag"      : _tag,
                                 };
     
-    ASIHTTPRequest *request = [CreaterRequest_Logroll GetRequestWithMethod:@"/api.logroll/post.cmd"
-                                                                 parmsDict:parmsDict
-                                                             requestMethod:REQUEST_METHOD_POST];
+    NSString *requestURLString = [CreaterRequest_Logroll URLStringWithMethod:@"/api.logroll/post.cmd" parmsDict:parmsDict];
     
-    return request;
+    requestURLString = [requestURLString stringByAppendingString:filesString];
+    
+    NSURL *url = [NSURL URLWithString:requestURLString];
+    
+    return [CreaterRequest_Logroll RequestWithURL:url requestMethod:REQUEST_METHOD_POST];
 }
 
 @end

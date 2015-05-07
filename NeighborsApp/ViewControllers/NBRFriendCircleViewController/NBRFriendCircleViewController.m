@@ -176,7 +176,20 @@
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10.0f;
+    if (tableView == subTableView[0])
+    {
+        return boundTableViewDateSource[0].count;
+    }
+    else if (tableView == subTableView[1])
+    {
+        return boundTableViewDateSource[1].count;
+    }
+    else if (tableView == subTableView[2])
+    {
+        return boundTableViewDateSource[2].count;
+    }
+    
+    return 0;
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
@@ -197,19 +210,16 @@
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSInteger tableIndex = 0;
+    
+    if (tableView == subTableView[0]) tableIndex = 0;
+    if (tableView == subTableView[1]) tableIndex = 1;
+    if (tableView == subTableView[2]) tableIndex = 2;
+    
     if(tableView == subTableView[0] || tableView == subTableView[2])
     {
-        FriendCircleContentEntity *entity = [[FriendCircleContentEntity alloc] init];
-        entity.avterURL = @"t_avter_9";
-        entity.content = @"《规定》深入贯彻习主席系列重要讲话精神特别是关于加强纪律建设的重要指示，紧紧围绕实现党在新形势下的强军目标，认真落实依法治军、从严治军要求，对严格军队党员领导干部纪律约束作出明确规定，是新形势下严格党员领导干部纪律约束、加强军队纪律建设的重要指导性文件。";
-        entity.contentImgURLList = @[@"t_avter_5",@"t_avter_6",@"t_avter_7",@"t_avter_8",@"t_avter_1",@"t_avter_2",@"t_avter_3",@"t_avter_4",@"t_avter_0"];
-        entity.address = @"新家园小区";
-        entity.nickName = @"邻家小妹";
-        entity.commitDate = @"5分钟前";
-        entity.lookCount = @"2031";
-        entity.pointApproves = @"232";
-        entity.commentCount = @"14";
-        
+        FriendCircleContentEntity *entity = boundTableViewDateSource[tableIndex][indexPath.row];
+
         return [CommentTableViewCell heightWithEntity:entity];
     }
     else if (tableView == subTableView[1])
@@ -231,20 +241,17 @@
 
 - (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSInteger tableIndex = 0;
+    
+    if (tableView == subTableView[0]) tableIndex = 0;
+    if (tableView == subTableView[1]) tableIndex = 1;
+    if (tableView == subTableView[2]) tableIndex = 2;
+    
     if(tableView == subTableView[0] || tableView == subTableView[2])
     {
+        FriendCircleContentEntity *entity = boundTableViewDateSource[tableIndex][indexPath.row];
         CommentTableViewCell *cell = [[CommentTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kNBR_TABLEVIEW_CELL_NOIDENTIFIER];
         cell.delegate = self;
-        FriendCircleContentEntity *entity = [[FriendCircleContentEntity alloc] init];
-        entity.avterURL = @"t_avter_9";
-        entity.content = @"《规定》深入贯彻习主席系列重要讲话精神特别是关于加强纪律建设的重要指示，紧紧围绕实现党在新形势下的强军目标，认真落实依法治军、从严治军要求，对严格军队党员领导干部纪律约束作出明确规定，是新形势下严格党员领导干部纪律约束、加强军队纪律建设的重要指导性文件。";
-        entity.contentImgURLList = @[@"t_avter_5",@"t_avter_6",@"t_avter_7",@"t_avter_8",@"t_avter_1",@"t_avter_2",@"t_avter_3",@"t_avter_4",@"t_avter_0"];
-        entity.address = @"新家园小区";
-        entity.nickName = @"邻家小妹";
-        entity.commitDate = @"5分钟前";
-        entity.lookCount = @"2031";
-        entity.pointApproves = @"232";
-        entity.commentCount = @"14";
         [cell setDateEntity:entity];
         return cell;
     }
@@ -311,6 +318,44 @@
         
         if ([CreaterRequest_Logroll CheckErrorResponse:responseDict errorAlertInViewController:self])
         {
+            NSMutableArray *newContentArr = [[NSMutableArray alloc] init];
+            
+            for (int i = 0; i < ((NSArray*)(responseDict[@"data"][@"result"][@"data"])).count; i++)
+            {
+                NSDictionary *entityDict = responseDict[@"data"][@"result"][@"data"][i];
+                
+                FriendCircleContentEntity *newContentEntity = [[FriendCircleContentEntity alloc] init];
+                
+                NSMutableArray *imageList = [[NSMutableArray alloc] init];
+                
+                for (int i = 0; i < ((NSArray*)entityDict[@"files"]).count; i++)
+                {
+                    [imageList addObject:entityDict[@"files"][i][@"url"]];
+                }
+                
+                newContentEntity.avterURL           = entityDict[@"userInfo"][@"avatar"];
+                newContentEntity.nickName           = entityDict[@"userInfo"][@"nickName"];
+                newContentEntity.content            = entityDict[@"content"];
+                newContentEntity.contentImgURLList  = imageList;
+                newContentEntity.address            = entityDict[@"village"][@"name"];
+                newContentEntity.commitDate         = entityDict[@"created"];
+                newContentEntity.lookCount          = ITOS(((NSNumber*)entityDict[@"views"]).integerValue);
+                newContentEntity.commentCount       = ITOS(((NSNumber*)entityDict[@"posts"]).integerValue);
+                newContentEntity.pointApproves      = @"";
+                
+                [newContentArr addObject:newContentEntity];
+            }
+            
+            NSMutableArray *insertIndexPath = [[NSMutableArray alloc] init];
+            
+            for (int i = 0; i < newContentArr.count; i++)
+            {
+                [insertIndexPath addObject:[NSIndexPath indexPathForRow:boundTableViewDateSource[0].count + i inSection:0]];
+            }
+            
+            [boundTableViewDateSource[0] addObjectsFromArray:newContentArr];
+            [subTableView[0] insertRowsAtIndexPaths:insertIndexPath withRowAnimation:UITableViewRowAnimationAutomatic];
+            
             return ;
         }
     }];

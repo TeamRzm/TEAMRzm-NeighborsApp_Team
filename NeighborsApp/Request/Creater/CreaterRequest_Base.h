@@ -21,7 +21,8 @@ typedef enum
 
 @interface CreaterRequest_Base : NSObject
 
-+ (NSURL*) URLStringWithMethod : (NSString*) _method parmsDict : (NSDictionary*) _parmsDict;
++ (NSString*) URLStringWithMethod : (NSString*) _method parmsDict : (NSDictionary*) _parmsDict;
++ (NSURL*) URLWithMethod : (NSString*) _method parmsDict : (NSDictionary*) _parmsDict;
 
 + (ASIHTTPRequest*) RequestWithURL : (NSURL*) _url requestMethod : (REQUEST_METHOD) _method;
 

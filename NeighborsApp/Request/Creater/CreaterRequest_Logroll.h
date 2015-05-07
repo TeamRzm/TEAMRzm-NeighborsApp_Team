@@ -17,6 +17,7 @@
                                          accepted : (NSString*) _accepted
                                              isMy : (NSString*) _flag;
 
+//发布里手帮
 + (ASIHTTPRequest*) CreateLogrollCommitRequestWithTitle : (NSString*) _title
                                                    info : (NSString*) _info
                                                   files : (NSArray*)  _files

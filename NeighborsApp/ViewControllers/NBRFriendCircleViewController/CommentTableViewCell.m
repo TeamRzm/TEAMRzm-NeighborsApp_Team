@@ -50,7 +50,8 @@
     self.backgroundColor = [UIColor whiteColor];
     
     //头像
-    avterImageView = [[EGOImageView alloc] initWithPlaceholderImage:[UIImage imageNamed:entity.avterURL]];
+    avterImageView = [[EGOImageView alloc] initWithPlaceholderImage:[UIImage imageNamed:@""]];
+    avterImageView.imageURL = [NSURL URLWithString:entity.avterURL];
     avterImageView.frame = CGRectMake(10, 5, 43.0f, 43.0f);
     avterImageView.layer.cornerRadius = CGRectGetWidth(avterImageView.frame) / 2.0f;
     avterImageView.layer.masksToBounds = YES;
@@ -102,8 +103,45 @@
     //图片
     NSMutableArray *contentImageViews = [[NSMutableArray alloc] init];
     
-    CGSize singleImgSize = CGSizeMake((kNBR_SCREEN_W - (43 + 10 * 3) - 10) / 3.0f,
-                                      (kNBR_SCREEN_W - (43 + 10 * 3) - 10) / 3.0f);
+    NSInteger widthCount;
+    CGSize singleImgSize = CGSizeZero;
+    
+    switch (entity.contentImgURLList.count)
+    {
+            break;
+            
+        case 1:
+        {
+            widthCount = 1;
+            singleImgSize = CGSizeMake((kNBR_SCREEN_W - (43 + 10 * 3) - 10) / 1.0f,
+                                       (kNBR_SCREEN_W - (43 + 10 * 3) - 10) / 1.0f);
+        }
+            break;
+            
+        case 2:
+        case 4:
+        {
+            widthCount = 2;
+            singleImgSize = CGSizeMake((kNBR_SCREEN_W - (43 + 10 * 3) - 10) / 2.0f,
+                                       (kNBR_SCREEN_W - (43 + 10 * 3) - 10) / 2.0f);
+        }
+            break;
+            
+        case 0:
+        case 3:
+        case 5:
+        case 6:
+        case 7:
+        case 8:
+        case 9:
+        default:
+        {
+            widthCount = 3;
+            singleImgSize = CGSizeMake((kNBR_SCREEN_W - (43 + 10 * 3) - 10) / 3.0f,
+                                       (kNBR_SCREEN_W - (43 + 10 * 3) - 10) / 3.0f);
+        }
+            break;
+    }
     
     for (int i = 0; i < entity.contentImgURLList.count; i++)
     {
@@ -112,10 +150,13 @@
             return ;
         }
         
-        EGOImageView *subImageView = [[EGOImageView alloc] initWithPlaceholderImage:[UIImage imageNamed:entity.contentImgURLList[i]]];
-        subImageView.frame = CGRectMake( nikeNameLable.frame.origin.x + (i % 3) * singleImgSize.width,
-                                         contentLable.frame.origin.y + contentLable.frame.size.height + (i / 3) * singleImgSize.height + 10,
+        EGOImageView *subImageView = [[EGOImageView alloc] initWithPlaceholderImage:[UIImage imageNamed:@""]];
+        subImageView.imageURL = [NSURL URLWithString:entity.contentImgURLList[i]];
+        
+        subImageView.frame = CGRectMake( nikeNameLable.frame.origin.x + (i % widthCount) * singleImgSize.width,
+                                         contentLable.frame.origin.y + contentLable.frame.size.height + (i / widthCount) * singleImgSize.height + 10,
                                          singleImgSize.width - 2, singleImgSize.height - 2);
+        
         subImageView.layer.borderColor = kNBR_ProjectColor_LightGray.CGColor;
         subImageView.layer.borderWidth = 0.5f;
         subImageView.userInteractionEnabled = YES;
@@ -227,7 +268,7 @@
 {
     FriendCircleContentEntity *entity = _dateEntity;
     //头像
-    EGOImageView *avterImageView = [[EGOImageView alloc] initWithPlaceholderImage:[UIImage imageNamed:entity.avterURL]];
+    EGOImageView *avterImageView = [[EGOImageView alloc] init];
     avterImageView.frame = CGRectMake(10, 5, 43.0f, 43.0f);
     
     //昵称
@@ -263,15 +304,55 @@
     UILabel *contentLable = [[UILabel alloc] initWithFrame:CGRectMake(nikeNameLable.frame.origin.x, nikeNameLable.frame.origin.y + CGRectGetHeight(nikeNameLable.frame), contentStringSize.size.width, contentStringSize.size.height)];
     
     //图片
-    CGSize singleImgSize = CGSizeMake((kNBR_SCREEN_W - (43 + 10 * 3) - 10) / 3.0f,
-                                      (kNBR_SCREEN_W - (43 + 10 * 3) - 10) / 3.0f);
+    NSInteger widthCount;
+    CGSize singleImgSize = CGSizeZero;
+    
+    switch (entity.contentImgURLList.count)
+    {
+            break;
+            
+        case 1:
+        {
+            widthCount = 1;
+            singleImgSize = CGSizeMake((kNBR_SCREEN_W - (43 + 10 * 3) - 10) / 1.0f,
+                                       (kNBR_SCREEN_W - (43 + 10 * 3) - 10) / 1.0f);
+        }
+            break;
+            
+        case 2:
+        case 4:
+        {
+            widthCount = 2;
+            singleImgSize = CGSizeMake((kNBR_SCREEN_W - (43 + 10 * 3) - 10) / 2.0f,
+                                       (kNBR_SCREEN_W - (43 + 10 * 3) - 10) / 2.0f);
+        }
+            break;
+            
+        case 0:
+        case 3:
+        case 5:
+        case 6:
+        case 7:
+        case 8:
+        case 9:
+        default:
+        {
+            widthCount = 3;
+            singleImgSize = CGSizeMake((kNBR_SCREEN_W - (43 + 10 * 3) - 10) / 3.0f,
+                                       (kNBR_SCREEN_W - (43 + 10 * 3) - 10) / 3.0f);
+        }
+            break;
+    }
     
     //小区定位尖脚logo
-    NSInteger yIndex = entity.contentImgURLList.count > 9 ? 9 :entity.contentImgURLList.count;
+    NSInteger yIndex = entity.contentImgURLList.count > 9 ? 9 : entity.contentImgURLList.count;
+    
+    yIndex = yIndex % widthCount == 0 ? yIndex / widthCount : yIndex / widthCount + 1;
     
     UIImageView *addressLogo = [[UIImageView alloc] initWithFrame:CGRectMake(contentLable.frame.origin.x,
-                                                                             contentLable.frame.origin.y + contentLable.frame.size.height + (yIndex / 3) * singleImgSize.height + 10 + 5.5,
-                                                                             8.5, 11)];
+                                                                             contentLable.frame.origin.y + contentLable.frame.size.height + (yIndex) * singleImgSize.height + 10 + 5.5,
+                                                                             8.5,
+                                                                             11)];
     addressLogo.image = [UIImage imageNamed:@"xiaoQuAddressIcon"];
     
     //地点
@@ -279,7 +360,7 @@
     CGSize addressStringSize = [entity.address sizeWithAttributes:@{NSFontAttributeName : addressContentFont}];
     
     UILabel *addressLable = [[UILabel alloc] initWithFrame:CGRectMake(contentLable.frame.origin.x + 11,
-                                                             contentLable.frame.origin.y + contentLable.frame.size.height + (yIndex / 3) * singleImgSize.height + 10 + 5,
+                                                             contentLable.frame.origin.y + contentLable.frame.size.height + (yIndex) * singleImgSize.height + 10 + 5,
                                                              addressStringSize.width,
                                                              addressStringSize.height)];
     

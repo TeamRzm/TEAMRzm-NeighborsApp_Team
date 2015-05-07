@@ -11,7 +11,7 @@
 
 @implementation CreaterRequest_Base
 
-+ (NSURL*) URLStringWithMethod : (NSString*) _method parmsDict : (NSDictionary*) _parmsDict
++ (NSString*) URLStringWithMethod:(NSString *)_method parmsDict:(NSDictionary *)_parmsDict
 {
     NSMutableString *requestURL = [[NSMutableString alloc] initWithString:CURRENT_SERVER.createRequestServerURL];
     
@@ -45,6 +45,13 @@
     }
     
     NSString *utf8String = [requestURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
+    return utf8String;
+}
+
++ (NSURL*) URLWithMethod : (NSString*) _method parmsDict : (NSDictionary*) _parmsDict
+{
+    NSString *utf8String = [CreaterRequest_Base URLStringWithMethod:_method parmsDict:_parmsDict];
     
     NSURL *url = [NSURL URLWithString:utf8String];
     
@@ -86,7 +93,7 @@
                                parmsDict : (NSDictionary*) _parmsDict
                            requestMethod : (REQUEST_METHOD) _requestMethod
 {
-    NSURL *requestUrl = [CreaterRequest_Base URLStringWithMethod:_method parmsDict:_parmsDict];
+    NSURL *requestUrl = [CreaterRequest_Base URLWithMethod:_method parmsDict:_parmsDict];
     
     return [CreaterRequest_Base RequestWithURL:requestUrl requestMethod:_requestMethod];
 }

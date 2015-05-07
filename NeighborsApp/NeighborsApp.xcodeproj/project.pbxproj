@@ -52,6 +52,7 @@
 		5B332B451AE3A8C0002A0A73 /* XHImageViewer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B332B361AE3A8C0002A0A73 /* XHImageViewer.m */; };
 		5B332B461AE3A8C0002A0A73 /* XHViewState.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B332B381AE3A8C0002A0A73 /* XHViewState.m */; };
 		5B332B471AE3A8C0002A0A73 /* XHZoomingImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B332B3A1AE3A8C0002A0A73 /* XHZoomingImageView.m */; };
+		5B3675821AFB0E5400841405 /* NSDictionary+SafeObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B3675811AFB0E5400841405 /* NSDictionary+SafeObject.m */; };
 		5B38BA3E1AF4E00100775F64 /* CreaterRequest_User.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B38BA3D1AF4E00100775F64 /* CreaterRequest_User.m */; };
 		5B38BA411AF4E01D00775F64 /* CreaterRequest_Base.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B38BA401AF4E01D00775F64 /* CreaterRequest_Base.m */; };
 		5B38BA441AF4FBEA00775F64 /* NSString+CheckFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B38BA431AF4FBEA00775F64 /* NSString+CheckFormat.m */; };
@@ -428,6 +429,8 @@
 		5B332B381AE3A8C0002A0A73 /* XHViewState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHViewState.m; sourceTree = "<group>"; };
 		5B332B391AE3A8C0002A0A73 /* XHZoomingImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHZoomingImageView.h; sourceTree = "<group>"; };
 		5B332B3A1AE3A8C0002A0A73 /* XHZoomingImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHZoomingImageView.m; sourceTree = "<group>"; };
+		5B3675801AFB0E5400841405 /* NSDictionary+SafeObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDictionary+SafeObject.h"; path = "Other/NSDictionary+SafeObject.h"; sourceTree = "<group>"; };
+		5B3675811AFB0E5400841405 /* NSDictionary+SafeObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDictionary+SafeObject.m"; path = "Other/NSDictionary+SafeObject.m"; sourceTree = "<group>"; };
 		5B38BA3C1AF4E00100775F64 /* CreaterRequest_User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreaterRequest_User.h; path = Request/Creater/CreaterRequest_User.h; sourceTree = "<group>"; };
 		5B38BA3D1AF4E00100775F64 /* CreaterRequest_User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreaterRequest_User.m; path = Request/Creater/CreaterRequest_User.m; sourceTree = "<group>"; };
 		5B38BA3F1AF4E01D00775F64 /* CreaterRequest_Base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreaterRequest_Base.h; path = Request/Creater/CreaterRequest_Base.h; sourceTree = "<group>"; };
@@ -1091,6 +1094,8 @@
 				5B38BA4D1AF5DECF00775F64 /* NSString+base64.m */,
 				5BED3BD91AFA4EC300AA8001 /* FileUpLoadHelper.h */,
 				5BED3BDA1AFA4EC300AA8001 /* FileUpLoadHelper.m */,
+				5B3675801AFB0E5400841405 /* NSDictionary+SafeObject.h */,
+				5B3675811AFB0E5400841405 /* NSDictionary+SafeObject.m */,
 			);
 			name = Other;
 			sourceTree = "<group>";
@@ -2301,6 +2306,7 @@
 				5BCB05A31AF122C9004F9F93 /* Server.m in Sources */,
 				5BB6556D1AC3173E007E0F85 /* NBRServeiesViewController.m in Sources */,
 				5B4ADE331ADE308C00810165 /* Transcoding.mm in Sources */,
+				5B3675821AFB0E5400841405 /* NSDictionary+SafeObject.m in Sources */,
 				5BD83C931AD61EF600D1A3EC /* ASICloudFilesObject.m in Sources */,
 				5B6D318C1ADD1BC4009A922A /* ConversationEntity.m in Sources */,
 				5B332B461AE3A8C0002A0A73 /* XHViewState.m in Sources */,
