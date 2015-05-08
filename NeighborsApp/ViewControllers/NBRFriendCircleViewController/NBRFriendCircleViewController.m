@@ -32,10 +32,11 @@
     
     NSInteger     currentSegmentIndex;
     
-    RefreshControl  *refreshControllerTop[3];
-    NSMutableArray  *boundTableViewDateSource[3];
-    BOOL            *hasLoading[3];
-    NSInteger       dataIndex[3];
+    RefreshControl  *refreshControllerTop[3];           //下拉刷新工具
+    NSMutableArray  *boundTableViewDateSource[3];       //数据源
+    BOOL            *hasLoading[3];                     //表格是否在加载数据
+    NSInteger       dataIndex[3];                       //当前表格加载的页码
+    NSInteger       totalRecord[3];                     //数据总数
     
     ASIHTTPRequest  *listRequest[3];
     
@@ -193,6 +194,11 @@
 
 - (void) scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
+    if (boundTableViewDateSource[currentSegmentIndex].count >= totalRecord[currentSegmentIndex])
+    {
+        return ;
+    }
+    
     UITableViewCell *lastCell = [subTableView[currentSegmentIndex] cellForRowAtIndexPath:[NSIndexPath indexPathForRow:boundTableViewDateSource[currentSegmentIndex].count - 1 inSection:0]];
     
     if ([subTableView[currentSegmentIndex].visibleCells containsObject:lastCell])
@@ -420,6 +426,8 @@
             {
                 [refreshControllerTop[0] finishRefreshingDirection:RefreshDirectionTop];
             }
+            
+            totalRecord[currentSegmentIndex] = [responseDict numberWithKeyPath:@"data\\result\\totalRecord"];
             
             NSMutableArray *newContentArr = [[NSMutableArray alloc] init];
             
