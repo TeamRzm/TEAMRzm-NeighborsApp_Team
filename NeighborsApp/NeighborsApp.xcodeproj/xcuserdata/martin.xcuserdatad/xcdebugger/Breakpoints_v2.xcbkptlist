@@ -169,13 +169,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ViewControllers/NBRFriendCircleViewController/CommitNewContentViewController.m"
-            timestampString = "452786344.567632"
+            filePath = "Request/Creater/CreaterRequest_Base.m"
+            timestampString = "452790942.80788"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "312"
-            endingLineNumber = "312"
-            landmarkName = "-fileUpLoadHelper:allDownloadedResponseDictArr:"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
+            landmarkName = "+RequestWithURL:requestMethod:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ViewControllers/NBRFriendCircleViewController/NBRFriendCircleViewController.m"
+            timestampString = "452792605.23681"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "593"
+            endingLineNumber = "593"
+            landmarkName = "-refreshControl:didEngageRefreshDirection:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

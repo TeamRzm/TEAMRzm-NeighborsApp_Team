@@ -8,6 +8,7 @@
 
 #import "CreaterRequest_Base.h"
 #import "NBRBaseViewController.h"
+#import "ASIFormDataRequest.h"
 
 @implementation CreaterRequest_Base
 
@@ -60,34 +61,43 @@
 
 + (ASIHTTPRequest*) RequestWithURL : (NSURL*) _url requestMethod : (REQUEST_METHOD) _method
 {
-    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:_url];
-    
-    [request setCachePolicy:ASIAskServerIfModifiedCachePolicy];
-    [request setTimeOutSeconds:25];
-    
     switch (_method)
     {
+        default:
         case REQUEST_METHOD_GET:
         {
+            ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:_url];
             [request setRequestMethod:@"GET"];
+            [request setCachePolicy:ASIAskServerIfModifiedCachePolicy];
+            [request setTimeOutSeconds:25];
+            
+            return request;
         }
             break;
             
         case REQUEST_METHOD_POST:
         {
-            [request setRequestMethod:@"POST"];
-            [request setCachePolicy:ASIDoNotReadFromCacheCachePolicy];
-        }
-            break;
+            NSString *baseUrl = [_url.absoluteString componentsSeparatedByString:@"?"][0];
+            NSString *keyAndValue = [_url.absoluteString componentsSeparatedByString:@"?"][1];
+            keyAndValue = [keyAndValue stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
             
-        default:
-        {
-            [request setRequestMethod:@"GET"];
+            ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:baseUrl]];
+            [request setCachePolicy:ASIAskServerIfModifiedCachePolicy];
+            [request setTimeOutSeconds:25];
+            [request setRequestMethod:@"POST"];
+            
+            NSArray  *allKeyAndValue = [keyAndValue componentsSeparatedByString:@"&"];
+            
+            for (NSString *subKeyValue in allKeyAndValue)
+            {
+                NSArray *result = [subKeyValue componentsSeparatedByString:@"="];
+                [request addPostValue:result[1] forKey:result[0]];
+            }
+            
+            return request;
         }
             break;
     }
-    
-    return request;
 }
 
 + (ASIHTTPRequest*) GetRequestWithMethod : (NSString*) _method

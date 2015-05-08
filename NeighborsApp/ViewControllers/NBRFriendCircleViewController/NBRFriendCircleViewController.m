@@ -32,7 +32,7 @@
     
     NSInteger     currentSegmentIndex;
     
-    RefreshControl  *refreshController[3];
+    RefreshControl  *refreshControllerTop[3];
     NSMutableArray  *boundTableViewDateSource[3];
     NSInteger       dataIndex[3];
     
@@ -159,9 +159,8 @@
         [boundScrollView addSubview:subTableView[i]];
         
         ///初始化
-        refreshController[i] = [[RefreshControl alloc] initWithScrollView:subTableView[i] delegate:self];
-        refreshController[i].topEnabled=YES;
-
+        refreshControllerTop[i] = [[RefreshControl alloc] initWithScrollView:subTableView[i] delegate:self];
+        refreshControllerTop[i].topEnabled = YES;
     }
     
     //单独配置表格
@@ -376,8 +375,7 @@
 - (void) requestList0WithType : (NSString*) _type
 {
     NSInteger requestIndex = _type.integerValue == 0 ? 0 : 2;
-    
-//    listRequest[requestIndex] = [CreaterRequest_Show CreateShowListRequestWithIndex:ITOS(dataIndex[1]) size:kNBR_PAGE_SIZE_STR type:_type];
+
     listRequest[requestIndex] = [CreaterRequest_Logroll CreateLogrollRequestWithIndex:ITOS(dataIndex[requestIndex]) size:kNBR_PAGE_SIZE_STR accepted:@"-1" isMy:@"0"];
     
     __weak ASIHTTPRequest *blockRequest = listRequest[requestIndex];
@@ -388,7 +386,10 @@
         
         if ([CreaterRequest_Show CheckErrorResponse:responseDict errorAlertInViewController:self])
         {
-            [refreshController[0] finishRefreshingDirection:RefreshDirectionTop];
+            if (dataIndex[requestIndex] == 0)
+            {
+                [refreshControllerTop[0] finishRefreshingDirection:RefreshDirectionTop];
+            }
             
             NSMutableArray *newContentArr = [[NSMutableArray alloc] init];
             
@@ -426,8 +427,21 @@
                 [insertIndexPath addObject:[NSIndexPath indexPathForRow:boundTableViewDateSource[requestIndex].count + i inSection:0]];
             }
             
+            if (dataIndex[requestIndex] == 0)
+            {
+                [boundTableViewDateSource[requestIndex] removeAllObjects];
+            }
+            
             [boundTableViewDateSource[requestIndex] addObjectsFromArray:newContentArr];
-            [subTableView[requestIndex] insertRowsAtIndexPaths:insertIndexPath withRowAnimation:UITableViewRowAnimationAutomatic];
+            
+            if (dataIndex[requestIndex] == 0)
+            {
+                [subTableView[requestIndex] reloadData];
+            }
+            else
+            {
+                [subTableView[requestIndex] insertRowsAtIndexPaths:insertIndexPath withRowAnimation:UITableViewRowAnimationAutomatic];
+            }
             
             return ;
         }
@@ -452,7 +466,10 @@
         
         if ([CreaterRequest_Activity CheckErrorResponse:responseDict errorAlertInViewController:self])
         {
-            [refreshController[1] finishRefreshingDirection:RefreshDirectionTop];
+            if (dataIndex[1] == 0)
+            {
+                [refreshControllerTop[1] finishRefreshingDirection:RefreshDirectionTop];
+            }
             
             NSArray *activityListDictArr = [responseDict arrayWithKeyPath:@"data\\result\\data"];
             
@@ -556,19 +573,39 @@
 
 - (void)refreshControl:(RefreshControl *)refreshControl didEngageRefreshDirection:(RefreshDirection) direction
 {
-    dataIndex[currentSegmentIndex] ++;
-    
-    switch (currentSegmentIndex)
+    if (direction == RefreshDirectionTop)
     {
-        case 0:
+        dataIndex[currentSegmentIndex] = 0;
+        
+        switch (currentSegmentIndex)
         {
-            //里手帮
-            [self requestList0WithType:@"0"];
+            case 0:
+            {
+                //里手帮
+                [self requestList0WithType:@"0"];
+            }
+                break;
+                
+            default:
+                break;
         }
-            break;
-            
-        default:
-            break;
+    }
+    else if (direction == RefreshDirectionBottom)
+    {
+        dataIndex[currentSegmentIndex] ++;
+        
+        switch (currentSegmentIndex)
+        {
+            case 0:
+            {
+                //里手帮
+                [self requestList0WithType:@"0"];
+            }
+                break;
+                
+            default:
+                break;
+        }
     }
 }
 
