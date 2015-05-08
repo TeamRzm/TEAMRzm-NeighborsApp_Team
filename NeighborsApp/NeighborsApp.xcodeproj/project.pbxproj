@@ -272,6 +272,11 @@
 		5BB8297B1AE5748B00877995 /* CommentEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB8297A1AE5748B00877995 /* CommentEntity.m */; };
 		5BBAC8A41AFBD14700536F1E /* CreaterRequest_Show.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BBAC8A31AFBD14700536F1E /* CreaterRequest_Show.m */; };
 		5BBAC8A71AFBD6B000536F1E /* SearchPlotListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BBAC8A61AFBD6B000536F1E /* SearchPlotListViewController.m */; };
+		5BCA99FA1AFCE9B700960F21 /* RefreshControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA99F11AFCE9B700960F21 /* RefreshControl.m */; };
+		5BCA99FB1AFCE9B700960F21 /* pull_refresh@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BCA99F31AFCE9B700960F21 /* pull_refresh@2x.png */; };
+		5BCA99FC1AFCE9B700960F21 /* pull_refresh@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BCA99F41AFCE9B700960F21 /* pull_refresh@3x.png */; };
+		5BCA99FD1AFCE9B700960F21 /* RefreshBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA99F61AFCE9B700960F21 /* RefreshBottomView.m */; };
+		5BCA99FE1AFCE9B700960F21 /* RefreshTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA99F81AFCE9B700960F21 /* RefreshTopView.m */; };
 		5BCB05A01AF12280004F9F93 /* RequestServerConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BCB059F1AF12280004F9F93 /* RequestServerConfig.m */; };
 		5BCB05A31AF122C9004F9F93 /* Server.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BCB05A21AF122C9004F9F93 /* Server.m */; };
 		5BCB05A51AF12681004F9F93 /* RequestServerConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5BCB05A41AF12681004F9F93 /* RequestServerConfig.plist */; };
@@ -724,6 +729,15 @@
 		5BBAC8A31AFBD14700536F1E /* CreaterRequest_Show.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreaterRequest_Show.m; path = Request/Creater/CreaterRequest_Show.m; sourceTree = "<group>"; };
 		5BBAC8A51AFBD6B000536F1E /* SearchPlotListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchPlotListViewController.h; path = ViewControllers/NBRPersonalCenterViewController/SearchPlotListViewController.h; sourceTree = "<group>"; };
 		5BBAC8A61AFBD6B000536F1E /* SearchPlotListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchPlotListViewController.m; path = ViewControllers/NBRPersonalCenterViewController/SearchPlotListViewController.m; sourceTree = "<group>"; };
+		5BCA99F01AFCE9B700960F21 /* RefreshControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshControl.h; sourceTree = "<group>"; };
+		5BCA99F11AFCE9B700960F21 /* RefreshControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefreshControl.m; sourceTree = "<group>"; };
+		5BCA99F31AFCE9B700960F21 /* pull_refresh@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pull_refresh@2x.png"; sourceTree = "<group>"; };
+		5BCA99F41AFCE9B700960F21 /* pull_refresh@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pull_refresh@3x.png"; sourceTree = "<group>"; };
+		5BCA99F51AFCE9B700960F21 /* RefreshBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshBottomView.h; sourceTree = "<group>"; };
+		5BCA99F61AFCE9B700960F21 /* RefreshBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefreshBottomView.m; sourceTree = "<group>"; };
+		5BCA99F71AFCE9B700960F21 /* RefreshTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshTopView.h; sourceTree = "<group>"; };
+		5BCA99F81AFCE9B700960F21 /* RefreshTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefreshTopView.m; sourceTree = "<group>"; };
+		5BCA99F91AFCE9B700960F21 /* RefreshViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshViewDelegate.h; sourceTree = "<group>"; };
 		5BCB059E1AF12280004F9F93 /* RequestServerConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RequestServerConfig.h; path = Request/Server/RequestServerConfig.h; sourceTree = "<group>"; };
 		5BCB059F1AF12280004F9F93 /* RequestServerConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RequestServerConfig.m; path = Request/Server/RequestServerConfig.m; sourceTree = "<group>"; };
 		5BCB05A11AF122C9004F9F93 /* Server.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Server.h; path = Request/Server/Server.h; sourceTree = "<group>"; };
@@ -1720,6 +1734,7 @@
 		5BB6555D1AC31588007E0F85 /* Ext */ = {
 			isa = PBXGroup;
 			children = (
+				5BCA99EF1AFCE9B700960F21 /* RefreshControl */,
 				5B38BA571AF652CE00775F64 /* KVNProgress */,
 				5B3FFC551AF3C2AD0071D77A /* XGSDK */,
 				5B332B241AE3A8C0002A0A73 /* XHImageViewer */,
@@ -1768,6 +1783,31 @@
 				5B8B158E1ADC164900AA87A2 /* NBRBaseViewController.xib */,
 			);
 			name = NBRBaseViewController;
+			sourceTree = "<group>";
+		};
+		5BCA99EF1AFCE9B700960F21 /* RefreshControl */ = {
+			isa = PBXGroup;
+			children = (
+				5BCA99F01AFCE9B700960F21 /* RefreshControl.h */,
+				5BCA99F11AFCE9B700960F21 /* RefreshControl.m */,
+				5BCA99F21AFCE9B700960F21 /* RefreshView */,
+			);
+			name = RefreshControl;
+			path = Ext/RefreshControl;
+			sourceTree = "<group>";
+		};
+		5BCA99F21AFCE9B700960F21 /* RefreshView */ = {
+			isa = PBXGroup;
+			children = (
+				5BCA99F31AFCE9B700960F21 /* pull_refresh@2x.png */,
+				5BCA99F41AFCE9B700960F21 /* pull_refresh@3x.png */,
+				5BCA99F51AFCE9B700960F21 /* RefreshBottomView.h */,
+				5BCA99F61AFCE9B700960F21 /* RefreshBottomView.m */,
+				5BCA99F71AFCE9B700960F21 /* RefreshTopView.h */,
+				5BCA99F81AFCE9B700960F21 /* RefreshTopView.m */,
+				5BCA99F91AFCE9B700960F21 /* RefreshViewDelegate.h */,
+			);
+			path = RefreshView;
 			sourceTree = "<group>";
 		};
 		5BCB059A1AF11B6F004F9F93 /* Request */ = {
@@ -2069,6 +2109,7 @@
 				5B6D31721ADCE747009A922A /* bannerSuccess.png in Resources */,
 				5B6D32821ADDFE43009A922A /* Expression_87@2x.png in Resources */,
 				5B6D32921ADDFE43009A922A /* expression_CH.plist in Resources */,
+				5BCA99FC1AFCE9B700960F21 /* pull_refresh@3x.png in Resources */,
 				5B6D32471ADDFE43009A922A /* Expression_33@2x.png in Resources */,
 				5B6D31AC1ADD5433009A922A /* button-destructive-d@2x.png in Resources */,
 				5B6D32761ADDFE43009A922A /* Expression_76@2x.png in Resources */,
@@ -2189,6 +2230,7 @@
 				5B6D31A81ADD5433009A922A /* button-default-d@2x.png in Resources */,
 				5B4ADE111ADE305300810165 /* voicePower.png in Resources */,
 				5B6D31731ADCE747009A922A /* bannerSuccess@2x.png in Resources */,
+				5BCA99FB1AFCE9B700960F21 /* pull_refresh@2x.png in Resources */,
 				5B6D31A51ADD5433009A922A /* button-cancel.png in Resources */,
 				5B6D328E1ADDFE43009A922A /* Expression_98@2x.png in Resources */,
 				5B6D316C1ADCE747009A922A /* bannerAlert.png in Resources */,
@@ -2325,6 +2367,8 @@
 				5BD83C941AD61EF600D1A3EC /* ASICloudFilesObjectRequest.m in Sources */,
 				5BED3BE11AFA870900AA8001 /* CreaterRequest_Village.m in Sources */,
 				5B8B15A41ADC17CB00AA87A2 /* EGOImageView.m in Sources */,
+				5BCA99FA1AFCE9B700960F21 /* RefreshControl.m in Sources */,
+				5BCA99FD1AFCE9B700960F21 /* RefreshBottomView.m in Sources */,
 				5B8B15A21ADC17CB00AA87A2 /* EGOImageLoadConnection.m in Sources */,
 				5B10A7AD1AE81B820034FA63 /* IndividualitySettingViewController.m in Sources */,
 				5BD83C881AD61EF600D1A3EC /* ASIDataCompressor.m in Sources */,
@@ -2338,6 +2382,7 @@
 				5BD83CE31AD61F4B00D1A3EC /* SBJsonStreamParserAccumulator.m in Sources */,
 				5BD83C911AD61EF600D1A3EC /* ASICloudFilesContainerRequest.m in Sources */,
 				5BD83C9D1AD61EF600D1A3EC /* Reachability.m in Sources */,
+				5BCA99FE1AFCE9B700960F21 /* RefreshTopView.m in Sources */,
 				5BD83CE21AD61F4B00D1A3EC /* SBJsonStreamParser.m in Sources */,
 				5B10A7A21AE800D20034FA63 /* PlotCertListViewController.m in Sources */,
 				5BB655701AC31753007E0F85 /* NBRMyMessageViewController.m in Sources */,

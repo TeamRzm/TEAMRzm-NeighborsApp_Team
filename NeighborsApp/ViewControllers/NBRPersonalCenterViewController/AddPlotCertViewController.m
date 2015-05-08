@@ -14,7 +14,7 @@
 {
     UITableView     *boundTableView;
     NSArray         *titlesArr;
-    NSArray         *textFieldArr;
+    NSMutableArray  *textFieldArr;
     
     ASIHTTPRequest  *commentApplyVillage;
     
@@ -33,18 +33,23 @@
     titlesArr = @[
                   @"所在小区",
                   @"业主姓名",
+                  @"业主电话",
+                  @"联系人",
                   @"联系电话",
+                  @"与业主关系",
+                  @"楼层信息",
                   ];
     
-    textFieldArr = @[
-                     [[UITextField alloc] initWithFrame:CGRectMake(70, 0, kNBR_SCREEN_W - 70, 40.0f)],
-                     [[UITextField alloc] initWithFrame:CGRectMake(70, 0, kNBR_SCREEN_W - 70, 40.0f)],
-                     [[UITextField alloc] initWithFrame:CGRectMake(70, 0, kNBR_SCREEN_W - 70, 40.0f)],
-                     ];
+    textFieldArr = [[NSMutableArray alloc] init];
     
-    for (int i = 0; i < textFieldArr.count; i++)
+    for (int i = 0; i < titlesArr.count; i++)
     {
-        [self setDoneStyleTextFile:textFieldArr[i]];
+        UITextField *newTextFiled = [[UITextField alloc] initWithFrame:CGRectMake(70, 0, kNBR_SCREEN_W - 70, 40.0f)];
+        
+        [self setDoneStyleTextFile:newTextFiled];
+        newTextFiled.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME size:13.0f];
+        
+        [textFieldArr addObject:newTextFiled];
     }
     
     ((UITextField*)textFieldArr[0]).userInteractionEnabled = NO;
@@ -90,10 +95,21 @@
         }
     }
     
+//    @"所在小区",     0
+//    @"业主姓名",     1
+//    @"业主电话",     2
+//    @"联系人",       3
+//    @"联系电话",     4
+//    @"与业主关系",   5
+//    @"楼层信息",     6
+    
     commentApplyVillage = [CreaterRequest_Village CreateApplyRequestWithID:[selectPlotDict stringWithKeyPath:@"villageId"]
                                                                       data:@""
-                                                                     phone:((UITextField*)textFieldArr[2]).text
-                                                                   contact:((UITextField*)textFieldArr[1]).text];
+                                                                     phone:((UITextField*)textFieldArr[4]).text
+                                                                   contact:((UITextField*)textFieldArr[3]).text
+                                                                 ownerName:((UITextField*)textFieldArr[1]).text
+                                                                 ownerType:((UITextField*)textFieldArr[5]).text
+                                                                     house:((UITextField*)textFieldArr[6]).text];
     
     __weak ASIHTTPRequest *blockRequest = commentApplyVillage;
     
@@ -161,9 +177,10 @@
     }
     
     //业主姓名Lable
-    UILabel *nameLable = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 60, 40.0f)];
+    UILabel *nameLable = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 75, 40.0f)];
     nameLable.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME_BLOD size:13.0f];
     nameLable.textColor = kNBR_ProjectColor_DeepBlack;
+    nameLable.textAlignment = NSTextAlignmentRight;
     nameLable.text = titlesArr[indexPath.row];
     [cell.contentView addSubview:nameLable];
     

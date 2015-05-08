@@ -29,7 +29,10 @@
 + (ASIHTTPRequest*) CreateApplyRequestWithID : (NSString*) ID
                                         data : (NSString*) data
                                        phone : (NSString*) phone
-                                     contact : (NSString*) contact;
+                                     contact : (NSString*) contact
+                                   ownerName : (NSString*) ownerName
+                                   ownerType : (NSString*) ownerType
+                                       house : (NSString*) house;
 
 //我入住的小区
 + (ASIHTTPRequest*) CreateListAppLinesRequest;

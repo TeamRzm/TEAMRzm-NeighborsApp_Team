@@ -67,12 +67,18 @@
                                         data : (NSString*) data
                                        phone : (NSString*) phone
                                      contact : (NSString*) contact
+                                   ownerName : (NSString*) ownerName
+                                   ownerType : (NSString*) ownerType
+                                       house : (NSString*) house
 {
     NSDictionary *parmsDict = @{
                                 @"id"       : ID,
                                 @"data"     : data, //邀请码？？？ 字段为data 不是code？？
                                 @"phone"    : phone,
                                 @"contact"  : contact,
+                                @"ownerName": ownerName,
+                                @"ownerType": ownerType,
+                                @"house"    : house,
                                 };
     
     ASIHTTPRequest *request = [CreaterRequest_Village GetRequestWithMethod:@"/api.village/apply.cmd"

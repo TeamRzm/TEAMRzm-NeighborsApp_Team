@@ -106,7 +106,7 @@
     UILabel *plotLable = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, kNBR_SCREEN_W - 40, 30.0f)];
     plotLable.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME_BLOD size:13.0f];
     plotLable.textColor = kNBR_ProjectColor_DeepBlack;
-    plotLable.text = boundTableViewDataSource[indexPath.row][@"name"];
+    plotLable.text = boundTableViewDataSource[indexPath.row][@"villageName"];
     [cellBoundView addSubview:plotLable];
     
     

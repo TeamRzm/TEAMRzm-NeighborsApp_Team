@@ -19,7 +19,9 @@
 #import "CreaterRequest_Activity.h"
 #import "CreaterRequest_Show.h"
 
-@interface NBRFriendCircleViewController ()<UITableViewDataSource,UITableViewDelegate,CommentTableViewCellDelegate,XHImageViewerDelegate>
+#import "RefreshControl.h"
+
+@interface NBRFriendCircleViewController ()<UITableViewDataSource,UITableViewDelegate,CommentTableViewCellDelegate,XHImageViewerDelegate,RefreshControlDelegate>
 {
     UIScrollView    *boundScrollView;
     UITableView     *subTableView[3];
@@ -30,6 +32,7 @@
     
     NSInteger     currentSegmentIndex;
     
+    RefreshControl  *refreshController[3];
     NSMutableArray  *boundTableViewDateSource[3];
     NSInteger       dataIndex[3];
     
@@ -154,6 +157,11 @@
         subTableView[i].delegate = self;
         subTableView[i].dataSource = self;
         [boundScrollView addSubview:subTableView[i]];
+        
+        ///初始化
+        refreshController[i] = [[RefreshControl alloc] initWithScrollView:subTableView[i] delegate:self];
+        refreshController[i].topEnabled=YES;
+
     }
     
     //单独配置表格
@@ -380,6 +388,8 @@
         
         if ([CreaterRequest_Show CheckErrorResponse:responseDict errorAlertInViewController:self])
         {
+            [refreshController[0] finishRefreshingDirection:RefreshDirectionTop];
+            
             NSMutableArray *newContentArr = [[NSMutableArray alloc] init];
             
             for (int i = 0; i < [responseDict arrayWithKeyPath:@"data\\result\\data"].count; i++)
@@ -437,10 +447,13 @@
     __weak ASIHTTPRequest *blockRequest = listRequest[1];
     
     [listRequest[1] setCompletionBlock:^{
+        
         NSDictionary *responseDict = [blockRequest.responseString JSONValue];
         
         if ([CreaterRequest_Activity CheckErrorResponse:responseDict errorAlertInViewController:self])
         {
+            [refreshController[1] finishRefreshingDirection:RefreshDirectionTop];
+            
             NSArray *activityListDictArr = [responseDict arrayWithKeyPath:@"data\\result\\data"];
             
             NSMutableArray *newActivityArr = [[NSMutableArray alloc] init];
@@ -507,7 +520,7 @@
                 
                 [newActivityArr addObject:newActivityEntity];
             }
-            
+
             NSMutableArray *insertIndexPath = [[NSMutableArray alloc] init];
             
             for (int i = 0; i < newActivityArr.count; i++)
@@ -515,8 +528,20 @@
                 [insertIndexPath addObject:[NSIndexPath indexPathForRow:boundTableViewDateSource[1].count + i inSection:0]];
             }
             
-            [boundTableViewDateSource[1] addObjectsFromArray:newActivityArr];
-            [subTableView[1] insertRowsAtIndexPaths:insertIndexPath withRowAnimation:UITableViewRowAnimationAutomatic];
+            if (dataIndex[1] <= 0)
+            {
+                //刷新
+                [boundTableViewDateSource[1] removeAllObjects];
+                [boundTableViewDateSource[1] addObjectsFromArray:newActivityArr];
+                
+                [subTableView[1] reloadData];
+            }
+            else
+            {
+                //追加
+                [boundTableViewDateSource[1] addObjectsFromArray:newActivityArr];
+                [subTableView[1] insertRowsAtIndexPaths:insertIndexPath withRowAnimation:UITableViewRowAnimationAutomatic];
+            }
 
             return ;
         }
@@ -525,6 +550,26 @@
     [self setDefaultRequestFaild:listRequest[1]];
     [self addLoadingView];
     [listRequest[1] startAsynchronous];
+}
+
+#pragma mark RefreshDelegate
+
+- (void)refreshControl:(RefreshControl *)refreshControl didEngageRefreshDirection:(RefreshDirection) direction
+{
+    dataIndex[currentSegmentIndex] ++;
+    
+    switch (currentSegmentIndex)
+    {
+        case 0:
+        {
+            //里手帮
+            [self requestList0WithType:@"0"];
+        }
+            break;
+            
+        default:
+            break;
+    }
 }
 
 @end
