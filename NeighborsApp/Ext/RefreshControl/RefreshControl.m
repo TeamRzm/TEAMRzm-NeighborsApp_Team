@@ -215,7 +215,6 @@
 
 - (void)_didEngageRefreshDirection:(RefreshDirection) direction
 {
-    
     if (direction==RefreshDirectionTop)
     {
         [self.topView performSelector:@selector(startRefreshing)];

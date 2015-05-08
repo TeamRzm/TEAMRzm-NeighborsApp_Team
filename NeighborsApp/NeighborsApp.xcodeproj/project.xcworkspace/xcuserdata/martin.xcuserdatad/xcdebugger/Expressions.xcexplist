@@ -56,5 +56,16 @@
             </PersistentString>
          </PersistentStrings>
       </ContextState>
+      <ContextState
+         contextName = "-[NBRFriendCircleViewController scrollViewDidEndDecelerating:]:NBRFriendCircleViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "scrollView.contentOffset">
+            </PersistentString>
+            <PersistentString
+               value = "scrollView.contentSize.height">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
    </ContextStates>
 </VariablesViewState>

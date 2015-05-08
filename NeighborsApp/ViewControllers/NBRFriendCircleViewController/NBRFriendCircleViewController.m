@@ -34,6 +34,7 @@
     
     RefreshControl  *refreshControllerTop[3];
     NSMutableArray  *boundTableViewDateSource[3];
+    BOOL            *hasLoading[3];
     NSInteger       dataIndex[3];
     
     ASIHTTPRequest  *listRequest[3];
@@ -161,6 +162,9 @@
         ///初始化
         refreshControllerTop[i] = [[RefreshControl alloc] initWithScrollView:subTableView[i] delegate:self];
         refreshControllerTop[i].topEnabled = YES;
+        
+        //加载状体
+        hasLoading[i] = NO;
     }
     
     //单独配置表格
@@ -185,6 +189,30 @@
     [self configViewControllerMode];
     
     return ;
+}
+
+- (void) scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    UITableViewCell *lastCell = [subTableView[currentSegmentIndex] cellForRowAtIndexPath:[NSIndexPath indexPathForRow:boundTableViewDateSource[currentSegmentIndex].count - 1 inSection:0]];
+    
+    if ([subTableView[currentSegmentIndex].visibleCells containsObject:lastCell])
+    {
+        if (hasLoading[currentSegmentIndex])
+        {
+            return ;
+        }
+        
+        dataIndex[currentSegmentIndex] ++;
+        
+        switch (currentSegmentIndex)
+        {
+            case 0:
+            {
+                [self requestList0WithType:@"0"];
+            }
+                break;
+        }
+    }
 }
 
 - (void) rightBarbuttonAction : (id) sender
@@ -382,6 +410,8 @@
     
     [blockRequest setCompletionBlock:^{
         [self removeLoadingView];
+        hasLoading[requestIndex] = NO;
+        
         NSDictionary *responseDict = [blockRequest.responseString JSONValue];
         
         if ([CreaterRequest_Show CheckErrorResponse:responseDict errorAlertInViewController:self])
@@ -449,6 +479,7 @@
     
     [self setDefaultRequestFaild:blockRequest];
     
+    hasLoading[requestIndex] = YES;
     [blockRequest startAsynchronous];
     [self addLoadingView];
     
@@ -576,23 +607,6 @@
     if (direction == RefreshDirectionTop)
     {
         dataIndex[currentSegmentIndex] = 0;
-        
-        switch (currentSegmentIndex)
-        {
-            case 0:
-            {
-                //里手帮
-                [self requestList0WithType:@"0"];
-            }
-                break;
-                
-            default:
-                break;
-        }
-    }
-    else if (direction == RefreshDirectionBottom)
-    {
-        dataIndex[currentSegmentIndex] ++;
         
         switch (currentSegmentIndex)
         {
