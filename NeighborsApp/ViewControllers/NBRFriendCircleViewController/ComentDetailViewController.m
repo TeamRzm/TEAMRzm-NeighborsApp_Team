@@ -14,8 +14,10 @@
 #import "SubCommentTableViewCell.h"
 #import "XHImageViewer.h"
 #import "aya_MultimediaKeyBoard.h"
+#import "CreaterRequest_Logroll.h"
+#import "RefreshControl.h"
 
-@interface ComentDetailViewController ()<UITableViewDataSource, UITableViewDelegate,CommentTableViewCellDelegate,XHImageViewerDelegate,aya_MultimediaKeyBoardDelegate>
+@interface ComentDetailViewController ()<UITableViewDataSource, UITableViewDelegate,CommentTableViewCellDelegate,XHImageViewerDelegate,aya_MultimediaKeyBoardDelegate,RefreshControlDelegate>
 {
     UITableView *boundTableView;
     
@@ -26,10 +28,114 @@
     NSMutableArray  *boundTableViewDateSource;
     
     aya_MultimediaKeyBoard  *keyBoard;
+    
+    
+    BOOL            *hasLoading;
+    RefreshControl  *refreshController;
+    
+    ASIHTTPRequest  *replayCommentRequest;
+    ASIHTTPRequest  *repliesRequest;
+    NSInteger       dataIndex;
+    NSInteger       totalRecord;
 }
 @end
 
 @implementation ComentDetailViewController
+
+- (void) replayWithContent : (NSString*) _content
+{
+    replayCommentRequest = [CreaterRequest_Logroll CreateLogrollReplyRequestWithID:[self.dataEntity.dataDict stringWithKeyPath:@"logrollId"] info:_content files:nil];
+    
+    __weak ASIHTTPRequest *blockRequest = replayCommentRequest;
+    
+    [blockRequest setCompletionBlock:^{
+        
+        [self removeLoadingView];
+        
+        NSDictionary *responseDict = blockRequest.responseString.JSONValue;
+        
+        if ([CreaterRequest_Logroll CheckErrorResponse:responseDict errorAlertInViewController:self])
+        {
+            [self showBannerMsgWithString:[responseDict stringWithKeyPath:@"data\\code\\message"]];
+        }
+    }];
+    
+    [self setDefaultRequestFaild:blockRequest];
+    
+    [self addLoadingView];
+    [replayCommentRequest startAsynchronous];
+
+}
+
+- (void) requestReplies
+{
+    repliesRequest = [CreaterRequest_Logroll CreateLogrollListRequestWithID:[self.dataEntity.dataDict stringWithKeyPath:@"logrollId"] index:ITOS(dataIndex) size:kNBR_PAGE_SIZE_STR];
+    
+    __weak ASIHTTPRequest *blockRequest = repliesRequest;
+    
+    [blockRequest setCompletionBlock:^{
+        
+        [self removeLoadingView];
+        
+        NSDictionary *responseDict = blockRequest.responseString.JSONValue;
+        
+        if ([CreaterRequest_Logroll CheckErrorResponse:responseDict errorAlertInViewController:self])
+        {
+            NSArray *contentEntityDictArr = [responseDict arrayWithKeyPath:@"data\\result\\data"];
+            totalRecord = [responseDict numberWithKeyPath:@"data\\result\\totalRecord"];
+            
+            NSMutableArray *commentArray = [[NSMutableArray alloc] init];
+            if (dataIndex == 0)
+            {
+                [refreshController finishRefreshingDirection:RefreshDirectionBottom];
+            }
+            
+            for (int i = 0; i < contentEntityDictArr.count; i++)
+            {
+                NSDictionary *entityDict = contentEntityDictArr[i];
+                
+                CommentEntity *commentEntity = [[CommentEntity alloc] init];
+                commentEntity.avterIconURL = [entityDict stringWithKeyPath:@"userInfo\\avater"];
+                commentEntity.userName = [entityDict stringWithKeyPath:@"userInfo\\nickName"];
+                commentEntity.content = [entityDict stringWithKeyPath:@"content"];
+                commentEntity.commitDate = [self nowDateStringForDistanceDateString:[entityDict stringWithKeyPath:@"created"]];
+                
+                [commentArray addObject:commentEntity];
+            }
+            
+            
+            NSMutableArray *insertIndexPath = [[NSMutableArray alloc] init];
+            
+            for (int i = 0; i < commentArray.count; i++)
+            {
+                [insertIndexPath addObject:[NSIndexPath indexPathForRow:((NSMutableArray*)boundTableViewDateSource[2]).count + i inSection:2]];
+            }
+            
+            if (dataIndex == 0)
+            {
+                [boundTableViewDateSource[2] removeAllObjects];
+            }
+            
+            [boundTableViewDateSource[2] addObjectsFromArray:commentArray];
+            
+            if (dataIndex == 0)
+            {
+                [boundTableView reloadData];
+            }
+            else
+            {
+                [boundTableView insertRowsAtIndexPaths:insertIndexPath withRowAnimation:UITableViewRowAnimationAutomatic];
+            }
+
+            return ;
+        }
+    }];
+    
+    [self setDefaultRequestFaild:blockRequest];
+    
+    [self addLoadingView];
+    [repliesRequest startAsynchronous];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -48,17 +154,16 @@
     boundTableViewDateSource = [[NSMutableArray alloc] initWithArray:@[
                                                                        self.dataEntity,
                                                                        @[commentEntity],
-                                                                       @[commentEntity,
-                                                                         commentEntity,
-                                                                         commentEntity,
-                                                                         commentEntity],
+                                                                       [[NSMutableArray alloc] init],
                                                                        ]];
-    boundTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kNBR_SCREEN_W, kNBR_SCREEN_H) style:UITableViewStylePlain];
+    boundTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kNBR_SCREEN_W, kNBR_SCREEN_H - 44 - 64) style:UITableViewStylePlain];
     boundTableView.delegate = self;
     boundTableView.dataSource = self;
-    boundTableView.contentInset = UIEdgeInsetsMake(0, 0, 44, 0);
+//    boundTableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
     [self.view addSubview:boundTableView];
     
+    refreshController = [[RefreshControl alloc] initWithScrollView:boundTableView delegate:self];
+    refreshController.topEnabled = YES;
     
     //键盘
     //键盘
@@ -66,6 +171,8 @@
     keyBoard.backgroundColor = [UIColor whiteColor];
     [keyBoard setDelegate:self];
     [self.view addSubview:keyBoard];
+    
+    [self requestReplies];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -182,6 +289,26 @@
     return ;
 }
 
+- (void) scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    if (((NSMutableArray*)boundTableViewDateSource[2]).count >= totalRecord)
+    {
+        return ;
+    }
+    
+    UITableViewCell *lastCell = [boundTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:((NSMutableArray*)boundTableViewDateSource[2]).count - 1 inSection:2]];
+    
+    if ([boundTableView.visibleCells containsObject:lastCell])
+    {
+        if (hasLoading)
+        {
+            return ;
+        }
+        
+        dataIndex ++;
+        [self requestReplies];
+    }
+}
 
 #pragma mark -- Keyboard Delegate
 //Keyboard Delegate
@@ -192,6 +319,10 @@
 
 - (void) ayaKeyBoard:(aya_MultimediaKeyBoard*) _keyboard willFinishInputMsg : (NSString*) _string
 {
+    if (_string.length > 0)
+    {
+        [self replayWithContent:_string];
+    }
     [keyBoard hidekeyboardview];
 }
 
@@ -208,6 +339,12 @@
 - (void) ayaKeyBoard:(aya_MultimediaKeyBoard*) _keyboard quikLookImg : (UIImage*) _limg
 {
     
+}
+
+- (void)refreshControl:(RefreshControl *)refreshControl didEngageRefreshDirection:(RefreshDirection) direction
+{
+    dataIndex = 0;
+    [self requestReplies];
 }
 
 @end

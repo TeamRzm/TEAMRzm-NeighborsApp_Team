@@ -27,4 +27,6 @@
 @property (nonatomic, copy) NSString *pointApproves;
 //评论数量
 @property (nonatomic, copy) NSString *commentCount;
+//服务器返回的数据
+@property (nonatomic, copy) NSDictionary *dataDict;
 @end

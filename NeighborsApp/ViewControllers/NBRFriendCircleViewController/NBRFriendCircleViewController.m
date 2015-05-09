@@ -457,6 +457,7 @@
                 NSDictionary *entityDict = [responseDict arrayWithKeyPath:@"data\\result\\data"][i];
                 
                 FriendCircleContentEntity *newContentEntity = [[FriendCircleContentEntity alloc] init];
+                newContentEntity.dataDict = entityDict;
                 
                 NSMutableArray *imageList = [[NSMutableArray alloc] init];
                 

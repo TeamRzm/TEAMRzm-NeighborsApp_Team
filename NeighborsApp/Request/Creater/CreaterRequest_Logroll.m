@@ -56,4 +56,46 @@
     return [CreaterRequest_Logroll RequestWithURL:url requestMethod:REQUEST_METHOD_POST];
 }
 
++ (ASIHTTPRequest*) CreateLogrollReplyRequestWithID : (NSString*) _ID
+                                               info : (NSString*) _info
+                                              files : (NSArray*) _files
+{
+    NSMutableString *filesString = [[NSMutableString alloc] initWithString:@""];
+    
+    for (NSString *subString in _files)
+    {
+        [filesString appendFormat:@"&files[]=%@", subString];
+    }
+    
+    NSDictionary *parmsDict = @{
+                                @"id"    : _ID,
+                                @"info"  : _info,
+                                };
+    
+    NSString *requestURLString = [CreaterRequest_Logroll URLStringWithMethod:@"/api.logroll/reply.cmd" parmsDict:parmsDict];
+    
+    requestURLString = [requestURLString stringByAppendingString:filesString];
+    
+    NSURL *url = [NSURL URLWithString:requestURLString];
+    
+    return [CreaterRequest_Logroll RequestWithURL:url requestMethod:REQUEST_METHOD_POST];
+}
+
++ (ASIHTTPRequest*) CreateLogrollListRequestWithID : (NSString*) _ID
+                                             index : (NSString*) _index
+                                              size : (NSString*) _size
+{
+    NSDictionary *parmsDict = @{
+                                @"id"    : _ID,
+                                @"index" : ITOS(_index.integerValue + 1),
+                                @"size"  : _size,
+                                };
+    
+    NSString *requestURLString = [CreaterRequest_Logroll URLStringWithMethod:@"/api.logroll/replies.cmd" parmsDict:parmsDict];
+    
+    NSURL *url = [NSURL URLWithString:requestURLString];
+    
+    return [CreaterRequest_Logroll RequestWithURL:url requestMethod:REQUEST_METHOD_GET];
+}
+
 @end

@@ -23,4 +23,14 @@
                                                   files : (NSArray*)  _files
                                                     tag : (NSString*) _tag;
 
+//回复里帮信息
++ (ASIHTTPRequest*) CreateLogrollReplyRequestWithID : (NSString*) _ID
+                                               info : (NSString*) _info
+                                              files : (NSArray*) _files;
+
+//获取里手帮回复列表
++ (ASIHTTPRequest*) CreateLogrollListRequestWithID : (NSString*) _ID
+                                             index : (NSString*) _index
+                                              size : (NSString*) _size;
+
 @end
