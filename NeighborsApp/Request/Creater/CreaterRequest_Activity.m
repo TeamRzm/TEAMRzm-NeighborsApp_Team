@@ -63,4 +63,51 @@
     return request;
 }
 
++ (ASIHTTPRequest*) CreateActivityPostRequestWithTitle : (NSString*) title
+                                                 begin : (NSString*) begin
+                                                   end : (NSString*) end
+                                                 joins : (NSString*) joins
+                                                   tag : (NSString*) tag
+                                                 phone : (NSString*) phone
+                                             constract : (NSString*) constract
+                                               address : (NSString*) address
+                                              regstart : (NSString*) regstart
+                                                regend : (NSString*) regend
+                                                   fee : (NSString*) fee
+                                               content : (NSString*) content
+                                                 files : (NSArray*)  files
+{
+    NSMutableString *filesString = [[NSMutableString alloc] initWithString:@""];
+    
+    for (NSString *subString in files)
+    {
+        [filesString appendFormat:@"&files[]=%@", subString];
+    }
+    
+    NSDictionary *parmsDict = @{
+                                @"title"        : title,
+                                @"begin"        : begin,
+                                @"end"          : end,
+                                @"joins"        : joins,
+                                @"tag"          : tag,
+                                @"phone"        : phone,
+                                @"contact"      : constract,
+                                @"address"      : address,
+                                @"regstart"     : regstart,
+                                @"regend"       : regend,
+                                @"fee"          : fee,
+                                @"content"      : content,
+                                @"files"        : files,
+                                };
+    
+    NSString *requestURLString = [CreaterRequest_Activity URLStringWithMethod:@"/api.activity/create.cmd" parmsDict:parmsDict];
+    
+    requestURLString = [requestURLString stringByAppendingString:filesString];
+    
+    NSURL *url = [NSURL URLWithString:requestURLString];
+    
+    return [CreaterRequest_Activity RequestWithURL:url requestMethod:REQUEST_METHOD_POST];
+
+}
+
 @end

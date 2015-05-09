@@ -271,6 +271,13 @@ const NSInteger CommitImageViewWidthCount     = 5;
 
 - (void) commentNewContent
 {
+    if (commentInpuTextView.text <= 0)
+    {
+        [self showBannerMsgWithString:@"请输入内容"];
+        
+        return ;
+    }
+    
     uploadHelper = [[FileUpLoadHelper alloc] init];
     uploadHelper.delegate = self;
     
@@ -367,7 +374,7 @@ const NSInteger CommitImageViewWidthCount     = 5;
 
 - (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return 1;
 }
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

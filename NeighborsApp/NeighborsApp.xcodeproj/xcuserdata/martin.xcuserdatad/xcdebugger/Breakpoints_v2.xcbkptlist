@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ViewControllers/NBRFriendCircleViewController/CommitNewContentViewController.m"
-            timestampString = "452658408.981804"
+            timestampString = "452842563.998262"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "524"
-            endingLineNumber = "524"
+            startingLineNumber = "531"
+            endingLineNumber = "531"
             landmarkName = "@implementation CommitNewContentViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -105,28 +105,12 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ViewControllers/NBRBaseViewController/NBRBaseViewController.m"
-            timestampString = "452778104.189157"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "200"
-            endingLineNumber = "200"
-            landmarkName = "-assetsPickerController:didFinishPickingAssets:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "ViewControllers/NBRFriendCircleViewController/CommitNewContentViewController.m"
-            timestampString = "452715436.517152"
+            timestampString = "452842563.998262"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "343"
-            endingLineNumber = "343"
+            startingLineNumber = "350"
+            endingLineNumber = "350"
             landmarkName = "-fileUpLoadHelper:downloadedFialdWithIndex:"
             landmarkType = "5">
          </BreakpointContent>
@@ -169,13 +153,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Request/Creater/CreaterRequest_Base.m"
-            timestampString = "452790942.80788"
+            filePath = "Request/Creater/CreaterRequest_Activity.m"
+            timestampString = "452843227.476812"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97"
-            landmarkName = "+RequestWithURL:requestMethod:"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
+            landmarkName = "+CreateActivityPostRequestWithTitle:begin:end:joins:tag:phone:constract:address:regstart:regend:fee:content:files:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

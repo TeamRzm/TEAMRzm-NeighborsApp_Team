@@ -7,12 +7,11 @@
 //
 
 #import "NBRBaseViewController.h"
-#import "CTAssetsPickerController.h"
 
 @interface NBRBaseViewController ()<UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,CTAssetsPickerControllerDelegate>
 {
     CTAssetsPickerController *imageSelectPicker;
-    NSMutableArray           *selectImgDatas;
+    NSInteger                 selectImgaeCount;
 }
 @end
 
@@ -23,7 +22,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self)
     {
-        
+        selectImgaeCount = 0;
     }
     return self;
 }
@@ -40,6 +39,12 @@
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"请选择来源" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"拍照",@"照片库", nil];
     actionSheet.tag = 0xAAAAAA;
     [actionSheet showInView:self.view];
+}
+
+- (void) takePhotoWithCount : (NSInteger) _count
+{
+    [self takePhoto];
+    selectImgaeCount = _count;
 }
 
 - (void) actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
@@ -168,6 +173,23 @@
     }];
 }
 
+- (UIImage*) imageFromAssert : (ALAsset*) alasset
+{
+    ALAsset *subAsset = alasset;
+    
+    UIImage *image;
+    
+    if (subAsset.defaultRepresentation)
+    {
+        image = [UIImage imageWithCGImage:subAsset.defaultRepresentation.fullScreenImage
+                                    scale:1.0f
+                              orientation:UIImageOrientationUp];
+    }
+    
+    return image;
+}
+
+
 - (void) addLoadingView
 {
     [KVNProgress showWithParameters:@{
@@ -216,14 +238,14 @@
 
 - (BOOL)assetsPickerController:(CTAssetsPickerController *)picker shouldSelectAsset:(ALAsset *)asset
 {
-    if (picker.selectedAssets.count >= 10)
+    if (picker.selectedAssets.count >= (selectImgaeCount == 0 ? 10 : selectImgaeCount))
     {
         UIAlertView *alertView =
-        [[UIAlertView alloc] initWithTitle:@"Attention"
-                                   message:@"Please select not more than 10 assets"
+        [[UIAlertView alloc] initWithTitle:@"温馨提示"
+                                   message:[NSString stringWithFormat:@"请不要选择超过%d张照片", selectImgaeCount == 0 ? 10 : selectImgaeCount]
                                   delegate:nil
                          cancelButtonTitle:nil
-                         otherButtonTitles:@"OK", nil];
+                         otherButtonTitles:@"我知道了", nil];
         
         [alertView show];
     }
@@ -240,7 +262,7 @@
         [alertView show];
     }
     
-    return (picker.selectedAssets.count < 10 && asset.defaultRepresentation != nil);
+    return (picker.selectedAssets.count < (selectImgaeCount == 0 ? 10 : selectImgaeCount) && asset.defaultRepresentation != nil);
 }
 
 #pragma mark - UIImagePickerControllerDelegate

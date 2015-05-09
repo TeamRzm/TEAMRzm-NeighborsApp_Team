@@ -26,4 +26,18 @@
                                    contrace : (NSString*) contract
                                       count : (NSString*) count;
 
++ (ASIHTTPRequest*) CreateActivityPostRequestWithTitle : (NSString*) title
+                                                 begin : (NSString*) begin
+                                                   end : (NSString*) end
+                                                 joins : (NSString*) joins
+                                                   tag : (NSString*) tag
+                                                 phone : (NSString*) phone
+                                             constract : (NSString*) constract
+                                               address : (NSString*) address
+                                              regstart : (NSString*) regstart
+                                                regend : (NSString*) regend
+                                                   fee : (NSString*) fee
+                                               content : (NSString*) content
+                                                 files : (NSArray*)  files;
+
 @end
