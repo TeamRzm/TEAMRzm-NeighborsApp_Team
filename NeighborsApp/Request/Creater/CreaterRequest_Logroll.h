@@ -33,4 +33,7 @@
                                              index : (NSString*) _index
                                               size : (NSString*) _size;
 
+//接受回复
++ (ASIHTTPRequest*) CreateAcceptRequestWithID : (NSString*) _ID;
+
 @end

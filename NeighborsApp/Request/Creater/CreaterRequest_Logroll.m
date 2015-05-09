@@ -98,4 +98,17 @@
     return [CreaterRequest_Logroll RequestWithURL:url requestMethod:REQUEST_METHOD_GET];
 }
 
++ (ASIHTTPRequest*) CreateAcceptRequestWithID : (NSString*) _ID
+{
+    NSDictionary *parmsDict = @{
+                                @"id"    : _ID,
+                                };
+    
+    NSString *requestURLString = [CreaterRequest_Logroll URLStringWithMethod:@"/api.logroll/accept.cmd" parmsDict:parmsDict];
+    
+    NSURL *url = [NSURL URLWithString:requestURLString];
+    
+    return [CreaterRequest_Logroll RequestWithURL:url requestMethod:REQUEST_METHOD_POST];
+}
+
 @end

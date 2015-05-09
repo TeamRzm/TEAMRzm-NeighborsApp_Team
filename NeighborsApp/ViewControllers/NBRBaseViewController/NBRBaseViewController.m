@@ -302,12 +302,12 @@
         createdTime = @"刚刚";
     }
     
-    if (sec / 60 > 0)
+    if (sec / 60 > 1)
     {
         createdTime = [NSString stringWithFormat:@"%d分钟前", (int)sec / 60];
     }
     
-    if (sec / 3600 > 0)
+    if (sec / 3600 > 1)
     {
         createdTime = [NSString stringWithFormat:@"%d小时前", (int)sec / 3600];
     }

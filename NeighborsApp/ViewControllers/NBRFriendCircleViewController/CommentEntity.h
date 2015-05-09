@@ -13,5 +13,6 @@
 @property (nonatomic, copy) NSString *userName;
 @property (nonatomic, copy) NSString *content;
 @property (nonatomic, copy) NSString *commitDate;
+@property (nonatomic, copy) NSString *ID;
 
 @end

@@ -154,12 +154,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ViewControllers/NBRFriendCircleViewController/ComentDetailViewController.m"
-            timestampString = "452861323.98735"
+            timestampString = "452887577.056337"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "84"
-            endingLineNumber = "84"
-            landmarkName = "-requestReplies"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
+            landmarkName = "-acceptReplyWithIndex:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

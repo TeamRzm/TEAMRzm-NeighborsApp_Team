@@ -17,7 +17,7 @@
 #import "CreaterRequest_Logroll.h"
 #import "RefreshControl.h"
 
-@interface ComentDetailViewController ()<UITableViewDataSource, UITableViewDelegate,CommentTableViewCellDelegate,XHImageViewerDelegate,aya_MultimediaKeyBoardDelegate,RefreshControlDelegate>
+@interface ComentDetailViewController ()<UITableViewDataSource, UITableViewDelegate,CommentTableViewCellDelegate,XHImageViewerDelegate,aya_MultimediaKeyBoardDelegate,RefreshControlDelegate,UIActionSheetDelegate>
 {
     UITableView *boundTableView;
     
@@ -35,8 +35,13 @@
     
     ASIHTTPRequest  *replayCommentRequest;
     ASIHTTPRequest  *repliesRequest;
+    ASIHTTPRequest  *acceptRequest;
     NSInteger       dataIndex;
     NSInteger       totalRecord;
+    
+    
+    NSIndexPath     *selectCommentIndexPath;
+    UIActionSheet   *commentActionSheet;
 }
 @end
 
@@ -65,6 +70,34 @@
     [self addLoadingView];
     [replayCommentRequest startAsynchronous];
 
+}
+
+//接受该回复为最佳答案
+- (void) acceptReplyWithIndex : (NSIndexPath *) _index
+{
+    CommentEntity *subComment = boundTableViewDateSource[_index.section][_index.row];
+    
+    acceptRequest = [CreaterRequest_Logroll CreateAcceptRequestWithID:subComment.ID];
+    
+    __weak ASIHTTPRequest *blockRequest = acceptRequest;
+    
+    [blockRequest setCompletionBlock:^{
+        
+        [self removeLoadingView];
+        
+        NSDictionary *responseDict = blockRequest.responseString.JSONValue;
+        
+        if ([CreaterRequest_Logroll CheckErrorResponse:responseDict errorAlertInViewController:self])
+        {
+            [self showBannerMsgWithString:[responseDict stringWithKeyPath:@"data\\code\\message"]];
+        }
+        
+    }];
+    
+    [self setDefaultRequestFaild:acceptRequest];
+    
+    [self addLoadingView];
+    [acceptRequest startAsynchronous];
 }
 
 - (void) requestReplies
@@ -99,8 +132,16 @@
                 commentEntity.userName = [entityDict stringWithKeyPath:@"userInfo\\nickName"];
                 commentEntity.content = [entityDict stringWithKeyPath:@"content"];
                 commentEntity.commitDate = [self nowDateStringForDistanceDateString:[entityDict stringWithKeyPath:@"created"]];
+                commentEntity.ID = [entityDict stringWithKeyPath:@"replyId"];
                 
-                [commentArray addObject:commentEntity];
+                if ([entityDict numberWithKeyPath:@"accept"])
+                {
+                    [boundTableViewDateSource[1] addObject:commentEntity];
+                }
+                else
+                {
+                    [commentArray addObject:commentEntity];
+                }
             }
             
             
@@ -145,21 +186,16 @@
     commentList = [[NSMutableArray alloc] init];
     boundTableViewDateSource = [[NSMutableArray alloc] init];
     
-    CommentEntity *commentEntity = [[CommentEntity alloc] init];
-    commentEntity.avterIconURL = @"t_avter_2";
-    commentEntity.userName = @"邻家小妹";
-    commentEntity.content = @"好政策啊，咱们都要支持！来点个赞了。么么哒！！哈哈哈哈哈要够长.......................换行测试";
-    commentEntity.commitDate = @"刚刚";
     
     boundTableViewDateSource = [[NSMutableArray alloc] initWithArray:@[
                                                                        self.dataEntity,
-                                                                       @[commentEntity],
+                                                                       [[NSMutableArray alloc] init],
                                                                        [[NSMutableArray alloc] init],
                                                                        ]];
-    boundTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kNBR_SCREEN_W, kNBR_SCREEN_H - 44 - 64) style:UITableViewStylePlain];
+    boundTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kNBR_SCREEN_W, kNBR_SCREEN_H - 64 - 40) style:UITableViewStyleGrouped];
     boundTableView.delegate = self;
     boundTableView.dataSource = self;
-//    boundTableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
+//    boundTableView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
     [self.view addSubview:boundTableView];
     
     refreshController = [[RefreshControl alloc] initWithScrollView:boundTableView delegate:self];
@@ -180,11 +216,16 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (CGFloat) tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return .1f;
+}
+
 - (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    if (section == 0)
+    if (section == 0 || (((NSMutableArray*)boundTableViewDateSource[1]).count <= 0 && section == 1))
     {
-        return 0.0f;
+        return 0.1f;
     }
     else
     {
@@ -194,7 +235,7 @@
 
 - (UIView*) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    if (section == 0)
+    if (section == 0 || (((NSMutableArray*)boundTableViewDateSource[1]).count <= 0 && section == 1))
     {
         return [[UIView alloc] init];
     }
@@ -276,6 +317,18 @@
     }
 }
 
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 2)
+    {
+        selectCommentIndexPath = indexPath;
+        
+        commentActionSheet = [[UIActionSheet alloc] initWithTitle:@"对该评论进行操作" delegate:self cancelButtonTitle:nil destructiveButtonTitle:@"取消" otherButtonTitles:@"接受该答复", nil];
+        
+        [commentActionSheet showInView:self.view];
+    }
+}
+
 - (void) commentTableViewCell : (CommentTableViewCell*) _cell tapSubImageViews : (UIImageView*) tapView allSubImageViews : (NSMutableArray *) _allSubImageviews
 {
     XHImageViewer *imageViewer = [[XHImageViewer alloc] init];
@@ -307,6 +360,18 @@
         
         dataIndex ++;
         [self requestReplies];
+    }
+}
+
+- (void) actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    if ( actionSheet == commentActionSheet )
+    {
+        if (buttonIndex == 1)
+        {
+            [self acceptReplyWithIndex:selectCommentIndexPath];
+            return ;
+        }
     }
 }
 
