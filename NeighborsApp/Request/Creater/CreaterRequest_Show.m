@@ -27,4 +27,28 @@
     return request;
 }
 
++ (ASIHTTPRequest*) CreateShowPostReuqetWithInfo:(NSString *)_info tag:(NSString *)_tag flag:(NSString *)_flag files:(NSArray *)files
+{
+    NSMutableString *filesString = [[NSMutableString alloc] initWithString:@""];
+    
+    for (NSString *subString in files)
+    {
+        [filesString appendFormat:@"&files[]=%@", subString];
+    }
+    
+    NSDictionary *parmsDict = @{
+                                @"info"     : _info,
+                                @"tag"      : _tag,
+                                @"flag"     : _flag,
+                                };
+    
+    NSString *requestURLString = [CreaterRequest_Show URLStringWithMethod:@"/api.show/post.cmd" parmsDict:parmsDict];
+    
+    requestURLString = [requestURLString stringByAppendingString:filesString];
+    
+    NSURL *url = [NSURL URLWithString:requestURLString];
+    
+    return [CreaterRequest_Show RequestWithURL:url requestMethod:REQUEST_METHOD_POST];
+}
+
 @end

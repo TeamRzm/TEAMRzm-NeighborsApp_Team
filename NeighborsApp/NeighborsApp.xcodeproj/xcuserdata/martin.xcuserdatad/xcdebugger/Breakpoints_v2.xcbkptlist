@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ViewControllers/NBRFriendCircleViewController/CommitNewContentViewController.m"
-            timestampString = "452842563.998262"
+            timestampString = "452845785.356252"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "531"
-            endingLineNumber = "531"
+            startingLineNumber = "539"
+            endingLineNumber = "539"
             landmarkName = "@implementation CommitNewContentViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -96,22 +96,6 @@
             startingLineNumber = "65"
             endingLineNumber = "65"
             landmarkName = "-viewDidLoad"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ViewControllers/NBRFriendCircleViewController/CommitNewContentViewController.m"
-            timestampString = "452842563.998262"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "350"
-            endingLineNumber = "350"
-            landmarkName = "-fileUpLoadHelper:downloadedFialdWithIndex:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

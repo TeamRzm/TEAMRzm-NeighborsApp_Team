@@ -34,7 +34,7 @@
     
     RefreshControl  *refreshControllerTop[3];           //下拉刷新工具
     NSMutableArray  *boundTableViewDateSource[3];       //数据源
-    BOOL            *hasLoading[3];                     //表格是否在加载数据
+    BOOL            hasLoading[3];                      //表格是否在加载数据
     NSInteger       dataIndex[3];                       //当前表格加载的页码
     NSInteger       totalRecord[3];                     //数据总数
     
@@ -217,6 +217,18 @@
                 [self requestList0WithType:@"0"];
             }
                 break;
+                
+            case 1:
+            {
+                [self requestList1WithFlag:@"0"];
+            }
+                break;
+                
+            case 2:
+            {
+                [self requestList0WithType:@"1"];
+            }
+                break;
         }
     }
 }
@@ -228,6 +240,7 @@
         case 0:
         {
             CommitNewContentViewController *nVC = [[CommitNewContentViewController alloc] initWithNibName:nil bundle:nil];
+            nVC.mode = COMMIT_TO_MODE_LOR;
             nVC.title = @"发布里手帮";
             nVC.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:nVC animated:YES];
@@ -246,6 +259,7 @@
         case 2:
         {
             CommitNewContentViewController *nVC = [[CommitNewContentViewController alloc] initWithNibName:nil bundle:nil];
+            nVC.mode = COMMIT_TO_MODE_SHOW;
             nVC.title = @"发布安全预警";
             nVC.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:nVC animated:YES];
@@ -410,7 +424,14 @@
 {
     NSInteger requestIndex = _type.integerValue == 0 ? 0 : 2;
 
-    listRequest[requestIndex] = [CreaterRequest_Logroll CreateLogrollRequestWithIndex:ITOS(dataIndex[requestIndex]) size:kNBR_PAGE_SIZE_STR accepted:@"-1" isMy:@"0"];
+    if (requestIndex == 0)
+    {
+        listRequest[requestIndex] = [CreaterRequest_Logroll CreateLogrollRequestWithIndex:ITOS(dataIndex[requestIndex]) size:kNBR_PAGE_SIZE_STR accepted:@"-1" isMy:@"0"];
+    }
+    else
+    {
+        listRequest[requestIndex] = [CreaterRequest_Show CreateShowListRequestWithIndex:ITOS(dataIndex[requestIndex]) size:kNBR_PAGE_SIZE_STR type:_type];
+    }
     
     __weak ASIHTTPRequest *blockRequest = listRequest[requestIndex];
     
@@ -424,7 +445,7 @@
         {
             if (dataIndex[requestIndex] == 0)
             {
-                [refreshControllerTop[0] finishRefreshingDirection:RefreshDirectionTop];
+                [refreshControllerTop[requestIndex] finishRefreshingDirection:RefreshDirectionTop];
             }
             
             totalRecord[currentSegmentIndex] = [responseDict numberWithKeyPath:@"data\\result\\totalRecord"];
@@ -501,6 +522,9 @@
     
     [listRequest[1] setCompletionBlock:^{
         
+        [self removeLoadingView];
+        hasLoading[1] = NO;
+        
         NSDictionary *responseDict = [blockRequest.responseString JSONValue];
         
         if ([CreaterRequest_Activity CheckErrorResponse:responseDict errorAlertInViewController:self])
@@ -509,6 +533,8 @@
             {
                 [refreshControllerTop[1] finishRefreshingDirection:RefreshDirectionTop];
             }
+            
+            totalRecord[1] = [responseDict numberWithKeyPath:@"data\\result\\totalRecord"];
             
             NSArray *activityListDictArr = [responseDict arrayWithKeyPath:@"data\\result\\data"];
             
@@ -529,7 +555,12 @@
                 NSDate *nowDate = [NSDate date];
                 
                 ActivityDateEntity *newActivityEntity = [[ActivityDateEntity alloc] init];
-                newActivityEntity.backGounrdUrl = @"testActityBackGound"; //图片暂时全部默认
+                
+                NSArray *filesArr = [subActivityDict arrayWithKeyPath:@"files"];
+                if (filesArr && filesArr.count > 0)
+                {
+                    newActivityEntity.backGounrdUrl = [subActivityDict arrayWithKeyPath:@"files"][0][@"url"]; //图片暂时全部默认
+                }
                 newActivityEntity.regDate = [NSString
                                              stringWithFormat:@"%@-%@",
                                              [mmddFormater stringFromDate:regStrDate],
@@ -622,6 +653,18 @@
             {
                 //里手帮
                 [self requestList0WithType:@"0"];
+            }
+                break;
+                
+            case 1:
+            {
+                [self requestList1WithFlag:@"0"];
+            }
+                break;
+                
+            case 2:
+            {
+                [self requestList0WithType:@"1"];
             }
                 break;
                 

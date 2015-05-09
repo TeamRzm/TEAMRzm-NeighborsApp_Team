@@ -13,6 +13,7 @@
 #import "XHImageViewer.h"
 #import "FileUpLoadHelper.h"
 #import "CreaterRequest_Logroll.h"
+#import "CreaterRequest_Show.h"
 
 const CGFloat   CommitImageViewHeightAndWidth = 62.8;
 const NSInteger CommitImageViewWidthCount     = 5;
@@ -316,7 +317,14 @@ const NSInteger CommitImageViewWidthCount     = 5;
         [filesArr addObject:subDict[@"fileId"]];
     }
     
-    commentUploadRequest = [CreaterRequest_Logroll CreateLogrollCommitRequestWithTitle:@"NoTitle" info:commentInpuTextView.text files:filesArr tag:@"0"];
+    if (self.mode == COMMIT_TO_MODE_SHOW)
+    {
+        commentUploadRequest = [CreaterRequest_Show  CreateShowPostReuqetWithInfo:commentInpuTextView.text tag:@"0" flag:@"1" files:filesArr];
+    }
+    else
+    {
+        commentUploadRequest = [CreaterRequest_Logroll CreateLogrollCommitRequestWithTitle:@"NoTitle" info:commentInpuTextView.text files:filesArr tag:@"0"];
+    }
     
     __weak ASIHTTPRequest *blockRequest = commentUploadRequest;
     
@@ -341,7 +349,7 @@ const NSInteger CommitImageViewWidthCount     = 5;
     [self setDefaultRequestFaild:commentUploadRequest];
     
     [commentUploadRequest startAsynchronous];
-    
+
     return ;
 }
 

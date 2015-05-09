@@ -16,4 +16,9 @@
                                               size : (NSString*) _size
                                               type : (NSString*) _type;
 
++ (ASIHTTPRequest*) CreateShowPostReuqetWithInfo : (NSString*) _info
+                                             tag : (NSString*) _tag
+                                            flag : (NSString*) _flag
+                                           files : (NSArray*) files;
+
 @end
