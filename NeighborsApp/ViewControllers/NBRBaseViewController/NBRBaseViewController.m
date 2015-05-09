@@ -297,12 +297,12 @@
     NSTimeInterval sec = distanceSec;
     
     //六十秒
-    if (sec / 60 < 1)
+    if (sec / 60 <= 5 )
     {
         createdTime = @"刚刚";
     }
     
-    if (sec / 60 > 1)
+    if (sec / 60 > 5)
     {
         createdTime = [NSString stringWithFormat:@"%d分钟前", (int)sec / 60];
     }
@@ -316,8 +316,8 @@
     if (sec / 3600 > 6.0f && sec / 3600 < 24.0f)
     {
         NSDateFormatter *formarter = [[NSDateFormatter alloc] init];
-        
-        formarter.dateFormat = @"今天 H:mm:ss";
+        [formarter setTimeZone:[NSTimeZone systemTimeZone]];
+        formarter.dateFormat = @"今天 H:mm";
         
         createdTime = [NSString stringWithFormat:@"%@", [formarter stringFromDate:createdDate]];
     }
@@ -326,8 +326,8 @@
     if (sec / 3600 > 24 && sec / 3600 < 48)
     {
         NSDateFormatter *formarter = [[NSDateFormatter alloc] init];
-        
-        formarter.dateFormat = @"昨天 H:mm:ss";
+        [formarter setTimeZone:[NSTimeZone systemTimeZone]];
+        formarter.dateFormat = @"昨天 H:mm";
         
         createdTime = [NSString stringWithFormat:@"%@", [formarter stringFromDate:createdDate]];
     }
@@ -336,8 +336,8 @@
     if (sec / 3600 > 24 && sec / 3600 < 72)
     {
         NSDateFormatter *formarter = [[NSDateFormatter alloc] init];
-        
-        formarter.dateFormat = @"前天 H:mm:ss";
+        [formarter setTimeZone:[NSTimeZone systemTimeZone]];
+        formarter.dateFormat = @"前天 H:mm";
         
         createdTime = [NSString stringWithFormat:@"%@", [formarter stringFromDate:createdDate]];
     }
@@ -345,7 +345,8 @@
     if (sec / 3600 > 72)
     {
         NSDateFormatter *defulatFormat = [[NSDateFormatter alloc] init];
-        defulatFormat.dateFormat = @"M月d日 H:mm:ss";
+        [defulatFormat setTimeZone:[NSTimeZone systemTimeZone]];
+        defulatFormat.dateFormat = @"M月d日 H:mm";
         createdTime = [NSString stringWithFormat:@"%@", [defulatFormat stringFromDate:createdDate]];
     }
     
@@ -353,8 +354,8 @@
     if (sec / 3600 > 24 * 31)
     {
         NSDateFormatter *formarter = [[NSDateFormatter alloc] init];
-        
-        formarter.dateFormat = @"YY年M月d日 H:mm:ss";
+        [formarter setTimeZone:[NSTimeZone systemTimeZone]];
+        formarter.dateFormat = @"YY年M月d日 H:mm";
         
         createdTime = [NSString stringWithFormat:@"%@", [formarter stringFromDate:createdDate]];
     }

@@ -73,7 +73,7 @@
     contentLable.attributedText = attString;
     
     //接收时间
-    UILabel *revieTimeLable = [[UILabel alloc] initWithFrame:CGRectMake(kNBR_SCREEN_W - 70 - 10, 12, 70, 15)];
+    UILabel *revieTimeLable = [[UILabel alloc] initWithFrame:CGRectMake(10, 12, kNBR_SCREEN_W - 20, 15)];
     revieTimeLable.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME size:12.0f];
     revieTimeLable.textAlignment = NSTextAlignmentRight;
     revieTimeLable.backgroundColor = [UIColor clearColor];

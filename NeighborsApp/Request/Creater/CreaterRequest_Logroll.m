@@ -111,4 +111,21 @@
     return [CreaterRequest_Logroll RequestWithURL:url requestMethod:REQUEST_METHOD_POST];
 }
 
+//type {0,里手帮，1:回复消息}
++ (ASIHTTPRequest*) CreateDeleteRequestWithID : (NSString*) _ID
+                                         type : (NSString*) _type
+{
+    NSDictionary *parmsDict = @{
+                                @"id"    : _ID,
+                                @"type"  : _type,
+                                };
+    
+    NSString *requestURLString = [CreaterRequest_Logroll URLStringWithMethod:@"/api.logroll/remove.cmd" parmsDict:parmsDict];
+    
+    NSURL *url = [NSURL URLWithString:requestURLString];
+    
+    return [CreaterRequest_Logroll RequestWithURL:url requestMethod:REQUEST_METHOD_POST];
+}
+
+
 @end

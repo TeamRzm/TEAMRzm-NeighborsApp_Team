@@ -33,6 +33,11 @@
                                              index : (NSString*) _index
                                               size : (NSString*) _size;
 
+//删除
+//type {0,里手帮，1:回复消息}
++ (ASIHTTPRequest*) CreateDeleteRequestWithID : (NSString*) _ID
+                                         type : (NSString*) _type;
+
 //接受回复
 + (ASIHTTPRequest*) CreateAcceptRequestWithID : (NSString*) _ID;
 

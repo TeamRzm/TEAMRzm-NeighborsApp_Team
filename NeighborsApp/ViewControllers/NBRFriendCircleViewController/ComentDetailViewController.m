@@ -19,6 +19,7 @@
 
 @interface ComentDetailViewController ()<UITableViewDataSource, UITableViewDelegate,CommentTableViewCellDelegate,XHImageViewerDelegate,aya_MultimediaKeyBoardDelegate,RefreshControlDelegate,UIActionSheetDelegate>
 {
+    BOOL        isOwner;
     UITableView *boundTableView;
     
     NSMutableArray  *commentList;
@@ -36,6 +37,7 @@
     ASIHTTPRequest  *replayCommentRequest;
     ASIHTTPRequest  *repliesRequest;
     ASIHTTPRequest  *acceptRequest;
+    ASIHTTPRequest  *removeRequest;
     NSInteger       dataIndex;
     NSInteger       totalRecord;
     
@@ -121,6 +123,8 @@
             if (dataIndex == 0)
             {
                 [refreshController finishRefreshingDirection:RefreshDirectionBottom];
+                
+                [boundTableViewDateSource[1] removeAllObjects];
             }
             
             for (int i = 0; i < contentEntityDictArr.count; i++)
@@ -181,6 +185,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    isOwner = NO;
     self.title = @"里手帮详情";
 
     commentList = [[NSMutableArray alloc] init];
@@ -209,6 +214,43 @@
     [self.view addSubview:keyBoard];
     
     [self requestReplies];
+    [self isMyCommitDate];
+}
+
+//当前登陆游湖的主题
+- (void) isMyCommitDate
+{
+    if ([[self.dataEntity.dataDict stringWithKeyPath:@"userId"] isEqualToString:[AppSessionMrg shareInstance].userEntity.userId])
+    {
+        isOwner = YES;
+        
+        UIBarButtonItem *deleteItem = [[UIBarButtonItem alloc] initWithTitle:@"删除" style:UIBarButtonItemStylePlain target:self action:@selector(deleteRequest)];
+        
+        self.navigationItem.rightBarButtonItem = deleteItem;
+    }
+}
+
+- (void) deleteRequest
+{
+    removeRequest = [CreaterRequest_Logroll CreateDeleteRequestWithID:self.dataEntity.dataDict[@"logrollId"] type:@"0"];
+    
+    __weak ASIHTTPRequest *blockRequest = removeRequest;
+    
+    [blockRequest setCompletionBlock:^{
+        [self removeLoadingView];
+        NSDictionary *responseDict = blockRequest.responseString.JSONValue;
+        
+        if ([CreaterRequest_Logroll CheckErrorResponse:responseDict errorAlertInViewController:self])
+        {
+            [self showBannerMsgWithString:@"该里手帮信息已成功售出"];
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+    }];
+    
+    [self setDefaultRequestFaild:blockRequest];
+    
+    [self addLoadingView];
+    [removeRequest startAsynchronous];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -344,7 +386,7 @@
 
 - (void) scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    if (((NSMutableArray*)boundTableViewDateSource[2]).count >= totalRecord)
+    if (((NSMutableArray*)boundTableViewDateSource[2]).count +  ((NSMutableArray*)boundTableViewDateSource[1]).count >= totalRecord)
     {
         return ;
     }
