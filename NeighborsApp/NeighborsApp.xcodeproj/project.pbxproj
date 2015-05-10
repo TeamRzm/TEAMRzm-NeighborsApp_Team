@@ -331,6 +331,7 @@
 		5BD83D201AD6216F00D1A3EC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD83D1F1AD6216F00D1A3EC /* UIKit.framework */; };
 		5BD83D221AD6217400D1A3EC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD83D211AD6217400D1A3EC /* Foundation.framework */; };
 		5BD83D231AD6223900D1A3EC /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BD83CBE1AD61F4B00D1A3EC /* SBJsonParser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		5BE627C31AFFB95200D72A28 /* UpdatePwdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BE627C21AFFB95200D72A28 /* UpdatePwdViewController.m */; };
 		5BED3BD71AF8FD0E00AA8001 /* CreaterRequest_Logroll.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BED3BD61AF8FD0E00AA8001 /* CreaterRequest_Logroll.m */; };
 		5BED3BDB1AFA4EC300AA8001 /* FileUpLoadHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BED3BDA1AFA4EC300AA8001 /* FileUpLoadHelper.m */; };
 		5BED3BDE1AFA66B100AA8001 /* CreaterRequest_File.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BED3BDD1AFA66B100AA8001 /* CreaterRequest_File.m */; };
@@ -835,6 +836,8 @@
 		5BD83D1D1AD6216A00D1A3EC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		5BD83D1F1AD6216F00D1A3EC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5BD83D211AD6217400D1A3EC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		5BE627C11AFFB95200D72A28 /* UpdatePwdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UpdatePwdViewController.h; path = ViewControllers/NBRPersonalCenterViewController/UpdatePwdViewController.h; sourceTree = "<group>"; };
+		5BE627C21AFFB95200D72A28 /* UpdatePwdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UpdatePwdViewController.m; path = ViewControllers/NBRPersonalCenterViewController/UpdatePwdViewController.m; sourceTree = "<group>"; };
 		5BED3BD51AF8FD0E00AA8001 /* CreaterRequest_Logroll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreaterRequest_Logroll.h; path = Request/Creater/CreaterRequest_Logroll.h; sourceTree = "<group>"; };
 		5BED3BD61AF8FD0E00AA8001 /* CreaterRequest_Logroll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreaterRequest_Logroll.m; path = Request/Creater/CreaterRequest_Logroll.m; sourceTree = "<group>"; };
 		5BED3BD91AFA4EC300AA8001 /* FileUpLoadHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileUpLoadHelper.h; path = Other/FileUpLoadHelper.h; sourceTree = "<group>"; };
@@ -914,6 +917,15 @@
 				5B10A7A91AE813630034FA63 /* FeedBackViewController.m */,
 			);
 			name = FeedBack;
+			sourceTree = "<group>";
+		};
+		5B26F4B11AFF6FF3001A6AA1 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				5B10A7AB1AE81B820034FA63 /* IndividualitySettingViewController.h */,
+				5B10A7AC1AE81B820034FA63 /* IndividualitySettingViewController.m */,
+			);
+			name = Setting;
 			sourceTree = "<group>";
 		};
 		5B332AD11AE2F647002A0A73 /* CTAssetsPickerController */ = {
@@ -1096,6 +1108,8 @@
 			children = (
 				5B38BA671AF6868900775F64 /* NBRUserInfoViewController.h */,
 				5B38BA681AF6868900775F64 /* NBRUserInfoViewController.m */,
+				5BE627C11AFFB95200D72A28 /* UpdatePwdViewController.h */,
+				5BE627C21AFFB95200D72A28 /* UpdatePwdViewController.m */,
 			);
 			name = Infomation;
 			sourceTree = "<group>";
@@ -1720,13 +1734,12 @@
 		5BB6555C1AC31567007E0F85 /* NBRPersonalCenterViewController */ = {
 			isa = PBXGroup;
 			children = (
-				5B38BA661AF6864D00775F64 /* Infomation */,
 				5BB655681AC31727007E0F85 /* NBRPersonalCenterViewController.h */,
 				5BB655691AC31727007E0F85 /* NBRPersonalCenterViewController.m */,
+				5B26F4B11AFF6FF3001A6AA1 /* Setting */,
+				5B38BA661AF6864D00775F64 /* Infomation */,
 				5B10A7A71AE8133A0034FA63 /* FeedBack */,
 				5B10A7A61AE80F7E0034FA63 /* Plot */,
-				5B10A7AB1AE81B820034FA63 /* IndividualitySettingViewController.h */,
-				5B10A7AC1AE81B820034FA63 /* IndividualitySettingViewController.m */,
 			);
 			name = NBRPersonalCenterViewController;
 			sourceTree = "<group>";
@@ -2292,6 +2305,7 @@
 				5BD83CE01AD61F4B00D1A3EC /* NSString+SBJSON.m in Sources */,
 				5BD83C8A1AD61EF600D1A3EC /* ASIDownloadCache.m in Sources */,
 				5B38BA441AF4FBEA00775F64 /* NSString+CheckFormat.m in Sources */,
+				5BE627C31AFFB95200D72A28 /* UpdatePwdViewController.m in Sources */,
 				5BD83C921AD61EF600D1A3EC /* ASICloudFilesContainerXMLParserDelegate.m in Sources */,
 				5BD83C8B1AD61EF600D1A3EC /* ASIFormDataRequest.m in Sources */,
 				5B1500E71AE415370033CEA2 /* SubCommentTableViewCell.m in Sources */,

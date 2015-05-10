@@ -7,7 +7,9 @@
 //
 
 #import "NBRUserInfoViewController.h"
+#import "FileUpLoadHelper.h"
 #import "CreaterRequest_User.h"
+#import "UpdatePwdViewController.h"
 
 typedef enum
 {
@@ -17,7 +19,7 @@ typedef enum
 }INFOMATION_VIEWCONTROLLER_STATE;
 
 
-@interface NBRUserInfoViewController ()<UITableViewDataSource, UITableViewDelegate>
+@interface NBRUserInfoViewController ()<UITableViewDataSource, UITableViewDelegate,FileUpLoadHelperDelegate>
 {
     UITableView *boundTableView;
     
@@ -27,7 +29,11 @@ typedef enum
     
     ASIHTTPRequest  *userInfoRequest;
     
-    EGOImageView  *avterImageView;
+    UIView        *footView;
+    
+    EGOImageView     *avterImageView;
+    FileUpLoadHelper *avatarUploader;
+    BOOL             isSelectImage;
 }
 
 @property (nonatomic, assign) INFOMATION_VIEWCONTROLLER_STATE viewControllerState;
@@ -48,10 +54,13 @@ typedef enum
     boundTableView.dataSource = self;
     [self.view addSubview:boundTableView];
     
-    avterImageView = [[EGOImageView alloc] initWithPlaceholderImage:[UIImage imageNamed:@"t_avter_9"]];
-    avterImageView.frame = CGRectMake(kNBR_SCREEN_W - 60, 25, 50, 50);
+    avterImageView = [[EGOImageView alloc] initWithPlaceholderImage:[UIImage imageNamed:@"defaultAvater"]];
+    avterImageView.frame = CGRectMake(kNBR_SCREEN_W - 60, 80.0f / 2.0f - 50.0f / 2.0f, 50, 50);
     avterImageView.layer.cornerRadius = 2.0f;
     avterImageView.layer.masksToBounds = YES;
+    
+    UITapGestureRecognizer *avatarTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(takePhoto)];
+    [avterImageView addGestureRecognizer:avatarTap];
     
     
     //配置数据
@@ -73,6 +82,7 @@ typedef enum
             [self setDoneStyleTextFile:subTextFied];
             subTextFied.font = [UIFont systemFontOfSize:14.0f];
             subTextFied.textAlignment = NSTextAlignmentRight;
+            subTextFied.userInteractionEnabled = NO;
             
             [subArr addObject:subTextFied];
         }
@@ -84,6 +94,58 @@ typedef enum
     
     UIBarButtonItem *rightAddItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"tianjia01"] style:UIBarButtonItemStylePlain target:self action:@selector(rightBarbuttonAction:)];
     self.navigationItem.rightBarButtonItem = rightAddItem;
+}
+
+- (void) uploadAvatar
+{
+    avatarUploader = [[FileUpLoadHelper alloc] init];
+    avatarUploader.delegate = self;
+    [avatarUploader addUploadImage:avterImageView.image];
+    [avatarUploader startUpload];
+}
+
+- (void) commitDateDictWithAvatar : (NSString*) _avatar
+{
+    NSString *sexId = [((UITextField*)nomalTextFiedArr[1][4]).text isEqualToString:@"男"] ? @"0" : @"1";
+    
+    userInfoRequest = [CreaterRequest_User CreateUpdateRequestWithPhone:((UITextField*)nomalTextFiedArr[1][3]).text
+                                                                    sex:sexId
+                                                               nickName:((UITextField*)nomalTextFiedArr[1][1]).text
+                                                                 avatar:_avatar
+                                                              signature:((UITextField*)nomalTextFiedArr[1][6]).text
+                                                                  habit:((UITextField*)nomalTextFiedArr[1][5]).text];
+    
+    __weak ASIHTTPRequest *blockSelf = userInfoRequest;
+    
+    [blockSelf setCompletionBlock:^{
+        NSDictionary *reponseDict = blockSelf.responseString.JSONValue;
+        
+        if ([CreaterRequest_User CheckErrorResponse:reponseDict errorAlertInViewController:self])
+        {
+            [self showBannerMsgWithString:[reponseDict stringWithKeyPath:@"data\\code\\message"]];
+            
+            [self rightBarbuttonAction:nil];
+            
+            [self requestUserInfo];
+        }
+    }];
+    
+    [self setDefaultRequestFaild:blockSelf];
+    
+    [self addLoadingView];
+    [userInfoRequest startAsynchronous];
+}
+
+- (void) commitUpdateInfomation
+{
+    if (isSelectImage)
+    {
+        [self uploadAvatar];
+    }
+    else
+    {
+        [self commitDateDictWithAvatar:@""];
+    }
 }
 
 - (void) rightBarbuttonAction : (id) sender
@@ -99,6 +161,31 @@ typedef enum
                 ((UITextField*)nomalTextFiedArr[i][j]).userInteractionEnabled = YES;
             }
         }
+        avterImageView.userInteractionEnabled = YES;
+        footView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kNBR_SCREEN_W, 110)];
+        
+        UIButton *commitButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        commitButton.frame = CGRectMake(15, 10, kNBR_SCREEN_W - 30, 40);
+        commitButton.backgroundColor = kNBR_ProjectColor_StandBlue;
+        commitButton.layer.cornerRadius = 5.0f;
+        commitButton.layer.masksToBounds = YES;
+        commitButton.titleLabel.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME_BLOD size:15.0f];
+        [commitButton setTitle:@"确认修改" forState:UIControlStateNormal];
+        [commitButton addTarget:self action:@selector(commitUpdateInfomation) forControlEvents:UIControlEventTouchUpInside];
+        
+        UIButton *cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        cancelButton.frame = CGRectMake(15, 60, kNBR_SCREEN_W - 30, 40);
+        cancelButton.backgroundColor = kNBR_ProjectColor_StandBlue;
+        cancelButton.layer.cornerRadius = 5.0f;
+        cancelButton.layer.masksToBounds = YES;
+        cancelButton.titleLabel.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME_BLOD size:15.0f];
+        [cancelButton setTitle:@"取消编辑" forState:UIControlStateNormal];
+        [cancelButton addTarget:self action:@selector(rightBarbuttonAction:) forControlEvents:UIControlEventTouchUpInside];
+        
+        [footView addSubview:commitButton];
+        [footView addSubview:cancelButton];
+        
+        [boundTableView setTableFooterView:footView];
         
     }
     else if (self.viewControllerState == INFOMATION_VIEWCONTROLLER_STATE_EDIT)
@@ -112,6 +199,9 @@ typedef enum
                 ((UITextField*)nomalTextFiedArr[i][j]).userInteractionEnabled = NO;
             }
         }
+        
+        avterImageView.userInteractionEnabled = NO;
+        [footView removeFromSuperview];
     }
     
     [boundTableView reloadData];
@@ -119,7 +209,14 @@ typedef enum
     [UIView beginAnimations:nil context:context];
     [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
     [UIView setAnimationDuration:.5f];
-    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:boundTableView cache:YES];
+    if (self.viewControllerState == INFOMATION_VIEWCONTROLLER_STATE_NOMAL)
+    {
+        [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:boundTableView cache:YES];
+    }
+    else
+    {
+        [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:boundTableView cache:YES];
+    }
     [UIView commitAnimations];
 }
 
@@ -138,10 +235,18 @@ typedef enum
         {
             ((UITextField*)nomalTextFiedArr[1][0]).text = [responseDict stringWithKeyPath:@"data\\result\\username"];
             ((UITextField*)nomalTextFiedArr[1][1]).text = [responseDict stringWithKeyPath:@"data\\result\\nickName"];
-            ((UITextField*)nomalTextFiedArr[1][2]).text = @"";
-            ((UITextField*)nomalTextFiedArr[1][3]).text = [responseDict stringWithKeyPath:@"data\\result\\username"];
-            ((UITextField*)nomalTextFiedArr[1][4]).text = @"";
-            ((UITextField*)nomalTextFiedArr[1][5]).text = @"";
+            ((UITextField*)nomalTextFiedArr[1][3]).text = [responseDict stringWithKeyPath:@"data\\result\\phone"];
+            ((UITextField*)nomalTextFiedArr[1][4]).text = [[responseDict stringWithKeyPath:@"data\\result\\sex"] isEqualToString:@"1"] ? @"女" : @"男";
+            ((UITextField*)nomalTextFiedArr[1][5]).text = [responseDict stringWithKeyPath:@"data\\result\\habit"];
+            ((UITextField*)nomalTextFiedArr[1][6]).text = [responseDict stringWithKeyPath:@"data\\result\\signature"];
+            
+            NSString *avatarUrl = [responseDict stringWithKeyPath:@"data\\result\\avatar"];
+            
+            if (avatarUrl && avatarUrl.length > 0)
+            {
+                isSelectImage = YES;
+                avterImageView.imageURL = [NSURL URLWithString:avatarUrl];
+            }
         }
         
         return ;
@@ -180,7 +285,7 @@ typedef enum
     {
         if (indexPath.section == 0)
         {
-            return 100.0f;
+            return 80.0f;
         }
         else
         {
@@ -189,10 +294,9 @@ typedef enum
     }
     else if (self.viewControllerState == INFOMATION_VIEWCONTROLLER_STATE_EDIT)
     {
-        if (indexPath.section == 0 && indexPath.row == 0) return 100.0f;
+        if (indexPath.section == 0 && indexPath.row == 0) return 80.0f;
         if (indexPath.section == 1 && indexPath.row == 0) return 0.0f;
         if (indexPath.section == 1 && indexPath.row == 2) return 0.0f;
-        if (indexPath.section == 1 && indexPath.row == 3) return 0.0f;
         
         return 44.0f;
     }
@@ -200,10 +304,13 @@ typedef enum
     return 0.0f;
 }
 
+
+
 - (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kNBR_TABLEVIEW_CELL_NOIDENTIFIER];
     cell.layer.masksToBounds = YES;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     UILabel *titleLable = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, kNBR_SCREEN_W, 44.0f)];
     titleLable.text = nomalTitleArr[indexPath.section][indexPath.row];
@@ -212,14 +319,67 @@ typedef enum
     
     if (indexPath.section == 0 && indexPath.row == 0)
     {
-        titleLable.frame = CGRectMake(10, 0, kNBR_SCREEN_W, 100.0f);
+        titleLable.frame = CGRectMake(10, 0, kNBR_SCREEN_W, 80.0f);
         [cell.contentView addSubview:avterImageView];
     }
     
     [cell.contentView addSubview:titleLable];
-    [cell.contentView addSubview:nomalTextFiedArr[indexPath.section][indexPath.row]];
+    
+    if (indexPath.section != 1 || (indexPath.row != 2))
+    {
+        [cell.contentView addSubview:nomalTextFiedArr[indexPath.section][indexPath.row]];
+    }
+    
+    if (indexPath.section == 1 && indexPath.row == 2)
+    {
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    }
     
     return cell;
 }
+
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 1 && indexPath.row == 2)
+    {
+        UpdatePwdViewController *nVC = [[UpdatePwdViewController alloc] initWithNibName:nil bundle:nil];
+        
+        [self.navigationController pushViewController:nVC animated:YES];
+    }
+}
+
+#pragma mark -- FileUpLoadDelegate
+- (void) fileUpLoadHelper:(FileUpLoadHelper *)_helper allDownloadedResponseDictArr:(NSArray *)_dictArr
+{
+    if (_dictArr.count > 0)
+    {
+        [self commitDateDictWithAvatar:_dictArr[0][@"url"]];
+    }
+}
+
+- (void) fileUpLoadHelper:(FileUpLoadHelper *)_helper downloadedFialdWithIndex:(NSInteger)_index
+{
+    
+}
+
+- (void) fileUpLoadHelper:(FileUpLoadHelper *)_helper downloadedIndex:(NSInteger)_index downloadTotal:(NSInteger)_total
+{
+    
+}
+
+#pragma mark -- Select Avatar
+- (void)assetsPickerController:(CTAssetsPickerController *)picker didFinishPickingAssets:(NSArray *)assets
+{
+    [super assetsPickerController:picker didFinishPickingAssets:assets];
+    
+    if (selectImgDatas.count > 0)
+    {
+        avterImageView.image = [self imageFromAssert:assets[0]];
+        isSelectImage = YES;
+    }
+    
+    return ;
+}
+
 
 @end
