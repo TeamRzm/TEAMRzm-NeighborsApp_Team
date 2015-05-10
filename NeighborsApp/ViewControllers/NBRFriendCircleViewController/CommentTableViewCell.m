@@ -50,7 +50,7 @@
     self.backgroundColor = [UIColor whiteColor];
     
     //头像
-    avterImageView = [[EGOImageView alloc] initWithPlaceholderImage:[UIImage imageNamed:@""]];
+    avterImageView = [[EGOImageView alloc] initWithPlaceholderImage:[UIImage imageNamed:@"defaultAvater"]];
     avterImageView.imageURL = [NSURL URLWithString:entity.avterURL];
     avterImageView.frame = CGRectMake(10, 5, 43.0f, 43.0f);
     avterImageView.layer.cornerRadius = CGRectGetWidth(avterImageView.frame) / 2.0f;

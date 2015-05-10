@@ -1689,8 +1689,8 @@
 			children = (
 				5BB655711AC31768007E0F85 /* NBRFriendCircleViewController.h */,
 				5BB655721AC31768007E0F85 /* NBRFriendCircleViewController.m */,
-				5B955BF11ADFE42600E8B335 /* CommentTableViewCell.m */,
 				5B955BF01ADFE42600E8B335 /* CommentTableViewCell.h */,
+				5B955BF11ADFE42600E8B335 /* CommentTableViewCell.m */,
 				5B332ABF1AE18018002A0A73 /* ActivityTableViewCell.h */,
 				5B332AC01AE18018002A0A73 /* ActivityTableViewCell.m */,
 				5B332AC51AE26294002A0A73 /* CommitNewContentViewController.h */,

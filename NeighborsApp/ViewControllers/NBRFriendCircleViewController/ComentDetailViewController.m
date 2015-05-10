@@ -17,7 +17,7 @@
 #import "CreaterRequest_Logroll.h"
 #import "RefreshControl.h"
 
-@interface ComentDetailViewController ()<UITableViewDataSource, UITableViewDelegate,CommentTableViewCellDelegate,XHImageViewerDelegate,aya_MultimediaKeyBoardDelegate,RefreshControlDelegate,UIActionSheetDelegate>
+@interface ComentDetailViewController ()<UITableViewDataSource, UITableViewDelegate,CommentTableViewCellDelegate,XHImageViewerDelegate,aya_MultimediaKeyBoardDelegate,RefreshControlDelegate,UIActionSheetDelegate,UIAlertViewDelegate>
 {
     BOOL        isOwner;
     UITableView *boundTableView;
@@ -41,9 +41,10 @@
     NSInteger       dataIndex;
     NSInteger       totalRecord;
     
-    
     NSIndexPath     *selectCommentIndexPath;
     UIActionSheet   *commentActionSheet;
+    
+    UIAlertView     *deleteFCAlert;
 }
 @end
 
@@ -72,6 +73,56 @@
     [self addLoadingView];
     [replayCommentRequest startAsynchronous];
 
+}
+
+//删除评论
+- (void) deleteReplyWithIndex : (NSIndexPath *) _index
+{
+    CommentEntity *subComment = boundTableViewDateSource[_index.section][_index.row];
+    
+    removeRequest = [CreaterRequest_Logroll CreateDeleteRequestWithID:subComment.ID type:@"1"];
+    
+    __weak ASIHTTPRequest *blockRequest = removeRequest;
+    
+    [blockRequest setCompletionBlock:^{
+        [self removeLoadingView];
+        NSDictionary *responseDict = blockRequest.responseString.JSONValue;
+        
+        if ([CreaterRequest_Logroll CheckErrorResponse:responseDict errorAlertInViewController:self])
+        {
+            [self showBannerMsgWithString:[responseDict stringWithKeyPath:@"data\\code\\message"]];
+        }
+    }];
+    
+    [self setDefaultRequestFaild:blockRequest];
+    
+    [self addLoadingView];
+    [removeRequest startAsynchronous];
+
+}
+
+//删除该里手帮
+- (void) deleteRequest
+{
+    removeRequest = [CreaterRequest_Logroll CreateDeleteRequestWithID:self.dataEntity.dataDict[@"logrollId"] type:@"0"];
+    
+    __weak ASIHTTPRequest *blockRequest = removeRequest;
+    
+    [blockRequest setCompletionBlock:^{
+        [self removeLoadingView];
+        NSDictionary *responseDict = blockRequest.responseString.JSONValue;
+        
+        if ([CreaterRequest_Logroll CheckErrorResponse:responseDict errorAlertInViewController:self])
+        {
+            [self showBannerMsgWithString:@"该里手帮信息已成功删除"];
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+    }];
+    
+    [self setDefaultRequestFaild:blockRequest];
+    
+    [removeRequest startAsynchronous];
+    [self addLoadingView];
 }
 
 //接受该回复为最佳答案
@@ -137,6 +188,7 @@
                 commentEntity.content = [entityDict stringWithKeyPath:@"content"];
                 commentEntity.commitDate = [self nowDateStringForDistanceDateString:[entityDict stringWithKeyPath:@"created"]];
                 commentEntity.ID = [entityDict stringWithKeyPath:@"replyId"];
+                commentEntity.ownerID = [entityDict stringWithKeyPath:@"userInfo\\userId"];
                 
                 if ([entityDict numberWithKeyPath:@"accept"])
                 {
@@ -176,7 +228,11 @@
         }
     }];
     
-    [self setDefaultRequestFaild:blockRequest];
+    [blockRequest setFailedBlock:^{
+        [refreshController finishRefreshingDirection:RefreshDirectionBottom];
+        [self removeLoadingView];
+        [self showBannerMsgWithString:@"网络连接失败，请您检查您的网络设置"];
+    }];
     
     [self addLoadingView];
     [repliesRequest startAsynchronous];
@@ -207,7 +263,6 @@
     refreshController.topEnabled = YES;
     
     //键盘
-    //键盘
     keyBoard = [[aya_MultimediaKeyBoard alloc] initWithKeyBoardTypeIsComment:YES];
     keyBoard.backgroundColor = [UIColor whiteColor];
     [keyBoard setDelegate:self];
@@ -217,6 +272,13 @@
     [self isMyCommitDate];
 }
 
+- (void) shouldDeleteComment
+{
+    deleteFCAlert = [[UIAlertView alloc] initWithTitle:@"温馨提示" message:@"是否确定删除该里手帮" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    
+    [deleteFCAlert show];
+}
+
 //当前登陆游湖的主题
 - (void) isMyCommitDate
 {
@@ -224,33 +286,16 @@
     {
         isOwner = YES;
         
-        UIBarButtonItem *deleteItem = [[UIBarButtonItem alloc] initWithTitle:@"删除" style:UIBarButtonItemStylePlain target:self action:@selector(deleteRequest)];
+        UIBarButtonItem *deleteItem = [[UIBarButtonItem alloc] initWithTitle:@"删除" style:UIBarButtonItemStylePlain target:self action:@selector(shouldDeleteComment)];
+        
+        [deleteItem setTitleTextAttributes:@{
+                                             NSForegroundColorAttributeName  : UIColorFromRGB(0xFFFFFF),
+                                             NSFontAttributeName             : [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME_BLOD size:15.0f],
+                                             }
+                                  forState:UIControlStateNormal];
         
         self.navigationItem.rightBarButtonItem = deleteItem;
     }
-}
-
-- (void) deleteRequest
-{
-    removeRequest = [CreaterRequest_Logroll CreateDeleteRequestWithID:self.dataEntity.dataDict[@"logrollId"] type:@"0"];
-    
-    __weak ASIHTTPRequest *blockRequest = removeRequest;
-    
-    [blockRequest setCompletionBlock:^{
-        [self removeLoadingView];
-        NSDictionary *responseDict = blockRequest.responseString.JSONValue;
-        
-        if ([CreaterRequest_Logroll CheckErrorResponse:responseDict errorAlertInViewController:self])
-        {
-            [self showBannerMsgWithString:@"该里手帮信息已成功售出"];
-            [self.navigationController popViewControllerAnimated:YES];
-        }
-    }];
-    
-    [self setDefaultRequestFaild:blockRequest];
-    
-    [self addLoadingView];
-    [removeRequest startAsynchronous];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -277,7 +322,8 @@
 
 - (UIView*) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    if (section == 0 || (((NSMutableArray*)boundTableViewDateSource[1]).count <= 0 && section == 1))
+    if (section == 0 || (((NSMutableArray*)boundTableViewDateSource[1]).count <= 0 && section == 1) ||
+        (((NSMutableArray*)boundTableViewDateSource[2]).count <= 0 && section == 2))
     {
         return [[UIView alloc] init];
     }
@@ -361,13 +407,44 @@
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 2)
+    if (indexPath.section == 2 || indexPath.section == 1)
     {
         selectCommentIndexPath = indexPath;
         
-        commentActionSheet = [[UIActionSheet alloc] initWithTitle:@"对该评论进行操作" delegate:self cancelButtonTitle:nil destructiveButtonTitle:@"取消" otherButtonTitles:@"接受该答复", nil];
+        CommentEntity *subComment = boundTableViewDateSource[indexPath.section][indexPath.row];
         
-        [commentActionSheet showInView:self.view];
+        if ([subComment.ownerID isEqualToString:[AppSessionMrg shareInstance].userEntity.userId])
+        {
+            if (isOwner)
+            {
+                //表示评论是登陆用户发的，主题也是登陆用户发的
+                if (indexPath.section == 1)
+                {
+                    commentActionSheet = [[UIActionSheet alloc] initWithTitle:@"对该评论进行操作" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"删除" otherButtonTitles:nil];
+                }
+                else
+                {
+                    commentActionSheet = [[UIActionSheet alloc] initWithTitle:@"对该评论进行操作" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"删除" otherButtonTitles:@"接受该答复", nil];
+                }
+            }
+            else
+            {
+                commentActionSheet = [[UIActionSheet alloc] initWithTitle:@"对该评论进行操作" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"删除" otherButtonTitles:nil];
+            }
+        }
+        else
+        {
+            //评论是其他用户发的，主题是自己的
+            if (isOwner)
+            {
+                commentActionSheet = [[UIActionSheet alloc] initWithTitle:@"对该评论进行操作" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"接受该答复", nil];
+            }
+        }
+        
+        if (commentActionSheet)
+        {
+            [commentActionSheet showInView:self.view];
+        }
     }
 }
 
@@ -409,10 +486,50 @@
 {
     if ( actionSheet == commentActionSheet )
     {
-        if (buttonIndex == 1)
+        CommentEntity *subComment = boundTableViewDateSource[selectCommentIndexPath.section][selectCommentIndexPath.row];
+        
+        if ([subComment.ownerID isEqualToString:[AppSessionMrg shareInstance].userEntity.userId])
         {
-            [self acceptReplyWithIndex:selectCommentIndexPath];
-            return ;
+            if (isOwner)
+            {
+                //表示评论是登陆用户发的，主题也是登陆用户发的
+                if (selectCommentIndexPath.section == 1)
+                {
+                    if (buttonIndex == 0)
+                    {
+                        [self deleteReplyWithIndex:selectCommentIndexPath];
+                    }
+                }
+                else
+                {
+                    if (buttonIndex == 0)
+                    {
+                        [self deleteReplyWithIndex:selectCommentIndexPath];
+                    }
+                    else if (buttonIndex == 1)
+                    {
+                        [self acceptReplyWithIndex:selectCommentIndexPath];
+                    }
+                }
+            }
+            else
+            {
+                if (buttonIndex == 0)
+                {
+                    [self deleteReplyWithIndex:selectCommentIndexPath];
+                }
+            }
+        }
+        else
+        {
+            //评论是其他用户发的，主题是自己的
+            if (isOwner)
+            {
+                if (buttonIndex == 0)
+                {
+                    [self acceptReplyWithIndex:selectCommentIndexPath];
+                }
+            }
         }
     }
 }
@@ -452,6 +569,18 @@
 {
     dataIndex = 0;
     [self requestReplies];
+}
+
+#pragma mark -- UIAlertView Delegate
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    if (alertView == deleteFCAlert)
+    {
+        if (buttonIndex == 1)
+        {
+            [self deleteRequest];
+        }
+    }
 }
 
 @end

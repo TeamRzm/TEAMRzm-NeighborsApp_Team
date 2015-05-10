@@ -23,7 +23,8 @@
 - (void) setDataEntity : (CommentEntity*) _entit
 {
     //头像
-    EGOImageView *avterImgView = [[EGOImageView alloc] initWithPlaceholderImage: [UIImage imageNamed:_entit.avterIconURL]];
+    EGOImageView *avterImgView = [[EGOImageView alloc] initWithPlaceholderImage: [UIImage imageNamed:@"defaultAvater"]];
+    avterImgView.imageURL = [NSURL URLWithString:_entit.avterIconURL];
     avterImgView.frame = CGRectMake(10.0f, 56 / 2.0f - 43 / 2.0f, 43, 43);
     avterImgView.layer.cornerRadius = avterImgView.frame.size.width / 2.0f;
     avterImgView.layer.masksToBounds = YES;

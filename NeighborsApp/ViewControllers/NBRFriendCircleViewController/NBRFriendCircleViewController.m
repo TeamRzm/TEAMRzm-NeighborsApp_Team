@@ -507,7 +507,11 @@
         }
     }];
     
-    [self setDefaultRequestFaild:blockRequest];
+    [blockRequest setFailedBlock:^{
+        [refreshControllerTop[requestIndex] finishRefreshingDirection:RefreshDirectionTop];
+        [self removeLoadingView];
+        [self showBannerMsgWithString:@"网络连接失败，请您检查您的网络设置"];
+    }];
     
     hasLoading[requestIndex] = YES;
     [blockRequest startAsynchronous];
@@ -635,7 +639,12 @@
         }
     }];
     
-    [self setDefaultRequestFaild:listRequest[1]];
+    [listRequest[1] setFailedBlock:^{
+        [refreshControllerTop[1] finishRefreshingDirection:RefreshDirectionTop];
+        [self removeLoadingView];
+        [self showBannerMsgWithString:@"网络连接失败，请您检查您的网络设置"];
+    }];
+    
     [self addLoadingView];
     [listRequest[1] startAsynchronous];
 }
