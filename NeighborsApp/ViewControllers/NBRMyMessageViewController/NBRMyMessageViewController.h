@@ -10,6 +10,4 @@
 
 @interface NBRMyMessageViewController : NBRBaseViewController
 
-- (IBAction)leftBarButtonItemActions:(id)sender;
-
 @end

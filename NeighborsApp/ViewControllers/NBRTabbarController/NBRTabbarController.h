@@ -10,4 +10,6 @@
 
 @interface NBRTabbarController : UITabBarController
 
+- (void) showLoginViewControllerWithAnimtion : (BOOL) animtion;
+
 @end

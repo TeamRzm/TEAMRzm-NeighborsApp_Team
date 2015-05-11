@@ -19,7 +19,7 @@ typedef enum
 }INFOMATION_VIEWCONTROLLER_STATE;
 
 
-@interface NBRUserInfoViewController ()<UITableViewDataSource, UITableViewDelegate,FileUpLoadHelperDelegate>
+@interface NBRUserInfoViewController ()<UITableViewDataSource, UITableViewDelegate,FileUpLoadHelperDelegate,UIAlertViewDelegate,UIPickerViewDataSource,UIPickerViewDelegate,UITextFieldDelegate>
 {
     UITableView *boundTableView;
     
@@ -30,10 +30,14 @@ typedef enum
     ASIHTTPRequest  *userInfoRequest;
     
     UIView        *footView;
+    UIView        *logoutFootView;
     
     EGOImageView     *avterImageView;
     FileUpLoadHelper *avatarUploader;
     BOOL             isSelectImage;
+    
+    UIPickerView     *sexPicker;
+    UIToolbar        *sexPickerToolBar;
 }
 
 @property (nonatomic, assign) INFOMATION_VIEWCONTROLLER_STATE viewControllerState;
@@ -53,6 +57,20 @@ typedef enum
     boundTableView.delegate = self;
     boundTableView.dataSource = self;
     [self.view addSubview:boundTableView];
+    
+    sexPicker = [[UIPickerView alloc] initWithFrame:CGRectMake(0, kNBR_SCREEN_H, kNBR_SCREEN_W, 216.0f)];
+    sexPicker.delegate = self;
+    sexPicker.dataSource = self;
+    sexPicker.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:sexPicker];
+    
+    sexPickerToolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, kNBR_SCREEN_H, kNBR_SCREEN_W, 40.0f)];
+    UIBarButtonItem *lineItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:Nil action:Nil];
+    lineItem.width = 245;
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"选择" style:UIBarButtonItemStylePlain target:self action:@selector(toolBarDone)];
+    [sexPickerToolBar setItems:@[lineItem, doneButton]];
+    [self.view addSubview:sexPickerToolBar];
+
     
     avterImageView = [[EGOImageView alloc] initWithPlaceholderImage:[UIImage imageNamed:@"defaultAvater"]];
     avterImageView.frame = CGRectMake(kNBR_SCREEN_W - 60, 80.0f / 2.0f - 50.0f / 2.0f, 50, 50);
@@ -81,6 +99,7 @@ typedef enum
             subTextFied.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
             [self setDoneStyleTextFile:subTextFied];
             subTextFied.font = [UIFont systemFontOfSize:14.0f];
+            subTextFied.delegate = self;
             subTextFied.textAlignment = NSTextAlignmentRight;
             subTextFied.userInteractionEnabled = NO;
             
@@ -94,6 +113,60 @@ typedef enum
     
     UIBarButtonItem *rightAddItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"tianjia01"] style:UIBarButtonItemStylePlain target:self action:@selector(rightBarbuttonAction:)];
     self.navigationItem.rightBarButtonItem = rightAddItem;
+    
+    [self setLogoutTableViewFootView];
+}
+
+- (void) showSexPicker
+{
+    UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
+    UIView *firstResponder = [keyWindow performSelector:@selector(firstResponder)];
+    [firstResponder resignFirstResponder];
+    
+    [UIView animateWithDuration:.25f animations:^{
+        sexPicker.frame = CGRectMake(0, kNBR_SCREEN_H - 216 , kNBR_SCREEN_W, 216.0f);
+        sexPickerToolBar.frame = CGRectMake(0, kNBR_SCREEN_H - 256, kNBR_SCREEN_W, 40.0f);
+    } completion:^(BOOL finished) {
+        if ( [((UITextField*)nomalTextFiedArr[1][4]).text isEqualToString:@"男"] )
+        {
+            [sexPicker selectRow:0 inComponent:0 animated:YES];
+        }
+        else
+        {
+            [sexPicker selectRow:1 inComponent:0 animated:YES];
+        }
+    }];
+}
+
+- (void) textFieldDidBeginEditing:(UITextField *)textField
+{
+    [self toolBarDone];
+    [self insertBoundTableView];
+}
+
+- (void) insertBoundTableView
+{
+    boundTableView.contentInset = UIEdgeInsetsMake(64, 0, 250, 0);
+}
+
+- (void) unInsertBoundTableView
+{
+    boundTableView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
+}
+
+- (void) toolBarDone
+{
+    [UIView animateWithDuration:.25f animations:^{
+        sexPicker.frame = CGRectMake(0, kNBR_SCREEN_H, kNBR_SCREEN_W, 216.0f);
+        sexPickerToolBar.frame = CGRectMake(0, kNBR_SCREEN_H, kNBR_SCREEN_W, 40.0f);
+        [self unInsertBoundTableView];
+    }];
+}
+
+- (void) resignFirstResponderWithView : (UIView*) _resgignView
+{
+    [super resignFirstResponderWithView:_resgignView];
+    [self unInsertBoundTableView];
 }
 
 - (void) uploadAvatar
@@ -102,6 +175,7 @@ typedef enum
     avatarUploader.delegate = self;
     [avatarUploader addUploadImage:avterImageView.image];
     [avatarUploader startUpload];
+    [self addLoadingView];
 }
 
 - (void) commitDateDictWithAvatar : (NSString*) _avatar
@@ -137,7 +211,13 @@ typedef enum
 }
 
 - (void) commitUpdateInfomation
-{
+{    
+    UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
+    UIView *firstResponder = [keyWindow performSelector:@selector(firstResponder)];
+    [firstResponder resignFirstResponder];
+    [self unInsertBoundTableView];
+    [self toolBarDone];
+    
     if (isSelectImage)
     {
         [self uploadAvatar];
@@ -146,6 +226,73 @@ typedef enum
     {
         [self commitDateDictWithAvatar:@""];
     }
+}
+
+- (void) alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1)
+    {
+        [[AppSessionMrg shareInstance] userLogout];
+        [self showBannerMsgWithString:@"注销成功"];
+        
+        [((AppDelegate*)[UIApplication sharedApplication].delegate) showLoginViewController];;
+    }
+}
+
+- (void) logout
+{
+    UIAlertView *logoutAlert = [[UIAlertView alloc] initWithTitle:@"温馨提示" message:@"是否确认注销当前登录帐号" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    
+    [logoutAlert show];
+}
+
+- (void) setLogoutTableViewFootView
+{
+    logoutFootView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kNBR_SCREEN_W, 50)];
+    
+    UIButton *logoutButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    logoutButton.frame = CGRectMake(15, 0, kNBR_SCREEN_W - 30, 40);
+    logoutButton.backgroundColor = kNBR_ProjectColor_StandBlue;
+    logoutButton.layer.cornerRadius = 5.0f;
+    logoutButton.layer.masksToBounds = YES;
+    logoutButton.titleLabel.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME_BLOD size:15.0f];
+    [logoutButton setTitle:@"注销当前登录账号" forState:UIControlStateNormal];
+    [logoutButton addTarget:self action:@selector(logout) forControlEvents:UIControlEventTouchUpInside];
+    
+    [logoutFootView addSubview:logoutButton];
+    [boundTableView setTableFooterView:logoutFootView];
+    
+    avterImageView.userInteractionEnabled = NO;
+    [footView removeFromSuperview];
+}
+
+- (void) setEditTabelViewFootView
+{
+    avterImageView.userInteractionEnabled = YES;
+    footView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kNBR_SCREEN_W, 100)];
+    
+    UIButton *commitButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    commitButton.frame = CGRectMake(15, 0, kNBR_SCREEN_W - 30, 40);
+    commitButton.backgroundColor = kNBR_ProjectColor_StandBlue;
+    commitButton.layer.cornerRadius = 5.0f;
+    commitButton.layer.masksToBounds = YES;
+    commitButton.titleLabel.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME_BLOD size:15.0f];
+    [commitButton setTitle:@"确认修改" forState:UIControlStateNormal];
+    [commitButton addTarget:self action:@selector(commitUpdateInfomation) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIButton *cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    cancelButton.frame = CGRectMake(15, 50, kNBR_SCREEN_W - 30, 40);
+    cancelButton.backgroundColor = kNBR_ProjectColor_StandBlue;
+    cancelButton.layer.cornerRadius = 5.0f;
+    cancelButton.layer.masksToBounds = YES;
+    cancelButton.titleLabel.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME_BLOD size:15.0f];
+    [cancelButton setTitle:@"取消编辑" forState:UIControlStateNormal];
+    [cancelButton addTarget:self action:@selector(rightBarbuttonAction:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [footView addSubview:commitButton];
+    [footView addSubview:cancelButton];
+    
+    [boundTableView setTableFooterView:footView];
 }
 
 - (void) rightBarbuttonAction : (id) sender
@@ -160,33 +307,12 @@ typedef enum
             {
                 ((UITextField*)nomalTextFiedArr[i][j]).userInteractionEnabled = YES;
             }
+            
+            ((UITextField*)nomalTextFiedArr[1][4]).userInteractionEnabled = NO;
         }
-        avterImageView.userInteractionEnabled = YES;
-        footView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kNBR_SCREEN_W, 110)];
         
-        UIButton *commitButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        commitButton.frame = CGRectMake(15, 10, kNBR_SCREEN_W - 30, 40);
-        commitButton.backgroundColor = kNBR_ProjectColor_StandBlue;
-        commitButton.layer.cornerRadius = 5.0f;
-        commitButton.layer.masksToBounds = YES;
-        commitButton.titleLabel.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME_BLOD size:15.0f];
-        [commitButton setTitle:@"确认修改" forState:UIControlStateNormal];
-        [commitButton addTarget:self action:@selector(commitUpdateInfomation) forControlEvents:UIControlEventTouchUpInside];
-        
-        UIButton *cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        cancelButton.frame = CGRectMake(15, 60, kNBR_SCREEN_W - 30, 40);
-        cancelButton.backgroundColor = kNBR_ProjectColor_StandBlue;
-        cancelButton.layer.cornerRadius = 5.0f;
-        cancelButton.layer.masksToBounds = YES;
-        cancelButton.titleLabel.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME_BLOD size:15.0f];
-        [cancelButton setTitle:@"取消编辑" forState:UIControlStateNormal];
-        [cancelButton addTarget:self action:@selector(rightBarbuttonAction:) forControlEvents:UIControlEventTouchUpInside];
-        
-        [footView addSubview:commitButton];
-        [footView addSubview:cancelButton];
-        
-        [boundTableView setTableFooterView:footView];
-        
+        [logoutFootView removeFromSuperview];
+        [self setEditTabelViewFootView];
     }
     else if (self.viewControllerState == INFOMATION_VIEWCONTROLLER_STATE_EDIT)
     {
@@ -200,22 +326,22 @@ typedef enum
             }
         }
         
-        avterImageView.userInteractionEnabled = NO;
-        [footView removeFromSuperview];
+        [self setLogoutTableViewFootView];
     }
     
     [boundTableView reloadData];
+    
     CGContextRef context = UIGraphicsGetCurrentContext();
     [UIView beginAnimations:nil context:context];
     [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
     [UIView setAnimationDuration:.5f];
     if (self.viewControllerState == INFOMATION_VIEWCONTROLLER_STATE_NOMAL)
     {
-        [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:boundTableView cache:YES];
+        [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:boundTableView cache:YES];
     }
     else
     {
-        [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:boundTableView cache:YES];
+        [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:boundTableView cache:YES];
     }
     [UIView commitAnimations];
 }
@@ -346,6 +472,15 @@ typedef enum
         
         [self.navigationController pushViewController:nVC animated:YES];
     }
+    
+    if (self.viewControllerState == INFOMATION_VIEWCONTROLLER_STATE_EDIT)
+    {
+        if (indexPath.section == 1 &&
+            indexPath.row == 4)
+        {
+            [self showSexPicker];
+        }
+    }
 }
 
 #pragma mark -- FileUpLoadDelegate
@@ -379,6 +514,34 @@ typedef enum
     }
     
     return ;
+}
+
+#pragma mark -- UIPicker Delegate
+- (NSInteger) numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 1;
+}
+
+- (NSInteger) pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    return 2;
+}
+
+- (NSString*) pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    return row == 0 ? @"男" : @"女";
+}
+
+- (void) pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    if (row == 0)
+    {
+        ((UITextField*)nomalTextFiedArr[1][4]).text = @"男";
+    }
+    else
+    {
+        ((UITextField*)nomalTextFiedArr[1][4]).text = @"女";
+    }
 }
 
 

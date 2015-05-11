@@ -45,7 +45,7 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="547" y="228.5"/>
+            <point key="canvasLocation" x="558" y="229"/>
         </view>
         <view contentMode="scaleToFill" id="pu1-ZJ-p5U">
             <rect key="frame" x="0.0" y="0.0" width="320" height="109"/>

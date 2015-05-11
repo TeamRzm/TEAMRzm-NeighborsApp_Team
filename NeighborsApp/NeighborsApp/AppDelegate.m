@@ -13,6 +13,8 @@
 
 #import "FileUpLoadHelper.h"
 
+#import "NBRLoginViewController.h"
+
 #define _IPHONE80_ 80000
 
 @interface AppDelegate ()
@@ -110,9 +112,34 @@
     
     [XGPush handleLaunching:launchOptions successCallback:successBlock errorCallback:errorBlock];
     
+    if ([AppSessionMrg shareInstance].userIsLogin)
+    {
+        [self showMainViewTabViewContller];
+    }
+    else
+    {
+        [self showLoginViewController];
+    }
+    
     return YES;
 }
 
+- (void) showLoginViewController
+{
+    NBRLoginViewController *nVC = [[NBRLoginViewController alloc] initWithNibName:@"NBRLoginViewController" bundle:nil];
+    UINavigationController *nNavVC = [[UINavigationController alloc] initWithRootViewController:nVC];
+    self.window.rootViewController = nNavVC;
+    [self.window makeKeyAndVisible];
+}
+
+- (void) showMainViewTabViewContller
+{
+    UIStoryboard *mainBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    UIViewController *mainTab = [mainBoard instantiateInitialViewController];
+    
+    self.window.rootViewController = mainTab;
+}
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     

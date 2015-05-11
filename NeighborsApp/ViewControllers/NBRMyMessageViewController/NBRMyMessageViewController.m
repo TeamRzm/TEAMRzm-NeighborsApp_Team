@@ -215,18 +215,6 @@
 }
 */
 
-- (IBAction)leftBarButtonItemActions:(id)sender
-{
-    NBRLoginViewController *nVC = [[NBRLoginViewController alloc] initWithNibName:@"NBRLoginViewController" bundle:nil];
-    
-    UINavigationController *nNavVC = [[UINavigationController alloc] initWithRootViewController:nVC];
-    
-    [self.tabBarController presentViewController:nNavVC animated:YES completion:^{
-        
-    }];
-}
-
-
 #pragma mark UITabelViewDelegate
 - (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
 {

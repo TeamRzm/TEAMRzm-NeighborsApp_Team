@@ -105,7 +105,8 @@
     }
     
     //头像
-    avterImageView = [[EGOImageView alloc] initWithPlaceholderImage:[UIImage imageNamed:@"t_avter_9"]];
+    avterImageView = [[EGOImageView alloc] initWithPlaceholderImage:[UIImage imageNamed:@"defaultAvater"]];
+    avterImageView.imageURL = [NSURL URLWithString:[AppSessionMrg shareInstance].userEntity.avatar];
     avterImageView.layer.cornerRadius = 3.0f;
     avterImageView.layer.masksToBounds = YES;
     avterImageView.frame = CGRectMake(10, 79 / 2.0f - 50.0f / 2.0f, 50, 50);
@@ -120,14 +121,15 @@
     nikeNameLable = [[UILabel alloc] initWithFrame:CGRectMake(75.0f, avterImageView.frame.origin.y + 5, kNBR_SCREEN_W - 75 - 10, 20)];
     nikeNameLable.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME_BLOD size:13.0f];
     nikeNameLable.textColor = UIColorFromRGB(0xFFFFFF);
-    nikeNameLable.text = @"邻家小妹";
+    nikeNameLable.text = [AppSessionMrg shareInstance].userEntity.nickName;
+    
     [tableViewHeadView addSubview:nikeNameLable];
     
     //积分
     sorceLable = [[UILabel alloc] initWithFrame:CGRectMake(75.0f, avterImageView.frame.origin.y + 5 + 22, kNBR_SCREEN_W - 75 - 10, 20)];
     sorceLable.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME size:10.0f];
     sorceLable.textColor = UIColorFromRGB(0xFFFFFF);
-    sorceLable.text = @"积分 21024";
+    sorceLable.text = @"积分 0";
     [tableViewHeadView addSubview:sorceLable];
     
     //4个分割线装饰按钮

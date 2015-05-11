@@ -153,7 +153,8 @@
 
 - (void) resignFirstResponderWithView : (UIView*) _resgignView
 {
-    [_resgignView resignFirstResponder];
+    UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
+    UIView *firstResponder = [keyWindow performSelector:@selector(firstResponder)];
 }
 
 - (void) setDoneStyleTextFile : (UITextField*) _textFiled

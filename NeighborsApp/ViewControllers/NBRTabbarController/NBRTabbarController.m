@@ -7,6 +7,7 @@
 //
 
 #import "NBRTabbarController.h"
+#import "NBRLoginViewController.h"
 
 @interface NBRTabbarController ()
 
@@ -22,6 +23,17 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void) showLoginViewControllerWithAnimtion : (BOOL) animtion
+{
+    NBRLoginViewController *nVC = [[NBRLoginViewController alloc] initWithNibName:@"NBRLoginViewController" bundle:nil];
+    
+    UINavigationController *nNavVC = [[UINavigationController alloc] initWithRootViewController:nVC];
+    
+    [self presentViewController:nNavVC animated:animtion completion:^{
+        
+    }];
 }
 
 /*

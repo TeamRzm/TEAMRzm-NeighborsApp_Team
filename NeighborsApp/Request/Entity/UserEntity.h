@@ -16,5 +16,6 @@
 @property (nonatomic, strong) NSString* userName;
 @property (nonatomic, strong) NSString* villageName;
 @property (nonatomic, strong) NSString* token;
+@property (nonatomic, strong) NSString* avatar;
 
 @end

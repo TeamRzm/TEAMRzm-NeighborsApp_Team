@@ -66,8 +66,6 @@
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(forgetPwdButtonAction:)];
     [self.forgetPwdLable addGestureRecognizer:tapGesture];
     self.forgetPwdLable.userInteractionEnabled = YES;
-    
-    [self setNavgationBarLeftButtonIsDissmissViewController];
 }
 
 - (void) forgetPwdButtonAction : (id) _sender
@@ -166,11 +164,18 @@
             
             [AppSessionMrg shareInstance].userEntity = userEntity;
             
-            [self showBannerMsgWithString:[responseDict stringWithKeyPath:@"data\\code\\message"]];
+            [((AppDelegate*)[UIApplication sharedApplication].delegate) showMainViewTabViewContller];
             
-            [self.navigationController dismissViewControllerAnimated:YES completion:^{
-                
-            }];
+//            CGContextRef context = UIGraphicsGetCurrentContext();
+//            [UIView beginAnimations:nil context:context];
+//            [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+//            [UIView setAnimationDuration:.5f];
+//            [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight
+//                                   forView:((AppDelegate*)[UIApplication sharedApplication]).window.rootViewController.view
+//                                     cache:YES];
+//            [UIView commitAnimations];
+            
+            [self showBannerMsgWithString:[responseDict stringWithKeyPath:@"data\\code\\message"]];
             
             return ;
         }
