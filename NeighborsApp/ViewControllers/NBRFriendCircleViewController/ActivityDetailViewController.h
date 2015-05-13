@@ -7,7 +7,10 @@
 //
 
 #import "NBRBaseViewController.h"
+#import "ActivityDateEntity.h"
 
 @interface ActivityDetailViewController : NBRBaseViewController
+
+@property (nonatomic, strong) ActivityDateEntity *dateEntity;
 
 @end

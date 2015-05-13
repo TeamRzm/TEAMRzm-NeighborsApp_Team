@@ -10,12 +10,18 @@
 #import "ActivityTableViewCell.h"
 #import "EGOImageView.h"
 
+#import "CreaterRequest_Activity.h"
+
 @interface ActivityDetailViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
     UITableView *boundTableView;
     NSMutableArray *boundTableViewDataSource;
     
     NSDictionary    *contentStringFormat;
+    
+    ASIHTTPRequest  *iWantJoinRequest;
+    ASIHTTPRequest  *activityJoinsRequest;
+    NSInteger       dateIndex;
 }
 @end
 
@@ -26,22 +32,12 @@
     // Do any additional setup after loading the view.
     self.title = @"新家园春季篮球赛";
     
-    boundTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kNBR_SCREEN_W, kNBR_SCREEN_H) style:UITableViewStyleGrouped];
+    boundTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kNBR_SCREEN_W, kNBR_SCREEN_H - 60) style:UITableViewStyleGrouped];
     boundTableView.delegate = self;
     boundTableView.dataSource = self;
     [self.view addSubview:boundTableView];
     
     boundTableViewDataSource = [[NSMutableArray alloc] init];
-    
-    //configDataSource
-    ActivityDateEntity *entity = [[ActivityDateEntity alloc] init];
-    entity.backGounrdUrl = @"testActityBackGound";
-    entity.regDate = @"4月1日－4月30日";
-    entity.leftTagStr = @"16/20";
-    entity.titile = @"小区相亲大会";
-    entity.commitDate = @"2014年3月25日";
-    entity.price = @"0";
-    entity.activityState = ACTIVITY_STATE_STARTING;
     
     //format
     NSMutableParagraphStyle *contentViewStyle = [[NSMutableParagraphStyle alloc] init];
@@ -58,14 +54,41 @@
                             NSForegroundColorAttributeName    : kNBR_ProjectColor_DeepGray,
                             };
     
+    //FootView
+    //报名按钮
+    UIView *tableViewFootView = [[UIView alloc] initWithFrame:CGRectMake(0, kNBR_SCREEN_H - 60, kNBR_SCREEN_W, 60)];
+    tableViewFootView.backgroundColor = [UIColor whiteColor];
+    
+    UIButton *commitButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    commitButton.frame = CGRectMake(15, 10, kNBR_SCREEN_W - 30, 40);
+    commitButton.backgroundColor = kNBR_ProjectColor_StandBlue;
+    commitButton.layer.cornerRadius = 5.0f;
+    commitButton.layer.masksToBounds = YES;
+    commitButton.titleLabel.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME_BLOD size:15.0f];
+    [commitButton setTitle:@"我要报名" forState:UIControlStateNormal];
+    [tableViewFootView addSubview:commitButton];
+    
+//    boundTableView.tableFooterView = tableViewFootView;
+    [self.view addSubview:tableViewFootView];
+    
+    [self requestJoins];
+}
+
+- (void) iWantJoinRequest
+{
+    iWantJoinRequest = [CreaterRequest_Activity CreateJoinRequestWithID:self.dateEntity.activityID phone:@"" contrace:@"" count:@""];
+}
+
+- (void) configDate
+{
     //test data
     boundTableViewDataSource = [NSMutableArray arrayWithArray:@[
-                                                                @[entity],
+                                                                @[self.dateEntity],
                                                                 @[
-                                                                    @"为促进邻里关系，增加邻里感情，特组织该活动，望各位踊跃报名参加。",
-                                                                    @"2015年03月01日 下午2:30",
-                                                                    @"新家园篮球场",
-                                                                    @"汪大海 13512345678",
+                                                                    self.dateEntity.dateDict[@"content"],
+                                                                    [self nowDateStringForDistanceDateString:self.dateEntity.dateDict[@"startDate"]],
+                                                                    self.dateEntity.dateDict[@"address"],
+                                                                    [NSString stringWithFormat:@"%@  %@", self.dateEntity.dateDict[@"linkman"], self.dateEntity.dateDict[@"phone"]],
                                                                     ],
                                                                 @[
                                                                     @[
@@ -82,22 +105,30 @@
                                                                     ],
                                                                 ]];
 
-    //FootView
-    //报名按钮
-    UIView *tableViewFootView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kNBR_SCREEN_W, 60)];
-    tableViewFootView.backgroundColor = [UIColor whiteColor];
+}
+
+- (void) requestJoins
+{
+    activityJoinsRequest = [CreaterRequest_Activity CreateJoinsRequestWithID:self.dateEntity.activityID index:[NSString stringWithFormat:@"%d",dateIndex] size:kNBR_PAGE_SIZE_STR];
     
-    UIButton *commitButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    commitButton.frame = CGRectMake(15, 10, kNBR_SCREEN_W - 30, 40);
-    commitButton.backgroundColor = kNBR_ProjectColor_StandBlue;
-    commitButton.layer.cornerRadius = 5.0f;
-    commitButton.layer.masksToBounds = YES;
-    commitButton.titleLabel.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME_BLOD size:15.0f];
-    [commitButton setTitle:@"我要报名" forState:UIControlStateNormal];
-    [tableViewFootView addSubview:commitButton];
+    __weak ASIHTTPRequest *blockRequest = activityJoinsRequest;
     
-    boundTableView.tableFooterView = tableViewFootView;
+    [blockRequest setCompletionBlock:^{
+        [self removeLoadingView];
+        NSDictionary *reponseDict = blockRequest.responseString.JSONValue;
+        
+        if ([CreaterRequest_Activity CheckErrorResponse:reponseDict errorAlertInViewController:self])
+        {
+            [self configDate];
+            [boundTableView reloadData];
+            return ;
+        }
+        
+    }];
     
+    [self setDefaultRequestFaild:blockRequest];
+    [self addLoadingView];
+    [activityJoinsRequest startAsynchronous];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -156,16 +187,7 @@
 {
     if (indexPath.section == 0)
     {
-        ActivityDateEntity *entity = [[ActivityDateEntity alloc] init];
-        entity.backGounrdUrl = @"testActityBackGound";
-        entity.regDate = @"4月1日－4月30日";
-        entity.leftTagStr = @"16/20";
-        entity.titile = @"小区相亲大会";
-        entity.commitDate = @"2014年3月25日";
-        entity.price = @"0";
-        entity.activityState = ACTIVITY_STATE_STARTING;
-        
-        return [ActivityTableViewCell heightWithEntity:entity isDetail:YES];
+        return [ActivityTableViewCell heightWithEntity:self.dateEntity isDetail:YES];
     }
     else if (indexPath.section == 1 && indexPath.row == 0)
     {
@@ -234,20 +256,11 @@
 {
     if (indexPath.section == 0)
     {
-        ActivityDateEntity *entity = [[ActivityDateEntity alloc] init];
-        entity.backGounrdUrl = @"testActityBackGound";
-        entity.regDate = @"4月1日－4月30日";
-        entity.leftTagStr = @"16/20";
-        entity.titile = @"小区相亲大会";
-        entity.commitDate = @"2014年3月25日";
-        entity.price = @"0";
-        entity.activityState = ACTIVITY_STATE_STARTING;
-        
         ActivityTableViewCell *cell = [[ActivityTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kNBR_TABLEVIEW_CELL_NOIDENTIFIER];
         cell.layer.masksToBounds = YES;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
-        [cell configWithEntity:entity isDetail:YES];
+        [cell configWithEntity:self.dateEntity isDetail:YES];
         
         return cell;
     }

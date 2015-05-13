@@ -26,6 +26,7 @@
                                    contrace : (NSString*) contract
                                       count : (NSString*) count;
 
+//提交活动
 + (ASIHTTPRequest*) CreateActivityPostRequestWithTitle : (NSString*) title
                                                  begin : (NSString*) begin
                                                    end : (NSString*) end

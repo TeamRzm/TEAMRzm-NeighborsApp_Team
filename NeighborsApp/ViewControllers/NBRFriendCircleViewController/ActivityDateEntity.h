@@ -38,5 +38,10 @@ typedef enum
 //价格，如果价格小于0.0，则显示免费
 @property (nonatomic, copy) NSString* price;
 
+//ID
+@property (nonatomic, copy) NSString* activityID;
+
+@property (nonatomic, strong) NSDictionary *dateDict;
+
 @property (nonatomic, assign) ACTIVITY_STATE activityState;
 @end

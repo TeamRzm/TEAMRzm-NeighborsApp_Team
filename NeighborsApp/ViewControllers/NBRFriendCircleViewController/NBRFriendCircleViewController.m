@@ -393,11 +393,18 @@
         ComentDetailViewController *nVC = [[ComentDetailViewController alloc] initWithNibName:nil bundle:nil];
         nVC.dataEntity = boundTableViewDateSource[tableIndex][indexPath.row];
         nVC.hidesBottomBarWhenPushed = YES;
+        
+        if (currentSegmentIndex == 2)
+        {
+            nVC.isWarning = YES;
+        }
+        
         [self.navigationController pushViewController:nVC animated:YES];
     }
     else if (currentSegmentIndex == 1)
     {
         ActivityDetailViewController *nVC = [[ActivityDetailViewController alloc] initWithNibName:nil bundle:nil];
+        nVC.dateEntity = boundTableViewDateSource[tableIndex][indexPath.row];
         nVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:nVC animated:YES];
     }
@@ -566,6 +573,8 @@
                 {
                     newActivityEntity.backGounrdUrl = [subActivityDict arrayWithKeyPath:@"files"][0][@"url"]; //图片暂时全部默认
                 }
+                newActivityEntity.activityID = [subActivityDict stringWithKeyPath:@"activityId"];
+                newActivityEntity.dateDict = subActivityDict;
                 newActivityEntity.regDate = [NSString
                                              stringWithFormat:@"%@-%@",
                                              [mmddFormater stringFromDate:regStrDate],

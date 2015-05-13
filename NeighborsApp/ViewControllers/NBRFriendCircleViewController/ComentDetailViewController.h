@@ -13,4 +13,7 @@
 
 @property (nonatomic, strong) FriendCircleContentEntity *dataEntity;
 
+//设置是否是安全预警的详情
+@property (nonatomic, assign) BOOL isWarning;
+
 @end

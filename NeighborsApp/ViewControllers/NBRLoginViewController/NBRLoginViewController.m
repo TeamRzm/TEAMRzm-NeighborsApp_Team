@@ -115,7 +115,7 @@
 - (IBAction)regButtonAction:(id)sender
 {
     NBRRegViewController *nVC = [[NBRRegViewController alloc] initWithNibName:@"NBRForgetPwdViewController" bundle:nil];
-    
+
     [self.navigationController pushViewController:nVC animated:YES];
 }
 

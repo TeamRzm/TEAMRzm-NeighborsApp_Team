@@ -15,6 +15,7 @@
 #import "XHImageViewer.h"
 #import "aya_MultimediaKeyBoard.h"
 #import "CreaterRequest_Logroll.h"
+#import "CreaterRequest_Show.h"
 #import "RefreshControl.h"
 
 @interface ComentDetailViewController ()<UITableViewDataSource, UITableViewDelegate,CommentTableViewCellDelegate,XHImageViewerDelegate,aya_MultimediaKeyBoardDelegate,RefreshControlDelegate,UIActionSheetDelegate,UIAlertViewDelegate>
@@ -52,7 +53,14 @@
 
 - (void) replayWithContent : (NSString*) _content
 {
-    replayCommentRequest = [CreaterRequest_Logroll CreateLogrollReplyRequestWithID:[self.dataEntity.dataDict stringWithKeyPath:@"logrollId"] info:_content files:nil];
+    if (self.isWarning)
+    {
+        replayCommentRequest = [CreaterRequest_Show CreateShowReplyRequestWithID:[self.dataEntity.dataDict stringWithKeyPath:@"showId"] info:_content files:nil];
+    }
+    else
+    {
+        replayCommentRequest = [CreaterRequest_Logroll CreateLogrollReplyRequestWithID:[self.dataEntity.dataDict stringWithKeyPath:@"logrollId"] info:_content files:nil];
+    }
     
     __weak ASIHTTPRequest *blockRequest = replayCommentRequest;
     
@@ -80,7 +88,14 @@
 {
     CommentEntity *subComment = boundTableViewDateSource[_index.section][_index.row];
     
-    removeRequest = [CreaterRequest_Logroll CreateDeleteRequestWithID:subComment.ID type:@"1"];
+    if (self.isWarning)
+    {
+        removeRequest = [CreaterRequest_Show CreateDeleteRequestWithID:subComment.ID type:@"1"];
+    }
+    else
+    {
+        removeRequest = [CreaterRequest_Logroll CreateDeleteRequestWithID:subComment.ID type:@"1"];
+    }
     
     __weak ASIHTTPRequest *blockRequest = removeRequest;
     
@@ -104,7 +119,14 @@
 //删除该里手帮
 - (void) deleteRequest
 {
-    removeRequest = [CreaterRequest_Logroll CreateDeleteRequestWithID:self.dataEntity.dataDict[@"logrollId"] type:@"0"];
+    if (self.isWarning)
+    {
+        removeRequest = [CreaterRequest_Show CreateDeleteRequestWithID:self.dataEntity.dataDict[@"showId"] type:@"0"];
+    }
+    else
+    {
+        removeRequest = [CreaterRequest_Logroll CreateDeleteRequestWithID:self.dataEntity.dataDict[@"logrollId"] type:@"0"];
+    }
     
     __weak ASIHTTPRequest *blockRequest = removeRequest;
     
@@ -130,7 +152,14 @@
 {
     CommentEntity *subComment = boundTableViewDateSource[_index.section][_index.row];
     
-    acceptRequest = [CreaterRequest_Logroll CreateAcceptRequestWithID:subComment.ID];
+    if (self.isWarning)
+    {
+        acceptRequest = [CreaterRequest_Show CreateAcceptRequestWithID:subComment.ID];
+    }
+    else
+    {
+        acceptRequest = [CreaterRequest_Logroll CreateAcceptRequestWithID:subComment.ID];
+    }
     
     __weak ASIHTTPRequest *blockRequest = acceptRequest;
     
@@ -155,7 +184,14 @@
 
 - (void) requestReplies
 {
-    repliesRequest = [CreaterRequest_Logroll CreateLogrollListRequestWithID:[self.dataEntity.dataDict stringWithKeyPath:@"logrollId"] index:ITOS(dataIndex) size:kNBR_PAGE_SIZE_STR];
+    if (self.isWarning)
+    {
+        repliesRequest = [CreaterRequest_Show CreateShowRepliesRequestWithID:[self.dataEntity.dataDict stringWithKeyPath:@"showId"] index:ITOS(dataIndex) size:kNBR_PAGE_SIZE_STR];
+    }
+    else
+    {
+        repliesRequest = [CreaterRequest_Logroll CreateLogrollListRequestWithID:[self.dataEntity.dataDict stringWithKeyPath:@"logrollId"] index:ITOS(dataIndex) size:kNBR_PAGE_SIZE_STR];
+    }
     
     __weak ASIHTTPRequest *blockRequest = repliesRequest;
     

@@ -32,7 +32,7 @@
 {
     NSDictionary *parmsDict = @{
                                 @"id"       : ID,
-                                @"index"    : index,
+                                @"index"    : ITOS(index.integerValue + 1),
                                 @"size"     : size,
                                 };
     
@@ -109,5 +109,4 @@
     return [CreaterRequest_Activity RequestWithURL:url requestMethod:REQUEST_METHOD_POST];
 
 }
-
 @end
