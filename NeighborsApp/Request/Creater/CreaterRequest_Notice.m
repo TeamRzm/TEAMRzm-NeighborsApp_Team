@@ -42,4 +42,17 @@
     return request;
 }
 
+
++ (ASIHTTPRequest*) CreateNotifyGetRequest
+{
+    NSDictionary *parmsDict = @{
+                                };
+    
+    ASIHTTPRequest *request = [CreaterRequest_Notice GetRequestWithMethod:@"/api.notify/get.cmd"
+                                                                parmsDict:parmsDict
+                                                            requestMethod:REQUEST_METHOD_POST];
+    
+    return request;
+}
+
 @end

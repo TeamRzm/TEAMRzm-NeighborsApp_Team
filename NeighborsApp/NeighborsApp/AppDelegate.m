@@ -165,8 +165,6 @@
     //如果不需要回调
     [XGPush registerDevice:deviceToken];
     
-    [[AppSessionMrg shareInstance] setSessionValue:deviceTokenStr withKey:XG_CLIENT_ID isSandBox:NO];
-    
     //打印获取的deviceToken的字符串
     NSLog(@"deviceTokenStr is %@",deviceTokenStr);
     

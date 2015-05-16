@@ -9,6 +9,8 @@
 #import "NBRPersonalCenterViewController.h"
 #import "NBRUserInfoViewController.h"
 #import "EGOImageView.h"
+#import "NBRFriendCircleViewController.h"
+#import "CreaterRequest_Notice.h"
 
 @interface NBRPersonalCenterViewController ()<UITableViewDataSource, UITableViewDelegate>
 {
@@ -28,6 +30,8 @@
     
     //TableViewCellDateSource
     NSArray         *boundTableViewDateSource;
+    
+//    ASIHTTPRequest  *notifyGetRequest;
 }
 @end
 
@@ -92,12 +96,14 @@
         tableViewHeadViewButtons[i].frame = CGRectMake(kNBR_SCREEN_W / 3.0f * i, 79.0f, kNBR_SCREEN_W / 3.0f, 40.0f);
         tableViewHeadViewButtons[i].backgroundColor = UIColorFromRGB(0xFFFFFF);
         tableViewHeadViewButtons[i].titleLabel.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME_BLOD size:12.0f];
+        tableViewHeadViewButtons[i].tag = i;
         [tableViewHeadViewButtons[i] setTitleColor:kNBR_ProjectColor_StandBlue forState:UIControlStateNormal];
         [tableViewHeadViewButtons[i] setTitle:tableViewHeadViewTitle[i] forState:UIControlStateNormal];
+        [tableViewHeadViewButtons[i] addTarget:self action:@selector(headViewSengmentButtonAction:) forControlEvents:UIControlEventTouchUpInside];
         
         UIImage *iconImg = [UIImage imageNamed:tableViewHeadViewIconImg[i]];
         UIImageView *iconView = [[UIImageView alloc] initWithImage:iconImg];
-        [iconView addTopTagNumberView:@"9" fixOrigin:CGPointMake(1, -8.0f)];
+//        [iconView addTopTagNumberView:@"9" fixOrigin:CGPointMake(1, -8.0f)];
         iconView.frame = CGRectMake(buttonFixX[i], 40.0f / 2.0f - iconImg.size.height / 2.0f, iconImg.size.width, iconImg.size.height);
         [tableViewHeadViewButtons[i] addSubview:iconView];
         
@@ -155,6 +161,48 @@
     [tableViewHeadView addSubview:breakLineContent4];
     
     boundTableView.tableHeaderView = tableViewHeadView;
+    
+    [self requestNotifyGet];
+}
+
+- (void) requestNotifyGet
+{
+
+}
+
+- (void) headViewSengmentButtonAction : (UIButton*) sender
+{
+    NBRFriendCircleViewController *nVC;
+    
+    switch (sender.tag)
+    {
+        case 0:
+        {
+            //里手帮
+            nVC = [[NBRFriendCircleViewController alloc] initWithMode:FRIENDCIRCLECONTROLLER_MODE_LOROLL];
+        }
+            break;
+            
+        case 1:
+        {
+            //活动
+            nVC = [[NBRFriendCircleViewController alloc] initWithMode:FRIENDCIRCLECONTROLLER_MODE_ACTIVITY];
+        }
+            break;
+            
+        case 2:
+        {
+            //预警
+            nVC = [[NBRFriendCircleViewController alloc] initWithMode:FRIENDCIRCLECONTROLLER_MODE_WARNNING];
+        }
+            break;
+            
+        default:
+            break;
+    }
+    
+    nVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:nVC animated:YES];
 }
 
 - (void) gotoUserInfoViewController

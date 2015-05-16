@@ -18,4 +18,7 @@
 //标记已读消息
 + (ASIHTTPRequest*) CreateMarkRequestWithID : (NSString*) ID;
 
+//读取用户提醒
++ (ASIHTTPRequest*) CreateNotifyGetRequest;
+
 @end

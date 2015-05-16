@@ -73,45 +73,44 @@
         case FRIENDCIRCLECONTROLLER_MODE_LOROLL:
         {
             [self requestList0WithType:@"0"];
+            self.title = @"我的里手帮";
             
-            boundScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, kNBR_SCREEN_W, kNBR_SCREEN_H)];
+            [segmentChangedView removeFromSuperview];
+            subTableView[0].frame = CGRectMake(0, 0, kNBR_SCREEN_W, kNBR_SCREEN_H - 64.0f);
+            subTableView[0].contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
+
+            boundScrollView.frame = CGRectMake(0, 0, kNBR_SCREEN_W, kNBR_SCREEN_H);
             boundScrollView.contentSize = CGSizeMake(kNBR_SCREEN_W * 1.0f, kNBR_SCREEN_H);
             boundScrollView.contentOffset = CGPointMake(kNBR_SCREEN_W * 0.0f, 0);
-            
-            for (int i = 0; i < 3; i++)
-            {
-                [segmentLabel[i] removeFromSuperview];
-            }
         }
             break;
             
         case FRIENDCIRCLECONTROLLER_MODE_ACTIVITY:
         {
             [self requestList1WithFlag:@"1"];
+            self.title = @"我的活动";
             
-            boundScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, kNBR_SCREEN_W, kNBR_SCREEN_H)];
+            [segmentChangedView removeFromSuperview];
+            subTableView[1].frame = CGRectMake(kNBR_SCREEN_W * 1.0f, 0, kNBR_SCREEN_W, kNBR_SCREEN_H - 64.0f);
+            subTableView[1].contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
+            boundScrollView.frame = CGRectMake(0, 0, kNBR_SCREEN_W, kNBR_SCREEN_H);
             boundScrollView.contentSize = CGSizeMake(kNBR_SCREEN_W * 2.0f, kNBR_SCREEN_H);
             boundScrollView.contentOffset = CGPointMake(kNBR_SCREEN_W * 1.0f, 0);
-            
-            for (int i = 0; i < 3; i++)
-            {
-                [segmentLabel[i] removeFromSuperview];
-            }
         }
             break;
             
         case FRIENDCIRCLECONTROLLER_MODE_WARNNING:
         {
             [self requestList0WithType:@"1"];
+            self.title = @"我的安全预警";
             
-            boundScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, kNBR_SCREEN_W, kNBR_SCREEN_H)];
+            [segmentChangedView removeFromSuperview];
+            subTableView[2].frame = CGRectMake(kNBR_SCREEN_W * 2.0f, 0, kNBR_SCREEN_W, kNBR_SCREEN_H - 64.0f);
+            subTableView[2].contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
+            
+            boundScrollView.frame = CGRectMake(0, 0, kNBR_SCREEN_W, kNBR_SCREEN_H);
             boundScrollView.contentSize = CGSizeMake(kNBR_SCREEN_W * 3.0f, kNBR_SCREEN_H);
             boundScrollView.contentOffset = CGPointMake(kNBR_SCREEN_W * 2.0f, 0);
-            
-            for (int i = 0; i < 3; i++)
-            {
-                [segmentLabel[i] removeFromSuperview];
-            }
         }
             break;
             
@@ -431,9 +430,16 @@
 {
     NSInteger requestIndex = _type.integerValue == 0 ? 0 : 2;
 
+    NSString *isMyNumberString = @"0";
+    
+    if (viewControllerMode != FRIENDCIRCLECONTROLLER_MODE_NOMAL)
+    {
+        isMyNumberString = @"1";
+    }
+    
     if (requestIndex == 0)
     {
-        listRequest[requestIndex] = [CreaterRequest_Logroll CreateLogrollRequestWithIndex:ITOS(dataIndex[requestIndex]) size:kNBR_PAGE_SIZE_STR accepted:@"-1" isMy:@"0"];
+        listRequest[requestIndex] = [CreaterRequest_Logroll CreateLogrollRequestWithIndex:ITOS(dataIndex[requestIndex]) size:kNBR_PAGE_SIZE_STR accepted:@"-1" isMy:isMyNumberString];
     }
     else
     {
@@ -677,7 +683,14 @@
                 
             case 1:
             {
-                [self requestList1WithFlag:@"0"];
+                if (viewControllerMode == FRIENDCIRCLECONTROLLER_MODE_ACTIVITY)
+                {
+                    [self requestList1WithFlag:@"1"];
+                }
+                else
+                {
+                    [self requestList1WithFlag:@"0"];
+                }
             }
                 break;
                 
