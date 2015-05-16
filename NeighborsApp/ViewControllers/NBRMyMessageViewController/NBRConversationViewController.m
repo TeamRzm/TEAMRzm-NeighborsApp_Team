@@ -7,6 +7,9 @@
 //
 
 #import "NBRConversationViewController.h"
+#import "NBRChatSettingViewController.h"
+
+
 #import "MessageEntity.h"
 #import "IMUserEntity.h"
 #import "MLEmojiLabel.h"
@@ -79,6 +82,8 @@
     [self configTestDate];
 #endif
     
+    [self NavigationRightItemButtonImage:@"me02"];
+    
 }
 
 #pragma mark navigation Method
@@ -96,6 +101,8 @@
 
 -(void) NavigatinRightItemClicked:(UIButton *) sender
 {
+    NBRChatSettingViewController *settingview = [[NBRChatSettingViewController alloc] init];
+    [self.navigationController pushViewController:settingview animated:YES];
     
 }
 

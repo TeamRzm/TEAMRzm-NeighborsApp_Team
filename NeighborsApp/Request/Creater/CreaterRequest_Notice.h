@@ -21,4 +21,5 @@
 //读取用户提醒
 + (ASIHTTPRequest*) CreateNotifyGetRequest;
 
+
 @end

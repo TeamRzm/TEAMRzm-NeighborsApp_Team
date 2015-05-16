@@ -219,6 +219,7 @@
     [friendListReq startAsynchronous];
 }
 
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -435,13 +436,13 @@
             [self.navigationController pushViewController:notice animated:YES];
             
         }
-        else
+        else if(indexPath.row == 1)
         {
             NBRFriendApplyViewController *applyview = [[NBRFriendApplyViewController alloc] init];
             [applyview setHidesBottomBarWhenPushed:YES];
             [self.navigationController pushViewController:applyview animated:YES];
         }
-        return;
+        
     }
     NBRConversationViewController *nVC = [[NBRConversationViewController alloc] initWithNibName:@"NBRConversationViewController" bundle:nil];
     nVC.hidesBottomBarWhenPushed = YES;

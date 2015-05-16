@@ -13,6 +13,7 @@
     UITableView *myTableview;
     NSMutableArray *noticeArr;
     NSInteger      currentindx;
+    ASIHTTPRequest  *noticeReq;
 }
 
 @end

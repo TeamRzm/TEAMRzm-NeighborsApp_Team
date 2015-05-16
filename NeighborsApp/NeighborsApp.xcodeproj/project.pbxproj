@@ -343,6 +343,7 @@
 		964BD26C1B076651001178FA /* NBRFriendInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 964BD26B1B076651001178FA /* NBRFriendInfoViewController.m */; };
 		96D0B4D01B0781E600E26BF7 /* NBRFriendApplyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96D0B4CF1B0781E600E26BF7 /* NBRFriendApplyViewController.m */; };
 		96D0B4D31B078F5700E26BF7 /* NBRCommunityNoticeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96D0B4D21B078F5700E26BF7 /* NBRCommunityNoticeViewController.m */; };
+		96D0B4D61B079E1200E26BF7 /* NBRChatSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96D0B4D51B079E1200E26BF7 /* NBRChatSettingViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -863,6 +864,8 @@
 		96D0B4CF1B0781E600E26BF7 /* NBRFriendApplyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NBRFriendApplyViewController.m; path = ViewControllers/NBRMyMessageViewController/NBRFriendApplyViewController.m; sourceTree = "<group>"; };
 		96D0B4D11B078F5700E26BF7 /* NBRCommunityNoticeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NBRCommunityNoticeViewController.h; path = ViewControllers/NBRMyMessageViewController/NBRCommunityNoticeViewController.h; sourceTree = "<group>"; };
 		96D0B4D21B078F5700E26BF7 /* NBRCommunityNoticeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NBRCommunityNoticeViewController.m; path = ViewControllers/NBRMyMessageViewController/NBRCommunityNoticeViewController.m; sourceTree = "<group>"; };
+		96D0B4D41B079E1200E26BF7 /* NBRChatSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NBRChatSettingViewController.h; path = ViewControllers/NBRMyMessageViewController/NBRChatSettingViewController.h; sourceTree = "<group>"; };
+		96D0B4D51B079E1200E26BF7 /* NBRChatSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NBRChatSettingViewController.m; path = ViewControllers/NBRMyMessageViewController/NBRChatSettingViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1703,6 +1706,8 @@
 				5B6D31AF1ADD5D53009A922A /* NBRConversationViewController.h */,
 				5B6D31B01ADD5D53009A922A /* NBRConversationViewController.m */,
 				5B6D31B11ADD5D53009A922A /* NBRConversationViewController.xib */,
+				96D0B4D41B079E1200E26BF7 /* NBRChatSettingViewController.h */,
+				96D0B4D51B079E1200E26BF7 /* NBRChatSettingViewController.m */,
 				964BD26A1B076651001178FA /* NBRFriendInfoViewController.h */,
 				964BD26B1B076651001178FA /* NBRFriendInfoViewController.m */,
 				96D0B4CE1B0781E600E26BF7 /* NBRFriendApplyViewController.h */,
@@ -2341,6 +2346,7 @@
 				5B6D31921ADD1C4A009A922A /* IMUserEntity.m in Sources */,
 				5B4ADE0C1ADE305300810165 /* NSString+ContverHtml.m in Sources */,
 				5BB8297B1AE5748B00877995 /* CommentEntity.m in Sources */,
+				96D0B4D61B079E1200E26BF7 /* NBRChatSettingViewController.m in Sources */,
 				5BED3BE41AFA886500AA8001 /* CreaterRequest_Region.m in Sources */,
 				5BD83C9B1AD61EF600D1A3EC /* ASIS3ServiceRequest.m in Sources */,
 				5BED3BED1AFA8FA500AA8001 /* CreaterRequest_Activity.m in Sources */,
