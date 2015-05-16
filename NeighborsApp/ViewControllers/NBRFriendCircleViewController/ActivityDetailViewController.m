@@ -9,7 +9,7 @@
 #import "ActivityDetailViewController.h"
 #import "ActivityTableViewCell.h"
 #import "EGOImageView.h"
-
+#import "JoinsActivityViewController.h"
 #import "CreaterRequest_Activity.h"
 
 @interface ActivityDetailViewController ()<UITableViewDataSource,UITableViewDelegate>
@@ -19,7 +19,6 @@
     
     NSDictionary    *contentStringFormat;
     
-    ASIHTTPRequest  *iWantJoinRequest;
     ASIHTTPRequest  *activityJoinsRequest;
     NSInteger       dateIndex;
 }
@@ -30,7 +29,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title = @"新家园春季篮球赛";
+    self.title = @"活动详情";
     
     boundTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kNBR_SCREEN_W, kNBR_SCREEN_H - 60) style:UITableViewStyleGrouped];
     boundTableView.delegate = self;
@@ -65,6 +64,7 @@
     commitButton.layer.cornerRadius = 5.0f;
     commitButton.layer.masksToBounds = YES;
     commitButton.titleLabel.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME_BLOD size:15.0f];
+    [commitButton addTarget:self action:@selector(joinThisActivity) forControlEvents:UIControlEventTouchUpInside];
     [commitButton setTitle:@"我要报名" forState:UIControlStateNormal];
     [tableViewFootView addSubview:commitButton];
     
@@ -74,9 +74,11 @@
     [self requestJoins];
 }
 
-- (void) iWantJoinRequest
+- (void) joinThisActivity
 {
-    iWantJoinRequest = [CreaterRequest_Activity CreateJoinRequestWithID:self.dateEntity.activityID phone:@"" contrace:@"" count:@""];
+    JoinsActivityViewController *nVC = [[JoinsActivityViewController alloc] initWithNibName:nil bundle:nil];
+    nVC.activityEntity = self.dateEntity;
+    [self.navigationController pushViewController:nVC animated:YES];
 }
 
 - (void) configDate

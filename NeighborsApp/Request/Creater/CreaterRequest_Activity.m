@@ -52,7 +52,7 @@
     NSDictionary *parmsDict = @{
                                 @"id"       : ID,
                                 @"phone"    : phone,
-                                @"contract" : contract,
+                                @"contact" : contract,
                                 @"count"    : count,
                                 };
     

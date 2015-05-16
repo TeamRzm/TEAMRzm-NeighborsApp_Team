@@ -155,6 +155,7 @@
 {
     UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
     UIView *firstResponder = [keyWindow performSelector:@selector(firstResponder)];
+    [firstResponder resignFirstResponder];
 }
 
 - (void) setDoneStyleTextFile : (UITextField*) _textFiled
@@ -163,6 +164,7 @@
     _textFiled.clearButtonMode = UITextFieldViewModeWhileEditing;
     _textFiled.textColor = kNBR_ProjectColor_DeepGray;
     _textFiled.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+    _textFiled.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME size:14.0f];
     [_textFiled addTarget:self action:@selector(resignFirstResponderWithView:) forControlEvents:UIControlEventEditingDidEndOnExit];
 }
 
