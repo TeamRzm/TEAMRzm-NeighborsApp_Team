@@ -10,7 +10,7 @@
 
 @interface NSString(MD5)
 
-- (NSString*)md5Str;
+- (NSString*) md5Str;
 
 - (NSString*) encodeMD5PasswordStringWithCheckCode : (NSString*) _checkCode;
 
