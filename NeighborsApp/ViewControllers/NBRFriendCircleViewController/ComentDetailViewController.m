@@ -136,7 +136,14 @@
         
         if ([CreaterRequest_Logroll CheckErrorResponse:responseDict errorAlertInViewController:self])
         {
-            [self showBannerMsgWithString:@"该里手帮信息已成功删除"];
+            if (self.isWarning)
+            {
+                [self showBannerMsgWithString:@"该安全预警信息已成功删除"];
+            }
+            else
+            {
+                [self showBannerMsgWithString:@"该里手帮信息已成功删除"];
+            }
             [self.navigationController popViewControllerAnimated:YES];
         }
     }];
@@ -278,7 +285,14 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     isOwner = NO;
-    self.title = @"里手帮详情";
+    if (self.isWarning)
+    {
+        self.title = @"安全预警详情";
+    }
+    else
+    {
+        self.title = @"里手帮详情";
+    }
 
     commentList = [[NSMutableArray alloc] init];
     boundTableViewDateSource = [[NSMutableArray alloc] init];
