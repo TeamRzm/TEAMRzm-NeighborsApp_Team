@@ -340,6 +340,9 @@
 		5BED3BE71AFA8C3D00AA8001 /* CreaterRequest_Notice.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BED3BE61AFA8C3D00AA8001 /* CreaterRequest_Notice.m */; };
 		5BED3BEA1AFA8EFB00AA8001 /* CreaterRequest_Conv.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BED3BE91AFA8EFB00AA8001 /* CreaterRequest_Conv.m */; };
 		5BED3BED1AFA8FA500AA8001 /* CreaterRequest_Activity.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BED3BEC1AFA8FA500AA8001 /* CreaterRequest_Activity.m */; };
+		964BD26C1B076651001178FA /* NBRFriendInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 964BD26B1B076651001178FA /* NBRFriendInfoViewController.m */; };
+		96D0B4D01B0781E600E26BF7 /* NBRFriendApplyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96D0B4CF1B0781E600E26BF7 /* NBRFriendApplyViewController.m */; };
+		96D0B4D31B078F5700E26BF7 /* NBRCommunityNoticeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96D0B4D21B078F5700E26BF7 /* NBRCommunityNoticeViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -854,6 +857,12 @@
 		5BED3BE91AFA8EFB00AA8001 /* CreaterRequest_Conv.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreaterRequest_Conv.m; path = Request/Creater/CreaterRequest_Conv.m; sourceTree = "<group>"; };
 		5BED3BEB1AFA8FA500AA8001 /* CreaterRequest_Activity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreaterRequest_Activity.h; path = Request/Creater/CreaterRequest_Activity.h; sourceTree = "<group>"; };
 		5BED3BEC1AFA8FA500AA8001 /* CreaterRequest_Activity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreaterRequest_Activity.m; path = Request/Creater/CreaterRequest_Activity.m; sourceTree = "<group>"; };
+		964BD26A1B076651001178FA /* NBRFriendInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NBRFriendInfoViewController.h; path = ViewControllers/NBRMyMessageViewController/NBRFriendInfoViewController.h; sourceTree = "<group>"; };
+		964BD26B1B076651001178FA /* NBRFriendInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NBRFriendInfoViewController.m; path = ViewControllers/NBRMyMessageViewController/NBRFriendInfoViewController.m; sourceTree = "<group>"; };
+		96D0B4CE1B0781E600E26BF7 /* NBRFriendApplyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NBRFriendApplyViewController.h; path = ViewControllers/NBRMyMessageViewController/NBRFriendApplyViewController.h; sourceTree = "<group>"; };
+		96D0B4CF1B0781E600E26BF7 /* NBRFriendApplyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NBRFriendApplyViewController.m; path = ViewControllers/NBRMyMessageViewController/NBRFriendApplyViewController.m; sourceTree = "<group>"; };
+		96D0B4D11B078F5700E26BF7 /* NBRCommunityNoticeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NBRCommunityNoticeViewController.h; path = ViewControllers/NBRMyMessageViewController/NBRCommunityNoticeViewController.h; sourceTree = "<group>"; };
+		96D0B4D21B078F5700E26BF7 /* NBRCommunityNoticeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NBRCommunityNoticeViewController.m; path = ViewControllers/NBRMyMessageViewController/NBRCommunityNoticeViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1694,6 +1703,12 @@
 				5B6D31AF1ADD5D53009A922A /* NBRConversationViewController.h */,
 				5B6D31B01ADD5D53009A922A /* NBRConversationViewController.m */,
 				5B6D31B11ADD5D53009A922A /* NBRConversationViewController.xib */,
+				964BD26A1B076651001178FA /* NBRFriendInfoViewController.h */,
+				964BD26B1B076651001178FA /* NBRFriendInfoViewController.m */,
+				96D0B4CE1B0781E600E26BF7 /* NBRFriendApplyViewController.h */,
+				96D0B4CF1B0781E600E26BF7 /* NBRFriendApplyViewController.m */,
+				96D0B4D11B078F5700E26BF7 /* NBRCommunityNoticeViewController.h */,
+				96D0B4D21B078F5700E26BF7 /* NBRCommunityNoticeViewController.m */,
 			);
 			name = NBRMyMessageViewController;
 			sourceTree = "<group>";
@@ -2309,6 +2324,7 @@
 				5BD83C921AD61EF600D1A3EC /* ASICloudFilesContainerXMLParserDelegate.m in Sources */,
 				5BD83C8B1AD61EF600D1A3EC /* ASIFormDataRequest.m in Sources */,
 				5B1500E71AE415370033CEA2 /* SubCommentTableViewCell.m in Sources */,
+				96D0B4D01B0781E600E26BF7 /* NBRFriendApplyViewController.m in Sources */,
 				5B332B021AE2F647002A0A73 /* CTAssetsViewControllerTransition.m in Sources */,
 				5B8B15A31ADC17CB00AA87A2 /* EGOImageLoader.m in Sources */,
 				5BED3BE71AFA8C3D00AA8001 /* CreaterRequest_Notice.m in Sources */,
@@ -2320,6 +2336,7 @@
 				5BD83C9A1AD61EF600D1A3EC /* ASIS3Request.m in Sources */,
 				5B332AF81AE2F647002A0A73 /* ALAssetsGroup+isEqual.m in Sources */,
 				5B8B158A1ADC0BDE00AA87A2 /* NBRLoginViewController.m in Sources */,
+				964BD26C1B076651001178FA /* NBRFriendInfoViewController.m in Sources */,
 				5BB655631AC316AC007E0F85 /* NBRTabbarController.m in Sources */,
 				5B6D31921ADD1C4A009A922A /* IMUserEntity.m in Sources */,
 				5B4ADE0C1ADE305300810165 /* NSString+ContverHtml.m in Sources */,
@@ -2406,6 +2423,7 @@
 				5BD83C891AD61EF600D1A3EC /* ASIDataDecompressor.m in Sources */,
 				5B38BA631AF652CE00775F64 /* UIImage+KVNImageEffects.m in Sources */,
 				5B332B471AE3A8C0002A0A73 /* XHZoomingImageView.m in Sources */,
+				96D0B4D31B078F5700E26BF7 /* NBRCommunityNoticeViewController.m in Sources */,
 				5BD83CDF1AD61F4B00D1A3EC /* NSObject+SBJSON.m in Sources */,
 				5B332B011AE2F647002A0A73 /* CTAssetsViewController.m in Sources */,
 				5BED3BDE1AFA66B100AA8001 /* CreaterRequest_File.m in Sources */,

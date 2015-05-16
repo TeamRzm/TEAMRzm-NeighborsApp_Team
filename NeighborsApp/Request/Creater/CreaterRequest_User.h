@@ -45,4 +45,13 @@
                                        signature : (NSString*) _signature
                                            habit : (NSString*) _habit;
 
+//获取用户好友
++ (ASIHTTPRequest*) CreateUserFriendGetRequestWithPhone : (NSString*) _phone;
+
+//获取好友申请列表
++ (ASIHTTPRequest*) CreateApplyFriendListRequest;
+
+
+
+
 @end

@@ -9,10 +9,17 @@
 #import "NBRMyMessageViewController.h"
 #import "NBRLoginViewController.h"
 #import "NBRConversationViewController.h"
+#import "NBRFriendInfoViewController.h"
+#import "NBRFriendApplyViewController.h"
+#import "NBRCommunityNoticeViewController.h"
+
 
 #import "IMUserEntity.h"
 #import "MessageEntity.h"
 #import "ConversationEntity.h"
+
+#import "CreaterRequest_User.h"
+
 
 @interface NBRMyMessageViewController ()<UITableViewDataSource, UITableViewDelegate>
 {
@@ -28,6 +35,9 @@
     
     NSMutableArray      *leftTableViewDateSource;
     NSMutableArray      *rightTableViewDateSource;
+    
+    ASIHTTPRequest      *friendListReq;
+    
     
 #ifdef CONFIG_TEST_DATE
     NSMutableArray  *testUsers;
@@ -82,28 +92,28 @@
         [leftTableViewDateSource addObject:newEntity];
     }
     
-    rightTableViewDateSource = [[NSMutableArray alloc] initWithArray:@[
-                                                                      @{@"新家园小区"     : @[
-                                                                                leftTableViewDateSource[0],
-                                                                                leftTableViewDateSource[1],
-                                                                                leftTableViewDateSource[2],
-                                                                                leftTableViewDateSource[3]]
-                                                                        },
-                                                                      
-                                                                      @{@"米兰春天"      : @[
-                                                                                leftTableViewDateSource[4],
-                                                                                leftTableViewDateSource[5],
-                                                                                leftTableViewDateSource[6],
-                                                                                leftTableViewDateSource[7]]
-                                                                        },
-                                                                      
-                                                                      @{@"湘江世纪城小区" : @[
-                                                                                leftTableViewDateSource[4],
-                                                                                leftTableViewDateSource[5],
-                                                                                leftTableViewDateSource[6],
-                                                                                leftTableViewDateSource[7]]
-                                                                        },
-                                                                      ]];
+//    rightTableViewDateSource = [[NSMutableArray alloc] initWithArray:@[
+//                                                                      @{@"新家园小区"     : @[
+//                                                                                leftTableViewDateSource[0],
+//                                                                                leftTableViewDateSource[1],
+//                                                                                leftTableViewDateSource[2],
+//                                                                                leftTableViewDateSource[3]]
+//                                                                        },
+//                                                                      
+//                                                                      @{@"米兰春天"      : @[
+//                                                                                leftTableViewDateSource[4],
+//                                                                                leftTableViewDateSource[5],
+//                                                                                leftTableViewDateSource[6],
+//                                                                                leftTableViewDateSource[7]]
+//                                                                        },
+//                                                                      
+//                                                                      @{@"湘江世纪城小区" : @[
+//                                                                                leftTableViewDateSource[4],
+//                                                                                leftTableViewDateSource[5],
+//                                                                                leftTableViewDateSource[6],
+//                                                                                leftTableViewDateSource[7]]
+//                                                                        },
+//                                                                      ]];
     
 }
 #endif
@@ -178,6 +188,35 @@
     
     [self.view addSubview:segmentChangedView];
     [self.view addSubview:boundScrollView];
+    
+    [self LoadMyFriendsList];
+    
+}
+
+#pragma mark  Data Mehtod
+-(void) LoadMyFriendsList
+{
+    UserEntity *userEntity = [AppSessionMrg shareInstance].userEntity ;
+    friendListReq = [CreaterRequest_User CreateUserFriendGetRequestWithPhone:userEntity.userName];
+    __weak ASIHTTPRequest *blockSelf = friendListReq;
+    
+    [blockSelf setCompletionBlock:^{
+        NSDictionary *reponseDict = blockSelf.responseString.JSONValue;
+        [self removeLoadingView];
+        
+        if ([CreaterRequest_User CheckErrorResponse:reponseDict errorAlertInViewController:self])
+        {
+            [self showBannerMsgWithString:[reponseDict stringWithKeyPath:@"data\\code\\message"]];
+            rightTableViewDateSource = (NSMutableArray *)[reponseDict arrayWithKeyPath:@"data\\result"];
+            [rightTableView reloadData];
+
+        }
+    }];
+    
+    [self setDefaultRequestFaild:blockSelf];
+    
+    [self addLoadingView];
+    [friendListReq startAsynchronous];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -266,7 +305,7 @@
     [headerView addSubview:iconView];
     
     UILabel *sectionTitleView = [[UILabel alloc] initWithFrame:CGRectMake(30, 0, kNBR_SCREEN_W - 30.0f, 35.0f)];
-    sectionTitleView.text = sectionDictory.allKeys[0];
+    sectionTitleView.text = sectionDictory[@"villageName"];
     sectionTitleView.textColor = UIColorFromRGB(0x2283CA);
     sectionTitleView.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME_BLOD size:13.0f];
     [headerView addSubview:sectionTitleView];
@@ -282,7 +321,7 @@
     }
     else if (tableView == rightTableView)
     {
-        return rightTableViewDateSource.count;
+        return [rightTableViewDateSource[section][@"members"] count];
     }
     
     return 1;
@@ -309,6 +348,12 @@
         avterImgView.layer.cornerRadius = avterImgView.frame.size.width / 2.0f;
         avterImgView.layer.masksToBounds = YES;
         [cell.contentView addSubview:avterImgView];
+        
+        avterImgView.tag = indexPath.row;
+        [avterImgView setUserInteractionEnabled:YES];
+        UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(AvterImageClicked:)];
+        [avterImgView addGestureRecognizer:gesture];
+        
         
         UIView *tagView = [UIView CreateTopTagNumberView:[NSString stringWithFormat:@"%d",rand() % 5 + 1]];
         tagView.frame = CGRectMake(10.0f + 10 + 43 - 21, 56 / 2.0f - 43 / 2.0f, 15.0f, 15.0f);
@@ -348,6 +393,7 @@
     else if (tableView == rightTableView)
     {
         NSDictionary *sectionDictory = rightTableViewDateSource[indexPath.section];
+        
         ConversationEntity *subConversation = sectionDictory.allValues[0][indexPath.row];
         
         //头像
@@ -356,7 +402,11 @@
         avterImgView.layer.cornerRadius = avterImgView.frame.size.width / 2.0f;
         avterImgView.layer.masksToBounds = YES;
         [cell.contentView addSubview:avterImgView];
-        
+        avterImgView.tag = indexPath.row;
+        [avterImgView setUserInteractionEnabled:YES];
+        UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(AvterImageClicked:)];
+        [avterImgView addGestureRecognizer:gesture];
+
         
         //标题
         UILabel *titleLable = [[UILabel alloc] initWithFrame:CGRectMake(68.0f,
@@ -376,8 +426,35 @@
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (tableView == leftTableView)
+    {
+        if (indexPath.row == 0)
+        {
+            NBRCommunityNoticeViewController *notice = [[NBRCommunityNoticeViewController alloc] init];
+            [notice setHidesBottomBarWhenPushed:YES];
+            [self.navigationController pushViewController:notice animated:YES];
+            
+        }
+        else
+        {
+            NBRFriendApplyViewController *applyview = [[NBRFriendApplyViewController alloc] init];
+            [applyview setHidesBottomBarWhenPushed:YES];
+            [self.navigationController pushViewController:applyview animated:YES];
+        }
+        return;
+    }
     NBRConversationViewController *nVC = [[NBRConversationViewController alloc] initWithNibName:@"NBRConversationViewController" bundle:nil];
     nVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:nVC animated:YES];
+}
+
+#pragma mark Gesture Method
+
+-(void) AvterImageClicked:(UITapGestureRecognizer *) _gesture
+{
+    NBRFriendInfoViewController *infoview = [[NBRFriendInfoViewController alloc] init];
+    [infoview setHidesBottomBarWhenPushed:YES];
+    [self.navigationController pushViewController:infoview animated:YES];
+    
 }
 @end

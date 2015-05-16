@@ -55,4 +55,9 @@
 
 //获取图片
 - (UIImage*) imageFromAssert : (ALAsset*) alasset;
+
+
+
+
+
 @end

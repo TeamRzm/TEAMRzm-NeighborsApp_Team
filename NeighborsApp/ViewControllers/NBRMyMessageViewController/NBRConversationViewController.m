@@ -81,6 +81,26 @@
     
 }
 
+#pragma mark navigation Method
+// 设置右边图标
+-(void)  NavigationRightItemButtonImage:(NSString *) imgname;
+{
+    UIButton *rightbt = [UIButton buttonWithType:UIButtonTypeCustom];
+    [rightbt setFrame:CGRectMake(0.0f, 0.0f, 44.0f, 44.0f)];
+    [rightbt setImage:[UIImage imageNamed:imgname] forState:UIControlStateNormal];
+    [rightbt setImage:[UIImage imageNamed:imgname] forState:UIControlStateHighlighted];
+    [rightbt addTarget:self action:@selector(NavigatinRightItemClicked:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *rightitem = [[UIBarButtonItem alloc] initWithCustomView:rightbt];
+    [self.navigationItem setRightBarButtonItem:rightitem];
+}
+
+-(void) NavigatinRightItemClicked:(UIButton *) sender
+{
+    
+}
+
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

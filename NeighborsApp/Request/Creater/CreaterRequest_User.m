@@ -124,4 +124,35 @@
     
     return request;
 }
+
+//获取用户好友
++ (ASIHTTPRequest*) CreateUserFriendGetRequestWithPhone : (NSString*) _phone;
+{
+    NSDictionary *parmsDict = @{
+                                @"phone"       : _phone
+                                };
+    
+    ASIHTTPRequest *request = [CreaterRequest_User GetRequestWithMethod:@"/api.friend/list.cmd"
+                                                              parmsDict:parmsDict
+                                                          requestMethod:REQUEST_METHOD_GET];
+    request.cachePolicy = ASIDoNotReadFromCacheCachePolicy;
+    
+    return request;
+
+}
+
+//获取好友申请列表
++ (ASIHTTPRequest*) CreateApplyFriendListRequest
+{
+    ASIHTTPRequest *request = [CreaterRequest_User GetRequestWithMethod:@"/api.friend/applies.cmd"
+                                                              parmsDict:nil
+                                                          requestMethod:REQUEST_METHOD_GET];
+    request.cachePolicy = ASIDoNotReadFromCacheCachePolicy;
+    
+    return request;
+
+}
+
+
+
 @end
