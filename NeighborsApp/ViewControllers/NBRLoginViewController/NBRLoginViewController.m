@@ -139,7 +139,7 @@
     
     NSString *randVeriftCode = [NSString stringWithFormat:@"%6d", (int)rand() % 1000000];
     
-    NSString *clientID = [[AppSessionMrg shareInstance] getSessionWithKey:XG_CLIENT_ID];
+    NSString *clientID = [AppSessionMrg shareInstance].XGDeviceToken;
     
     if (!clientID)
     {

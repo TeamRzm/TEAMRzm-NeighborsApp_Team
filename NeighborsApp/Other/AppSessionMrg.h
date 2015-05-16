@@ -9,13 +9,14 @@
 #import <Foundation/Foundation.h>
 #import "UserEntity.h"
 
-#define XG_CLIENT_ID @"XG_CLIENT_ID"
-
 @interface AppSessionMrg : NSObject
 
+//信鸽DevieToken
+@property (nonatomic, copy) NSString *XGDeviceToken;
 @property (nonatomic, strong, setter=saveLoginState:) UserEntity *userEntity;
 
 + (AppSessionMrg*) shareInstance;
+
 
 - (BOOL)    userIsLogin;
 - (void)    userLogout;

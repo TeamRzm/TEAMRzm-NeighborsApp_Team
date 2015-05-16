@@ -16,6 +16,14 @@
 #import "NSDictionary+SafeObject.h"
 #endif
 
+#define DEBUGMODE
+
+
+#ifdef DEBUGMODE
+#define XGCHANNL @"Dev"
+#else
+#define XGCHANNL @"Prod"
+#endif
 
 #define CONFIG_TEST_DATE
 

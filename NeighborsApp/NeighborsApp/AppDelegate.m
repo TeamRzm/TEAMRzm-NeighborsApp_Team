@@ -156,8 +156,8 @@
     };
     
     //注册设备
-    [[XGSetting getInstance] setChannel:@"appstore"];
-    [[XGSetting getInstance] setGameServer:@"巨神峰"];
+    [[XGSetting getInstance] setChannel:XGCHANNL];
+    [[XGSetting getInstance] setGameServer:@"Default"];
     
     
     NSString * deviceTokenStr = [XGPush registerDevice:deviceToken successCallback:successBlock errorCallback:errorBlock];
@@ -169,6 +169,8 @@
     
     //打印获取的deviceToken的字符串
     NSLog(@"deviceTokenStr is %@",deviceTokenStr);
+    
+    [AppSessionMrg shareInstance].XGDeviceToken = deviceTokenStr;
 }
 
 //如果deviceToken获取不到会进入此事件
