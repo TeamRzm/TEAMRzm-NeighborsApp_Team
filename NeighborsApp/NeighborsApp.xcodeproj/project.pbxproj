@@ -95,6 +95,7 @@
 		5B4ADE361ADE308C00810165 /* wavwriter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5B4ADE2C1ADE308C00810165 /* wavwriter.mm */; };
 		5B4ADE3B1ADE30CE00810165 /* FaceImgCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4ADE391ADE30CE00810165 /* FaceImgCode.m */; };
 		5B4ADE3C1ADE30CE00810165 /* FaceImgCode.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5B4ADE3A1ADE30CE00810165 /* FaceImgCode.plist */; };
+		5B4FD51C1B079838005DA131 /* JoinsActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4FD51B1B079838005DA131 /* JoinsActivityViewController.m */; };
 		5B6D31581ADCDFF6009A922A /* NBRRegViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6D31561ADCDFF6009A922A /* NBRRegViewController.m */; };
 		5B6D31591ADCDFF6009A922A /* NBRRegViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B6D31571ADCDFF6009A922A /* NBRRegViewController.xib */; };
 		5B6D316A1ADCE747009A922A /* ALAlertBanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6D315E1ADCE747009A922A /* ALAlertBanner.m */; };
@@ -512,6 +513,8 @@
 		5B4ADE381ADE30CE00810165 /* FaceImgCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaceImgCode.h; sourceTree = "<group>"; };
 		5B4ADE391ADE30CE00810165 /* FaceImgCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaceImgCode.m; sourceTree = "<group>"; };
 		5B4ADE3A1ADE30CE00810165 /* FaceImgCode.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = FaceImgCode.plist; sourceTree = "<group>"; };
+		5B4FD51A1B079838005DA131 /* JoinsActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JoinsActivityViewController.h; path = ViewControllers/NBRFriendCircleViewController/JoinsActivityViewController.h; sourceTree = "<group>"; };
+		5B4FD51B1B079838005DA131 /* JoinsActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JoinsActivityViewController.m; path = ViewControllers/NBRFriendCircleViewController/JoinsActivityViewController.m; sourceTree = "<group>"; };
 		5B6D31551ADCDFF6009A922A /* NBRRegViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NBRRegViewController.h; path = ViewControllers/NBRLoginViewController/NBRRegViewController.h; sourceTree = "<group>"; };
 		5B6D31561ADCDFF6009A922A /* NBRRegViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NBRRegViewController.m; path = ViewControllers/NBRLoginViewController/NBRRegViewController.m; sourceTree = "<group>"; };
 		5B6D31571ADCDFF6009A922A /* NBRRegViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NBRRegViewController.xib; path = ViewControllers/NBRLoginViewController/NBRRegViewController.xib; sourceTree = "<group>"; };
@@ -1732,6 +1735,8 @@
 				5B1500E61AE415370033CEA2 /* SubCommentTableViewCell.m */,
 				5B10A79D1AE79FFD0034FA63 /* ActivityDetailViewController.h */,
 				5B10A79E1AE79FFD0034FA63 /* ActivityDetailViewController.m */,
+				5B4FD51A1B079838005DA131 /* JoinsActivityViewController.h */,
+				5B4FD51B1B079838005DA131 /* JoinsActivityViewController.m */,
 			);
 			name = NBRFriendCircleViewController;
 			sourceTree = "<group>";
@@ -2426,6 +2431,7 @@
 				96D0B4D31B078F5700E26BF7 /* NBRCommunityNoticeViewController.m in Sources */,
 				5BD83CDF1AD61F4B00D1A3EC /* NSObject+SBJSON.m in Sources */,
 				5B332B011AE2F647002A0A73 /* CTAssetsViewController.m in Sources */,
+				5B4FD51C1B079838005DA131 /* JoinsActivityViewController.m in Sources */,
 				5BED3BDE1AFA66B100AA8001 /* CreaterRequest_File.m in Sources */,
 				5BD83C991AD61EF600D1A3EC /* ASIS3ObjectRequest.m in Sources */,
 				5B10A7AA1AE813630034FA63 /* FeedBackViewController.m in Sources */,
