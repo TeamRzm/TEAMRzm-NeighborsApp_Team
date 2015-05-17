@@ -62,23 +62,23 @@
         {
             IM_MsgHistory_En *en = [[IM_MsgHistory_En alloc] init];
             
-            en.M_Id             =   sqlite3_column_int(statement, 0);
-            en.M_Owner          =   sqlite3_safe_column_text(statement, 1);
-            en.M_From           =   sqlite3_safe_column_text(statement, 2);
-            en.M_To             =   sqlite3_safe_column_text(statement, 3);
-            en.M_Msg            =   sqlite3_safe_column_text(statement, 4);
-            en.M_Status         =   sqlite3_safe_column_text(statement, 5);
-            en.M_ReveivedEvent  =   sqlite3_safe_column_text(statement, 6);
-            en.M_ReadedEvent    =   sqlite3_safe_column_text(statement, 7);
-            en.M_ClickEvent     =   sqlite3_safe_column_text(statement, 8);
-            NSString  *str      =   sqlite3_safe_column_text(statement, 9);
-            en.M_MsgCode        =   sqlite3_safe_column_text(statement, 10);
-            en.M_MsgState       =   sqlite3_safe_column_text(statement, 11);
-            NSDateFormatter *ft = [[NSDateFormatter alloc] init];
-            [ft setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-            en.M_Msg = [en.M_Msg stringByReplacingOccurrencesOfString:@"''" withString:@"'"];
-            en.M_LastUpdateTime = [ft dateFromString:str];
-            [return_arr addObject:en];
+//            en.M_Id             =   sqlite3_column_int(statement, 0);
+//            en.M_Owner          =   sqlite3_safe_column_text(statement, 1);
+//            en.M_From           =   sqlite3_safe_column_text(statement, 2);
+//            en.M_To             =   sqlite3_safe_column_text(statement, 3);
+//            en.M_Msg            =   sqlite3_safe_column_text(statement, 4);
+//            en.M_Status         =   sqlite3_safe_column_text(statement, 5);
+//            en.M_ReveivedEvent  =   sqlite3_safe_column_text(statement, 6);
+//            en.M_ReadedEvent    =   sqlite3_safe_column_text(statement, 7);
+//            en.M_ClickEvent     =   sqlite3_safe_column_text(statement, 8);
+//            NSString  *str      =   sqlite3_safe_column_text(statement, 9);
+//            en.M_MsgCode        =   sqlite3_safe_column_text(statement, 10);
+//            en.M_MsgState       =   sqlite3_safe_column_text(statement, 11);
+//            NSDateFormatter *ft = [[NSDateFormatter alloc] init];
+//            [ft setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+//            en.M_Msg = [en.M_Msg stringByReplacingOccurrencesOfString:@"''" withString:@"'"];
+//            en.M_LastUpdateTime = [ft dateFromString:str];
+//            [return_arr addObject:en];
         }
     }
     else

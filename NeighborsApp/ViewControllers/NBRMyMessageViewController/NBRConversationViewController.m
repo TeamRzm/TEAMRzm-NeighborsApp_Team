@@ -420,19 +420,6 @@
     [ft1 setDateStyle:NSDateFormatterShortStyle];
     [ft1 setTimeStyle:NSDateFormatterNoStyle];
     
-<<<<<<< HEAD
-    XGMessage *newMessage = [[XGMessage alloc] init];
-
-    newMessage.from = @"UserFrom";
-    newMessage.to = @"UserTo";
-    newMessage.content = _string;
-    newMessage.alert = @"您有一条新的消息";
-    newMessage.fromDeviceToken = [AppSessionMrg shareInstance].XGDeviceToken;
-    newMessage.toDeviceToken = @"8732c28bc2a9e933e4ff94446efb087fb552dc5b8b43708dfc1dbd77de85ed4a";
-
-    [[XGPusher shareInstance] pushMessage:newMessage];
-    
-    
 //    MessageEntity *subMessage = [[MessageEntity alloc] init];
 //    subMessage.content = _string;
 //    
@@ -441,16 +428,6 @@
 //    [boundTableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:messageDateSources.count-1 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
 //    
 //    [boundTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:messageDateSources.count-1 inSection:0] animated:YES scrollPosition:UITableViewScrollPositionBottom];
-=======
-    NSTimeZone *zone = [NSTimeZone systemTimeZone];
-    
-    NSInteger interval = [zone secondsFromGMTForDate: [NSDate date]];
-    
-    NSDate *localeDate = [[NSDate date]  dateByAddingTimeInterval: interval];
-    
-    enity.M_LastUpdateTime=localeDate;
-    enity.M_Owner=@"me";
-    
     [messageDateSources addObject:enity];
     lastindexpath = [NSIndexPath indexPathForRow:[messageDateSources count]-1 inSection:0];
     [boundTableView insertRowsAtIndexPaths:[NSArray arrayWithObjects:lastindexpath, nil] withRowAnimation:UITableViewRowAnimationNone];
@@ -493,7 +470,6 @@
         default:
             break;
     }
->>>>>>> origin/master
     
 }
 

@@ -473,18 +473,6 @@
 		9603EA4C1B08314900E15A92 /* pinglun_yukuai.png in Resources */ = {isa = PBXBuildFile; fileRef = 9603E9CE1B08314900E15A92 /* pinglun_yukuai.png */; };
 		9603EA4D1B08314900E15A92 /* pinglun_zan.png in Resources */ = {isa = PBXBuildFile; fileRef = 9603E9CF1B08314900E15A92 /* pinglun_zan.png */; };
 		9603EA4E1B08314900E15A92 /* pinglun_zhuakuang.png in Resources */ = {isa = PBXBuildFile; fileRef = 9603E9D01B08314900E15A92 /* pinglun_zhuakuang.png */; };
-		9603EA6B1B08395A00E15A92 /* IM_Conversation_En.m in Sources */ = {isa = PBXBuildFile; fileRef = 9603EA531B08395A00E15A92 /* IM_Conversation_En.m */; };
-		9603EA6C1B08395A00E15A92 /* IM_Friend_En.m in Sources */ = {isa = PBXBuildFile; fileRef = 9603EA551B08395A00E15A92 /* IM_Friend_En.m */; };
-		9603EA6D1B08395A00E15A92 /* IM_MsgHistory_En.m in Sources */ = {isa = PBXBuildFile; fileRef = 9603EA571B08395A00E15A92 /* IM_MsgHistory_En.m */; };
-		9603EA6E1B08395A00E15A92 /* IM_NotificationHistory_En.m in Sources */ = {isa = PBXBuildFile; fileRef = 9603EA591B08395A00E15A92 /* IM_NotificationHistory_En.m */; };
-		9603EA6F1B08395A00E15A92 /* IM_RequestFriendHistory_En.m in Sources */ = {isa = PBXBuildFile; fileRef = 9603EA5B1B08395A00E15A92 /* IM_RequestFriendHistory_En.m */; };
-		9603EA701B08395A00E15A92 /* IM_BaseMrg.m in Sources */ = {isa = PBXBuildFile; fileRef = 9603EA5E1B08395A00E15A92 /* IM_BaseMrg.m */; };
-		9603EA711B08395A00E15A92 /* IM_ConversationMrg.m in Sources */ = {isa = PBXBuildFile; fileRef = 9603EA601B08395A00E15A92 /* IM_ConversationMrg.m */; };
-		9603EA721B08395A00E15A92 /* IM_FriendMrg.m in Sources */ = {isa = PBXBuildFile; fileRef = 9603EA621B08395A00E15A92 /* IM_FriendMrg.m */; };
-		9603EA731B08395A00E15A92 /* IM_MsgHistoryMrg.m in Sources */ = {isa = PBXBuildFile; fileRef = 9603EA641B08395A00E15A92 /* IM_MsgHistoryMrg.m */; };
-		9603EA741B08395A00E15A92 /* IM_NotificationHisMrg.m in Sources */ = {isa = PBXBuildFile; fileRef = 9603EA661B08395A00E15A92 /* IM_NotificationHisMrg.m */; };
-		9603EA751B08395A00E15A92 /* IM_ReqFriendHisMrg.m in Sources */ = {isa = PBXBuildFile; fileRef = 9603EA681B08395A00E15A92 /* IM_ReqFriendHisMrg.m */; };
-		9603EA761B08395A00E15A92 /* IM_DB3.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 9603EA6A1B08395A00E15A92 /* IM_DB3.sqlite */; };
 		964BD26C1B076651001178FA /* NBRFriendInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 964BD26B1B076651001178FA /* NBRFriendInfoViewController.m */; };
 		96D0B4D01B0781E600E26BF7 /* NBRFriendApplyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96D0B4CF1B0781E600E26BF7 /* NBRFriendApplyViewController.m */; };
 		96D0B4D31B078F5700E26BF7 /* NBRCommunityNoticeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96D0B4D21B078F5700E26BF7 /* NBRCommunityNoticeViewController.m */; };
@@ -1147,29 +1135,6 @@
 		9603E9CE1B08314900E15A92 /* pinglun_yukuai.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pinglun_yukuai.png; sourceTree = "<group>"; };
 		9603E9CF1B08314900E15A92 /* pinglun_zan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pinglun_zan.png; sourceTree = "<group>"; };
 		9603E9D01B08314900E15A92 /* pinglun_zhuakuang.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pinglun_zhuakuang.png; sourceTree = "<group>"; };
-		9603EA521B08395A00E15A92 /* IM_Conversation_En.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IM_Conversation_En.h; sourceTree = "<group>"; };
-		9603EA531B08395A00E15A92 /* IM_Conversation_En.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IM_Conversation_En.m; sourceTree = "<group>"; };
-		9603EA541B08395A00E15A92 /* IM_Friend_En.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IM_Friend_En.h; sourceTree = "<group>"; };
-		9603EA551B08395A00E15A92 /* IM_Friend_En.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IM_Friend_En.m; sourceTree = "<group>"; };
-		9603EA561B08395A00E15A92 /* IM_MsgHistory_En.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IM_MsgHistory_En.h; sourceTree = "<group>"; };
-		9603EA571B08395A00E15A92 /* IM_MsgHistory_En.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IM_MsgHistory_En.m; sourceTree = "<group>"; };
-		9603EA581B08395A00E15A92 /* IM_NotificationHistory_En.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IM_NotificationHistory_En.h; sourceTree = "<group>"; };
-		9603EA591B08395A00E15A92 /* IM_NotificationHistory_En.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IM_NotificationHistory_En.m; sourceTree = "<group>"; };
-		9603EA5A1B08395A00E15A92 /* IM_RequestFriendHistory_En.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IM_RequestFriendHistory_En.h; sourceTree = "<group>"; };
-		9603EA5B1B08395A00E15A92 /* IM_RequestFriendHistory_En.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IM_RequestFriendHistory_En.m; sourceTree = "<group>"; };
-		9603EA5D1B08395A00E15A92 /* IM_BaseMrg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IM_BaseMrg.h; sourceTree = "<group>"; };
-		9603EA5E1B08395A00E15A92 /* IM_BaseMrg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IM_BaseMrg.m; sourceTree = "<group>"; };
-		9603EA5F1B08395A00E15A92 /* IM_ConversationMrg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IM_ConversationMrg.h; sourceTree = "<group>"; };
-		9603EA601B08395A00E15A92 /* IM_ConversationMrg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IM_ConversationMrg.m; sourceTree = "<group>"; };
-		9603EA611B08395A00E15A92 /* IM_FriendMrg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IM_FriendMrg.h; sourceTree = "<group>"; };
-		9603EA621B08395A00E15A92 /* IM_FriendMrg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IM_FriendMrg.m; sourceTree = "<group>"; };
-		9603EA631B08395A00E15A92 /* IM_MsgHistoryMrg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IM_MsgHistoryMrg.h; sourceTree = "<group>"; };
-		9603EA641B08395A00E15A92 /* IM_MsgHistoryMrg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IM_MsgHistoryMrg.m; sourceTree = "<group>"; };
-		9603EA651B08395A00E15A92 /* IM_NotificationHisMrg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IM_NotificationHisMrg.h; sourceTree = "<group>"; };
-		9603EA661B08395A00E15A92 /* IM_NotificationHisMrg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IM_NotificationHisMrg.m; sourceTree = "<group>"; };
-		9603EA671B08395A00E15A92 /* IM_ReqFriendHisMrg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IM_ReqFriendHisMrg.h; sourceTree = "<group>"; };
-		9603EA681B08395A00E15A92 /* IM_ReqFriendHisMrg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IM_ReqFriendHisMrg.m; sourceTree = "<group>"; };
-		9603EA6A1B08395A00E15A92 /* IM_DB3.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = IM_DB3.sqlite; sourceTree = "<group>"; };
 		964BD26A1B076651001178FA /* NBRFriendInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NBRFriendInfoViewController.h; path = ViewControllers/NBRMyMessageViewController/NBRFriendInfoViewController.h; sourceTree = "<group>"; };
 		964BD26B1B076651001178FA /* NBRFriendInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NBRFriendInfoViewController.m; path = ViewControllers/NBRMyMessageViewController/NBRFriendInfoViewController.m; sourceTree = "<group>"; };
 		96D0B4CE1B0781E600E26BF7 /* NBRFriendApplyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NBRFriendApplyViewController.h; path = ViewControllers/NBRMyMessageViewController/NBRFriendApplyViewController.h; sourceTree = "<group>"; };
@@ -1663,7 +1628,6 @@
 		5B6D31891ADD1B8C009A922A /* IMSystem */ = {
 			isa = PBXGroup;
 			children = (
-				9603EA501B08395A00E15A92 /* IM_DBLayer */,
 				5B6D31901ADD1C4A009A922A /* IMUserEntity.h */,
 				5B6D31911ADD1C4A009A922A /* IMUserEntity.m */,
 				5B6D318D1ADD1BE4009A922A /* MessageEntity.h */,
@@ -2516,61 +2480,6 @@
 			path = PingLun;
 			sourceTree = "<group>";
 		};
-		9603EA501B08395A00E15A92 /* IM_DBLayer */ = {
-			isa = PBXGroup;
-			children = (
-				9603EA511B08395A00E15A92 /* DBModels */,
-				9603EA5C1B08395A00E15A92 /* DBMrg */,
-				9603EA691B08395A00E15A92 /* DBSource */,
-			);
-			name = IM_DBLayer;
-			path = IMSystem/IM_DBLayer;
-			sourceTree = "<group>";
-		};
-		9603EA511B08395A00E15A92 /* DBModels */ = {
-			isa = PBXGroup;
-			children = (
-				9603EA521B08395A00E15A92 /* IM_Conversation_En.h */,
-				9603EA531B08395A00E15A92 /* IM_Conversation_En.m */,
-				9603EA541B08395A00E15A92 /* IM_Friend_En.h */,
-				9603EA551B08395A00E15A92 /* IM_Friend_En.m */,
-				9603EA561B08395A00E15A92 /* IM_MsgHistory_En.h */,
-				9603EA571B08395A00E15A92 /* IM_MsgHistory_En.m */,
-				9603EA581B08395A00E15A92 /* IM_NotificationHistory_En.h */,
-				9603EA591B08395A00E15A92 /* IM_NotificationHistory_En.m */,
-				9603EA5A1B08395A00E15A92 /* IM_RequestFriendHistory_En.h */,
-				9603EA5B1B08395A00E15A92 /* IM_RequestFriendHistory_En.m */,
-			);
-			path = DBModels;
-			sourceTree = "<group>";
-		};
-		9603EA5C1B08395A00E15A92 /* DBMrg */ = {
-			isa = PBXGroup;
-			children = (
-				9603EA5D1B08395A00E15A92 /* IM_BaseMrg.h */,
-				9603EA5E1B08395A00E15A92 /* IM_BaseMrg.m */,
-				9603EA5F1B08395A00E15A92 /* IM_ConversationMrg.h */,
-				9603EA601B08395A00E15A92 /* IM_ConversationMrg.m */,
-				9603EA611B08395A00E15A92 /* IM_FriendMrg.h */,
-				9603EA621B08395A00E15A92 /* IM_FriendMrg.m */,
-				9603EA631B08395A00E15A92 /* IM_MsgHistoryMrg.h */,
-				9603EA641B08395A00E15A92 /* IM_MsgHistoryMrg.m */,
-				9603EA651B08395A00E15A92 /* IM_NotificationHisMrg.h */,
-				9603EA661B08395A00E15A92 /* IM_NotificationHisMrg.m */,
-				9603EA671B08395A00E15A92 /* IM_ReqFriendHisMrg.h */,
-				9603EA681B08395A00E15A92 /* IM_ReqFriendHisMrg.m */,
-			);
-			path = DBMrg;
-			sourceTree = "<group>";
-		};
-		9603EA691B08395A00E15A92 /* DBSource */ = {
-			isa = PBXGroup;
-			children = (
-				9603EA6A1B08395A00E15A92 /* IM_DB3.sqlite */,
-			);
-			path = DBSource;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2680,7 +2589,6 @@
 				5B6D32891ADDFE43009A922A /* Expression_93@2x.png in Resources */,
 				9603E9DD1B08314900E15A92 /* comment_ciya.png in Resources */,
 				5B6D322B1ADDFE43009A922A /* Expression_103@2x.png in Resources */,
-				9603EA761B08395A00E15A92 /* IM_DB3.sqlite in Resources */,
 				5B4ADE071ADE305300810165 /* chatting_setmode_keyboard_btn_normal.png in Resources */,
 				9603E9F61B08314900E15A92 /* comment_kelian.png in Resources */,
 				9603E9FE1B08314900E15A92 /* comment_liulei.png in Resources */,
@@ -3010,8 +2918,6 @@
 				5B332AFF1AE2F647002A0A73 /* CTAssetsSupplementaryView.m in Sources */,
 				5BD83CE61AD61F4B00D1A3EC /* SBJsonStreamWriter.m in Sources */,
 				96D0B4D91B07A6A600E26BF7 /* NBRNoticeDetailViewController.m in Sources */,
-				9603EA6D1B08395A00E15A92 /* IM_MsgHistory_En.m in Sources */,
-				9603EA6E1B08395A00E15A92 /* IM_NotificationHistory_En.m in Sources */,
 				5BD83C961AD61EF600D1A3EC /* ASIS3Bucket.m in Sources */,
 				5BD83CE01AD61F4B00D1A3EC /* NSString+SBJSON.m in Sources */,
 				5BD83C8A1AD61EF600D1A3EC /* ASIDownloadCache.m in Sources */,
@@ -3021,7 +2927,6 @@
 				5BD83C8B1AD61EF600D1A3EC /* ASIFormDataRequest.m in Sources */,
 				5B1500E71AE415370033CEA2 /* SubCommentTableViewCell.m in Sources */,
 				96D0B4D01B0781E600E26BF7 /* NBRFriendApplyViewController.m in Sources */,
-				9603EA731B08395A00E15A92 /* IM_MsgHistoryMrg.m in Sources */,
 				5B332B021AE2F647002A0A73 /* CTAssetsViewControllerTransition.m in Sources */,
 				5B8B15A31ADC17CB00AA87A2 /* EGOImageLoader.m in Sources */,
 				5BED3BE71AFA8C3D00AA8001 /* CreaterRequest_Notice.m in Sources */,
@@ -3068,7 +2973,6 @@
 				5B8B15B91ADCBA4A00AA87A2 /* NBRForgetPwdViewController.m in Sources */,
 				5B4ADE341ADE308C00810165 /* TranscodingDefine.mm in Sources */,
 				5BB6553A1AC31464007E0F85 /* SecondViewController.m in Sources */,
-				9603EA6B1B08395A00E15A92 /* IM_Conversation_En.m in Sources */,
 				5BD83CE81AD61F4B00D1A3EC /* SBJsonStreamWriterState.m in Sources */,
 				5B332B3B1AE3A8C0002A0A73 /* NSString+XHMD5.m in Sources */,
 				5B4ADE2D1ADE308C00810165 /* C_AmrControllerHelper.mm in Sources */,
@@ -3080,9 +2984,7 @@
 				5B6D316B1ADCE747009A922A /* ALAlertBannerManager.m in Sources */,
 				5BBAC8A41AFBD14700536F1E /* CreaterRequest_Show.m in Sources */,
 				5B332AFC1AE2F647002A0A73 /* CTAssetsGroupViewController.m in Sources */,
-				9603EA701B08395A00E15A92 /* IM_BaseMrg.m in Sources */,
 				5B38BA3E1AF4E00100775F64 /* CreaterRequest_User.m in Sources */,
-				9603EA6C1B08395A00E15A92 /* IM_Friend_En.m in Sources */,
 				5BB655341AC31464007E0F85 /* AppDelegate.m in Sources */,
 				5B1500E41AE3F97E0033CEA2 /* ComentDetailViewController.m in Sources */,
 				5B38BA411AF4E01D00775F64 /* CreaterRequest_Base.m in Sources */,
@@ -3096,7 +2998,6 @@
 				5BD83CE91AD61F4B00D1A3EC /* SBJsonTokeniser.m in Sources */,
 				5B332AFA1AE2F647002A0A73 /* CTAssetScrollView.m in Sources */,
 				5BCB05A31AF122C9004F9F93 /* Server.m in Sources */,
-				9603EA751B08395A00E15A92 /* IM_ReqFriendHisMrg.m in Sources */,
 				5BB6556D1AC3173E007E0F85 /* NBRServeiesViewController.m in Sources */,
 				5B4ADE331ADE308C00810165 /* Transcoding.mm in Sources */,
 				5B3675821AFB0E5400841405 /* NSDictionary+SafeObject.m in Sources */,
@@ -3118,9 +3019,7 @@
 				5B332ACA1AE268D6002A0A73 /* UITextView+Placeholder.m in Sources */,
 				5BED3BEA1AFA8EFB00AA8001 /* CreaterRequest_Conv.m in Sources */,
 				5BD83CEA1AD61F4B00D1A3EC /* SBJsonUTF8Stream.m in Sources */,
-				9603EA711B08395A00E15A92 /* IM_ConversationMrg.m in Sources */,
 				5BD83CE31AD61F4B00D1A3EC /* SBJsonStreamParserAccumulator.m in Sources */,
-				9603EA721B08395A00E15A92 /* IM_FriendMrg.m in Sources */,
 				5BD83C911AD61EF600D1A3EC /* ASICloudFilesContainerRequest.m in Sources */,
 				5BD83C9D1AD61EF600D1A3EC /* Reachability.m in Sources */,
 				5BCA99FE1AFCE9B700960F21 /* RefreshTopView.m in Sources */,
@@ -3133,9 +3032,7 @@
 				5BD83C891AD61EF600D1A3EC /* ASIDataDecompressor.m in Sources */,
 				5B38BA631AF652CE00775F64 /* UIImage+KVNImageEffects.m in Sources */,
 				5B332B471AE3A8C0002A0A73 /* XHZoomingImageView.m in Sources */,
-				9603EA6F1B08395A00E15A92 /* IM_RequestFriendHistory_En.m in Sources */,
 				96D0B4D31B078F5700E26BF7 /* NBRCommunityNoticeViewController.m in Sources */,
-				9603EA741B08395A00E15A92 /* IM_NotificationHisMrg.m in Sources */,
 				5BD83CDF1AD61F4B00D1A3EC /* NSObject+SBJSON.m in Sources */,
 				5B332B011AE2F647002A0A73 /* CTAssetsViewController.m in Sources */,
 				5B4FD51C1B079838005DA131 /* JoinsActivityViewController.m in Sources */,
@@ -3209,8 +3106,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Tao Tang (Y25L2DYWXP)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Tao Tang (Y25L2DYWXP)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -3230,7 +3126,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "12339ba2-b3b2-4b23-867f-a9aea75da567";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -3252,8 +3147,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Tao Tang (Y25L2DYWXP)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Tao Tang (Y25L2DYWXP)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -3266,7 +3160,6 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "12339ba2-b3b2-4b23-867f-a9aea75da567";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -3277,7 +3170,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Tao Tang (Y25L2DYWXP)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Changsha Zhilan Software Development Co., Ltd";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = NeighborsApp.pch;
 				INFOPLIST_FILE = NeighborsApp/Info.plist;
@@ -3290,11 +3183,7 @@
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-<<<<<<< HEAD
-				PROVISIONING_PROFILE = "23a312a1-b0bf-404d-a981-c3c8e862c111";
-=======
-				PROVISIONING_PROFILE = "490b14ad-b3a9-4fe4-ac0f-1d5a562f5569";
->>>>>>> origin/master
+				PROVISIONING_PROFILE = "cb4849ca-d3fa-41d1-9688-ee56c8942958";
 				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Debug;
@@ -3304,7 +3193,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Tao Tang (Y25L2DYWXP)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Changsha Zhilan Software Development Co., Ltd";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = NeighborsApp.pch;
 				INFOPLIST_FILE = NeighborsApp/Info.plist;
@@ -3317,11 +3206,7 @@
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-<<<<<<< HEAD
-				PROVISIONING_PROFILE = "23a312a1-b0bf-404d-a981-c3c8e862c111";
-=======
-				PROVISIONING_PROFILE = "490b14ad-b3a9-4fe4-ac0f-1d5a562f5569";
->>>>>>> origin/master
+				PROVISIONING_PROFILE = "cb4849ca-d3fa-41d1-9688-ee56c8942958";
 				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Release;
@@ -3330,8 +3215,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -3343,7 +3226,6 @@
 				INFOPLIST_FILE = NeighborsAppTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NeighborsApp.app/NeighborsApp";
 			};
 			name = Debug;
@@ -3352,8 +3234,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -3361,7 +3241,6 @@
 				INFOPLIST_FILE = NeighborsAppTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NeighborsApp.app/NeighborsApp";
 			};
 			name = Release;
