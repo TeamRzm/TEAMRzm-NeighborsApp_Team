@@ -34,7 +34,7 @@
     UIView          *keyboardAudio;
 }
 
-//@property (nonatomic, strong) UIButton   *audioBtn;
+@property (nonatomic, strong) UIButton   *audioBtn;
 @property (nonatomic, strong) UIButton   *faceBtn;
 @property (nonatomic, strong) UIButton   *otherMsgBtn;
 @property (nonatomic, strong) UIButton   *recoderBtn;
@@ -42,7 +42,7 @@
 
 @implementation aya_MultimediaKeyBoard
 
-//@synthesize audioBtn;
+@synthesize audioBtn;
 @synthesize isCommentKeyboardType;
 @synthesize commentImgDate;
 @synthesize inputTextView;
@@ -141,7 +141,7 @@
     
     
     NSArray *faceAllKey = [faceResDict allKeys];
-    curfacekeyall = [[NSMutableArray alloc] initWithObjects:@"[e]微笑[/e]",@"[e]撇嘴[/e]",@"[e]色[/e]",@"[e]发呆[/e]",@"[e]得意[/e]",@"[e]流泪[/e]",@"[e]害羞[/e]",@"[e]闭嘴[/e]",@"[e]睡[/e]",@"[e]大哭[/e]",@"[e]尴尬[/e]",@"[e]发怒[/e]",@"[e]调皮[/e]",@"[e]呲牙[/e]",@"[e]惊讶[/e]",@"[e]难过[/e]",@"[e]酷[/e]",@"[e]冷汗[/e]",@"[e]抓狂[/e]",@"[e]吐[/e]",@"[e]偷笑[/e]",@"[e]可爱[/e]",@"[e]白眼[/e]",@"[e]傲慢[/e]",@"[e]饥饿[/e]",@"[e]困[/e]",@"[e]惊恐[/e]",@"[e]无语[/e]",@"[e]憨笑[/e]",@"[e]大兵[/e]",@"[e]奋斗[/e]",@"[e]咒骂[/e]",@"[e]疑问[/e]",@"[e]嘘[/e]",@"[e]晕[/e]",@"[e]折磨[/e]",@"[e]衰[/e]",@"[e]骷髅[/e]",@"[e]敲打[/e]",@"[e]再见[/e]",@"[e]擦汗[/e]",@"[e]抠鼻[/e]",@"[e]鼓掌[/e]",@"[e]糗大了[/e]",@"[e]坏笑[/e]",@"[e]左哼哼[/e]",@"[e]右哼哼[/e]",@"[e]哈欠[/e]",@"[e]鄙视[/e]",@"[e]委屈[/e]",@"[e]快哭了[/e]",@"[e]阴险[/e]",@"[e]亲亲[/e]",@"[e]吓[/e]",@"[e]可怜[/e]",@"[e]菜刀[/e]",@"[e]西瓜[/e]",@"[e]啤酒[/e]",@"[e]篮球[/e]",@"[e]乒乓[/e]",@"[e]咖啡[/e]",@"[e]饭[/e]",@"[e]猪头[/e]",@"[e]玫瑰[/e]",@"[e]凋谢[/e]",@"[e]示爱[/e]",@"[e]爱心[/e]",@"[e]心碎了[/e]",@"[e]蛋糕[/e]",@"[e]闪电[/e]",@"[e]炸弹[/e]",@"[e]刀[/e]",@"[e]足球[/e]",@"[e]瓢虫[/e]",@"[e]便便[/e]",@"[e]月亮[/e]",@"[e]太阳[/e]",@"[e]礼物[/e]",@"[e]拥抱[/e]",@"[e]赞[/e]",@"[e]弱[/e]",@"[e]握手[/e]",@"[e]胜利[/e]",@"[e]抱拳[/e]",@"[e]勾引[/e]",@"[e]拳头[/e]",@"[e]差劲[/e]",@"[e]爱你[/e]",@"[e]不要[/e]",@"[e]好[/e]", nil];
+    curfacekeyall = [[NSMutableArray alloc] initWithObjects:@"[em]微笑[/em]",@"[em]撇嘴[/em]",@"[em]色[/em]",@"[em]发呆[/em]",@"[em]得意[/em]",@"[em]流泪[/em]",@"[em]害羞[/em]",@"[em]闭嘴[/em]",@"[em]睡[/em]",@"[em]大哭[/em]",@"[em]尴尬[/em]",@"[em]发怒[/em]",@"[em]调皮[/em]",@"[em]呲牙[/em]",@"[em]惊讶[/em]",@"[em]难过[/em]",@"[em]酷[/em]",@"[em]冷汗[/em]",@"[em]抓狂[/em]",@"[em]吐[/em]",@"[em]偷笑[/em]",@"[em]可爱[/em]",@"[em]白眼[/em]",@"[em]傲慢[/em]",@"[em]饥饿[/em]",@"[em]困[/em]",@"[em]惊恐[/em]",@"[em]无语[/em]",@"[em]憨笑[/em]",@"[em]大兵[/em]",@"[em]奋斗[/em]",@"[em]咒骂[/em]",@"[em]疑问[/em]",@"[em]嘘[/em]",@"[em]晕[/em]",@"[em]折磨[/em]",@"[em]衰[/em]",@"[em]骷髅[/em]",@"[em]敲打[/em]",@"[em]再见[/em]",@"[em]擦汗[/em]",@"[em]抠鼻[/em]",@"[em]鼓掌[/em]",@"[em]糗大了[/em]",@"[em]坏笑[/em]",@"[em]左哼哼[/em]",@"[em]右哼哼[/em]",@"[em]哈欠[/em]",@"[em]鄙视[/em]",@"[em]委屈[/em]",@"[em]快哭了[/em]",@"[em]阴险[/em]",@"[em]亲亲[/em]",@"[em]吓[/em]",@"[em]可怜[/em]",@"[em]菜刀[/em]",@"[em]西瓜[/em]",@"[em]啤酒[/em]",@"[em]篮球[/em]",@"[em]乒乓[/em]",@"[em]咖啡[/em]",@"[em]饭[/em]",@"[em]猪头[/em]",@"[em]玫瑰[/em]",@"[em]凋谢[/em]",@"[em]示爱[/em]",@"[em]爱心[/em]",@"[em]心碎了[/em]",@"[em]蛋糕[/em]",@"[em]闪电[/em]",@"[em]炸弹[/em]",@"[em]刀[/em]",@"[em]足球[/em]",@"[em]瓢虫[/em]",@"[em]便便[/em]",@"[em]月亮[/em]",@"[em]太阳[/em]",@"[em]礼物[/em]",@"[em]拥抱[/em]",@"[em]赞[/em]",@"[em]弱[/em]",@"[em]握手[/em]",@"[em]胜利[/em]",@"[em]抱拳[/em]",@"[em]勾引[/em]",@"[em]拳头[/em]",@"[em]差劲[/em]",@"[em]爱你[/em]",@"[em]不要[/em]",@"[em]好[/em]", nil];
     NSInteger pagecount = [faceAllKey count]%FACEPAGESIZE == 0 ?[faceAllKey count]/FACEPAGESIZE :[faceAllKey count]/FACEPAGESIZE + 1;
     [faceScroll setContentSize:CGSizeMake(kNBR_SCREEN_W * pagecount, 216)];
     if (pagecount >0)
@@ -169,7 +169,7 @@
                 {
                     [curfacekeyall insertObject:@"删除" atIndex:index];
                     //删除
-                    UIButton *Deletebt = [[UIButton alloc] initWithFrame:CGRectMake(10 + w * (kNBR_SCREEN_W / FACECOLOMCOUNT)+p * kNBR_SCREEN_W, 20 + h * 42, 30, 30)];
+                    UIButton *Deletebt = [[UIButton alloc] initWithFrame:CGRectMake(12 + w * (kNBR_SCREEN_W / FACECOLOMCOUNT)+p * kNBR_SCREEN_W, 20 + h * 44, 30, 30)];
                     [Deletebt setBackgroundColor:[UIColor clearColor]];
                     
                     [Deletebt setBackgroundImage:[UIImage imageNamed:@"Comment_faceDelete"] forState:UIControlStateNormal];
@@ -179,9 +179,7 @@
                 else if (h*7+w == FACEPAGESIZE-1)
                 {
                     [curfacekeyall insertObject:@"发送" atIndex:index];
-                    //                    [curfacekeyall addObject:@"发送"];
-                    //
-                    UIButton *sendfacebt = [[UIButton alloc] initWithFrame:CGRectMake(10 + w * (kNBR_SCREEN_W / FACECOLOMCOUNT)+p * kNBR_SCREEN_W, 20 + h * 42, 30, 30)];
+                    UIButton *sendfacebt = [[UIButton alloc] initWithFrame:CGRectMake(12 + w * (kNBR_SCREEN_W / FACECOLOMCOUNT)+p * kNBR_SCREEN_W, 20 + h * 44, 30, 30)];
                     [sendfacebt setBackgroundColor:[UIColor clearColor]];
                     [sendfacebt addTarget:self action:@selector(SendfaceTo) forControlEvents:UIControlEventTouchUpInside];
                     [sendfacebt setBackgroundImage:[UIImage imageNamed:@"Comment_faceSend"] forState:UIControlStateNormal];
@@ -198,7 +196,7 @@
                         UIButton *subfaceBtn = [UIButton buttonWithType:UIButtonTypeCustom];
                         [subfaceBtn addTarget:self action:@selector(didselectFaceBtn:) forControlEvents:UIControlEventTouchUpInside];
                         [subfaceBtn setTag:index];
-                        [subfaceBtn setFrame:CGRectMake(10 + w * (kNBR_SCREEN_W / FACECOLOMCOUNT)+ p * kNBR_SCREEN_W, 20 + h * 42, 30, 30)];
+                        [subfaceBtn setFrame:CGRectMake(10 + w * (kNBR_SCREEN_W / FACECOLOMCOUNT)+ p * kNBR_SCREEN_W, 20 + h * 42, 44, 44)];
                         [faceScroll addSubview:subfaceBtn];
                         
                         NSString *faceFileName = [faceResDict valueForKey:[curfacekeyall objectAtIndex:index]];
@@ -651,6 +649,10 @@
         [keyboardFace setBackgroundColor:[UIColor whiteColor]];
         [keyboardOther setBackgroundColor:[UIColor whiteColor]];
         
+        [keyboardFace setBackgroundColor:kNBR_ProjectColor_BackGroundGray];
+        [keyboardOther setBackgroundColor:kNBR_ProjectColor_BackGroundGray];
+        
+        
         [self configFaceKeyboard];
         [self configOtherKeyboard];
         [self configAudioKeyBoard];
@@ -674,18 +676,18 @@
         [self setBackgroundColor:[UIColor whiteColor]];
         lastSelfFrame = self.frame;
         
-        //audioBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        //[audioBtn setTag:KEYBOARD_STATUS_AUDIO];
-        //[audioBtn addTarget:self action:@selector(keyBoardChangedAction:) forControlEvents:UIControlEventTouchUpInside];
-//        [audioBtn setFrame:CGRectMake(5.0f,
-//                                      45.0f / 2.0f - 30.0f / 2.0f,
-//                                      27.0f,
-//                                      30.0f)];
-        //[audioBtn setBackgroundImage:imgAudio forState:UIControlStateNormal];
-        //[self addSubview:audioBtn];
+        audioBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [audioBtn setTag:KEYBOARD_STATUS_AUDIO];
+        [audioBtn addTarget:self action:@selector(keyBoardChangedAction:) forControlEvents:UIControlEventTouchUpInside];
+        [audioBtn setFrame:CGRectMake(5.0f,
+                                      44.0/2-imgAudio.size.height/4.0f,
+                                      imgAudio.size.width/2.0f,
+                                      imgAudio.size.height/2.0f)];
+        [audioBtn setBackgroundImage:imgAudio forState:UIControlStateNormal];
+        [self addSubview:audioBtn];
         
         
-        inputTextView = [[UITextView alloc] initWithFrame:CGRectMake(5.0f,
+        inputTextView = [[UITextView alloc] initWithFrame:CGRectMake(5.0f+audioBtn.frame.size.width+5.0f,
                                                                      45.0f / 2.0f - 35.0f / 2.0f,
                                                                     235.0f,
                                                                      35.0f)];
@@ -729,9 +731,9 @@
         faceBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [faceBtn setTag:KEYBOARD_STATUS_FACE];
         [faceBtn addTarget:self action:@selector(keyBoardChangedAction:) forControlEvents:UIControlEventTouchUpInside];
-        [faceBtn setFrame:CGRectMake(inputTextView.frame.origin.x + inputTextView.frame.size.width + 8.0f,
-                                     45.0f / 2.0f - 30.0f / 2.0f,
-                                     33.0f,
+        [faceBtn setFrame:CGRectMake(inputTextView.frame.origin.x + inputTextView.frame.size.width + 10.0f,
+                                     45.0f / 2.0f - imgFace.size.height / 2.0f,
+                                     33.0,
                                      33.0f)];
         [faceBtn setBackgroundImage:imgFace forState:UIControlStateNormal];
         [self addSubview:faceBtn];
@@ -741,7 +743,7 @@
         otherMsgBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [otherMsgBtn setTag:KEYBOARD_STATUS_OTHER];
         [otherMsgBtn setContentMode:UIViewContentModeScaleAspectFit];
-        [otherMsgBtn setFrame:CGRectMake(faceBtn.frame.origin.x + faceBtn.frame.size.width + 3.0f,
+        [otherMsgBtn setFrame:CGRectMake(kNBR_SCREEN_W-55.0f,
                                          45.0f / 2.0f - 33.0f / 2.0f,
                                          33.0f,
                                          33.0f)];
@@ -763,7 +765,7 @@
 
         
         recoderBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        [recoderBtn setFrame:CGRectMake( 5.0f,
+        [recoderBtn setFrame:CGRectMake( inputTextView.frame.origin.x,
                                         45.0f / 2.0f - 35.0f / 2.0f,
                                         235.0f,
                                         35.0f)];
@@ -772,7 +774,10 @@
         [recoderBtn.titleLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:14.0f]];
         [recoderBtn.titleLabel setTextColor:[UIColor darkGrayColor]];
         [recoderBtn.layer setCornerRadius:5.0f];
+        [recoderBtn.layer setBorderColor:kNBR_ProjectColor_LightGray.CGColor];
+        [recoderBtn.layer setBorderWidth:1.0f];
         [recoderBtn setAlpha:0.0f];
+        
         [recoderBtn addTarget:self action:@selector(beginRecodering:) forControlEvents:UIControlEventTouchDown];
         [recoderBtn addTarget:self action:@selector(successRecodered:) forControlEvents:UIControlEventTouchUpInside];
         [recoderBtn addTarget:self action:@selector(faildRecodered:) forControlEvents:UIControlEventTouchUpOutside];

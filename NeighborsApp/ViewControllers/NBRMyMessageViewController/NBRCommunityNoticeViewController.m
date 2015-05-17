@@ -7,6 +7,8 @@
 //
 
 #import "NBRCommunityNoticeViewController.h"
+#import "NBRNoticeDetailViewController.h"
+
 #import "CreaterRequest_Notice.h"
 
 
@@ -135,6 +137,13 @@
     [cell.contentView addSubview:timelabel];
     
     return cell;
+    
+}
+
+-(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NBRNoticeDetailViewController *detailview = [[NBRNoticeDetailViewController alloc] init];
+    [self.navigationController pushViewController:detailview animated:YES];
     
 }
 

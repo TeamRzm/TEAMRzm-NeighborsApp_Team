@@ -206,7 +206,6 @@
         
         if ([CreaterRequest_User CheckErrorResponse:reponseDict errorAlertInViewController:self])
         {
-            [self showBannerMsgWithString:[reponseDict stringWithKeyPath:@"data\\code\\message"]];
             rightTableViewDateSource = (NSMutableArray *)[reponseDict arrayWithKeyPath:@"data\\result"];
             [rightTableView reloadData];
 
@@ -442,11 +441,19 @@
             [applyview setHidesBottomBarWhenPushed:YES];
             [self.navigationController pushViewController:applyview animated:YES];
         }
-        
+        else
+        {
+            NBRConversationViewController *nVC = [[NBRConversationViewController alloc] initWithNibName:@"NBRConversationViewController" bundle:nil];
+            nVC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:nVC animated:YES];
+        }
     }
-    NBRConversationViewController *nVC = [[NBRConversationViewController alloc] initWithNibName:@"NBRConversationViewController" bundle:nil];
-    nVC.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:nVC animated:YES];
+    else
+    {
+        NBRConversationViewController *nVC = [[NBRConversationViewController alloc] initWithNibName:@"NBRConversationViewController" bundle:nil];
+        nVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:nVC animated:YES];
+    }
 }
 
 #pragma mark Gesture Method

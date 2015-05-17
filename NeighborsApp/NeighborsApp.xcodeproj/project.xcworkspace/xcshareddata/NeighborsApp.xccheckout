@@ -11,7 +11,7 @@
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>41D761B25C0A7FB1E2751780741B56889909ACAD</key>
-		<string>https://github.com/oblivioned/NeighborsApp.git</string>
+		<string>https://github.com/TeamRzm/TEAMRzm-NeighborsApp_Team.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>NeighborsApp/NeighborsApp.xcodeproj</string>
@@ -21,7 +21,7 @@
 		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/oblivioned/NeighborsApp.git</string>
+	<string>https://github.com/TeamRzm/TEAMRzm-NeighborsApp_Team.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
@@ -34,7 +34,7 @@
 			<key>IDESourceControlWCCIdentifierKey</key>
 			<string>41D761B25C0A7FB1E2751780741B56889909ACAD</string>
 			<key>IDESourceControlWCCName</key>
-			<string>NeighborsApp</string>
+			<string>TEAMRzm-NeighborsApp_Team</string>
 		</dict>
 	</array>
 </dict>
