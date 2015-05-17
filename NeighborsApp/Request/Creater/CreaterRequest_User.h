@@ -51,6 +51,11 @@
 //获取好友申请列表
 + (ASIHTTPRequest*) CreateApplyFriendListRequest;
 
+//发送消息
+
++(ASIHTTPRequest *) CreateSendSingleMessageWithToken:(NSString *) _token
+                                             WithMsg:(NSString *) _msg;
+
 
 
 

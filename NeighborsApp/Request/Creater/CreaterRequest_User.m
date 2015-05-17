@@ -144,14 +144,21 @@
 //获取好友申请列表
 + (ASIHTTPRequest*) CreateApplyFriendListRequest
 {
+    NSDictionary *parmsDict = @{
+                                };
+
     ASIHTTPRequest *request = [CreaterRequest_User GetRequestWithMethod:@"/api.friend/applies.cmd"
-                                                              parmsDict:nil
+                                                              parmsDict:parmsDict
                                                           requestMethod:REQUEST_METHOD_GET];
     request.cachePolicy = ASIDoNotReadFromCacheCachePolicy;
     
     return request;
 
 }
+
+//发送消息
+
+
 
 
 

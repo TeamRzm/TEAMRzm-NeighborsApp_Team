@@ -15,4 +15,6 @@
     NSMutableArray *rightArr;
 }
 
+@property (nonatomic,strong) NSString *userId;
+
 @end

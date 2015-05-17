@@ -206,7 +206,6 @@
         
         if ([CreaterRequest_User CheckErrorResponse:reponseDict errorAlertInViewController:self])
         {
-            [self showBannerMsgWithString:[reponseDict stringWithKeyPath:@"data\\code\\message"]];
             rightTableViewDateSource = (NSMutableArray *)[reponseDict arrayWithKeyPath:@"data\\result"];
             [rightTableView reloadData];
 
@@ -218,6 +217,7 @@
     [self addLoadingView];
     [friendListReq startAsynchronous];
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -435,17 +435,25 @@
             [self.navigationController pushViewController:notice animated:YES];
             
         }
-        else
+        else if(indexPath.row == 1)
         {
             NBRFriendApplyViewController *applyview = [[NBRFriendApplyViewController alloc] init];
             [applyview setHidesBottomBarWhenPushed:YES];
             [self.navigationController pushViewController:applyview animated:YES];
         }
-        return;
+        else
+        {
+            NBRConversationViewController *nVC = [[NBRConversationViewController alloc] initWithNibName:@"NBRConversationViewController" bundle:nil];
+            nVC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:nVC animated:YES];
+        }
     }
-    NBRConversationViewController *nVC = [[NBRConversationViewController alloc] initWithNibName:@"NBRConversationViewController" bundle:nil];
-    nVC.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:nVC animated:YES];
+    else
+    {
+        NBRConversationViewController *nVC = [[NBRConversationViewController alloc] initWithNibName:@"NBRConversationViewController" bundle:nil];
+        nVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:nVC animated:YES];
+    }
 }
 
 #pragma mark Gesture Method

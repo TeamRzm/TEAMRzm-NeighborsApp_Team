@@ -15,6 +15,7 @@
 @end
 
 @implementation NBRFriendInfoViewController
+@synthesize userId;
 
 - (void)viewDidLoad {
     [super viewDidLoad];

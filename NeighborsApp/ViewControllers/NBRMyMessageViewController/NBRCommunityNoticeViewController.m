@@ -7,6 +7,10 @@
 //
 
 #import "NBRCommunityNoticeViewController.h"
+#import "NBRNoticeDetailViewController.h"
+
+#import "CreaterRequest_Notice.h"
+
 
 @interface NBRCommunityNoticeViewController ()
 
@@ -18,6 +22,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self setTitle:@"社区通知"];
+    currentindx = 1;
     [self initSubView];
     [self CreateHeaderView];
     [self GetNoticeList];
@@ -41,7 +46,25 @@
 
 -(void) GetNoticeList
 {
+    noticeReq = [CreaterRequest_Notice CreateListRequestWithIndex:[NSString stringWithFormat:@"%d",currentindx] size:@"20" flag:@"1"];
+    __weak ASIHTTPRequest *selfblock = noticeReq;
+    [selfblock setCompletionBlock:^{
+        NSDictionary *reponseDict = selfblock.responseString.JSONValue;
+        [self removeLoadingView];
+        
+        if ([CreaterRequest_Notice CheckErrorResponse:reponseDict errorAlertInViewController:self])
+        {
+            [self showBannerMsgWithString:[reponseDict stringWithKeyPath:@"data\\code\\message"]];
+            noticeArr = (NSMutableArray *)[reponseDict arrayWithKeyPath:@"data\\result\\data"];
+            [myTableview reloadData];
+            
+        }
+    }];
     
+    [self setDefaultRequestFaild:selfblock];
+    
+    [self addLoadingView];
+    [noticeReq startAsynchronous];
 }
 
 -(void) CreateHeaderView
@@ -85,9 +108,11 @@
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     
     
+    NSMutableDictionary *subdic = noticeArr[indexPath.row];
+    
     //头像
     EGOImageView *avterImgView = [[EGOImageView alloc] initWithPlaceholderImage: [UIImage imageNamed:@"t_avter_1"]];
-    avterImgView.frame = CGRectMake(10.0f, 56 / 2.0f - 43 / 2.0f, 43, 43);
+    avterImgView.frame = CGRectMake(kNBR_SCREEN_W-80.0f, 70 / 2.0f - 54 / 2.0f,54,54);
     avterImgView.layer.cornerRadius = avterImgView.frame.size.width / 2.0f;
     avterImgView.layer.masksToBounds = YES;
     [cell.contentView addSubview:avterImgView];
@@ -95,21 +120,30 @@
     [cell.contentView addSubview:avterImgView];
     
     
-    UILabel *nicknameLabel = [[UILabel alloc] initWithFrame:CGRectMake(65.0f, avterImgView.frame.origin.y, kNBR_SCREEN_W-100.0f-65.0f, 20.0f)];
-    [nicknameLabel setBackgroundColor:[UIColor clearColor]];
-    [nicknameLabel setFont:[UIFont fontWithName:kNBR_DEFAULT_FONT_NAME_BLOD size:16.0f]];
-    [nicknameLabel setTextColor:kNBR_ProjectColor_DeepGray];
-    [nicknameLabel setText:noticeArr[indexPath.row]];
-    [cell addSubview:nicknameLabel];
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10.0f, avterImgView.frame.origin.y+5.0f, kNBR_SCREEN_W-90.0f, 20.0f)];
+    [titleLabel setBackgroundColor:[UIColor clearColor]];
+    [titleLabel setFont:[UIFont fontWithName:kNBR_DEFAULT_FONT_NAME_BLOD size:16.0f]];
+    [titleLabel setTextColor:kNBR_ProjectColor_DeepGray];
+    [titleLabel setText:subdic[@"title"]];
+    [titleLabel setNumberOfLines:0];
+    [titleLabel sizeToFit];
+    [cell addSubview:titleLabel];
     
-    UILabel *villagenameLabel = [[UILabel alloc] initWithFrame:CGRectMake(nicknameLabel.frame.origin.x, nicknameLabel.frame.origin.y+nicknameLabel.frame.size.height, kNBR_SCREEN_W-100.0f-65.0f, 20.0f)];
-    [villagenameLabel setBackgroundColor:[UIColor clearColor]];
-    [villagenameLabel setFont:[UIFont fontWithName:kNBR_DEFAULT_FONT_NAME size:16.0f]];
-    [villagenameLabel setTextColor:kNBR_ProjectColor_MidGray];
-    [villagenameLabel setText:noticeArr[indexPath.row]];
-    [cell.contentView addSubview:villagenameLabel];
+    UILabel *timelabel = [[UILabel alloc] initWithFrame:CGRectMake(titleLabel.frame.origin.x, titleLabel.frame.origin.y+titleLabel.frame.size.height+5.0f, kNBR_SCREEN_W-90, 20.0f)];
+    [timelabel setBackgroundColor:[UIColor clearColor]];
+    [timelabel setFont:[UIFont fontWithName:kNBR_DEFAULT_FONT_NAME size:16.0f]];
+    [timelabel setTextColor:kNBR_ProjectColor_MidGray];
+    [timelabel setText:subdic[@"created"]];
+    [cell.contentView addSubview:timelabel];
     
     return cell;
+    
+}
+
+-(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NBRNoticeDetailViewController *detailview = [[NBRNoticeDetailViewController alloc] init];
+    [self.navigationController pushViewController:detailview animated:YES];
     
 }
 

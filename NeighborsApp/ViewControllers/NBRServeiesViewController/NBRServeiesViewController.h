@@ -8,6 +8,18 @@
 
 #import "NBRBaseViewController.h"
 
-@interface NBRServeiesViewController : NBRBaseViewController
+@interface NBRServeiesViewController : NBRBaseViewController<UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate>
+{
+    UITableView *myTableview;
+    NSMutableArray *titleNameArr;
+    NSMutableArray *logoArr;
+    UIScrollView   *headerScrollview;
+    NSMutableArray *scrollDataArr;
+    UIPageControl *pagcontrol;
+    NSInteger     *selectpage;
+    
+    ASIHTTPRequest *dynamicRecReq;
+    
+}
 
 @end

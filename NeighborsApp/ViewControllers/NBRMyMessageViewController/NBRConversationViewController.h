@@ -7,7 +7,9 @@
 //
 
 #import "NBRBaseViewController.h"
+#import "ChatListCell.h"
 
-@interface NBRConversationViewController : NBRBaseViewController
+
+@interface NBRConversationViewController : NBRBaseViewController<ChatListCellDelegate>
 
 @end
