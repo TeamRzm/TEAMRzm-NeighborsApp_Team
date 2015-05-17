@@ -10,6 +10,7 @@
 #import "XGPush.h"
 #import "XGSetting.h"
 #import "AppSessionMrg.h"
+#import "XGPusher.h"
 
 #import "FileUpLoadHelper.h"
 
@@ -158,7 +159,7 @@
     //注册设备
     [[XGSetting getInstance] setChannel:XGCHANNL];
     [[XGSetting getInstance] setGameServer:@"Default"];
-    
+    [[XGPusher shareInstance] configWithSecretKey:@"68b0dd6db980f54f2a77f297e628e7df" accessId:@"2200108162" environment:XGPUSH_ENVIRONEMNT_DEV];
     
     NSString * deviceTokenStr = [XGPush registerDevice:deviceToken successCallback:successBlock errorCallback:errorBlock];
     
@@ -169,6 +170,19 @@
     NSLog(@"deviceTokenStr is %@",deviceTokenStr);
     
     [AppSessionMrg shareInstance].XGDeviceToken = deviceTokenStr;
+    
+    
+    XGMessage *newMessage = [[XGMessage alloc] init];
+    
+    newMessage.from = @"UserFrom";
+    newMessage.to = @"UserTo";
+    newMessage.content = @"消息测试";
+    newMessage.alert = @"您有一条新的消息";
+    newMessage.fromDeviceToken = [AppSessionMrg shareInstance].XGDeviceToken;
+    newMessage.toDeviceToken = @"8732c28bc2a9e933e4ff94446efb087fb552dc5b8b43708dfc1dbd77de85ed4a";
+    
+    [[XGPusher shareInstance] pushMessage:newMessage];
+    
 }
 
 //如果deviceToken获取不到会进入此事件

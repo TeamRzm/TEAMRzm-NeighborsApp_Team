@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
     </dependencies>
@@ -13,34 +13,10 @@
         <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="wuyedt" translatesAutoresizingMaskIntoConstraints="NO" id="bkn-Qr-OgM">
-                    <rect key="frame" x="0.0" y="270" width="160" height="148"/>
-                </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="tousubx" translatesAutoresizingMaskIntoConstraints="NO" id="2OO-ja-VvE">
-                    <rect key="frame" x="161" y="270" width="160" height="148"/>
-                </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="huamingce" translatesAutoresizingMaskIntoConstraints="NO" id="LTb-B3-Ojd">
-                    <rect key="frame" x="0.0" y="420" width="160" height="148"/>
-                </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="fuwu" translatesAutoresizingMaskIntoConstraints="NO" id="kax-sU-JMm">
-                    <rect key="frame" x="161" y="422" width="160" height="148"/>
-                </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="yeweihui" translatesAutoresizingMaskIntoConstraints="NO" id="Q0l-RF-o4A">
-                    <rect key="frame" x="91" y="356" width="139" height="128"/>
-                </imageView>
-            </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <point key="canvasLocation" x="410" y="414"/>
         </view>
     </objects>
-    <resources>
-        <image name="fuwu" width="160" height="148"/>
-        <image name="huamingce" width="160" height="148"/>
-        <image name="tousubx" width="160" height="148"/>
-        <image name="wuyedt" width="160" height="148"/>
-        <image name="yeweihui" width="320" height="296"/>
-    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

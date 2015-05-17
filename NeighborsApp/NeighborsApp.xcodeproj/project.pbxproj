@@ -96,6 +96,9 @@
 		5B4ADE3B1ADE30CE00810165 /* FaceImgCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4ADE391ADE30CE00810165 /* FaceImgCode.m */; };
 		5B4ADE3C1ADE30CE00810165 /* FaceImgCode.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5B4ADE3A1ADE30CE00810165 /* FaceImgCode.plist */; };
 		5B4FD51C1B079838005DA131 /* JoinsActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4FD51B1B079838005DA131 /* JoinsActivityViewController.m */; };
+		5B4FD5201B087150005DA131 /* XGPusher.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4FD51F1B087150005DA131 /* XGPusher.m */; };
+		5B4FD5231B0871A0005DA131 /* XGSign.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4FD5221B0871A0005DA131 /* XGSign.m */; };
+		5B4FD5261B087C62005DA131 /* XGMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4FD5251B087C62005DA131 /* XGMessage.m */; };
 		5B6D31581ADCDFF6009A922A /* NBRRegViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6D31561ADCDFF6009A922A /* NBRRegViewController.m */; };
 		5B6D31591ADCDFF6009A922A /* NBRRegViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B6D31571ADCDFF6009A922A /* NBRRegViewController.xib */; };
 		5B6D316A1ADCE747009A922A /* ALAlertBanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6D315E1ADCE747009A922A /* ALAlertBanner.m */; };
@@ -515,6 +518,12 @@
 		5B4ADE3A1ADE30CE00810165 /* FaceImgCode.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = FaceImgCode.plist; sourceTree = "<group>"; };
 		5B4FD51A1B079838005DA131 /* JoinsActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JoinsActivityViewController.h; path = ViewControllers/NBRFriendCircleViewController/JoinsActivityViewController.h; sourceTree = "<group>"; };
 		5B4FD51B1B079838005DA131 /* JoinsActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JoinsActivityViewController.m; path = ViewControllers/NBRFriendCircleViewController/JoinsActivityViewController.m; sourceTree = "<group>"; };
+		5B4FD51E1B087150005DA131 /* XGPusher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XGPusher.h; path = XGPusher/XGPusher.h; sourceTree = "<group>"; };
+		5B4FD51F1B087150005DA131 /* XGPusher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XGPusher.m; path = XGPusher/XGPusher.m; sourceTree = "<group>"; };
+		5B4FD5211B0871A0005DA131 /* XGSign.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XGSign.h; path = XGPusher/XGSign.h; sourceTree = "<group>"; };
+		5B4FD5221B0871A0005DA131 /* XGSign.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XGSign.m; path = XGPusher/XGSign.m; sourceTree = "<group>"; };
+		5B4FD5241B087C62005DA131 /* XGMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XGMessage.h; path = XGPusher/XGMessage.h; sourceTree = "<group>"; };
+		5B4FD5251B087C62005DA131 /* XGMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XGMessage.m; path = XGPusher/XGMessage.m; sourceTree = "<group>"; };
 		5B6D31551ADCDFF6009A922A /* NBRRegViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NBRRegViewController.h; path = ViewControllers/NBRLoginViewController/NBRRegViewController.h; sourceTree = "<group>"; };
 		5B6D31561ADCDFF6009A922A /* NBRRegViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NBRRegViewController.m; path = ViewControllers/NBRLoginViewController/NBRRegViewController.m; sourceTree = "<group>"; };
 		5B6D31571ADCDFF6009A922A /* NBRRegViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NBRRegViewController.xib; path = ViewControllers/NBRLoginViewController/NBRRegViewController.xib; sourceTree = "<group>"; };
@@ -1267,6 +1276,19 @@
 			path = FaceImgCode;
 			sourceTree = "<group>";
 		};
+		5B4FD51D1B087116005DA131 /* XGPusher */ = {
+			isa = PBXGroup;
+			children = (
+				5B4FD5211B0871A0005DA131 /* XGSign.h */,
+				5B4FD5221B0871A0005DA131 /* XGSign.m */,
+				5B4FD51E1B087150005DA131 /* XGPusher.h */,
+				5B4FD51F1B087150005DA131 /* XGPusher.m */,
+				5B4FD5241B087C62005DA131 /* XGMessage.h */,
+				5B4FD5251B087C62005DA131 /* XGMessage.m */,
+			);
+			name = XGPusher;
+			sourceTree = "<group>";
+		};
 		5B6D315B1ADCE747009A922A /* ALAlertBanner */ = {
 			isa = PBXGroup;
 			children = (
@@ -1607,6 +1629,7 @@
 		5BB655221AC31464007E0F85 = {
 			isa = PBXGroup;
 			children = (
+				5B4FD51D1B087116005DA131 /* XGPusher */,
 				5B3FFC5A1AF3C8C90071D77A /* Other */,
 				5BCB059A1AF11B6F004F9F93 /* Request */,
 				5B6D31891ADD1B8C009A922A /* IMSystem */,
@@ -2313,6 +2336,7 @@
 				5B332AFD1AE2F647002A0A73 /* CTAssetsPageViewController.m in Sources */,
 				5BD83C951AD61EF600D1A3EC /* ASICloudFilesRequest.m in Sources */,
 				5B38BA4A1AF5D4D700775F64 /* NSString+MD5.m in Sources */,
+				5B4FD5261B087C62005DA131 /* XGMessage.m in Sources */,
 				5B38BA4E1AF5DECF00775F64 /* NSString+base64.m in Sources */,
 				5BD83CEB1AD61F4B00D1A3EC /* SBJsonWriter.m in Sources */,
 				5B4ADE361ADE308C00810165 /* wavwriter.mm in Sources */,
@@ -2344,6 +2368,7 @@
 				964BD26C1B076651001178FA /* NBRFriendInfoViewController.m in Sources */,
 				5BB655631AC316AC007E0F85 /* NBRTabbarController.m in Sources */,
 				5B6D31921ADD1C4A009A922A /* IMUserEntity.m in Sources */,
+				5B4FD5201B087150005DA131 /* XGPusher.m in Sources */,
 				5B4ADE0C1ADE305300810165 /* NSString+ContverHtml.m in Sources */,
 				5BB8297B1AE5748B00877995 /* CommentEntity.m in Sources */,
 				5BED3BE41AFA886500AA8001 /* CreaterRequest_Region.m in Sources */,
@@ -2375,6 +2400,7 @@
 				5B4ADE2D1ADE308C00810165 /* C_AmrControllerHelper.mm in Sources */,
 				5B332AFE1AE2F647002A0A73 /* CTAssetsPickerController.m in Sources */,
 				5B332B001AE2F647002A0A73 /* CTAssetsViewCell.m in Sources */,
+				5B4FD5231B0871A0005DA131 /* XGSign.m in Sources */,
 				5BD83C8C1AD61EF600D1A3EC /* ASIHTTPRequest.m in Sources */,
 				5B332B431AE3A8C0002A0A73 /* XHCacheManager.m in Sources */,
 				5B6D316B1ADCE747009A922A /* ALAlertBannerManager.m in Sources */,

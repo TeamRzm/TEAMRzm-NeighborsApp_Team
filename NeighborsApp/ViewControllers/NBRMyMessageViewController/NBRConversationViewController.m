@@ -12,6 +12,8 @@
 #import "MLEmojiLabel.h"
 #import "EGOImageView.h"
 
+#import "XGPusher.h"
+
 #import "aya_MultimediaKeyBoard.h"
 
 @interface NBRConversationViewController ()<UITableViewDataSource, UITableViewDelegate,aya_MultimediaKeyBoardDelegate>
@@ -263,14 +265,26 @@
 {
     [keyBoard hidekeyboardview];
     
-    MessageEntity *subMessage = [[MessageEntity alloc] init];
-    subMessage.content = _string;
+    XGMessage *newMessage = [[XGMessage alloc] init];
+
+    newMessage.from = @"UserFrom";
+    newMessage.to = @"UserTo";
+    newMessage.content = _string;
+    newMessage.alert = @"您有一条新的消息";
+    newMessage.fromDeviceToken = [AppSessionMrg shareInstance].XGDeviceToken;
+    newMessage.toDeviceToken = @"8732c28bc2a9e933e4ff94446efb087fb552dc5b8b43708dfc1dbd77de85ed4a";
+
+    [[XGPusher shareInstance] pushMessage:newMessage];
     
-    [messageDateSources addObject:subMessage];
     
-    [boundTableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:messageDateSources.count-1 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
-    
-    [boundTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:messageDateSources.count-1 inSection:0] animated:YES scrollPosition:UITableViewScrollPositionBottom];
+//    MessageEntity *subMessage = [[MessageEntity alloc] init];
+//    subMessage.content = _string;
+//    
+//    [messageDateSources addObject:subMessage];
+//    
+//    [boundTableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:messageDateSources.count-1 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+//    
+//    [boundTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:messageDateSources.count-1 inSection:0] animated:YES scrollPosition:UITableViewScrollPositionBottom];
     
 //    if (_string.length <= 0 && _keyboard.commentImgDate == nil)
 //    {
