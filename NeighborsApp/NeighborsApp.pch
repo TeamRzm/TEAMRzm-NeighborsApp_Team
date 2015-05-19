@@ -44,8 +44,9 @@
 
 //白色
 #define kNBR_ProjectColor_StandWhite      UIColorFromRGB(0xFFFFFF)
+
 //标准蓝
-#define kNBR_ProjectColor_StandBlue       UIColorFromRGB(0x3596DD)
+#define kNBR_ProjectColor_StandBlue       UIColorFromRGB(0xE03F3A)
 
 //背景灰
 #define kNBR_ProjectColor_BackGroundGray  UIColorFromRGB(0xF2F3F7)
@@ -78,7 +79,7 @@
 #define kNBR_ProjectColor_GenerallyGreen  UIColorFromRGB(0x7FC6C8)
 
 //标配红
-#define kNBR_ProjectColor_GenerallyRed    UIColorFromRGB(0xF89594)
+#define kNBR_ProjectColor_GenerallyRed    UIColorFromRGB(0x95ADCD)
 
 //标配蓝
 #define kNBR_ProjectColor_GenerallyBlue   UIColorFromRGB(0x95ADCD)

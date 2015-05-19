@@ -53,11 +53,6 @@
                                        @"Icon"  : @"me03"}
                                      ],
                                  @[
-                                     @{@"Title" : @"个性设置",
-                                       @"Icon"  : @"me04"},
-                                     ],
-                                 
-                                 @[
                                      @{@"Title" : @"版本检测",
                                        @"Icon"  : @"me05"},
                                      
@@ -274,22 +269,17 @@
 }
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+{    
     NSArray *nVCClassesLinkList = @[
                                     @[
                                         @"PlotCertListViewController", //小区认证
                                         @"", //好友分享
                                         @"FeedBackViewController", //意见反馈
                                         ],
-                                    
-                                    @[
-                                        @"", //个性设置
-                                        ],
-                                    
                                     @[
                                         @"", //版本检测
-                                        @"", //免责声明
-                                        @"", //关于我们
+                                        @"DisclaimersViewController", //免责声明
+                                        @"AboutUsViewController", //关于我们
                                         ],
                                     ];
     

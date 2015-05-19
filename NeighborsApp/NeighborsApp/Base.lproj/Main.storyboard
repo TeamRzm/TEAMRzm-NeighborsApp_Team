@@ -78,29 +78,29 @@
             </objects>
             <point key="canvasLocation" x="368" y="595"/>
         </scene>
-        <!--亲邻圈-->
+        <!--圈子-->
         <scene sceneID="Jg6-FN-j16">
             <objects>
-                <viewController title="亲邻圈" id="j0b-lc-DeP" customClass="NBRFriendCircleViewController" sceneMemberID="viewController">
+                <viewController title="圈子" id="j0b-lc-DeP" customClass="NBRFriendCircleViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7mA-iO-aBg">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="亲邻圈" image="qinlingquan" id="aeh-hJ-RRq">
+                    <tabBarItem key="tabBarItem" title="圈子" image="qinlingquan" id="aeh-hJ-RRq">
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-4"/>
                     </tabBarItem>
-                    <navigationItem key="navigationItem" title="亲邻圈" id="GHg-wc-TuD"/>
+                    <navigationItem key="navigationItem" title="圈子" id="GHg-wc-TuD"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QQB-Wf-VBp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-6" y="595"/>
         </scene>
-        <!--亲邻圈-->
+        <!--圈子-->
         <scene sceneID="1HU-g4-4Zi">
             <objects>
                 <navigationController id="AMk-Uh-sYg" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="亲邻圈" id="VEn-LB-9oC"/>
+                    <tabBarItem key="tabBarItem" title="圈子" id="VEn-LB-9oC"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="6dY-oG-mfP">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

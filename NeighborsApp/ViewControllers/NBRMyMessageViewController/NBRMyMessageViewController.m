@@ -191,6 +191,7 @@
     
     [self LoadMyFriendsList];
     
+    [self.tabBarController.tabBar setTintColor:kNBR_ProjectColor_StandBlue];
 }
 
 #pragma mark  Data Mehtod

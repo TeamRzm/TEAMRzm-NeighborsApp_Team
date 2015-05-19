@@ -692,8 +692,8 @@ static CFTimeInterval const kRotationDurationIPad = 0.4;
             fillColor2 = [UIColor colorWithRed:(48/255.0) green:(110/255.0) blue:(173/255.0) alpha:1.f];
             break;
         case ALAlertBannerStyleWarning:
-            fillColor = [UIColor colorWithRed:(2/255.0) green:(0x92/255.0) blue:(0xE0/255.0) alpha:1.f];
-            fillColor2 = [UIColor colorWithRed:(0/255.0) green:(0xA6/255.0) blue:(0xFE/255.0) alpha:1.f];
+            fillColor = [UIColor colorWithRed:(225 / 255.0) green:(63 / 255.0) blue:(58 / 255.0) alpha:1.f];
+            fillColor2 = [UIColor colorWithRed:(202/255.0) green:(62/255.0) blue:(55/255.0) alpha:1.f];
             break;
     }
     

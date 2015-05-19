@@ -99,6 +99,11 @@
 		5B4FD5201B087150005DA131 /* XGPusher.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4FD51F1B087150005DA131 /* XGPusher.m */; };
 		5B4FD5231B0871A0005DA131 /* XGSign.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4FD5221B0871A0005DA131 /* XGSign.m */; };
 		5B4FD5261B087C62005DA131 /* XGMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4FD5251B087C62005DA131 /* XGMessage.m */; };
+		5B5E39371B0B72CF00705AF1 /* StaticHtmlViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B5E39361B0B72CF00705AF1 /* StaticHtmlViewController.m */; };
+		5B5E393C1B0B778300705AF1 /* about_disclaimers.html in Resources */ = {isa = PBXBuildFile; fileRef = 5B5E393B1B0B778300705AF1 /* about_disclaimers.html */; };
+		5B5E39401B0B77B200705AF1 /* about_us.html in Resources */ = {isa = PBXBuildFile; fileRef = 5B5E393F1B0B77B200705AF1 /* about_us.html */; };
+		5B5E39431B0B7D4100705AF1 /* DisclaimersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B5E39421B0B7D4100705AF1 /* DisclaimersViewController.m */; };
+		5B5E39461B0B830100705AF1 /* AboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B5E39451B0B830100705AF1 /* AboutUsViewController.m */; };
 		5B6D31581ADCDFF6009A922A /* NBRRegViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6D31561ADCDFF6009A922A /* NBRRegViewController.m */; };
 		5B6D31591ADCDFF6009A922A /* NBRRegViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B6D31571ADCDFF6009A922A /* NBRRegViewController.xib */; };
 		5B6D316A1ADCE747009A922A /* ALAlertBanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6D315E1ADCE747009A922A /* ALAlertBanner.m */; };
@@ -658,6 +663,14 @@
 		5B4FD5221B0871A0005DA131 /* XGSign.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XGSign.m; path = XGPusher/XGSign.m; sourceTree = "<group>"; };
 		5B4FD5241B087C62005DA131 /* XGMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XGMessage.h; path = XGPusher/XGMessage.h; sourceTree = "<group>"; };
 		5B4FD5251B087C62005DA131 /* XGMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XGMessage.m; path = XGPusher/XGMessage.m; sourceTree = "<group>"; };
+		5B5E39351B0B72CF00705AF1 /* StaticHtmlViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StaticHtmlViewController.h; path = Other/StaticHtmlViewController.h; sourceTree = "<group>"; };
+		5B5E39361B0B72CF00705AF1 /* StaticHtmlViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StaticHtmlViewController.m; path = Other/StaticHtmlViewController.m; sourceTree = "<group>"; };
+		5B5E393B1B0B778300705AF1 /* about_disclaimers.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = about_disclaimers.html; path = Resource/Html/about_disclaimers.html; sourceTree = "<group>"; };
+		5B5E393F1B0B77B200705AF1 /* about_us.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = about_us.html; path = Resource/Html/about_us.html; sourceTree = "<group>"; };
+		5B5E39411B0B7D4100705AF1 /* DisclaimersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DisclaimersViewController.h; path = ViewControllers/NBRPersonalCenterViewController/DisclaimersViewController.h; sourceTree = "<group>"; };
+		5B5E39421B0B7D4100705AF1 /* DisclaimersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DisclaimersViewController.m; path = ViewControllers/NBRPersonalCenterViewController/DisclaimersViewController.m; sourceTree = "<group>"; };
+		5B5E39441B0B830100705AF1 /* AboutUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AboutUsViewController.h; path = ViewControllers/NBRPersonalCenterViewController/AboutUsViewController.h; sourceTree = "<group>"; };
+		5B5E39451B0B830100705AF1 /* AboutUsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AboutUsViewController.m; path = ViewControllers/NBRPersonalCenterViewController/AboutUsViewController.m; sourceTree = "<group>"; };
 		5B6D31551ADCDFF6009A922A /* NBRRegViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NBRRegViewController.h; path = ViewControllers/NBRLoginViewController/NBRRegViewController.h; sourceTree = "<group>"; };
 		5B6D31561ADCDFF6009A922A /* NBRRegViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NBRRegViewController.m; path = ViewControllers/NBRLoginViewController/NBRRegViewController.m; sourceTree = "<group>"; };
 		5B6D31571ADCDFF6009A922A /* NBRRegViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NBRRegViewController.xib; path = ViewControllers/NBRLoginViewController/NBRRegViewController.xib; sourceTree = "<group>"; };
@@ -1427,6 +1440,8 @@
 		5B3FFC5A1AF3C8C90071D77A /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				5B5E39351B0B72CF00705AF1 /* StaticHtmlViewController.h */,
+				5B5E39361B0B72CF00705AF1 /* StaticHtmlViewController.m */,
 				5B3FFC5B1AF3C91B0071D77A /* AppSessionMrg.h */,
 				5B3FFC5C1AF3C91B0071D77A /* AppSessionMrg.m */,
 				5B38BA421AF4FBEA00775F64 /* NSString+CheckFormat.h */,
@@ -1567,6 +1582,15 @@
 				5B4FD5251B087C62005DA131 /* XGMessage.m */,
 			);
 			name = XGPusher;
+			sourceTree = "<group>";
+		};
+		5B5E39381B0B772D00705AF1 /* Html */ = {
+			isa = PBXGroup;
+			children = (
+				5B5E393B1B0B778300705AF1 /* about_disclaimers.html */,
+				5B5E393F1B0B77B200705AF1 /* about_us.html */,
+			);
+			name = Html;
 			sourceTree = "<group>";
 		};
 		5B6D315B1ADCE747009A922A /* ALAlertBanner */ = {
@@ -1901,6 +1925,7 @@
 		5B8B15B21ADC233600AA87A2 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				5B5E39381B0B772D00705AF1 /* Html */,
 				5B8B15B31ADC236700AA87A2 /* DefaultRes.xcassets */,
 			);
 			name = Resource;
@@ -2067,6 +2092,10 @@
 		5BB6555C1AC31567007E0F85 /* NBRPersonalCenterViewController */ = {
 			isa = PBXGroup;
 			children = (
+				5B5E39441B0B830100705AF1 /* AboutUsViewController.h */,
+				5B5E39451B0B830100705AF1 /* AboutUsViewController.m */,
+				5B5E39411B0B7D4100705AF1 /* DisclaimersViewController.h */,
+				5B5E39421B0B7D4100705AF1 /* DisclaimersViewController.m */,
 				5BB655681AC31727007E0F85 /* NBRPersonalCenterViewController.h */,
 				5BB655691AC31727007E0F85 /* NBRPersonalCenterViewController.m */,
 				5B26F4B11AFF6FF3001A6AA1 /* Setting */,
@@ -2656,6 +2685,7 @@
 				5B6D31711ADCE747009A922A /* bannerNotify@2x.png in Resources */,
 				5B38BA651AF652CE00775F64 /* KVNProgressView.xib in Resources */,
 				5B4ADE061ADE305300810165 /* chatting_setmode_biaoqing_btn_normal.png in Resources */,
+				5B5E393C1B0B778300705AF1 /* about_disclaimers.html in Resources */,
 				5B4ADE0B1ADE305300810165 /* keyboardBg.png in Resources */,
 				9603E9FD1B08314900E15A92 /* comment_lenghan.png in Resources */,
 				9603EA221B08314900E15A92 /* comment_yinxian.png in Resources */,
@@ -2825,6 +2855,7 @@
 				5B6D31A71ADD5433009A922A /* button-default-d.png in Resources */,
 				5B6D326A1ADDFE43009A922A /* Expression_65@2x.png in Resources */,
 				5B6D32901ADDFE43009A922A /* Expression_9@2x.png in Resources */,
+				5B5E39401B0B77B200705AF1 /* about_us.html in Resources */,
 				9603EA331B08314900E15A92 /* face.xml in Resources */,
 				5B6D32881ADDFE43009A922A /* Expression_92@2x.png in Resources */,
 				5B6D32361ADDFE43009A922A /* Expression_18@2x.png in Resources */,
@@ -2960,6 +2991,7 @@
 				5B6D316A1ADCE747009A922A /* ALAlertBanner.m in Sources */,
 				5B4ADE321ADE308C00810165 /* Recorder.m in Sources */,
 				5B955BF21ADFE42600E8B335 /* CommentTableViewCell.m in Sources */,
+				5B5E39371B0B72CF00705AF1 /* StaticHtmlViewController.m in Sources */,
 				5B332AF51AE2F647002A0A73 /* ALAsset+accessibilityLabel.m in Sources */,
 				5BD83CE71AD61F4B00D1A3EC /* SBJsonStreamWriterAccumulator.m in Sources */,
 				9603E94F1B08293800E15A92 /* aya_coreTextView.m in Sources */,
@@ -3007,6 +3039,7 @@
 				5BD83C941AD61EF600D1A3EC /* ASICloudFilesObjectRequest.m in Sources */,
 				5BED3BE11AFA870900AA8001 /* CreaterRequest_Village.m in Sources */,
 				5B8B15A41ADC17CB00AA87A2 /* EGOImageView.m in Sources */,
+				5B5E39461B0B830100705AF1 /* AboutUsViewController.m in Sources */,
 				5BCA99FA1AFCE9B700960F21 /* RefreshControl.m in Sources */,
 				5BCA99FD1AFCE9B700960F21 /* RefreshBottomView.m in Sources */,
 				5B8B15A21ADC17CB00AA87A2 /* EGOImageLoadConnection.m in Sources */,
@@ -3032,6 +3065,7 @@
 				5BD83C891AD61EF600D1A3EC /* ASIDataDecompressor.m in Sources */,
 				5B38BA631AF652CE00775F64 /* UIImage+KVNImageEffects.m in Sources */,
 				5B332B471AE3A8C0002A0A73 /* XHZoomingImageView.m in Sources */,
+				5B5E39431B0B7D4100705AF1 /* DisclaimersViewController.m in Sources */,
 				96D0B4D31B078F5700E26BF7 /* NBRCommunityNoticeViewController.m in Sources */,
 				5BD83CDF1AD61F4B00D1A3EC /* NSObject+SBJSON.m in Sources */,
 				5B332B011AE2F647002A0A73 /* CTAssetsViewController.m in Sources */,
