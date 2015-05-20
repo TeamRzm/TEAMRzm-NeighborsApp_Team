@@ -11,7 +11,7 @@
 #import "NBRSmallRosterViewController.h"
 
 #import "CreateRequest_Server.h"
-
+#import "ComplaintsAndRepairViewController.h"
 
 
 @interface NBRServeiesViewController ()
@@ -28,8 +28,6 @@
     [self SetBaseNavigationRightItemWithTitle:@"切换"];
     
     [self GetDynamicList];
-    
-    
 }
 
 #pragma mark Init Method
@@ -186,15 +184,24 @@
     {
         case 0:
         {
-            NBRDynamicofPropertyViewController *dynamicview = [[NBRDynamicofPropertyViewController alloc] init];
+            NBRDynamicofPropertyViewController *dynamicview = [[NBRDynamicofPropertyViewController alloc] initWithNibName:nil bundle:nil];
             [dynamicview setHidesBottomBarWhenPushed:YES];
             [self.navigationController pushViewController:dynamicview animated:YES];
             
         }
             break;
+            
+        case 1:
+        {
+            ComplaintsAndRepairViewController *dynamicview = [[ComplaintsAndRepairViewController alloc] initWithNibName:nil bundle:nil];
+            [dynamicview setHidesBottomBarWhenPushed:YES];
+            [self.navigationController pushViewController:dynamicview animated:YES];
+        }
+            break;
+            
         case 3:
         {
-            NBRSmallRosterViewController *rosterview = [[NBRSmallRosterViewController alloc] init];
+            NBRSmallRosterViewController *rosterview = [[NBRSmallRosterViewController alloc] initWithNibName:nil bundle:nil];
             [rosterview setHidesBottomBarWhenPushed:YES];
 
             [self.navigationController pushViewController:rosterview animated:YES];

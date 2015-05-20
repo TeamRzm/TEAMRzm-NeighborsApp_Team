@@ -10,8 +10,10 @@
 
 typedef enum
 {
-    COMMIT_TO_MODE_SHOW,    //预警
-    COMMIT_TO_MODE_LOR,     //里手帮
+    COMMIT_TO_MODE_SHOW,        //预警
+    COMMIT_TO_MODE_LOR,         //里手帮
+    COMMIT_TO_MODE_COMPLAIN,    //投诉
+    COMMIT_TO_MODE_REPAIR,      //报修
 }COMMIT_TO_MODE;
 
 @interface CommitNewContentViewController : NBRBaseViewController

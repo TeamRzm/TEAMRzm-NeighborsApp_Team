@@ -14,6 +14,7 @@
 #import "FileUpLoadHelper.h"
 #import "CreaterRequest_Logroll.h"
 #import "CreaterRequest_Show.h"
+#import "CreaterRequest_Complaint.h"
 
 const CGFloat   CommitImageViewHeightAndWidth = 62.8;
 const NSInteger CommitImageViewWidthCount     = 5;
@@ -43,6 +44,10 @@ const NSInteger CommitImageViewWidthCount     = 5;
     
     FileUpLoadHelper *uploadHelper;
     ASIHTTPRequest *commentUploadRequest;
+    
+    //以下是用于投诉与建议的变量对象
+    UITextField     *contratTextField;
+    UITextField     *phoneTextField;
 }
 
 @end
@@ -262,12 +267,25 @@ const NSInteger CommitImageViewWidthCount     = 5;
     commitButton.layer.cornerRadius = 5.0f;
     commitButton.layer.masksToBounds = YES;
     commitButton.titleLabel.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME_BLOD size:15.0f];
-    [commitButton setTitle:@"确认发布" forState:UIControlStateNormal];
+    [commitButton setTitle:@"提交" forState:UIControlStateNormal];
     [commitButton addTarget:self action:@selector(commentNewContent) forControlEvents:UIControlEventTouchUpInside];
     [tableViewFootView addSubview:commitButton];
     
     
     boundTableView.tableFooterView = tableViewFootView;
+    
+    //投诉与建议
+    contratTextField = [[UITextField alloc] initWithFrame:CGRectMake(10, 0, kNBR_SCREEN_W - 20, 40)];
+    phoneTextField = [[UITextField alloc] initWithFrame:CGRectMake(10, 0, kNBR_SCREEN_W - 20, 40)];
+    
+    contratTextField.placeholder = @"请输入联系人姓名";
+    phoneTextField.placeholder = @"请输入手机号码";
+    
+    contratTextField.textAlignment = NSTextAlignmentRight;
+    phoneTextField.textAlignment = NSTextAlignmentRight;
+    
+    [self setDoneStyleTextFile:contratTextField];
+    [self setDoneStyleTextFile:phoneTextField];
 }
 
 - (void) commentNewContent
@@ -277,6 +295,25 @@ const NSInteger CommitImageViewWidthCount     = 5;
         [self showBannerMsgWithString:@"请输入内容"];
         
         return ;
+    }
+    
+    if (self.mode == COMMIT_TO_MODE_COMPLAIN || self.mode == COMMIT_TO_MODE_REPAIR)
+    {
+        //投诉和报修
+        if (contratTextField.text.length <= 0)
+        {
+            [self showBannerMsgWithString:@"请输入联系人姓名"];
+            
+            return ;
+        }
+        
+        //投诉和报修
+        if (phoneTextField.text.length <= 0)
+        {
+            [self showBannerMsgWithString:@"请输入联系人姓名"];
+            
+            return ;
+        }
     }
     
     uploadHelper = [[FileUpLoadHelper alloc] init];
@@ -317,13 +354,39 @@ const NSInteger CommitImageViewWidthCount     = 5;
         [filesArr addObject:subDict[@"fileId"]];
     }
     
-    if (self.mode == COMMIT_TO_MODE_SHOW)
+    
+    switch (self.mode)
     {
-        commentUploadRequest = [CreaterRequest_Show  CreateShowPostReuqetWithInfo:commentInpuTextView.text tag:@"0" flag:@"1" files:filesArr];
-    }
-    else
-    {
-        commentUploadRequest = [CreaterRequest_Logroll CreateLogrollCommitRequestWithTitle:@"NoTitle" info:commentInpuTextView.text files:filesArr tag:@"0"];
+        case COMMIT_TO_MODE_SHOW:
+        {
+            commentUploadRequest = [CreaterRequest_Show  CreateShowPostReuqetWithInfo:commentInpuTextView.text tag:@"0" flag:@"1" files:filesArr];
+        }
+            break;
+            
+        case COMMIT_TO_MODE_LOR:
+        {
+            commentUploadRequest = [CreaterRequest_Logroll CreateLogrollCommitRequestWithTitle:@"NoTitle" info:commentInpuTextView.text files:filesArr tag:@"0"];
+        }
+            break;
+            
+        case COMMIT_TO_MODE_COMPLAIN:
+        {
+            commentUploadRequest = [CreaterRequest_Complaint CreateComplaintPostRequestWithContact:contratTextField.text
+                                                                                             phone:phoneTextField.text address:@""
+                                                                                           content:commentInpuTextView.text
+                                                                                             files:filesArr
+                                                                                              type:@"0"];
+        }
+            break;
+            
+        case COMMIT_TO_MODE_REPAIR:
+        {
+//            commentUploadRequest = [CreaterRequest_Complaint CreateComplaintPostRequestWithContact:contratTextField.text phone:phoneTextField.text address:@"" content:commentInpuTextView.text files:filesArr type:@"0"];
+        }
+            break;
+            
+        default:
+            break;
     }
     
     __weak ASIHTTPRequest *blockRequest = commentUploadRequest;
@@ -382,7 +445,41 @@ const NSInteger CommitImageViewWidthCount     = 5;
 
 - (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    switch (self.mode)
+    {
+        case COMMIT_TO_MODE_LOR:
+        {
+            //里手帮
+            return 1;
+        }
+            break;
+            
+        case COMMIT_TO_MODE_SHOW:
+        {
+            //预警
+            return 1;
+        }
+            break;
+            
+        case COMMIT_TO_MODE_COMPLAIN:
+        {
+            //投诉
+            return 2;
+        }
+            break;
+            
+        case COMMIT_TO_MODE_REPAIR:
+        {
+            //报修
+            return 2;
+            
+        }
+            break;
+            
+        default:
+            return 1;
+            break;
+    }
 }
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -454,26 +551,62 @@ const NSInteger CommitImageViewWidthCount     = 5;
         [cell.contentView addSubview:selectImgView];
     }
     
-    if (indexPath.section == 1)
+    switch (self.mode)
     {
-        UILabel *titleLable = [[UILabel alloc] initWithFrame:CGRectMake(40, 0, kNBR_SCREEN_W - 40, 40)];
-        titleLable.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME size:13.0f];
-        titleLable.textColor = kNBR_ProjectColor_DeepBlack;
-        
-        if (indexPath.row == 0)
+        case COMMIT_TO_MODE_SHOW:
+        case COMMIT_TO_MODE_LOR:
         {
-            titleLable.text = @"所有小区可见";
-            [cell.contentView addSubview:checkBox1];
+            if (indexPath.section == 1)
+            {
+                UILabel *titleLable = [[UILabel alloc] initWithFrame:CGRectMake(40, 0, kNBR_SCREEN_W - 40, 40)];
+                titleLable.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME size:13.0f];
+                titleLable.textColor = kNBR_ProjectColor_DeepBlack;
+                
+                if (indexPath.row == 0)
+                {
+                    titleLable.text = @"所有小区可见";
+                    [cell.contentView addSubview:checkBox1];
+                }
+                else if (indexPath.row == 1)
+                {
+                    titleLable.text = @"本小区可见";
+                    [cell.contentView addSubview:checkBox2];
+                }
+                
+                [cell.contentView addSubview:titleLable];
+            }
         }
-        else if (indexPath.row == 1)
+            break;
+            
+        case COMMIT_TO_MODE_REPAIR:
+        case COMMIT_TO_MODE_COMPLAIN:
         {
-            titleLable.text = @"本小区可见";
-            [cell.contentView addSubview:checkBox2];
+            if (indexPath.section == 1)
+            {
+                UILabel *titleLable = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, kNBR_SCREEN_W - 20, 40)];
+                titleLable.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME size:13.0f];
+                titleLable.textAlignment = NSTextAlignmentLeft;
+                titleLable.textColor = kNBR_ProjectColor_DeepBlack;
+                
+                if (indexPath.row == 0)
+                {
+                    titleLable.text = @"联系人：";
+                    [cell.contentView addSubview:contratTextField];
+                }
+                else if (indexPath.row == 1)
+                {
+                    titleLable.text = @"联系电话：";
+                    [cell.contentView addSubview:phoneTextField];
+                }
+                
+                [cell.contentView addSubview:titleLable];
+            }
         }
-        
-        [cell.contentView addSubview:titleLable];
+            break;
+            
+        default:
+            break;
     }
-    
     
     return cell;
 }

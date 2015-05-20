@@ -99,6 +99,8 @@
 		5B4FD5201B087150005DA131 /* XGPusher.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4FD51F1B087150005DA131 /* XGPusher.m */; };
 		5B4FD5231B0871A0005DA131 /* XGSign.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4FD5221B0871A0005DA131 /* XGSign.m */; };
 		5B4FD5261B087C62005DA131 /* XGMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4FD5251B087C62005DA131 /* XGMessage.m */; };
+		5B5B23041B0CC0D60057590C /* ComplaintsAndRepairViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B5B23031B0CC0D60057590C /* ComplaintsAndRepairViewController.m */; };
+		5B5B230A1B0CC7CE0057590C /* CreaterRequest_Complaint.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B5B23091B0CC7CE0057590C /* CreaterRequest_Complaint.m */; };
 		5B5E39371B0B72CF00705AF1 /* StaticHtmlViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B5E39361B0B72CF00705AF1 /* StaticHtmlViewController.m */; };
 		5B5E393C1B0B778300705AF1 /* about_disclaimers.html in Resources */ = {isa = PBXBuildFile; fileRef = 5B5E393B1B0B778300705AF1 /* about_disclaimers.html */; };
 		5B5E39401B0B77B200705AF1 /* about_us.html in Resources */ = {isa = PBXBuildFile; fileRef = 5B5E393F1B0B77B200705AF1 /* about_us.html */; };
@@ -663,6 +665,10 @@
 		5B4FD5221B0871A0005DA131 /* XGSign.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XGSign.m; path = XGPusher/XGSign.m; sourceTree = "<group>"; };
 		5B4FD5241B087C62005DA131 /* XGMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XGMessage.h; path = XGPusher/XGMessage.h; sourceTree = "<group>"; };
 		5B4FD5251B087C62005DA131 /* XGMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XGMessage.m; path = XGPusher/XGMessage.m; sourceTree = "<group>"; };
+		5B5B23021B0CC0D60057590C /* ComplaintsAndRepairViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComplaintsAndRepairViewController.h; path = ViewControllers/NBRServeiesViewController/ComplaintsAndRepair/ComplaintsAndRepairViewController.h; sourceTree = "<group>"; };
+		5B5B23031B0CC0D60057590C /* ComplaintsAndRepairViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComplaintsAndRepairViewController.m; path = ViewControllers/NBRServeiesViewController/ComplaintsAndRepair/ComplaintsAndRepairViewController.m; sourceTree = "<group>"; };
+		5B5B23081B0CC7CE0057590C /* CreaterRequest_Complaint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreaterRequest_Complaint.h; path = Request/Creater/CreaterRequest_Complaint.h; sourceTree = "<group>"; };
+		5B5B23091B0CC7CE0057590C /* CreaterRequest_Complaint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreaterRequest_Complaint.m; path = Request/Creater/CreaterRequest_Complaint.m; sourceTree = "<group>"; };
 		5B5E39351B0B72CF00705AF1 /* StaticHtmlViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StaticHtmlViewController.h; path = Other/StaticHtmlViewController.h; sourceTree = "<group>"; };
 		5B5E39361B0B72CF00705AF1 /* StaticHtmlViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StaticHtmlViewController.m; path = Other/StaticHtmlViewController.m; sourceTree = "<group>"; };
 		5B5E393B1B0B778300705AF1 /* about_disclaimers.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = about_disclaimers.html; path = Resource/Html/about_disclaimers.html; sourceTree = "<group>"; };
@@ -1355,6 +1361,8 @@
 				5BBAC8A31AFBD14700536F1E /* CreaterRequest_Show.m */,
 				96FB995B1B0889790051A9B6 /* CreateRequest_Server.h */,
 				96FB995C1B0889790051A9B6 /* CreateRequest_Server.m */,
+				5B5B23081B0CC7CE0057590C /* CreaterRequest_Complaint.h */,
+				5B5B23091B0CC7CE0057590C /* CreaterRequest_Complaint.m */,
 			);
 			name = Creater;
 			sourceTree = "<group>";
@@ -1582,6 +1590,15 @@
 				5B4FD5251B087C62005DA131 /* XGMessage.m */,
 			);
 			name = XGPusher;
+			sourceTree = "<group>";
+		};
+		5B5B23011B0CC07A0057590C /* ComplaintsAndRepair */ = {
+			isa = PBXGroup;
+			children = (
+				5B5B23021B0CC0D60057590C /* ComplaintsAndRepairViewController.h */,
+				5B5B23031B0CC0D60057590C /* ComplaintsAndRepairViewController.m */,
+			);
+			name = ComplaintsAndRepair;
 			sourceTree = "<group>";
 		};
 		5B5E39381B0B772D00705AF1 /* Html */ = {
@@ -2078,6 +2095,7 @@
 		5BB6555B1AC3155B007E0F85 /* NBRServeiesViewController */ = {
 			isa = PBXGroup;
 			children = (
+				5B5B23011B0CC07A0057590C /* ComplaintsAndRepair */,
 				5BB6556B1AC3173E007E0F85 /* NBRServeiesViewController.h */,
 				5BB6556C1AC3173E007E0F85 /* NBRServeiesViewController.m */,
 				5B955BEB1ADFD98900E8B335 /* NBRServeiesViewController.xib */,
@@ -2920,6 +2938,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5BBAC8A71AFBD6B000536F1E /* SearchPlotListViewController.m in Sources */,
+				5B5B23041B0CC0D60057590C /* ComplaintsAndRepairViewController.m in Sources */,
 				5B6D31581ADCDFF6009A922A /* NBRRegViewController.m in Sources */,
 				5B332AC71AE26294002A0A73 /* CommitNewContentViewController.m in Sources */,
 				5BED3BDB1AFA4EC300AA8001 /* FileUpLoadHelper.m in Sources */,
@@ -3004,6 +3023,7 @@
 				96FB99601B089C370051A9B6 /* NBRSmallRosterViewController.m in Sources */,
 				5B8B15B91ADCBA4A00AA87A2 /* NBRForgetPwdViewController.m in Sources */,
 				5B4ADE341ADE308C00810165 /* TranscodingDefine.mm in Sources */,
+				5B5B230A1B0CC7CE0057590C /* CreaterRequest_Complaint.m in Sources */,
 				5BB6553A1AC31464007E0F85 /* SecondViewController.m in Sources */,
 				5BD83CE81AD61F4B00D1A3EC /* SBJsonStreamWriterState.m in Sources */,
 				5B332B3B1AE3A8C0002A0A73 /* NSString+XHMD5.m in Sources */,
@@ -3217,7 +3237,7 @@
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "cb4849ca-d3fa-41d1-9688-ee56c8942958";
+				PROVISIONING_PROFILE = "cf6da026-0b01-4082-af88-4ea6ebdd7af1";
 				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Debug;
@@ -3240,7 +3260,7 @@
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "cb4849ca-d3fa-41d1-9688-ee56c8942958";
+				PROVISIONING_PROFILE = "cf6da026-0b01-4082-af88-4ea6ebdd7af1";
 				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Release;
