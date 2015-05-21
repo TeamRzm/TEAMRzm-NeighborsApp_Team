@@ -507,14 +507,8 @@
             
             [boundTableViewDateSource[requestIndex] addObjectsFromArray:newContentArr];
             
-            if (dataIndex[requestIndex] == 0)
-            {
-                [subTableView[requestIndex] reloadData];
-            }
-            else
-            {
-                [subTableView[requestIndex] insertRowsAtIndexPaths:insertIndexPath withRowAnimation:UITableViewRowAnimationAutomatic];
-            }
+            [subTableView[requestIndex] reloadData];
+
             
             return ;
         }
@@ -647,7 +641,7 @@
             {
                 //追加
                 [boundTableViewDateSource[1] addObjectsFromArray:newActivityArr];
-                [subTableView[1] insertRowsAtIndexPaths:insertIndexPath withRowAnimation:UITableViewRowAnimationAutomatic];
+                [subTableView[1] reloadData];
             }
 
             return ;

@@ -101,6 +101,8 @@
 		5B4FD5261B087C62005DA131 /* XGMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4FD5251B087C62005DA131 /* XGMessage.m */; };
 		5B5B23041B0CC0D60057590C /* ComplaintsAndRepairViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B5B23031B0CC0D60057590C /* ComplaintsAndRepairViewController.m */; };
 		5B5B230A1B0CC7CE0057590C /* CreaterRequest_Complaint.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B5B23091B0CC7CE0057590C /* CreaterRequest_Complaint.m */; };
+		5B5B230D1B0CFCD40057590C /* ComplaintsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B5B230C1B0CFCD40057590C /* ComplaintsCell.m */; };
+		5B5B23101B0CFFA00057590C /* UIView+BreakLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B5B230F1B0CFFA00057590C /* UIView+BreakLine.m */; };
 		5B5E39371B0B72CF00705AF1 /* StaticHtmlViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B5E39361B0B72CF00705AF1 /* StaticHtmlViewController.m */; };
 		5B5E393C1B0B778300705AF1 /* about_disclaimers.html in Resources */ = {isa = PBXBuildFile; fileRef = 5B5E393B1B0B778300705AF1 /* about_disclaimers.html */; };
 		5B5E39401B0B77B200705AF1 /* about_us.html in Resources */ = {isa = PBXBuildFile; fileRef = 5B5E393F1B0B77B200705AF1 /* about_us.html */; };
@@ -669,6 +671,10 @@
 		5B5B23031B0CC0D60057590C /* ComplaintsAndRepairViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComplaintsAndRepairViewController.m; path = ViewControllers/NBRServeiesViewController/ComplaintsAndRepair/ComplaintsAndRepairViewController.m; sourceTree = "<group>"; };
 		5B5B23081B0CC7CE0057590C /* CreaterRequest_Complaint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreaterRequest_Complaint.h; path = Request/Creater/CreaterRequest_Complaint.h; sourceTree = "<group>"; };
 		5B5B23091B0CC7CE0057590C /* CreaterRequest_Complaint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreaterRequest_Complaint.m; path = Request/Creater/CreaterRequest_Complaint.m; sourceTree = "<group>"; };
+		5B5B230B1B0CFCD40057590C /* ComplaintsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComplaintsCell.h; path = ViewControllers/NBRServeiesViewController/ComplaintsAndRepair/ComplaintsCell.h; sourceTree = "<group>"; };
+		5B5B230C1B0CFCD40057590C /* ComplaintsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComplaintsCell.m; path = ViewControllers/NBRServeiesViewController/ComplaintsAndRepair/ComplaintsCell.m; sourceTree = "<group>"; };
+		5B5B230E1B0CFFA00057590C /* UIView+BreakLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+BreakLine.h"; path = "Other/UIView+BreakLine.h"; sourceTree = "<group>"; };
+		5B5B230F1B0CFFA00057590C /* UIView+BreakLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+BreakLine.m"; path = "Other/UIView+BreakLine.m"; sourceTree = "<group>"; };
 		5B5E39351B0B72CF00705AF1 /* StaticHtmlViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StaticHtmlViewController.h; path = Other/StaticHtmlViewController.h; sourceTree = "<group>"; };
 		5B5E39361B0B72CF00705AF1 /* StaticHtmlViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StaticHtmlViewController.m; path = Other/StaticHtmlViewController.m; sourceTree = "<group>"; };
 		5B5E393B1B0B778300705AF1 /* about_disclaimers.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = about_disclaimers.html; path = Resource/Html/about_disclaimers.html; sourceTree = "<group>"; };
@@ -1448,6 +1454,8 @@
 		5B3FFC5A1AF3C8C90071D77A /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				5B5B230E1B0CFFA00057590C /* UIView+BreakLine.h */,
+				5B5B230F1B0CFFA00057590C /* UIView+BreakLine.m */,
 				5B5E39351B0B72CF00705AF1 /* StaticHtmlViewController.h */,
 				5B5E39361B0B72CF00705AF1 /* StaticHtmlViewController.m */,
 				5B3FFC5B1AF3C91B0071D77A /* AppSessionMrg.h */,
@@ -1595,6 +1603,8 @@
 		5B5B23011B0CC07A0057590C /* ComplaintsAndRepair */ = {
 			isa = PBXGroup;
 			children = (
+				5B5B230B1B0CFCD40057590C /* ComplaintsCell.h */,
+				5B5B230C1B0CFCD40057590C /* ComplaintsCell.m */,
 				5B5B23021B0CC0D60057590C /* ComplaintsAndRepairViewController.h */,
 				5B5B23031B0CC0D60057590C /* ComplaintsAndRepairViewController.m */,
 			);
@@ -2956,6 +2966,7 @@
 				5B6D31951ADD34F8009A922A /* UIView+TopTag.m in Sources */,
 				5B332AFD1AE2F647002A0A73 /* CTAssetsPageViewController.m in Sources */,
 				5BD83C951AD61EF600D1A3EC /* ASICloudFilesRequest.m in Sources */,
+				5B5B23101B0CFFA00057590C /* UIView+BreakLine.m in Sources */,
 				5B38BA4A1AF5D4D700775F64 /* NSString+MD5.m in Sources */,
 				5B4FD5261B087C62005DA131 /* XGMessage.m in Sources */,
 				5B38BA4E1AF5DECF00775F64 /* NSString+base64.m in Sources */,
@@ -3072,6 +3083,7 @@
 				5B332ACA1AE268D6002A0A73 /* UITextView+Placeholder.m in Sources */,
 				5BED3BEA1AFA8EFB00AA8001 /* CreaterRequest_Conv.m in Sources */,
 				5BD83CEA1AD61F4B00D1A3EC /* SBJsonUTF8Stream.m in Sources */,
+				5B5B230D1B0CFCD40057590C /* ComplaintsCell.m in Sources */,
 				5BD83CE31AD61F4B00D1A3EC /* SBJsonStreamParserAccumulator.m in Sources */,
 				5BD83C911AD61EF600D1A3EC /* ASICloudFilesContainerRequest.m in Sources */,
 				5BD83C9D1AD61EF600D1A3EC /* Reachability.m in Sources */,

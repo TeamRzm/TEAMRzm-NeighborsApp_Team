@@ -14,6 +14,7 @@
 #import "NSString+XHMD5.h"
 #import "AppSessionMrg.h"
 #import "NSDictionary+SafeObject.h"
+#import "UIView+BreakLine.h"
 #endif
 
 #define DEBUGMODE
@@ -29,8 +30,8 @@
 
 #define ITOS(i) ([NSString stringWithFormat:@"%d", i])
 
-#define kNBR_PAGE_SIZE 20
-#define kNBR_PAGE_SIZE_STR @"20"
+#define kNBR_PAGE_SIZE 10
+#define kNBR_PAGE_SIZE_STR @"10"
 
 #define kNBR_TABLEVIEW_CELL_NOIDENTIFIER @"NBR_TABLEVIEW_CELL_NOIDENTIFIER"
 #define kNBR_SCREEN_W [UIScreen mainScreen].bounds.size.width

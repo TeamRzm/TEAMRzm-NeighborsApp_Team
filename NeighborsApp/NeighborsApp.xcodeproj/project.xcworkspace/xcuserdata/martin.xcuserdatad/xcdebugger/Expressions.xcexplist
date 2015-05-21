@@ -3,13 +3,50 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "__41-[PlotCertListViewController requestList]_block_invoke:PlotCertListViewController.m">
+         contextName = "-[NSDictionary(SafePath) numberWithKeyPath:]:NSDictionary+SafeObject.m">
       </ContextState>
       <ContextState
-         contextName = "__54-[NBRFriendCircleViewController requestList1WithFlag:]_block_invoke:NBRFriendCircleViewController.m">
+         contextName = "__61-[ComplaintsAndRepairViewController changedSegmengWithIndex:]_block_invoke:ComplaintsAndRepairViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "boundScrollView.contentOffset">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[ComplaintsCell tapSubImageView:]:ComplaintsCell.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[ComplaintsAndRepairViewController scrollViewDidEndDecelerating:]:ComplaintsAndRepairViewController.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[AbsEntity initWithDict:]:AbsEntity.m">
       </ContextState>
       <ContextState
          contextName = "__31-[FileUpLoadHelper uploadFile:]_block_invoke:FileUpLoadHelper.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[FileUpLoadHelper uploadFile:]:FileUpLoadHelper.m">
+      </ContextState>
+      <ContextState
+         contextName = "__44-[NBRLoginViewController loginButtonAction:]_block_invoke:NBRLoginViewController.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[NBRFriendCircleViewController scrollViewDidEndDecelerating:]:NBRFriendCircleViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "scrollView.contentOffset">
+            </PersistentString>
+            <PersistentString
+               value = "scrollView.contentSize.height">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "+[ComplaintsCell heightForDataDict:]:ComplaintsCell.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[ComplaintsCell setDataDict:]:ComplaintsCell.m">
       </ContextState>
       <ContextState
          contextName = "-[NBRFriendCircleViewController requestList1WithFlag:]:NBRFriendCircleViewController.m">
@@ -26,27 +63,15 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "-[FileUpLoadHelper uploadFile:]:FileUpLoadHelper.m">
-      </ContextState>
-      <ContextState
-         contextName = "-[AbsEntity initWithDict:]:AbsEntity.m">
-      </ContextState>
-      <ContextState
-         contextName = "-[NSDictionary(SafePath) stringWithKeyPath:]:NSDictionary+SafeObject.m">
-      </ContextState>
-      <ContextState
-         contextName = "__31-[FileUpLoadHelper uploadFile:]_block_invoke_2:FileUpLoadHelper.m">
+         contextName = "-[ComplaintsAndRepairViewController tableView:numberOfRowsInSection:]:ComplaintsAndRepairViewController.m">
          <PersistentStrings>
             <PersistentString
-               value = "saveInfoRequestResponseDict">
+               value = "subTableViewDataSource">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "__44-[NBRLoginViewController loginButtonAction:]_block_invoke:NBRLoginViewController.m">
-      </ContextState>
-      <ContextState
-         contextName = "-[NSDictionary(SafePath) numberWithKeyPath:]:NSDictionary+SafeObject.m">
+         contextName = "__54-[NBRFriendCircleViewController requestList1WithFlag:]_block_invoke:NBRFriendCircleViewController.m">
       </ContextState>
       <ContextState
          contextName = "__45-[NBRFriendCircleViewController requestList0]_block_invoke:NBRFriendCircleViewController.m">
@@ -57,13 +82,33 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "-[NBRFriendCircleViewController scrollViewDidEndDecelerating:]:NBRFriendCircleViewController.m">
+         contextName = "-[NSDictionary(SafePath) stringWithKeyPath:]:NSDictionary+SafeObject.m">
+      </ContextState>
+      <ContextState
+         contextName = "+[ComplaintsCell getHeightObjectWithDict:]:ComplaintsCell.m">
+      </ContextState>
+      <ContextState
+         contextName = "__41-[PlotCertListViewController requestList]_block_invoke:PlotCertListViewController.m">
+      </ContextState>
+      <ContextState
+         contextName = "__31-[FileUpLoadHelper uploadFile:]_block_invoke_2:FileUpLoadHelper.m">
          <PersistentStrings>
             <PersistentString
-               value = "scrollView.contentOffset">
+               value = "saveInfoRequestResponseDict">
             </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "__63-[ComplaintsAndRepairViewController requestListBySegmentIndex:]_block_invoke:ComplaintsAndRepairViewController.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[ComplaintsAndRepairViewController numberOfSectionsInTableView:]:ComplaintsAndRepairViewController.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[ComplaintsAndRepairViewController viewDidLoad]:ComplaintsAndRepairViewController.m">
+         <PersistentStrings>
             <PersistentString
-               value = "scrollView.contentSize.height">
+               value = "subTableView">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

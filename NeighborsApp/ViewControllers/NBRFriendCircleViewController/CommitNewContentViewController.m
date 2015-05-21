@@ -381,7 +381,11 @@ const NSInteger CommitImageViewWidthCount     = 5;
             
         case COMMIT_TO_MODE_REPAIR:
         {
-//            commentUploadRequest = [CreaterRequest_Complaint CreateComplaintPostRequestWithContact:contratTextField.text phone:phoneTextField.text address:@"" content:commentInpuTextView.text files:filesArr type:@"0"];
+            commentUploadRequest = [CreaterRequest_Complaint CreateComplaintPostRequestWithContact:contratTextField.text
+                                                                                             phone:phoneTextField.text address:@""
+                                                                                           content:commentInpuTextView.text
+                                                                                             files:filesArr
+                                                                                              type:@"1"];
         }
             break;
             

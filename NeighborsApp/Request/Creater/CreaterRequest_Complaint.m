@@ -45,4 +45,23 @@
     return [CreaterRequest_Complaint RequestWithURL:url requestMethod:REQUEST_METHOD_POST];
 }
 
++ (ASIHTTPRequest*) CreateComplaintListRequestWithType : (NSString *) _type
+                                                  flag : (NSString *) _flag
+                                                 index : (NSString *) _index
+                                                  size : (NSString *) _size
+{
+    NSDictionary *parmsDict = @{
+                                @"type"      : _type,
+                                @"flag"      : _flag,
+                                @"index"     : ITOS(_index.integerValue + 1),
+                                @"size"      : _size,
+                                };
+    
+    NSString *requestURLString = [CreaterRequest_Complaint URLStringWithMethod:@"/api.complaint/list.cmd" parmsDict:parmsDict];
+    
+    NSURL *url = [NSURL URLWithString:requestURLString];
+    
+    return [CreaterRequest_Complaint RequestWithURL:url requestMethod:REQUEST_METHOD_GET];
+}
+
 @end
