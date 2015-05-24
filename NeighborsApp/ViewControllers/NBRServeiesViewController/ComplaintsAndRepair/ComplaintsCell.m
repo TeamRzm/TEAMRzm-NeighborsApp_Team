@@ -54,9 +54,27 @@
     // Configure the view for the selected state
 }
 
-- (void) setDataDict : (NSDictionary *) dict cellMode : (COMPLAINT_CELL_MODE) _mode
+- (id) initWithCellMode:(COMPLAINT_CELL_MODE)_mode dataDict:(NSDictionary *)_obejctDataDict isDetail:(BOOL)_isDetail
 {
-    ComplaintsCellHeightObject *h = [ComplaintsCell getHeightObjectWithDict:dict];
+    self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kNBR_TABLEVIEW_CELL_NOIDENTIFIER];
+    
+    if (self)
+    {
+        subImageViews = [[NSMutableArray alloc] init];
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
+        [self setDataDict:_obejctDataDict cellMode:_mode isDetail:_isDetail];
+        
+        if (_isDetail)
+        {
+            
+        }
+    }
+    return self;
+}
+
+- (void) setDataDict : (NSDictionary *) dict cellMode : (COMPLAINT_CELL_MODE) _mode isDetail : (BOOL) _isDetail
+{
+    ComplaintsCellHeightObject *h = [ComplaintsCell getHeightObjectWithDict:dict isDetail:_isDetail];
     
     //标题
     NSDictionary *titleFormat = @{
@@ -84,45 +102,48 @@
             break;
     }
     
-    titleLable.attributedText = [[NSAttributedString alloc] initWithString:titleString attributes:titleFormat];
-    [titleLable addBreakLineWithStyle:VIEW_BREAKLINE_STYLE_SOLID
-                                   postion:CGPointMake(0, CGRectGetHeight(h.titleLableFrame) - 1)
-                                     width:CGRectGetWidth(h.titleLableFrame)];
-    titleLable.textAlignment = NSTextAlignmentLeft;
-    [self.contentView addSubview:titleLable];
-    
-    //状态
-    NSDictionary *stateFormat = @{
-                                  NSFontAttributeName : [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME size:14.0f],
-                                  NSForegroundColorAttributeName : kNBR_ProjectColor_DeepBlack,
-                                  };
-    stateLable = [[UILabel alloc] initWithFrame:h.stateLableFrame];
-    stateLable.textAlignment = NSTextAlignmentRight;
-    NSString *stateString = @"";
-    
-    switch ([dict numberWithKeyPath:@"state"])
+    if (!_isDetail)
     {
-        case 0: stateString = @"未处理"; break ;
-        case 1: stateString = @"处理中"; break ;
-        case 2: stateString = @"拒绝处理"; break ;
-        case 3: stateString = @"投诉已经关闭"; break ;
-        case 4: stateString = @"处理成功"; break ;
+        titleLable.attributedText = [[NSAttributedString alloc] initWithString:titleString attributes:titleFormat];
+        [titleLable addBreakLineWithStyle:VIEW_BREAKLINE_STYLE_SOLID
+                                  postion:CGPointMake(0, CGRectGetHeight(h.titleLableFrame) - 1)
+                                    width:CGRectGetWidth(h.titleLableFrame)];
+        titleLable.textAlignment = NSTextAlignmentLeft;
+        [self.contentView addSubview:titleLable];
         
-            break;
-            
-        default:
-            break;
+        //状态
+        NSDictionary *stateFormat = @{
+                                      NSFontAttributeName : [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME size:14.0f],
+                                      NSForegroundColorAttributeName : kNBR_ProjectColor_DeepBlack,
+                                      };
+        stateLable = [[UILabel alloc] initWithFrame:h.stateLableFrame];
+        stateLable.textAlignment = NSTextAlignmentRight;
+        NSString *stateString = @"";
+        
+        switch ([dict numberWithKeyPath:@"state"])
+        {
+            case 0: stateString = @"未处理"; break ;
+            case 1: stateString = @"处理中"; break ;
+            case 2: stateString = @"拒绝处理"; break ;
+            case 3: stateString = @"投诉已经关闭"; break ;
+            case 4: stateString = @"处理成功"; break ;
+                
+                break;
+                
+            default:
+                break;
+        }
+        
+        stateLable.attributedText = [[NSAttributedString alloc] initWithString:stateString attributes:stateFormat];
+        [self.contentView addSubview:titleLable];
+        [self.contentView addSubview:stateLable];
     }
-    
-    stateLable.attributedText = [[NSAttributedString alloc] initWithString:stateString attributes:stateFormat];
-    [self.contentView addSubview:titleLable];
-    [self.contentView addSubview:stateLable];
-    
     //内容
     NSDictionary *contentFormat = @{
                                     NSFontAttributeName : [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME size:14.0f],
                                     NSForegroundColorAttributeName : kNBR_ProjectColor_DeepBlack,
                                     };
+    
     contentLable = [[UILabel alloc] initWithFrame:h.contentLableFrame];
     contentLable.attributedText = [[NSAttributedString alloc] initWithString:dict[@"content"] attributes:contentFormat];
     contentLable.numberOfLines = 0;
@@ -200,11 +221,14 @@
     }
     
     //描述信息
-    bottomDescLable = [[UILabel alloc] initWithFrame:h.bottomDescLableFrame];
-    bottomDescLable.attributedText = [[NSAttributedString alloc] initWithString:[dict stringWithKeyPath:@"lastPost"] attributes:contentFormat];
-    [bottomDescLable addBreakLineWithStyle:VIEW_BREAKLINE_STYLE_SOLID postion:CGPointMake(0, 0) width:CGRectGetWidth(h.bottomDescLableFrame)];
-
-    [self.contentView addSubview:bottomDescLable];
+    if (!_isDetail)
+    {
+        bottomDescLable = [[UILabel alloc] initWithFrame:h.bottomDescLableFrame];
+        bottomDescLable.attributedText = [[NSAttributedString alloc] initWithString:[dict stringWithKeyPath:@"lastPost"] attributes:contentFormat];
+        [bottomDescLable addBreakLineWithStyle:VIEW_BREAKLINE_STYLE_SOLID postion:CGPointMake(0, 0) width:CGRectGetWidth(h.bottomDescLableFrame)];
+        
+        [self.contentView addSubview:bottomDescLable];
+    }
 }
 
 - (void) tapSubImageView : (UIGestureRecognizer*) _gesture
@@ -217,7 +241,7 @@
     }
 }
 
-+ (ComplaintsCellHeightObject*) getHeightObjectWithDict : (NSDictionary*) dict
++ (ComplaintsCellHeightObject*) getHeightObjectWithDict : (NSDictionary*) dict isDetail : (BOOL) _isDetail
 {
     ComplaintsCellHeightObject *resultObject = [[ComplaintsCellHeightObject alloc] init];
     
@@ -231,9 +255,18 @@
                                                                         attributes:contentFormat
                                                                            context:nil];
     
-    resultObject.titleLableFrame = CGRectMake(10, 0, kNBR_SCREEN_W - 20, 30.0f);
-    resultObject.stateLableFrame = CGRectMake(10, 0, kNBR_SCREEN_W - 20, 30.0f);
-    resultObject.contentLableFrame = CGRectMake(10, 35, kNBR_SCREEN_W - 20, contentSize.size.height);
+    if (_isDetail)
+    {
+        resultObject.titleLableFrame = CGRectMake(10, 0, kNBR_SCREEN_W - 20, 0);
+        resultObject.stateLableFrame = CGRectMake(10, 0, kNBR_SCREEN_W - 20, 0);
+        resultObject.contentLableFrame = CGRectMake(10, 5, kNBR_SCREEN_W - 20, contentSize.size.height);
+    }
+    else
+    {
+        resultObject.titleLableFrame = CGRectMake(10, 0, kNBR_SCREEN_W - 20, 30.0f);
+        resultObject.stateLableFrame = CGRectMake(10, 0, kNBR_SCREEN_W - 20, 30.0f);
+        resultObject.contentLableFrame = CGRectMake(10, 40, kNBR_SCREEN_W - 20, contentSize.size.height);
+    }
     
     NSArray *contentImageViews = [dict arrayWithKeyPath:@"files"];
     
@@ -283,18 +316,29 @@
                                           kNBR_SCREEN_W,
                                           heightCount * singleImgSize.height);
     
-    resultObject.bottomDescLableFrame = CGRectMake(10,
-                                                   resultObject.imageFrames.origin.y + resultObject.imageFrames.size.height + 10,
-                                                   kNBR_SCREEN_W - 20,
-                                                   35.0f);
+    if (_isDetail)
+    {
+        
+        resultObject.bottomDescLableFrame = CGRectMake(10,
+                                                       resultObject.imageFrames.origin.y + resultObject.imageFrames.size.height + 10,
+                                                       kNBR_SCREEN_W - 20,
+                                                       0.0f);
+    }
+    else
+    {
+        resultObject.bottomDescLableFrame = CGRectMake(10,
+                                                       resultObject.imageFrames.origin.y + resultObject.imageFrames.size.height + 10,
+                                                       kNBR_SCREEN_W - 20,
+                                                       35.0f);
+    }
     
     return resultObject;
 
 }
 
-+ (CGFloat) heightForDataDict : (NSDictionary *) dict
++ (CGFloat) heightForDataDict : (NSDictionary *) dict isDetail : (BOOL) _isDetail
 {
-    ComplaintsCellHeightObject *h = [ComplaintsCell getHeightObjectWithDict:dict];
+    ComplaintsCellHeightObject *h = [ComplaintsCell getHeightObjectWithDict:dict isDetail:_isDetail];
     
     return h.bottomDescLableFrame.origin.y + h.bottomDescLableFrame.size.height;
 }

@@ -8,6 +8,7 @@
 
 #import "ComplaintsAndRepairViewController.h"
 #import "CommitNewContentViewController.h"
+#import "ComplaintsAndRepairDetailViewController.h"
 #import "CreaterRequest_Complaint.h"
 #import "ComplaintsCell.h"
 #import "XHImageViewer.h"
@@ -264,29 +265,32 @@
         cellDict = [subTableViewDataSource[1] objectAtIndex:indexPath.section];
     }
     
-    return [ComplaintsCell heightForDataDict:cellDict];
+    return [ComplaintsCell heightForDataDict:cellDict isDetail:NO];
 }
 
 - (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ComplaintsCell *cell = [[ComplaintsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kNBR_TABLEVIEW_CELL_NOIDENTIFIER];
-    cell.delegate = self;
-    
-    NSDictionary *cellDict;
-    
     if (tableView == subTableView[0])
     {
-        cellDict = [subTableViewDataSource[0] objectAtIndex:indexPath.section];
-        [cell setDataDict:cellDict cellMode:COMPLAINT_CELL_MODE_COMPLAINT];
+        NSDictionary *cellDict = [subTableViewDataSource[0] objectAtIndex:indexPath.section];
+        
+        ComplaintsCell *cell = [[ComplaintsCell alloc] initWithCellMode:COMPLAINT_CELL_MODE_COMPLAINT dataDict:cellDict isDetail:NO];
+        cell.delegate = self;
+        
+        return cell;
     }
     
     if (tableView == subTableView[1])
     {
-        cellDict = [subTableViewDataSource[1] objectAtIndex:indexPath.section];
-        [cell setDataDict:cellDict cellMode:COMPLAINT_CELL_MODE_REPAIR];
+        NSDictionary *cellDict = [subTableViewDataSource[1] objectAtIndex:indexPath.section];
+        
+        ComplaintsCell *cell = [[ComplaintsCell alloc] initWithCellMode:COMPLAINT_CELL_MODE_REPAIR dataDict:cellDict isDetail:NO];
+        cell.delegate = self;
+        
+        return cell;
     }
     
-    return cell;
+    return nil;
 }
 
 - (void) complaintsCell : (ComplaintsCell*) _cell tapSubImageViews : (UIImageView*) tapView allSubImageViews : (NSMutableArray *) _allSubImageviews;
@@ -307,6 +311,31 @@
     {
         dataPageIndex[currSegmentIndex] = 0;
         [self requestListBySegmentIndex:currSegmentIndex];
+    }
+}
+
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (tableView == subTableView[0])
+    {
+        NSDictionary *cellDict = [subTableViewDataSource[0] objectAtIndex:indexPath.section];
+        
+        ComplaintsAndRepairDetailViewController *detailViewController = [[ComplaintsAndRepairDetailViewController alloc] initWithDetaiDataDict:cellDict mode:COMPLAINT_CELL_MODE_COMPLAINT];
+        
+        [self.navigationController pushViewController:detailViewController animated:YES];
+        
+        return ;
+    }
+    
+    if (tableView == subTableView[1])
+    {
+        NSDictionary *cellDict = [subTableViewDataSource[1] objectAtIndex:indexPath.section];
+        
+        ComplaintsAndRepairDetailViewController *detailViewController = [[ComplaintsAndRepairDetailViewController alloc] initWithDetaiDataDict:cellDict mode:COMPLAINT_CELL_MODE_REPAIR];
+        
+        [self.navigationController pushViewController:detailViewController animated:YES];
+        
+        return ;
     }
 }
 

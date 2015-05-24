@@ -64,4 +64,17 @@
     return [CreaterRequest_Complaint RequestWithURL:url requestMethod:REQUEST_METHOD_GET];
 }
 
++ (ASIHTTPRequest*) CreateComplaintStateRequestWithId : (NSString *) _id
+{
+    NSDictionary *parmsDict = @{
+                                @"id"      : _id,
+                                };
+    
+    NSString *requestURLString = [CreaterRequest_Complaint URLStringWithMethod:@"/api.complaint/status.cmd" parmsDict:parmsDict];
+    
+    NSURL *url = [NSURL URLWithString:requestURLString];
+    
+    return [CreaterRequest_Complaint RequestWithURL:url requestMethod:REQUEST_METHOD_GET];
+}
+
 @end

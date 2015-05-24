@@ -44,9 +44,11 @@
 
 //获得目标时间距离当前时间的字符串，比如 “x分钟前，x小时前，今天，昨天。等等格式”
 - (NSString*) nowDateStringForDistanceDateString : (NSString*) _dateString;
++ (NSString*) nowDateStringForDistanceDateString : (NSString*) _dateString;
 
 //例如 Apr 29, 2015 12:00:00 AM
 - (NSDate*) dateWithString : (NSString*) _string;
++ (NSDate*) dateWithString : (NSString*) _string;
 
 
 

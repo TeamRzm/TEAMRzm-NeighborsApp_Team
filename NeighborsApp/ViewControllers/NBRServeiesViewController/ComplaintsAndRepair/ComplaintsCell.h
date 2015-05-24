@@ -10,7 +10,7 @@
 
 typedef enum
 {
-    COMPLAINT_CELL_MODE_COMPLAINT, //投诉用cell
+    COMPLAINT_CELL_MODE_COMPLAINT,  //投诉用cell
     COMPLAINT_CELL_MODE_REPAIR,     //报修用cell
 }COMPLAINT_CELL_MODE;
 
@@ -24,9 +24,11 @@ typedef enum
 
 @interface ComplaintsCell : UITableViewCell
 
+@property (nonatomic, strong) NSDictionary *dataDict;
 @property (nonatomic, assign) id<ComplaintsCellDelegate> delegate;
 
-- (void) setDataDict : (NSDictionary *) dict cellMode : (COMPLAINT_CELL_MODE) _mode;
-+ (CGFloat) heightForDataDict : (NSDictionary *) dict;
+- (id) initWithCellMode : (COMPLAINT_CELL_MODE) _mode dataDict : (NSDictionary*) _obejctDataDict isDetail : (BOOL) _isDetail;
+
++ (CGFloat) heightForDataDict : (NSDictionary *) dict isDetail : (BOOL) _isDetail;
 
 @end

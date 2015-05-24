@@ -15,6 +15,8 @@
 		5B1500E11AE3BDD10033CEA2 /* CommitActivityContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1500E01AE3BDD10033CEA2 /* CommitActivityContentViewController.m */; };
 		5B1500E41AE3F97E0033CEA2 /* ComentDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1500E31AE3F97E0033CEA2 /* ComentDetailViewController.m */; };
 		5B1500E71AE415370033CEA2 /* SubCommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1500E61AE415370033CEA2 /* SubCommentTableViewCell.m */; };
+		5B1F4EDB1B10FCFF00DEB937 /* ComplaintsAndRepairDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1F4EDA1B10FCFF00DEB937 /* ComplaintsAndRepairDetailViewController.m */; };
+		5B1F4EDE1B1258D500DEB937 /* ComplaintsStateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1F4EDD1B1258D500DEB937 /* ComplaintsStateCell.m */; };
 		5B332AC11AE18018002A0A73 /* ActivityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B332AC01AE18018002A0A73 /* ActivityTableViewCell.m */; };
 		5B332AC41AE181EA002A0A73 /* ActivityDateEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B332AC31AE181EA002A0A73 /* ActivityDateEntity.m */; };
 		5B332AC71AE26294002A0A73 /* CommitNewContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B332AC61AE26294002A0A73 /* CommitNewContentViewController.m */; };
@@ -519,6 +521,10 @@
 		5B1500E31AE3F97E0033CEA2 /* ComentDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComentDetailViewController.m; path = ViewControllers/NBRFriendCircleViewController/ComentDetailViewController.m; sourceTree = "<group>"; };
 		5B1500E51AE415370033CEA2 /* SubCommentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SubCommentTableViewCell.h; path = ViewControllers/NBRFriendCircleViewController/SubCommentTableViewCell.h; sourceTree = "<group>"; };
 		5B1500E61AE415370033CEA2 /* SubCommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SubCommentTableViewCell.m; path = ViewControllers/NBRFriendCircleViewController/SubCommentTableViewCell.m; sourceTree = "<group>"; };
+		5B1F4ED91B10FCFF00DEB937 /* ComplaintsAndRepairDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComplaintsAndRepairDetailViewController.h; path = ViewControllers/NBRServeiesViewController/ComplaintsAndRepair/ComplaintsAndRepairDetailViewController.h; sourceTree = "<group>"; };
+		5B1F4EDA1B10FCFF00DEB937 /* ComplaintsAndRepairDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComplaintsAndRepairDetailViewController.m; path = ViewControllers/NBRServeiesViewController/ComplaintsAndRepair/ComplaintsAndRepairDetailViewController.m; sourceTree = "<group>"; };
+		5B1F4EDC1B1258D500DEB937 /* ComplaintsStateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComplaintsStateCell.h; path = ViewControllers/NBRServeiesViewController/ComplaintsAndRepair/ComplaintsStateCell.h; sourceTree = "<group>"; };
+		5B1F4EDD1B1258D500DEB937 /* ComplaintsStateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComplaintsStateCell.m; path = ViewControllers/NBRServeiesViewController/ComplaintsAndRepair/ComplaintsStateCell.m; sourceTree = "<group>"; };
 		5B332ABF1AE18018002A0A73 /* ActivityTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActivityTableViewCell.h; path = ViewControllers/NBRFriendCircleViewController/ActivityTableViewCell.h; sourceTree = "<group>"; };
 		5B332AC01AE18018002A0A73 /* ActivityTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ActivityTableViewCell.m; path = ViewControllers/NBRFriendCircleViewController/ActivityTableViewCell.m; sourceTree = "<group>"; };
 		5B332AC21AE181EA002A0A73 /* ActivityDateEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActivityDateEntity.h; path = ViewControllers/NBRFriendCircleViewController/ActivityDateEntity.h; sourceTree = "<group>"; };
@@ -1605,8 +1611,12 @@
 			children = (
 				5B5B230B1B0CFCD40057590C /* ComplaintsCell.h */,
 				5B5B230C1B0CFCD40057590C /* ComplaintsCell.m */,
+				5B1F4EDC1B1258D500DEB937 /* ComplaintsStateCell.h */,
+				5B1F4EDD1B1258D500DEB937 /* ComplaintsStateCell.m */,
 				5B5B23021B0CC0D60057590C /* ComplaintsAndRepairViewController.h */,
 				5B5B23031B0CC0D60057590C /* ComplaintsAndRepairViewController.m */,
+				5B1F4ED91B10FCFF00DEB937 /* ComplaintsAndRepairDetailViewController.h */,
+				5B1F4EDA1B10FCFF00DEB937 /* ComplaintsAndRepairDetailViewController.m */,
 			);
 			name = ComplaintsAndRepair;
 			sourceTree = "<group>";
@@ -2969,6 +2979,7 @@
 				5B5B23101B0CFFA00057590C /* UIView+BreakLine.m in Sources */,
 				5B38BA4A1AF5D4D700775F64 /* NSString+MD5.m in Sources */,
 				5B4FD5261B087C62005DA131 /* XGMessage.m in Sources */,
+				5B1F4EDB1B10FCFF00DEB937 /* ComplaintsAndRepairDetailViewController.m in Sources */,
 				5B38BA4E1AF5DECF00775F64 /* NSString+base64.m in Sources */,
 				96FB995A1B0885FF0051A9B6 /* NBRDynamicofPropertyViewController.m in Sources */,
 				5BD83CEB1AD61F4B00D1A3EC /* SBJsonWriter.m in Sources */,
@@ -3082,6 +3093,7 @@
 				5BD83C8F1AD61EF600D1A3EC /* ASICloudFilesCDNRequest.m in Sources */,
 				5B332ACA1AE268D6002A0A73 /* UITextView+Placeholder.m in Sources */,
 				5BED3BEA1AFA8EFB00AA8001 /* CreaterRequest_Conv.m in Sources */,
+				5B1F4EDE1B1258D500DEB937 /* ComplaintsStateCell.m in Sources */,
 				5BD83CEA1AD61F4B00D1A3EC /* SBJsonUTF8Stream.m in Sources */,
 				5B5B230D1B0CFCD40057590C /* ComplaintsCell.m in Sources */,
 				5BD83CE31AD61F4B00D1A3EC /* SBJsonStreamParserAccumulator.m in Sources */,

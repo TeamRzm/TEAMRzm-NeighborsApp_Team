@@ -286,6 +286,86 @@
     return;
 }
 
++ (NSString*) nowDateStringForDistanceDateString : (NSString*) _dateString
+{
+    NSString *createdTime = _dateString;
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setTimeZone:[NSTimeZone systemTimeZone]];
+    dateFormatter.dateFormat = @"LLL d,yyyy hh:mm:ss a";
+    
+    NSDate *createdDate = [dateFormatter dateFromString:createdTime];
+    NSTimeInterval distanceSec = [[NSDate date] timeIntervalSinceDate:createdDate];
+    
+    NSTimeInterval sec = distanceSec;
+    
+    //六十秒
+    if (sec / 60 <= 5 )
+    {
+        createdTime = @"刚刚";
+    }
+    
+    if (sec / 60 > 5)
+    {
+        createdTime = [NSString stringWithFormat:@"%d分钟前", (int)sec / 60];
+    }
+    
+    if (sec / 3600 > 1)
+    {
+        createdTime = [NSString stringWithFormat:@"%d小时前", (int)sec / 3600];
+    }
+    
+    //大于六小时，小于24小时
+    if (sec / 3600 > 6.0f && sec / 3600 < 24.0f)
+    {
+        NSDateFormatter *formarter = [[NSDateFormatter alloc] init];
+        [formarter setTimeZone:[NSTimeZone systemTimeZone]];
+        formarter.dateFormat = @"今天 H:mm";
+        
+        createdTime = [NSString stringWithFormat:@"%@", [formarter stringFromDate:createdDate]];
+    }
+    
+    //大于二十四小时小雨48小时
+    if (sec / 3600 > 24 && sec / 3600 < 48)
+    {
+        NSDateFormatter *formarter = [[NSDateFormatter alloc] init];
+        [formarter setTimeZone:[NSTimeZone systemTimeZone]];
+        formarter.dateFormat = @"昨天 H:mm";
+        
+        createdTime = [NSString stringWithFormat:@"%@", [formarter stringFromDate:createdDate]];
+    }
+    
+    //大于48小时小于72小时
+    if (sec / 3600 > 24 && sec / 3600 < 72)
+    {
+        NSDateFormatter *formarter = [[NSDateFormatter alloc] init];
+        [formarter setTimeZone:[NSTimeZone systemTimeZone]];
+        formarter.dateFormat = @"前天 H:mm";
+        
+        createdTime = [NSString stringWithFormat:@"%@", [formarter stringFromDate:createdDate]];
+    }
+    
+    if (sec / 3600 > 72)
+    {
+        NSDateFormatter *defulatFormat = [[NSDateFormatter alloc] init];
+        [defulatFormat setTimeZone:[NSTimeZone systemTimeZone]];
+        defulatFormat.dateFormat = @"M月d日 H:mm";
+        createdTime = [NSString stringWithFormat:@"%@", [defulatFormat stringFromDate:createdDate]];
+    }
+    
+    //大于一个月
+    if (sec / 3600 > 24 * 31)
+    {
+        NSDateFormatter *formarter = [[NSDateFormatter alloc] init];
+        [formarter setTimeZone:[NSTimeZone systemTimeZone]];
+        formarter.dateFormat = @"YY年M月d日 H:mm";
+        
+        createdTime = [NSString stringWithFormat:@"%@", [formarter stringFromDate:createdDate]];
+    }
+    
+    return createdTime;
+}
+
 - (NSString*) nowDateStringForDistanceDateString : (NSString*) _dateString
 {
     NSString *createdTime = _dateString;
@@ -367,6 +447,14 @@
     
 }
 
++ (NSDate*) dateWithString : (NSString*) _string
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setTimeZone:[NSTimeZone systemTimeZone]];
+    dateFormatter.dateFormat = @"LLL d,yyyy hh:mm:ss a";
+    
+    return [dateFormatter dateFromString:_string];
+}
 
 - (NSDate*) dateWithString : (NSString*) _string
 {

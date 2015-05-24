@@ -27,5 +27,8 @@
                                                  index : (NSString *) _index
                                                   size : (NSString *) _size;
 
+//获取报修或投诉状态
++ (ASIHTTPRequest*) CreateComplaintStateRequestWithId : (NSString *) _id;
+
 
 @end
