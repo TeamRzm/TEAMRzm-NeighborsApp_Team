@@ -12,18 +12,39 @@
 
 @interface PlotCertListViewController ()<UITableViewDataSource, UITableViewDelegate>
 {
-    UITableView *boundTableView;
-    NSMutableArray *boundTableViewDataSource;
+    UITableView                             *boundTableView;
+    NSMutableArray                          *boundTableViewDataSource;
     
-    ASIHTTPRequest  *listAppliesRequest;
+    ASIHTTPRequest                          *listAppliesRequest;
+    
+    BOOL                                    isSelectMode;
+    id<PlotCertListViewControllerDelegate>  selectDelegate;
 }
 @end
 
 @implementation PlotCertListViewController
 
+- (id) initWithSelect : (BOOL) _isSelectMode selectDelegate : (id<PlotCertListViewControllerDelegate>) delegate
+{
+    self = [super initWithNibName:nil bundle:nil];
+    if (self)
+    {
+        isSelectMode = _isSelectMode;
+        selectDelegate = delegate;
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"小区认证";
+    if (isSelectMode)
+    {
+        self.title = @"请选择切换的小区";
+    }
+    else
+    {
+        self.title = @"小区认证";
+    }
 
     boundTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kNBR_SCREEN_W, kNBR_SCREEN_H) style:UITableViewStyleGrouped];
     boundTableView.delegate = self;
@@ -171,6 +192,18 @@
     [cell.contentView addSubview:cellBoundView];
     
     return cell;
+}
+
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (selectDelegate && [selectDelegate respondsToSelector:@selector(plotCertListViewController:selectAddressDict:)])
+    {
+        NSDictionary *addressDict = boundTableViewDataSource[indexPath.row];
+        
+        [selectDelegate plotCertListViewController:self selectAddressDict:addressDict];
+        
+        return ;
+    }
 }
 
 - (void) requestList

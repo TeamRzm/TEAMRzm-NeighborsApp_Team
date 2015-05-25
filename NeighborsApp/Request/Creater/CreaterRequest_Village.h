@@ -40,7 +40,7 @@
 //删除我入住的某个小区
 + (ASIHTTPRequest*) CreateDeleteAppLinesRequestWithID : (NSString*) ID;
 
-//切换当前xiaoqu
+//切换当前小区
 + (ASIHTTPRequest*) CreateExchangeRequestWithID : (NSString*) ID;
 
 

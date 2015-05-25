@@ -20,7 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self setTitle:@"花名册"];
+    [self setTitle:@"物业花名册"];
     
     [self initSubView];
     
@@ -39,10 +39,7 @@
     [myTableview setRowHeight:56.0f];
     [self.view addSubview:myTableview];
     
-    
     [self GetMemberInfo];
-    
-    
 }
 
 -(void) GetMemberInfo
@@ -57,7 +54,6 @@
         {
             memberArr = (NSMutableArray *)[reponseDict arrayWithKeyPath:@"data\\result"];
             [myTableview reloadData];
-            
         }
     }];
     
@@ -83,10 +79,9 @@
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     
     NSMutableDictionary *subdic = memberArr[indexPath.section][@"members"][indexPath.row];
-    NSLog(@"subdic ==%@",subdic);
     
     //头像
-    EGOImageView *avterImgView = [[EGOImageView alloc] initWithPlaceholderImage: [UIImage imageNamed:@"defaultAvater"]];
+    EGOImageView *avterImgView = [[EGOImageView alloc] initWithPlaceholderImage:[UIImage imageNamed:@"defaultAvater"]];
     avterImgView.frame = CGRectMake(10.0f, 56 / 2.0f - 43 / 2.0f, 43, 43);
     avterImgView.layer.cornerRadius = avterImgView.frame.size.width / 2.0f;
     avterImgView.layer.masksToBounds = YES;
@@ -97,7 +92,7 @@
                                                                     10,
                                                                     kNBR_SCREEN_W - 68.0f - 10,
                                                                     20.0f)];
-    titleLable.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME_BLOD size:15.0f];
+    titleLable.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME_BLOD size:14.0f];
     titleLable.textColor = kNBR_ProjectColor_DeepGray;
     titleLable.text = subdic[@"linkman"];
     //电话
@@ -106,7 +101,7 @@
                                                                     titleLable.frame.origin.y+20.0f,
                                                                     kNBR_SCREEN_W - 68.0f - 10,
                                                                     20.0f)];
-    phoneLable.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME_BLOD size:15.0f];
+    phoneLable.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME_BLOD size:13.0f];
     phoneLable.textColor = kNBR_ProjectColor_MidGray;
     phoneLable.text = subdic[@"phone"];
     
@@ -115,7 +110,7 @@
                                                                     titleLable.frame.origin.y,
                                                                      68.0f - 10,
                                                                     20.0f)];
-    dutyLable.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME_BLOD size:15.0f];
+    dutyLable.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME_BLOD size:13.0f];
     dutyLable.textColor = kNBR_ProjectColor_MidGray;
     dutyLable.text = subdic[@"duty"];
 
@@ -139,7 +134,7 @@
                                                                     0.0f,
                                                                     kNBR_SCREEN_W - 68.0f - 10,
                                                                     30.0f)];
-    nameLabel.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME_BLOD size:15.0f];
+    nameLabel.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME_BLOD size:14.0f];
     nameLabel.textColor = kNBR_ProjectColor_DeepGray;
     nameLabel.text = subdic[@"name"];
     
@@ -148,7 +143,7 @@
                                                                    0.0f,
                                                                    68.0f - 10,
                                                                    30.0f)];
-    countLabel.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME_BLOD size:15.0f];
+    countLabel.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME_BLOD size:13.0f];
     countLabel.textColor = kNBR_ProjectColor_DeepGray;
     countLabel.text = [NSString stringWithFormat:@"%d人",[subdic[@"members"] count]];
     countLabel.textAlignment = NSTextAlignmentRight;
@@ -171,10 +166,10 @@
 
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSMutableDictionary *subdic = memberArr[indexPath.section][@"members"][indexPath.row];
-    NSLog(@"subdic ==%@",subdic);
-    NBRFriendInfoViewController *infoview = [[NBRFriendInfoViewController alloc] init];
-    [self.navigationController pushViewController:infoview animated:YES];
+//    NSMutableDictionary *subdic = memberArr[indexPath.section][@"members"][indexPath.row];
+//    NSLog(@"subdic ==%@",subdic);
+//    NBRFriendInfoViewController *infoview = [[NBRFriendInfoViewController alloc] init];
+//    [self.navigationController pushViewController:infoview animated:YES];
 }
 
 

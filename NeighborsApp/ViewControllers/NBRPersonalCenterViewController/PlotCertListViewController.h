@@ -8,6 +8,16 @@
 
 #import "NBRBaseViewController.h"
 
+@class PlotCertListViewController;
+
+@protocol PlotCertListViewControllerDelegate <NSObject>
+
+- (void) plotCertListViewController : (PlotCertListViewController*) viewController selectAddressDict : (NSDictionary *) _dict;
+
+@end
+
 @interface PlotCertListViewController : NBRBaseViewController
+
+- (id) initWithSelect : (BOOL) _isSelectMode selectDelegate : (id<PlotCertListViewControllerDelegate>) delegate;
 
 @end

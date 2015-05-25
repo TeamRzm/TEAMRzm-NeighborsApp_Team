@@ -9,13 +9,25 @@
 #import "NBRServeiesViewController.h"
 #import "NBRDynamicofPropertyViewController.h"
 #import "NBRSmallRosterViewController.h"
+#import "ComplaintsAndRepairViewController.h"
+#import "PlotCertListViewController.h"
+#import "ServerProjectViewController.h"
 
 #import "CreateRequest_Server.h"
-#import "ComplaintsAndRepairViewController.h"
+#import "CreaterRequest_Residence.h"
+#import "CreaterRequest_Village.h"
+
+#import "RefreshControl.h"
 
 
-@interface NBRServeiesViewController ()
 
+@interface NBRServeiesViewController () <PlotCertListViewControllerDelegate,RefreshControlDelegate>
+{
+    ASIHTTPRequest  *bannerRequest;
+    ASIHTTPRequest  *exchangeVillageRequest;
+    
+    RefreshControl  *refreshController;
+}
 @end
 
 @implementation NBRServeiesViewController
@@ -25,12 +37,42 @@
     // Do any additional setup after loading the view.
     [self setTitle:@"服务"];
     [self initSubView];
-    [self SetBaseNavigationRightItemWithTitle:@"切换"];
-    
-    [self GetDynamicList];
+    [self SetBaseNavigationRightItemWithTitle:@"切换小区"];
+    [self requestBanner];
 }
 
 #pragma mark Init Method
+- (void) requestBanner
+{
+    bannerRequest = [CreaterRequest_Residence CreateResidenceNewsRequestWithFlag:@"1"
+                                                                            size:@""
+                                                                           index:@""];
+    
+    __weak ASIHTTPRequest* blockRequest = bannerRequest;
+    
+    [blockRequest setCompletionBlock:^{
+        [self removeLoadingView];
+        NSDictionary *responseDict = blockRequest.responseString.JSONValue;
+        
+        [refreshController finishRefreshingDirection:RefreshDirectionTop];
+        
+        if ([CreaterRequest_Residence CheckErrorResponse:responseDict errorAlertInViewController:self])
+        {
+            scrollDataArr = (NSMutableArray *)[responseDict arrayWithKeyPath:@"data\\result\\data"];
+            
+            [self CreateHeaderView];
+            [myTableview reloadData];
+            return ;
+        }
+        
+    }];
+    
+    [self setDefaultRequestFaild:blockRequest];
+    
+    [self addLoadingView];
+    [blockRequest startAsynchronous];
+}
+
 -(void) initSubView
 {
     titleNameArr = [[NSMutableArray alloc] init];
@@ -42,7 +84,7 @@
     [logoArr addObject:[NSArray arrayWithObjects:@"wuyehuamingce",@"teyuefuwu", nil]];
     
 
-    myTableview =[[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, kNBR_SCREEN_W, kNBR_SCREEN_H) style:UITableViewStyleGrouped];
+    myTableview =[[UITableView alloc] initWithFrame:CGRectMake(0.0f, 64.0f, kNBR_SCREEN_W, kNBR_SCREEN_H - 64 - 49) style:UITableViewStyleGrouped];
     [myTableview setBackgroundView:nil];
     [myTableview setBackgroundColor:[UIColor clearColor]];
     [myTableview setDelegate:self];
@@ -51,18 +93,16 @@
     [myTableview setSeparatorColor:[UIColor clearColor]];
     [myTableview setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
+    refreshController = [[RefreshControl alloc] initWithScrollView:myTableview delegate:self];
+    refreshController.topEnabled = YES;
+    
     [self.view addSubview:myTableview];
-    
-    [self CreateHeaderView];
-    
-    
 }
 
 -(void) CreateHeaderView
 {
-    scrollDataArr = [[NSMutableArray alloc] initWithObjects:@"t_avter_1",@"t_avter_2",@"t_avter_3", nil];
-    
     UIView *headerview = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, kNBR_SCREEN_W, 140.0f)];
+    
     [myTableview setTableHeaderView:headerview];
     
     headerScrollview = [[UIScrollView alloc] initWithFrame:headerview.frame];
@@ -73,10 +113,12 @@
     [headerScrollview setContentSize:CGSizeMake(kNBR_SCREEN_W*scrollDataArr.count, headerScrollview.frame.size.height)];
     [headerview addSubview:headerScrollview];
     
-    for (int  j = 0; j<scrollDataArr.count; j++)
+    for (int j = 0; j < scrollDataArr.count; j++)
     {
+        NSDictionary *subDict = scrollDataArr[j];
         //头像
-        EGOImageView *avterImgView = [[EGOImageView alloc] initWithPlaceholderImage: [UIImage imageNamed:scrollDataArr[j]]];
+        EGOImageView *avterImgView = [[EGOImageView alloc] initWithPlaceholderImage:[UIImage imageNamed:@""]];
+        avterImgView.imageURL = [NSURL URLWithString:[subDict stringWithKeyPath:@"image"]];
         avterImgView.frame = CGRectMake(0+j*kNBR_SCREEN_W, 0.0f,kNBR_SCREEN_W,headerScrollview.frame.size.height);
         avterImgView.tag = j;
         [avterImgView setContentMode:UIViewContentModeScaleAspectFit];
@@ -95,33 +137,7 @@
     [pagcontrol addTarget:self action:@selector(PageValueChange:) forControlEvents:UIControlEventValueChanged];
     [pagcontrol setCurrentPage:0];
     [headerview addSubview:pagcontrol];
-    
-
 }
-
-//获取推荐的动态
--(void) GetDynamicList
-{
-    dynamicRecReq = [CreateRequest_Server CreateDynamicOfPropertyInfoWithIndex:@"1" Flag:@"1" Size:@"10"];
-    __weak ASIHTTPRequest *selfblock = dynamicRecReq;
-    [selfblock setCompletionBlock:^{
-        NSDictionary *reponseDict = selfblock.responseString.JSONValue;
-        [self removeLoadingView];
-        
-        if ([CreateRequest_Server CheckErrorResponse:reponseDict errorAlertInViewController:self])
-        {
-            scrollDataArr = (NSMutableArray *)[reponseDict arrayWithKeyPath:@"data\\result\\data"];
-            
-        }
-    }];
-    
-    [self setDefaultRequestFaild:selfblock];
-    
-    [self addLoadingView];
-    [dynamicRecReq startAsynchronous];
-    
-}
-
 
 #pragma mark tableview delegate
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -166,11 +182,7 @@
         [titleLabel setTextAlignment:NSTextAlignmentCenter];
         [titleLabel setText:subnameArr[i]];
         [contentview addSubview:titleLabel];
-        
-        
     }
-    
-    
     
     return cell;
     
@@ -208,6 +220,16 @@
             
         }
             break;
+            
+        case 4:
+        {
+            ServerProjectViewController *rosterview = [[ServerProjectViewController alloc] initWithNibName:nil bundle:nil];
+            [rosterview setHidesBottomBarWhenPushed:YES];
+            
+            [self.navigationController pushViewController:rosterview animated:YES];
+            
+        }
+            break ;
 
             
         default:
@@ -227,7 +249,7 @@
     [rightbt setBackgroundColor:kNBR_ProjectColor_StandBlue];
     [rightbt setTitle:title forState:UIControlStateNormal];
     [rightbt.layer setCornerRadius:4.0f];
-    UIFont *font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME_BLOD size:16.0f];
+    UIFont *font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME_BLOD size:14.0f];
     [rightbt setTitleColor:kNBR_ProjectColor_StandWhite forState:UIControlStateNormal];
     [rightbt.titleLabel setFont:font];
     [rightbt sizeToFit];
@@ -239,7 +261,11 @@
 
 -(void) BaseNavigatinRightItemClicked:(UIButton *) sender
 {
-    NSLog(@"right item clicked!");
+    PlotCertListViewController *plotCertSelectViewController = [[PlotCertListViewController alloc] initWithSelect:YES selectDelegate:self];
+
+    plotCertSelectViewController.hidesBottomBarWhenPushed = YES;
+    
+    [self.navigationController pushViewController:plotCertSelectViewController animated:YES];
 }
 
 #pragma mark scrollview delegate
@@ -254,21 +280,49 @@
     [headerScrollview setContentOffset:CGPointMake(sender.currentPage*kNBR_SCREEN_W, 0.0f) animated:YES];
 }
 
-
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
+- (void) plotCertListViewController : (PlotCertListViewController*) viewController selectAddressDict : (NSDictionary *) _dict
+{
+    exchangeVillageRequest = [CreaterRequest_Village CreateExchangeRequestWithID:_dict[@"villageId"]];
+    
+    __weak ASIHTTPRequest *blockRequest = exchangeVillageRequest;
+    
+    [blockRequest setCompletionBlock:^{
+        [self removeLoadingView];
+        NSDictionary *responseDict = blockRequest.responseString.JSONValue;
+        
+        if ([CreaterRequest_Village CheckErrorResponse:responseDict errorAlertInViewController:self])
+        {
+            [self showBannerMsgWithString:[responseDict stringWithKeyPath:@"data\\code\\message"]];
+            
+            [self.navigationController popViewControllerAnimated:YES];
+            
+            [self requestBanner];
+            
+            return ;
+        }
+        
+    }];
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    [self setDefaultRequestFaild:blockRequest];
+    
+    [self addLoadingView];
+    [blockRequest startAsynchronous];
+    
+    return ;
 }
-*/
+
+- (void)refreshControl:(RefreshControl *)refreshControl didEngageRefreshDirection:(RefreshDirection) direction
+{
+    //刷新
+    if (direction == RefreshDirectionTop)
+    {
+        [self requestBanner];
+    }
+}
 
 @end

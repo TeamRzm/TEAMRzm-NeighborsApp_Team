@@ -13,7 +13,7 @@
 +(ASIHTTPRequest *)CreateDynamicOfPropertyInfoWithIndex:(NSString *)_index Flag:(NSString *)_flag Size:(NSString *)_size
 {
     NSDictionary *parmsDict = @{
-                                @"index"    : _index,
+                                @"index"    : ITOS(_index.integerValue + 1),
                                 @"size"     : _size,
                                 @"flag"     : _flag
                                 };

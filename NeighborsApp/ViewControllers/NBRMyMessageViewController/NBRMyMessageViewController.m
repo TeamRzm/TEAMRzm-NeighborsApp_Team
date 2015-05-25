@@ -393,6 +393,7 @@
     }
     else if (tableView == rightTableView)
     {
+        return cell;
         NSDictionary *sectionDictory = rightTableViewDateSource[indexPath.section];
         
         ConversationEntity *subConversation = sectionDictory.allValues[0][indexPath.row];

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
 #import "AppDelegate.h"
 #import "ALAlertBanner.h"
 #import "SIAlertView.h"
@@ -17,6 +18,9 @@
 #import "EGOImageView.h"
 
 #import "CTAssetsPickerController.h"
+
+typedef void (^AddressBlock)(CLLocation *location);
+
 
 @interface NBRBaseViewController : UIViewController
 {
@@ -41,6 +45,10 @@
 - (void) takePhoto;
 
 - (void) takePhotoWithCount : (NSInteger) _count;
+
+//获取经纬度
+- (void) startGetLoctionWithSuccessBlock : (AddressBlock) successBlock
+                              faildBlock : (AddressBlock) faildBlock;
 
 //获得目标时间距离当前时间的字符串，比如 “x分钟前，x小时前，今天，昨天。等等格式”
 - (NSString*) nowDateStringForDistanceDateString : (NSString*) _dateString;
