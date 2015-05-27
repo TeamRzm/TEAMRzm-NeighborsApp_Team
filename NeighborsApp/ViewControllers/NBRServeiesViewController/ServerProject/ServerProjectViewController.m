@@ -9,8 +9,9 @@
 #import "ServerProjectViewController.h"
 #import "CreaterRequest_Conv.h"
 #import "RefreshControl.h"
+#import "CCLocationManager.h"
 
-@interface ServerProjectViewController ()<UITableViewDataSource, UITableViewDelegate,RefreshControlDelegate>
+@interface ServerProjectViewController ()<UITableViewDataSource, UITableViewDelegate,RefreshControlDelegate,CLLocationManagerDelegate>
 {
     UITableView     *boundTableView;
     NSMutableArray  *boundDataSource;
@@ -23,6 +24,8 @@
     NSString        *lng;
     
     ASIHTTPRequest  *convListReuqest;
+    
+    CLLocationManager *locationmanager;
 }
 
 @end
@@ -48,8 +51,6 @@
     }];
     
     [self setDefaultRequestFaild:blockRequest];
-    
-    [self addLoadingView];
     [blockRequest startAsynchronous];
 }
 
@@ -65,11 +66,30 @@
     refreshController = [[RefreshControl alloc] initWithScrollView:boundTableView delegate:self];
     refreshController.enableInsetTop = YES;
     
-    [self startGetLoctionWithSuccessBlock:^(CLLocation *location) {
-        [self requestList];
-    } faildBlock:^(CLLocation *location) {
-        [self showBannerMsgWithString:@"地理位置信息获取失败，请重试。"];
-    }];
+    if ([CLLocationManager locationServicesEnabled])
+    {
+        [UIApplication sharedApplication].idleTimerDisabled = TRUE;
+        locationmanager = [[CLLocationManager alloc] init];
+        [locationmanager requestAlwaysAuthorization];        //NSLocationAlwaysUsageDescription
+//        [locationmanager requestWhenInUseAuthorization];     //NSLocationWhenInUseDescription
+        locationmanager.delegate = self;
+        
+        
+        [[CCLocationManager shareLocation] getLocationCoordinate:^(CLLocationCoordinate2D locationCorrrdinate) {
+            lat = [NSString stringWithFormat:@"%f", locationCorrrdinate.latitude];
+            lng = [NSString stringWithFormat:@"%f", locationCorrrdinate.longitude];
+            
+            [self requestList];
+        }];
+        
+        [self addLoadingView];
+    }
+    else
+    {
+        [self showBannerMsgWithString:@"该功能需要使用定位服务"];
+        
+        return ;
+    }
     
     return ;
 }
