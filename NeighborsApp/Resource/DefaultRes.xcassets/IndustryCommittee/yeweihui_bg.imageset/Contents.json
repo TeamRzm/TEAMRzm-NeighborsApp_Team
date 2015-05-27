@@ -7,11 +7,12 @@
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "tousubx.png"
+      "filename" : "yeweihui_bg_ios2X.jpg"
     },
     {
       "idiom" : "universal",
-      "scale" : "3x"
+      "scale" : "3x",
+      "filename" : "yeweihui_bg_IOS3x.jpg"
     }
   ],
   "info" : {

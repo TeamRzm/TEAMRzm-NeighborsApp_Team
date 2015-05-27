@@ -16,7 +16,7 @@
                                            lng : (NSString*) lng
 {
     NSDictionary *parmsDict = @{
-                                @"index"    : index,
+                                @"index"    : ITOS(index.integerValue+1),
                                 @"size"     : size,
                                 @"lat"      : lat,
                                 @"lng"      : lng,

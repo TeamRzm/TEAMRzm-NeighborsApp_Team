@@ -12,6 +12,7 @@
 #import "ComplaintsAndRepairViewController.h"
 #import "PlotCertListViewController.h"
 #import "ServerProjectViewController.h"
+#import "IndustryCommitteeViewController.h"
 
 #import "CreateRequest_Server.h"
 #import "CreaterRequest_Residence.h"
@@ -196,10 +197,18 @@
     {
         case 0:
         {
-            NBRDynamicofPropertyViewController *dynamicview = [[NBRDynamicofPropertyViewController alloc] initWithNibName:nil bundle:nil];
+            NBRDynamicofPropertyViewController *dynamicview = [[NBRDynamicofPropertyViewController alloc] initWithMode:DYNAMICO_PROPERTY_VIEWCONTROLLER_MODE_ZONE];
             [dynamicview setHidesBottomBarWhenPushed:YES];
             [self.navigationController pushViewController:dynamicview animated:YES];
             
+        }
+            break;
+            
+        case 2:
+        {
+            IndustryCommitteeViewController *dynamicview = [[IndustryCommitteeViewController alloc] initWithNibName:@"IndustryCommitteeViewController" bundle:nil];
+            [dynamicview setHidesBottomBarWhenPushed:YES];
+            [self.navigationController pushViewController:dynamicview animated:YES];
         }
             break;
             

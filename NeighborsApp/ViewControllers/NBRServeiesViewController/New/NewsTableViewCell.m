@@ -8,19 +8,20 @@
 
 #import "NewsTableViewCell.h"
 #import "EGOImageView.h"
+#import "XHImageViewer.h"
 
 #define NewsTitleFormat @{\
-NSFontAttributeName : [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME size:15.0f],\
+NSFontAttributeName : [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME size:16.0f],\
 NSForegroundColorAttributeName : kNBR_ProjectColor_StandBlue,\
 }
 
 #define NewsContentFormat @{\
-NSFontAttributeName : [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME size:14.0f],\
+NSFontAttributeName : [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME size:15.0f],\
 NSForegroundColorAttributeName : kNBR_ProjectColor_DeepBlack,\
 }
 
 #define NesDescriptFormat @{\
-NSFontAttributeName : [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME size:13.0f],\
+NSFontAttributeName : [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME size:14.0f],\
 NSForegroundColorAttributeName : kNBR_ProjectColor_DeepGray,\
 }
 
@@ -31,17 +32,13 @@ typedef struct {
     CGRect imageFrame;
     CGRect addressFrame;
     CGRect timeFrame;
-    
-    CGSize sigenImgFrame;
 } NewTableViewCellHeightStruct;
 
-@interface NewsTableViewCell()
+@interface NewsTableViewCell() <XHImageViewerDelegate>
 {
-    UILabel *titleLable;
-    UILabel *contentLable;
-    UIView  *imageView;
-    
-    NSArray *imageViewSubImgArr;
+    UILabel             *titleLable;
+    UILabel             *contentLable;
+    EGOImageView        *imageView;
 }
 
 @end
@@ -69,73 +66,26 @@ typedef struct {
     [self.contentView addSubview:contentLable];
     
     //图片
-    imageView = [[UIView alloc] initWithFrame:heightStruct.imageFrame];
-    imageView.backgroundColor = [UIColor clearColor];
-    [self.contentView addSubview:imageView];
-    
-    
-    NSInteger widthCount;
-    CGSize singleImgSize = CGSizeZero;
-    imageViewSubImgArr = [_dict arrayWithKeyPath:@"files"];
-    switch (imageViewSubImgArr.count)
+    if ([_dict stringWithKeyPath:@"image"].length > 0)
     {
-        case 1:
-        {
-            widthCount = 1;
-            singleImgSize = CGSizeMake((kNBR_SCREEN_W - (43 + 10 * 3) - 10) / 1.0f,
-                                       (kNBR_SCREEN_W - (43 + 10 * 3) - 10) / 1.0f);
-        }
-            break;
-            
-        case 2:
-        case 4:
-        {
-            widthCount = 2;
-            singleImgSize = CGSizeMake((kNBR_SCREEN_W - (43 + 10 * 3) - 10) / 2.0f,
-                                       (kNBR_SCREEN_W - (43 + 10 * 3) - 10) / 2.0f);
-        }
-            break;
-            
-        case 0:
-        case 3:
-        case 5:
-        case 6:
-        case 7:
-        case 8:
-        case 9:
-        default:
-        {
-            widthCount = 3;
-            singleImgSize = CGSizeMake((kNBR_SCREEN_W - (43 + 10 * 3) - 10) / 3.0f,
-                                       (kNBR_SCREEN_W - (43 + 10 * 3) - 10) / 3.0f);
-        }
-            break;
-    }
-    
-    NSInteger yIndex = imageViewSubImgArr.count > 9 ? 9 : imageViewSubImgArr.count;
-    yIndex = yIndex % widthCount == 0 ? yIndex / widthCount : yIndex / widthCount + 1;
-    
-    for (int i = 0; i < imageViewSubImgArr.count; i++)
-    {
-        EGOImageView *subImageView = [[EGOImageView alloc] initWithPlaceholderImage:[UIImage imageNamed:@""]];
+        imageView = [[EGOImageView alloc] initWithFrame:heightStruct.imageFrame];
+        imageView.imageURL = [NSURL URLWithString:[_dict stringWithKeyPath:@"image"]];
+        imageView.contentMode = UIViewContentModeScaleAspectFit;
+        imageView.userInteractionEnabled = YES;
+        [self.contentView addSubview:imageView];
         
-        subImageView.frame = CGRectMake(i % widthCount,
-                                        i / widthCount,
-                                        singleImgSize.width,
-                                        singleImgSize.height);
-        
-        subImageView.imageURL = [NSURL URLWithString:[_dict stringWithKeyPath:@"url"]];
-        subImageView.tag = i;
-        subImageView.userInteractionEnabled = YES;
-
-        UITapGestureRecognizer *tapGesutre = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGestureWithObject:)];
-        [subImageView addGestureRecognizer:tapGesutre];
-
-        [_subImageViews addObject:subImageView];
-        [imageView addSubview:subImageView];
+        UITapGestureRecognizer *tapImage = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(zoomOutImage:)];
+        [imageView addGestureRecognizer:tapImage];
     }
     
     return ;
+}
+
+- (void) zoomOutImage:(UITapGestureRecognizer*) tapView
+{
+    XHImageViewer *imageViewer = [[XHImageViewer alloc] init];
+    imageViewer.delegate = self;
+    [imageViewer showWithImageViews:@[tapView.view] selectedView:tapView.view];
 }
 
 - (void) tapGestureWithObject : (UITapGestureRecognizer*) gesture
@@ -165,61 +115,23 @@ typedef struct {
                                          CGRectGetHeight(tempTitleFrame)
                                          );
     
+    if ([_dict stringWithKeyPath:@"image"].length <= 0)
+    {
+        heightStruce.imageFrame = heightStruce.titleFrame;
+    }
+    else
+    {
+        heightStruce.imageFrame = CGRectMake(10,
+                                             heightStruce.titleFrame.origin.y + CGRectGetHeight(heightStruce.titleFrame) + 10,
+                                             300,
+                                             140);
+    }
+    
     heightStruce.contentFrame = CGRectMake(10,
-                                           5 + CGRectGetHeight(tempTitleFrame) + 5,
+                                           heightStruce.imageFrame.origin.y + CGRectGetHeight(heightStruce.imageFrame) + 10,
                                            CGRectGetWidth(tempContentFrame),
                                            CGRectGetHeight(tempContentFrame)
                                            );
-    
-    //图片
-    NSInteger widthCount;
-    CGSize singleImgSize = CGSizeZero;
-    NSArray *contentImgUrls = _dict[@"files"];
-    
-    switch (contentImgUrls.count)
-    {
-        case 1:
-        {
-            widthCount = 1;
-            singleImgSize = CGSizeMake((kNBR_SCREEN_W - (43 + 10 * 3) - 10) / 1.0f,
-                                       (kNBR_SCREEN_W - (43 + 10 * 3) - 10) / 1.0f);
-        }
-            break;
-            
-        case 2:
-        case 4:
-        {
-            widthCount = 2;
-            singleImgSize = CGSizeMake((kNBR_SCREEN_W - (43 + 10 * 3) - 10) / 2.0f,
-                                       (kNBR_SCREEN_W - (43 + 10 * 3) - 10) / 2.0f);
-        }
-            break;
-            
-        case 0:
-        case 3:
-        case 5:
-        case 6:
-        case 7:
-        case 8:
-        case 9:
-        default:
-        {
-            widthCount = 3;
-            singleImgSize = CGSizeMake((kNBR_SCREEN_W - (43 + 10 * 3) - 10) / 3.0f,
-                                       (kNBR_SCREEN_W - (43 + 10 * 3) - 10) / 3.0f);
-        }
-            break;
-    }
-    
-    NSInteger yIndex = contentImgUrls.count > 9 ? 9 : contentImgUrls.count;
-    yIndex = yIndex % widthCount == 0 ? yIndex / widthCount : yIndex / widthCount + 1;
-    
-    heightStruce.imageFrame = CGRectMake(10,
-                                         heightStruce.contentFrame.origin.y + heightStruce.contentFrame.size.height + 5,
-                                         kNBR_SCREEN_W - 20,
-                                         yIndex * singleImgSize.height);
-    
-    heightStruce.sigenImgFrame = singleImgSize;
     
     return heightStruce;
 }
@@ -228,7 +140,7 @@ typedef struct {
 {
     NewTableViewCellHeightStruct heightStruct = [NewsTableViewCell heighStureWithDict:_dict];
     
-    return heightStruct.imageFrame.origin.y + heightStruct.imageFrame.size.height + 5;
+    return heightStruct.contentFrame.origin.y + heightStruct.contentFrame.size.height + 5;
 }
 
 @end

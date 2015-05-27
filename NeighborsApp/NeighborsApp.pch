@@ -40,8 +40,8 @@
 //转换16进制颜色
 #define UIColorFromRGB(rgbValue) ([UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0])
 
-#define kNBR_DEFAULT_FONT_NAME       @"STHeitiSC-Light"
-#define kNBR_DEFAULT_FONT_NAME_BLOD  @"STHeitiSC-Medium"
+#define kNBR_DEFAULT_FONT_NAME       @"Helvetica"
+#define kNBR_DEFAULT_FONT_NAME_BLOD  @"Helvetica-Bold"
 
 //白色
 #define kNBR_ProjectColor_StandWhite      UIColorFromRGB(0xFFFFFF)

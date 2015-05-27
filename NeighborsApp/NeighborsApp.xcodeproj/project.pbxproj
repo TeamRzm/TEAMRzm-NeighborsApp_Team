@@ -73,8 +73,12 @@
 		5B38BA641AF652CE00775F64 /* KVNProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B38BA5F1AF652CE00775F64 /* KVNProgress.m */; };
 		5B38BA651AF652CE00775F64 /* KVNProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B38BA611AF652CE00775F64 /* KVNProgressView.xib */; };
 		5B38BA691AF6868900775F64 /* NBRUserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B38BA681AF6868900775F64 /* NBRUserInfoViewController.m */; };
-		5B3A5A0F1B14A57A00D4651C /* IndustryCommitteeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B3A5A0E1B14A57A00D4651C /* IndustryCommitteeViewController.m */; };
 		5B3A5A1D1B15F95800D4651C /* CCLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B3A5A1C1B15F95800D4651C /* CCLocationManager.m */; };
+		5B3A5A211B16013100D4651C /* IndustryCommitteeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B3A5A1F1B16013100D4651C /* IndustryCommitteeViewController.m */; };
+		5B3A5A221B16013100D4651C /* IndustryCommitteeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B3A5A201B16013100D4651C /* IndustryCommitteeViewController.xib */; };
+		5B3A5A251B160E6F00D4651C /* TextShowerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B3A5A241B160E6F00D4651C /* TextShowerViewController.m */; };
+		5B3A5A291B16376400D4651C /* ServerProjectTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B3A5A271B16376400D4651C /* ServerProjectTableViewCell.m */; };
+		5B3A5A2A1B16376400D4651C /* ServerProjectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B3A5A281B16376400D4651C /* ServerProjectTableViewCell.xib */; };
 		5B3FFC521AF3C26C0071D77A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B3FFC511AF3C26C0071D77A /* SystemConfiguration.framework */; };
 		5B3FFC541AF3C27B0071D77A /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B3FFC531AF3C27B0071D77A /* CoreTelephony.framework */; };
 		5B3FFC591AF3C2AD0071D77A /* libXG-SDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B3FFC561AF3C2AD0071D77A /* libXG-SDK.a */; };
@@ -637,10 +641,16 @@
 		5B38BA611AF652CE00775F64 /* KVNProgressView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KVNProgressView.xib; sourceTree = "<group>"; };
 		5B38BA671AF6868900775F64 /* NBRUserInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NBRUserInfoViewController.h; path = ViewControllers/NBRPersonalCenterViewController/NBRUserInfoViewController.h; sourceTree = "<group>"; };
 		5B38BA681AF6868900775F64 /* NBRUserInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NBRUserInfoViewController.m; path = ViewControllers/NBRPersonalCenterViewController/NBRUserInfoViewController.m; sourceTree = "<group>"; };
-		5B3A5A0D1B14A57A00D4651C /* IndustryCommitteeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IndustryCommitteeViewController.h; path = ViewControllers/NBRServeiesViewController/IndustryCommittee/IndustryCommitteeViewController.h; sourceTree = "<group>"; };
-		5B3A5A0E1B14A57A00D4651C /* IndustryCommitteeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IndustryCommitteeViewController.m; path = ViewControllers/NBRServeiesViewController/IndustryCommittee/IndustryCommitteeViewController.m; sourceTree = "<group>"; };
 		5B3A5A1B1B15F95800D4651C /* CCLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCLocationManager.h; sourceTree = "<group>"; };
 		5B3A5A1C1B15F95800D4651C /* CCLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCLocationManager.m; sourceTree = "<group>"; };
+		5B3A5A1E1B16013100D4651C /* IndustryCommitteeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IndustryCommitteeViewController.h; path = ViewControllers/NBRServeiesViewController/IndustryCommittee/IndustryCommitteeViewController.h; sourceTree = "<group>"; };
+		5B3A5A1F1B16013100D4651C /* IndustryCommitteeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IndustryCommitteeViewController.m; path = ViewControllers/NBRServeiesViewController/IndustryCommittee/IndustryCommitteeViewController.m; sourceTree = "<group>"; };
+		5B3A5A201B16013100D4651C /* IndustryCommitteeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = IndustryCommitteeViewController.xib; path = ViewControllers/NBRServeiesViewController/IndustryCommittee/IndustryCommitteeViewController.xib; sourceTree = "<group>"; };
+		5B3A5A231B160E6F00D4651C /* TextShowerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TextShowerViewController.h; path = MyUIViews/TextShowerViewController.h; sourceTree = "<group>"; };
+		5B3A5A241B160E6F00D4651C /* TextShowerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TextShowerViewController.m; path = MyUIViews/TextShowerViewController.m; sourceTree = "<group>"; };
+		5B3A5A261B16376400D4651C /* ServerProjectTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServerProjectTableViewCell.h; path = ViewControllers/NBRServeiesViewController/ServerProject/ServerProjectTableViewCell.h; sourceTree = "<group>"; };
+		5B3A5A271B16376400D4651C /* ServerProjectTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServerProjectTableViewCell.m; path = ViewControllers/NBRServeiesViewController/ServerProject/ServerProjectTableViewCell.m; sourceTree = "<group>"; };
+		5B3A5A281B16376400D4651C /* ServerProjectTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ServerProjectTableViewCell.xib; path = ViewControllers/NBRServeiesViewController/ServerProject/ServerProjectTableViewCell.xib; sourceTree = "<group>"; };
 		5B3FFC511AF3C26C0071D77A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		5B3FFC531AF3C27B0071D77A /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		5B3FFC561AF3C2AD0071D77A /* libXG-SDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libXG-SDK.a"; sourceTree = "<group>"; };
@@ -1284,6 +1294,9 @@
 			children = (
 				5B1F4EEA1B13A8A800DEB937 /* ServerProjectViewController.h */,
 				5B1F4EEB1B13A8A800DEB937 /* ServerProjectViewController.m */,
+				5B3A5A261B16376400D4651C /* ServerProjectTableViewCell.h */,
+				5B3A5A271B16376400D4651C /* ServerProjectTableViewCell.m */,
+				5B3A5A281B16376400D4651C /* ServerProjectTableViewCell.xib */,
 			);
 			name = ServerProject;
 			sourceTree = "<group>";
@@ -1494,8 +1507,9 @@
 		5B3A5A0C1B14A4F900D4651C /* IndustryCommittee */ = {
 			isa = PBXGroup;
 			children = (
-				5B3A5A0D1B14A57A00D4651C /* IndustryCommitteeViewController.h */,
-				5B3A5A0E1B14A57A00D4651C /* IndustryCommitteeViewController.m */,
+				5B3A5A1E1B16013100D4651C /* IndustryCommitteeViewController.h */,
+				5B3A5A1F1B16013100D4651C /* IndustryCommitteeViewController.m */,
+				5B3A5A201B16013100D4651C /* IndustryCommitteeViewController.xib */,
 			);
 			name = IndustryCommittee;
 			sourceTree = "<group>";
@@ -2019,6 +2033,8 @@
 				5B332AC91AE268D6002A0A73 /* UITextView+Placeholder.m */,
 				5B332ACE1AE2A43D002A0A73 /* UICheckBox.h */,
 				5B332ACF1AE2A43D002A0A73 /* UICheckBox.m */,
+				5B3A5A231B160E6F00D4651C /* TextShowerViewController.h */,
+				5B3A5A241B160E6F00D4651C /* TextShowerViewController.m */,
 			);
 			name = MyUIViews;
 			sourceTree = "<group>";
@@ -2727,6 +2743,7 @@
 				5B4ADE071ADE305300810165 /* chatting_setmode_keyboard_btn_normal.png in Resources */,
 				9603E9F61B08314900E15A92 /* comment_kelian.png in Resources */,
 				9603E9FE1B08314900E15A92 /* comment_liulei.png in Resources */,
+				5B3A5A221B16013100D4651C /* IndustryCommitteeViewController.xib in Resources */,
 				5B6D324F1ADDFE43009A922A /* Expression_40@2x.png in Resources */,
 				5B4ADE0E1ADE305300810165 /* picLibriry.png in Resources */,
 				5B332B401AE3A8C0002A0A73 /* placeholder.jpeg in Resources */,
@@ -2927,6 +2944,7 @@
 				9603EA3F1B08314900E15A92 /* pinglun_kun.png in Resources */,
 				5B6D32661ADDFE43009A922A /* Expression_61@2x.png in Resources */,
 				5B6D325C1ADDFE43009A922A /* Expression_52@2x.png in Resources */,
+				5B3A5A2A1B16376400D4651C /* ServerProjectTableViewCell.xib in Resources */,
 				5B6D32401ADDFE43009A922A /* Expression_27@2x.png in Resources */,
 				9603EA201B08314900E15A92 /* comment_xinsuile.png in Resources */,
 				9603EA1A1B08314900E15A92 /* comment_weiqu.png in Resources */,
@@ -3056,6 +3074,7 @@
 				5B6D31B21ADD5D53009A922A /* NBRConversationViewController.m in Sources */,
 				5B8B15B01ADC21FF00AA87A2 /* NBRNavigationBar.m in Sources */,
 				5B1F4EE81B13595900DEB937 /* NewsTableViewCell.m in Sources */,
+				5B3A5A251B160E6F00D4651C /* TextShowerViewController.m in Sources */,
 				5B332AFF1AE2F647002A0A73 /* CTAssetsSupplementaryView.m in Sources */,
 				5BD83CE61AD61F4B00D1A3EC /* SBJsonStreamWriter.m in Sources */,
 				96D0B4D91B07A6A600E26BF7 /* NBRNoticeDetailViewController.m in Sources */,
@@ -3117,7 +3136,6 @@
 				96FB99601B089C370051A9B6 /* NBRSmallRosterViewController.m in Sources */,
 				5B1F4EE51B1351E000DEB937 /* NewViewController.m in Sources */,
 				5B8B15B91ADCBA4A00AA87A2 /* NBRForgetPwdViewController.m in Sources */,
-				5B3A5A0F1B14A57A00D4651C /* IndustryCommitteeViewController.m in Sources */,
 				5B4ADE341ADE308C00810165 /* TranscodingDefine.mm in Sources */,
 				5B5B230A1B0CC7CE0057590C /* CreaterRequest_Complaint.m in Sources */,
 				5BB6553A1AC31464007E0F85 /* SecondViewController.m in Sources */,
@@ -3134,6 +3152,7 @@
 				5B332AFC1AE2F647002A0A73 /* CTAssetsGroupViewController.m in Sources */,
 				5B38BA3E1AF4E00100775F64 /* CreaterRequest_User.m in Sources */,
 				5BB655341AC31464007E0F85 /* AppDelegate.m in Sources */,
+				5B3A5A211B16013100D4651C /* IndustryCommitteeViewController.m in Sources */,
 				5B1500E41AE3F97E0033CEA2 /* ComentDetailViewController.m in Sources */,
 				5B38BA411AF4E01D00775F64 /* CreaterRequest_Base.m in Sources */,
 				5B332B041AE2F647002A0A73 /* NSDateFormatter+timeIntervalFormatter.m in Sources */,
@@ -3158,6 +3177,7 @@
 				5B5E39461B0B830100705AF1 /* AboutUsViewController.m in Sources */,
 				5BCA99FA1AFCE9B700960F21 /* RefreshControl.m in Sources */,
 				5BCA99FD1AFCE9B700960F21 /* RefreshBottomView.m in Sources */,
+				5B3A5A291B16376400D4651C /* ServerProjectTableViewCell.m in Sources */,
 				5B8B15A21ADC17CB00AA87A2 /* EGOImageLoadConnection.m in Sources */,
 				5B10A7AD1AE81B820034FA63 /* IndividualitySettingViewController.m in Sources */,
 				5BD83C881AD61EF600D1A3EC /* ASIDataCompressor.m in Sources */,

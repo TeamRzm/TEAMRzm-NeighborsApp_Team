@@ -21,15 +21,47 @@
     NSInteger       totalRecord;
     NSInteger       pageIndex;
     BOOL            isLoading;
+    
+    DYNAMICO_PROPERTY_VIEWCONTROLLER_MODE viewControllerMode;
 }
 @end
 
 @implementation NBRDynamicofPropertyViewController
 
+- (id) initWithMode : (DYNAMICO_PROPERTY_VIEWCONTROLLER_MODE) _mode
+{
+    self = [super initWithNibName:nil bundle:nil];
+    if (self)
+    {
+        
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self setTitle:@"物业动态"];
+    
+    switch (viewControllerMode)
+    {
+        case DYNAMICO_PROPERTY_VIEWCONTROLLER_MODE_ZONE:
+        {
+            [self setTitle:@"物业动态"];
+        }
+            break;
+            
+        case DYNAMICO_PROPERTY_VIEWCONTROLLER_MODE_INDUSTRY:
+        {
+            [self setTitle:@"业委会公告"];
+        }
+            break;
+            
+        default:
+            [self setTitle:@"为定义类型"];
+            return ;
+            break;
+    }
+
     [self initSubView];
     [self GetDynamicList];
 }
@@ -53,7 +85,7 @@
 
 -(void) GetDynamicList
 {
-    dynamicReq = [CreateRequest_Server CreateDynamicOfPropertyInfoWithIndex:ITOS(pageIndex) Flag:@"0" Size:kNBR_PAGE_SIZE_STR];
+    dynamicReq = [CreateRequest_Server CreateDynamicOfPropertyInfoWithIndex:ITOS(pageIndex) Flag:ITOS(viewControllerMode) Size:kNBR_PAGE_SIZE_STR];
     __weak ASIHTTPRequest *selfblock = dynamicReq;
     [selfblock setCompletionBlock:^{
         NSDictionary *reponseDict = selfblock.responseString.JSONValue;

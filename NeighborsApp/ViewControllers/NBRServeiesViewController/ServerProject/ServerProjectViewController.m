@@ -10,6 +10,7 @@
 #import "CreaterRequest_Conv.h"
 #import "RefreshControl.h"
 #import "CCLocationManager.h"
+#import "ServerProjectTableViewCell.h"
 
 @interface ServerProjectViewController ()<UITableViewDataSource, UITableViewDelegate,RefreshControlDelegate,CLLocationManagerDelegate>
 {
@@ -45,6 +46,8 @@
         
         if ([CreaterRequest_Conv CheckErrorResponse:responseDict errorAlertInViewController:self])
         {
+            boundDataSource = [[NSMutableArray alloc] initWithArray:[responseDict arrayWithKeyPath:@"data\\result\\data"]];
+            [boundTableView reloadData];
             return ;
         }
         
@@ -57,6 +60,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.title = @"特约服务";
     
     boundTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kNBR_SCREEN_W, kNBR_SCREEN_H) style:UITableViewStyleGrouped];
     boundTableView.delegate = self;
@@ -71,7 +76,6 @@
         [UIApplication sharedApplication].idleTimerDisabled = TRUE;
         locationmanager = [[CLLocationManager alloc] init];
         [locationmanager requestAlwaysAuthorization];        //NSLocationAlwaysUsageDescription
-//        [locationmanager requestWhenInUseAuthorization];     //NSLocationWhenInUseDescription
         locationmanager.delegate = self;
         
         
@@ -107,13 +111,45 @@
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    return boundDataSource.count;
+}
+
+- (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return .1f;
+}
+
+- (CGFloat) tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return .1f;
+}
+
+- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 105.0f;
 }
 
 - (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kNBR_TABLEVIEW_CELL_NOIDENTIFIER];
+    ServerProjectTableViewCell *cell = [ServerProjectTableViewCell alloc];
+    cell = [[NSBundle mainBundle] loadNibNamed:@"ServerProjectTableViewCell" owner:cell options:nil][0];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
+    NSDictionary *subCellDict = boundDataSource[indexPath.row];
+    
+    //图片
+    NSArray *filesArr = [subCellDict arrayWithKeyPath:@"files"];
+    if (filesArr.count > 0)
+    {
+        NSString *iconImageUrl = [subCellDict arrayWithKeyPath:@"files"][0][@"url"];
+        cell.iconImageView.imageURL = [NSURL URLWithString:iconImageUrl];
+    }
+    
+    cell.titleLable.text = [subCellDict stringWithKeyPath:@"name"];
+    cell.priceLable.text = ITOS([subCellDict numberWithKeyPath:@"goods"]);
+    cell.descLable.text = [subCellDict stringWithKeyPath:@"content"];
+    cell.phoneLable.text = [subCellDict stringWithKeyPath:@"constract"];
+
     return cell;
 }
 
