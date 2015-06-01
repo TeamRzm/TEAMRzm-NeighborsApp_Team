@@ -15,6 +15,7 @@
 #import "AppSessionMrg.h"
 #import "NSDictionary+SafeObject.h"
 #import "UIView+BreakLine.h"
+#import "NSString+MoneyFormat.h"
 #endif
 
 #define DEBUGMODE

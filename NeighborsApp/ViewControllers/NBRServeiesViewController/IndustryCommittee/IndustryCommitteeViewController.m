@@ -10,11 +10,15 @@
 #import "CreaterRequest_Owner.h"
 #import "TextShowerViewController.h"
 #import "NBRDynamicofPropertyViewController.h"
+#import "MaintenanceFundViewController.h"
+#import "MemberListViewController.h"
 
 @interface IndustryCommitteeViewController ()
 {
     ASIHTTPRequest  *infoRequest;
     NSDictionary    *infoResposneDict;
+    NSString        *fundUsed;
+    NSString        *fundLeft;
 }
 @end
 
@@ -33,6 +37,10 @@
         if ([CreaterRequest_Owner CheckErrorResponse:responseDict errorAlertInViewController:self])
         {
             infoResposneDict = responseDict;
+            
+            fundUsed = [NSString stringWithFormat:@"%d", [responseDict numberWithKeyPath:@"data\\result\\fundUsed"]];
+            fundLeft = [NSString stringWithFormat:@"%d", [responseDict numberWithKeyPath:@"data\\result\\fundLeft"]];
+            
             self.titleLable.text = [responseDict stringWithKeyPath:@"data\\result\\realName"];
             
             if (self.titleLable.text.length <= 0)
@@ -70,7 +78,19 @@
     self.boundScrollview.contentSize = CGSizeMake(CGRectGetWidth(self.contentView.frame),
                                                   CGRectGetHeight(self.contentView.frame));
     
+    UIBarButtonItem *rightMemberListButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"memberList"] style:UIBarButtonItemStyleDone target:self action:@selector(memberListButton:)];
+    self.navigationItem.rightBarButtonItem = rightMemberListButtonItem;
+    
     [self requestInfo];
+}
+
+- (void) memberListButton : (id) sender
+{
+    MemberListViewController *memberListViewController = [[MemberListViewController alloc] initWithNibName:nil bundle:nil];
+    
+    [self.navigationController pushViewController:memberListViewController animated:YES];
+    
+    return ;
 }
 
 - (void) iconTapGesture : (UITapGestureRecognizer*) _tapGesture
@@ -86,6 +106,17 @@
             return ;
         }
             break;
+            
+        case 2:
+        {
+            MaintenanceFundViewController *maintenanceFundVC = [[MaintenanceFundViewController alloc] initWithNibName:nil bundle:nil];
+            maintenanceFundVC.fundLeftString = fundLeft;
+            maintenanceFundVC.fundUsedString = fundUsed;
+            
+            [self.navigationController pushViewController:maintenanceFundVC animated:YES];
+            
+            return ;
+        }
             
         case 4:
         {

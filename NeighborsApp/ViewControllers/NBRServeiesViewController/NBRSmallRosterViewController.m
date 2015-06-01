@@ -85,6 +85,7 @@
     avterImgView.frame = CGRectMake(10.0f, 56 / 2.0f - 43 / 2.0f, 43, 43);
     avterImgView.layer.cornerRadius = avterImgView.frame.size.width / 2.0f;
     avterImgView.layer.masksToBounds = YES;
+    avterImgView.imageURL = [NSURL URLWithString:[subdic stringWithKeyPath:@"avatar"]];
     [cell.contentView addSubview:avterImgView];
     
     //联系人
@@ -105,15 +106,16 @@
     phoneLable.textColor = kNBR_ProjectColor_MidGray;
     phoneLable.text = subdic[@"phone"];
     
-//     职位
+    //     职位
     UILabel *dutyLable = [[UILabel alloc] initWithFrame:CGRectMake(kNBR_SCREEN_W-68.0f,
-                                                                    titleLable.frame.origin.y,
-                                                                     68.0f - 10,
-                                                                    20.0f)];
+                                                                   0,
+                                                                   68.0f - 10,
+                                                                   56)];
     dutyLable.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME_BLOD size:13.0f];
+    dutyLable.textAlignment = NSTextAlignmentRight;
     dutyLable.textColor = kNBR_ProjectColor_MidGray;
     dutyLable.text = subdic[@"duty"];
-
+    
     
     [cell.contentView addSubview:avterImgView];
     [cell.contentView addSubview:titleLable];

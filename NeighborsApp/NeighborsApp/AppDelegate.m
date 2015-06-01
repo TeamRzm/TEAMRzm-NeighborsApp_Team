@@ -182,7 +182,6 @@
     newMessage.toDeviceToken = @"8732c28bc2a9e933e4ff94446efb087fb552dc5b8b43708dfc1dbd77de85ed4a";
     
     [[XGPusher shareInstance] pushMessage:newMessage];
-    
 }
 
 //如果deviceToken获取不到会进入此事件

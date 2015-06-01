@@ -470,4 +470,26 @@
     return [dateFormatter dateFromString:_string];
 }
 
+- (NSString*) stringWithString : (NSString*) _string
+{
+    NSDate *cDate = [self dateWithString:_string];
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setTimeZone:[NSTimeZone systemTimeZone]];
+    dateFormatter.dateFormat = @"YYYY年M月d日";
+    
+    return [dateFormatter stringFromDate:cDate];
+    
+}
++ (NSString*) stringWithString : (NSString*) _string
+{
+    NSDate *cDate = [NBRBaseViewController dateWithString:_string];
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setTimeZone:[NSTimeZone systemTimeZone]];
+    dateFormatter.dateFormat = @"YY年M月d日";
+    
+    return [dateFormatter stringFromDate:cDate];
+}
+
 @end

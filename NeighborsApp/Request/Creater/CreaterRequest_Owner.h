@@ -21,5 +21,4 @@
                                           size : (NSString*) _size
                                          start : (NSString*) _start
                                            end : (NSString*) _end;
-
 @end

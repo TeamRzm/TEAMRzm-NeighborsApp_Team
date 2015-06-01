@@ -71,7 +71,7 @@
                                 @"multi_pkg"    : @"",
                                 };
     
-    NSString *sign = [XGSign XGSignWithMehod:@"POST"
+    NSString *sign = [XGSign XGSignWithMehod:@"GET"
                                      hostURL:@"openapi.xg.qq.com/v2/push/single_device"
                                        parms:parmsDict
                                    timestamp:timeStampString
@@ -107,6 +107,7 @@
     __weak ASIHTTPRequest *blockRequest = sendMessageRequest;
     
     [blockRequest setCompletionBlock:^{
+        NSLog(@"%@", blockRequest.url);
         NSLog(@"%@", blockRequest.responseString);
         return ;
     }];

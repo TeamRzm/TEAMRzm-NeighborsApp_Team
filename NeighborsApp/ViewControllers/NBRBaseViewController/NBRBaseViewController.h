@@ -51,6 +51,9 @@
 - (NSDate*) dateWithString : (NSString*) _string;
 + (NSDate*) dateWithString : (NSString*) _string;
 
+- (NSString*) stringWithString : (NSString*) _string;
++ (NSString*) stringWithString : (NSString*) _string;
+
 
 
 //按需重写的Delegate

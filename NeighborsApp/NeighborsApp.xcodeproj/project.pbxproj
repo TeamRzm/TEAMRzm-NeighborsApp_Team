@@ -15,6 +15,9 @@
 		5B1500E11AE3BDD10033CEA2 /* CommitActivityContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1500E01AE3BDD10033CEA2 /* CommitActivityContentViewController.m */; };
 		5B1500E41AE3F97E0033CEA2 /* ComentDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1500E31AE3F97E0033CEA2 /* ComentDetailViewController.m */; };
 		5B1500E71AE415370033CEA2 /* SubCommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1500E61AE415370033CEA2 /* SubCommentTableViewCell.m */; };
+		5B1A5A8B1B1AFCBB0098BE63 /* MemberListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1A5A8A1B1AFCBB0098BE63 /* MemberListViewController.m */; };
+		5B1A5A8F1B1B033A0098BE63 /* MaintenanceFundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1A5A8D1B1B033A0098BE63 /* MaintenanceFundViewController.m */; };
+		5B1A5A901B1B033A0098BE63 /* MaintenanceFundViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B1A5A8E1B1B033A0098BE63 /* MaintenanceFundViewController.xib */; };
 		5B1F4EDB1B10FCFF00DEB937 /* ComplaintsAndRepairDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1F4EDA1B10FCFF00DEB937 /* ComplaintsAndRepairDetailViewController.m */; };
 		5B1F4EDE1B1258D500DEB937 /* ComplaintsStateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1F4EDD1B1258D500DEB937 /* ComplaintsStateCell.m */; };
 		5B1F4EE11B132AC000DEB937 /* CreaterRequest_Residence.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1F4EE01B132AC000DEB937 /* CreaterRequest_Residence.m */; };
@@ -282,6 +285,7 @@
 		5B955BEC1ADFD98A00E8B335 /* NBRServeiesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B955BEB1ADFD98900E8B335 /* NBRServeiesViewController.xib */; };
 		5B955BEF1ADFE1EE00E8B335 /* FriendCircleContentEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B955BEE1ADFE1EE00E8B335 /* FriendCircleContentEntity.m */; };
 		5B955BF21ADFE42600E8B335 /* CommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B955BF11ADFE42600E8B335 /* CommentTableViewCell.m */; };
+		5B957E9E1B1C440200C5661F /* NSString+MoneyFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B957E9D1B1C440200C5661F /* NSString+MoneyFormat.m */; };
 		5BB655311AC31464007E0F85 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB655301AC31464007E0F85 /* main.m */; };
 		5BB655341AC31464007E0F85 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB655331AC31464007E0F85 /* AppDelegate.m */; };
 		5BB655371AC31464007E0F85 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB655361AC31464007E0F85 /* FirstViewController.m */; };
@@ -532,6 +536,11 @@
 		5B1500E31AE3F97E0033CEA2 /* ComentDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComentDetailViewController.m; path = ViewControllers/NBRFriendCircleViewController/ComentDetailViewController.m; sourceTree = "<group>"; };
 		5B1500E51AE415370033CEA2 /* SubCommentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SubCommentTableViewCell.h; path = ViewControllers/NBRFriendCircleViewController/SubCommentTableViewCell.h; sourceTree = "<group>"; };
 		5B1500E61AE415370033CEA2 /* SubCommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SubCommentTableViewCell.m; path = ViewControllers/NBRFriendCircleViewController/SubCommentTableViewCell.m; sourceTree = "<group>"; };
+		5B1A5A891B1AFCBB0098BE63 /* MemberListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MemberListViewController.h; path = ViewControllers/NBRServeiesViewController/IndustryCommittee/MemberListViewController.h; sourceTree = "<group>"; };
+		5B1A5A8A1B1AFCBB0098BE63 /* MemberListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MemberListViewController.m; path = ViewControllers/NBRServeiesViewController/IndustryCommittee/MemberListViewController.m; sourceTree = "<group>"; };
+		5B1A5A8C1B1B033A0098BE63 /* MaintenanceFundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MaintenanceFundViewController.h; path = ViewControllers/NBRServeiesViewController/IndustryCommittee/MaintenanceFundViewController.h; sourceTree = "<group>"; };
+		5B1A5A8D1B1B033A0098BE63 /* MaintenanceFundViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MaintenanceFundViewController.m; path = ViewControllers/NBRServeiesViewController/IndustryCommittee/MaintenanceFundViewController.m; sourceTree = "<group>"; };
+		5B1A5A8E1B1B033A0098BE63 /* MaintenanceFundViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MaintenanceFundViewController.xib; path = ViewControllers/NBRServeiesViewController/IndustryCommittee/MaintenanceFundViewController.xib; sourceTree = "<group>"; };
 		5B1F4ED91B10FCFF00DEB937 /* ComplaintsAndRepairDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComplaintsAndRepairDetailViewController.h; path = ViewControllers/NBRServeiesViewController/ComplaintsAndRepair/ComplaintsAndRepairDetailViewController.h; sourceTree = "<group>"; };
 		5B1F4EDA1B10FCFF00DEB937 /* ComplaintsAndRepairDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComplaintsAndRepairDetailViewController.m; path = ViewControllers/NBRServeiesViewController/ComplaintsAndRepair/ComplaintsAndRepairDetailViewController.m; sourceTree = "<group>"; };
 		5B1F4EDC1B1258D500DEB937 /* ComplaintsStateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComplaintsStateCell.h; path = ViewControllers/NBRServeiesViewController/ComplaintsAndRepair/ComplaintsStateCell.h; sourceTree = "<group>"; };
@@ -910,6 +919,8 @@
 		5B955BEE1ADFE1EE00E8B335 /* FriendCircleContentEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FriendCircleContentEntity.m; path = ViewControllers/NBRFriendCircleViewController/FriendCircleContentEntity.m; sourceTree = "<group>"; };
 		5B955BF01ADFE42600E8B335 /* CommentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentTableViewCell.h; path = ViewControllers/NBRFriendCircleViewController/CommentTableViewCell.h; sourceTree = "<group>"; };
 		5B955BF11ADFE42600E8B335 /* CommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentTableViewCell.m; path = ViewControllers/NBRFriendCircleViewController/CommentTableViewCell.m; sourceTree = "<group>"; };
+		5B957E9C1B1C440200C5661F /* NSString+MoneyFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+MoneyFormat.h"; path = "Other/NSString+MoneyFormat.h"; sourceTree = "<group>"; };
+		5B957E9D1B1C440200C5661F /* NSString+MoneyFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+MoneyFormat.m"; path = "Other/NSString+MoneyFormat.m"; sourceTree = "<group>"; };
 		5BB6552B1AC31464007E0F85 /* NeighborsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NeighborsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BB6552F1AC31464007E0F85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5BB655301AC31464007E0F85 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -1510,6 +1521,11 @@
 				5B3A5A1E1B16013100D4651C /* IndustryCommitteeViewController.h */,
 				5B3A5A1F1B16013100D4651C /* IndustryCommitteeViewController.m */,
 				5B3A5A201B16013100D4651C /* IndustryCommitteeViewController.xib */,
+				5B1A5A891B1AFCBB0098BE63 /* MemberListViewController.h */,
+				5B1A5A8A1B1AFCBB0098BE63 /* MemberListViewController.m */,
+				5B1A5A8C1B1B033A0098BE63 /* MaintenanceFundViewController.h */,
+				5B1A5A8D1B1B033A0098BE63 /* MaintenanceFundViewController.m */,
+				5B1A5A8E1B1B033A0098BE63 /* MaintenanceFundViewController.xib */,
 			);
 			name = IndustryCommittee;
 			sourceTree = "<group>";
@@ -1544,6 +1560,8 @@
 				5B5E39361B0B72CF00705AF1 /* StaticHtmlViewController.m */,
 				5B3FFC5B1AF3C91B0071D77A /* AppSessionMrg.h */,
 				5B3FFC5C1AF3C91B0071D77A /* AppSessionMrg.m */,
+				5B957E9C1B1C440200C5661F /* NSString+MoneyFormat.h */,
+				5B957E9D1B1C440200C5661F /* NSString+MoneyFormat.m */,
 				5B38BA421AF4FBEA00775F64 /* NSString+CheckFormat.h */,
 				5B38BA431AF4FBEA00775F64 /* NSString+CheckFormat.m */,
 				5B38BA481AF5D4D700775F64 /* NSString+MD5.h */,
@@ -2938,6 +2956,7 @@
 				9603E9D41B08314900E15A92 /* comment_baiyan.png in Resources */,
 				9603E9E61B08314900E15A92 /* comment_fan.png in Resources */,
 				5B6D326F1ADDFE43009A922A /* Expression_6@2x.png in Resources */,
+				5B1A5A901B1B033A0098BE63 /* MaintenanceFundViewController.xib in Resources */,
 				5B6D32691ADDFE43009A922A /* Expression_64@2x.png in Resources */,
 				5B6D328F1ADDFE43009A922A /* Expression_99@2x.png in Resources */,
 				5B6D32561ADDFE43009A922A /* Expression_47@2x.png in Resources */,
@@ -3072,6 +3091,7 @@
 				5B4ADE361ADE308C00810165 /* wavwriter.mm in Sources */,
 				5B6D31851ADCE822009A922A /* SIAlertView.m in Sources */,
 				5B6D31B21ADD5D53009A922A /* NBRConversationViewController.m in Sources */,
+				5B1A5A8F1B1B033A0098BE63 /* MaintenanceFundViewController.m in Sources */,
 				5B8B15B01ADC21FF00AA87A2 /* NBRNavigationBar.m in Sources */,
 				5B1F4EE81B13595900DEB937 /* NewsTableViewCell.m in Sources */,
 				5B3A5A251B160E6F00D4651C /* TextShowerViewController.m in Sources */,
@@ -3109,6 +3129,7 @@
 				96D0B4D61B079E1200E26BF7 /* NBRChatSettingViewController.m in Sources */,
 				5BED3BE41AFA886500AA8001 /* CreaterRequest_Region.m in Sources */,
 				5BD83C9B1AD61EF600D1A3EC /* ASIS3ServiceRequest.m in Sources */,
+				5B1A5A8B1B1AFCBB0098BE63 /* MemberListViewController.m in Sources */,
 				5BED3BED1AFA8FA500AA8001 /* CreaterRequest_Activity.m in Sources */,
 				9603E9491B0828CF00E15A92 /* ChatListCell.m in Sources */,
 				5B6D31861ADCE822009A922A /* UIView+Toast.m in Sources */,
@@ -3147,6 +3168,7 @@
 				5B4FD5231B0871A0005DA131 /* XGSign.m in Sources */,
 				5BD83C8C1AD61EF600D1A3EC /* ASIHTTPRequest.m in Sources */,
 				5B332B431AE3A8C0002A0A73 /* XHCacheManager.m in Sources */,
+				5B957E9E1B1C440200C5661F /* NSString+MoneyFormat.m in Sources */,
 				5B6D316B1ADCE747009A922A /* ALAlertBannerManager.m in Sources */,
 				5BBAC8A41AFBD14700536F1E /* CreaterRequest_Show.m in Sources */,
 				5B332AFC1AE2F647002A0A73 /* CTAssetsGroupViewController.m in Sources */,
