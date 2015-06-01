@@ -56,7 +56,7 @@
     
     //活动海报
     activityBackGoundImageView = [[EGOImageView alloc] initWithPlaceholderImage:[UIImage imageNamed:@"defaultActivity"]];
-    activityBackGoundImageView.contentMode = UIViewContentModeScaleAspectFit;
+    activityBackGoundImageView.contentMode = UIViewContentModeScaleAspectFill;
     activityBackGoundImageView.imageURL = [NSURL URLWithString:_entity.backGounrdUrl];
     activityBackGoundImageView.frame = CGRectMake(10, 10, kNBR_SCREEN_W - 20, 150);
     activityBackGoundImageView.layer.borderColor = kNBR_ProjectColor_LightGray.CGColor;

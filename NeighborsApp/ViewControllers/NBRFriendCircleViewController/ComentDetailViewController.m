@@ -74,6 +74,10 @@
         {
             [self showBannerMsgWithString:[responseDict stringWithKeyPath:@"data\\code\\message"]];
         }
+        
+        dataIndex = 0;
+        [self requestReplies];
+        
     }];
     
     [self setDefaultRequestFaild:blockRequest];
@@ -106,6 +110,9 @@
         if ([CreaterRequest_Logroll CheckErrorResponse:responseDict errorAlertInViewController:self])
         {
             [self showBannerMsgWithString:[responseDict stringWithKeyPath:@"data\\code\\message"]];
+            
+            dataIndex = 0;
+            [self requestReplies];
         }
     }];
     
@@ -144,6 +151,7 @@
             {
                 [self showBannerMsgWithString:@"该里手帮信息已成功删除"];
             }
+            
             [self.navigationController popViewControllerAnimated:YES];
         }
     }];
@@ -179,6 +187,9 @@
         if ([CreaterRequest_Logroll CheckErrorResponse:responseDict errorAlertInViewController:self])
         {
             [self showBannerMsgWithString:[responseDict stringWithKeyPath:@"data\\code\\message"]];
+            
+            dataIndex = 0;
+            [self requestReplies];
         }
         
     }];

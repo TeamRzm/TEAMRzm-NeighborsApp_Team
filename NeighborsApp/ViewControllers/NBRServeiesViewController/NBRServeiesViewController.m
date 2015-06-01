@@ -122,7 +122,7 @@
         avterImgView.imageURL = [NSURL URLWithString:[subDict stringWithKeyPath:@"image"]];
         avterImgView.frame = CGRectMake(0+j*kNBR_SCREEN_W, 0.0f,kNBR_SCREEN_W,headerScrollview.frame.size.height);
         avterImgView.tag = j;
-        [avterImgView setContentMode:UIViewContentModeScaleAspectFit];
+        [avterImgView setContentMode:UIViewContentModeScaleAspectFill];
         [headerScrollview addSubview:avterImgView];
     }
     

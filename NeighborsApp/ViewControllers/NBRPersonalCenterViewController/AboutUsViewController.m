@@ -14,15 +14,26 @@
 
 @implementation AboutUsViewController
 
+- (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    NSString *aboutHtmlStringPath = [[NSBundle mainBundle] pathForResource:@"about_us" ofType:@"html"];
+    NSString *aboutHtmlString = [NSString stringWithContentsOfFile:aboutHtmlStringPath encoding:NSUTF8StringEncoding error:nil];
+    
+    self = [super  initWithViewControllerTitle:@"关于我们"
+                                    textString:aboutHtmlString
+                                      textFont:[UIFont fontWithName:kNBR_DEFAULT_FONT_NAME size:14.0f]
+                                     textColor:kNBR_ProjectColor_DeepGray];
+    if (self)
+    {
+        
+    }
+    return self;
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"关于我们";
-    // Do any additional setup after loading the view.
-    NSString *aboutHtmlString = [[NSBundle mainBundle] pathForResource:@"about_us" ofType:@"html"];
-    
-    NSString *htmlString = [NSString stringWithContentsOfFile:aboutHtmlString encoding:NSUTF8StringEncoding error:nil];
-    
-    [self setHtmlString:htmlString];
 }
 
 - (void)didReceiveMemoryWarning {

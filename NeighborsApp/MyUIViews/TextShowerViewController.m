@@ -46,9 +46,16 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    //format
+    NSMutableParagraphStyle *contentViewStyle = [[NSMutableParagraphStyle alloc] init];
+    contentViewStyle.lineHeightMultiple = 1;
+    contentViewStyle.lineSpacing = 4.0f;
+    contentViewStyle.paragraphSpacing = 3.0f;
+    
     NSDictionary *boundTextFormat = @{
                                       NSFontAttributeName            : boundFont,
                                       NSForegroundColorAttributeName : boundColor,
+                                      NSParagraphStyleAttributeName  : contentViewStyle,
                                       };
     
     CGRect textFrame = [boundText boundingRectWithSize:CGSizeMake(kNBR_SCREEN_W - 20, MAXFLOAT)

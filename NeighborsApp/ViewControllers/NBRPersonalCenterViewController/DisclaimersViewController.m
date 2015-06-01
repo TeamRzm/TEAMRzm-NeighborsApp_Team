@@ -14,16 +14,25 @@
 
 @implementation DisclaimersViewController
 
+- (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    NSString *aboutHtmlStringPath = [[NSBundle mainBundle] pathForResource:@"about_disclaimers" ofType:@"html"];
+    NSString *aboutHtmlString = [NSString stringWithContentsOfFile:aboutHtmlStringPath encoding:NSUTF8StringEncoding error:nil];
+    
+    self = [super  initWithViewControllerTitle:@"免责声明"
+                                    textString:aboutHtmlString
+                                      textFont:[UIFont fontWithName:kNBR_DEFAULT_FONT_NAME size:14.0f]
+                                     textColor:kNBR_ProjectColor_DeepGray];
+    if (self)
+    {
+        
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"免责声明";
-    // Do any additional setup after loading the view.
-    NSString *aboutHtmlString = [[NSBundle mainBundle] pathForResource:@"about_disclaimers" ofType:@"html"];
-    
-    NSString *htmlString = [NSString stringWithContentsOfFile:aboutHtmlString encoding:NSUTF8StringEncoding error:nil];
-    
-    [self setHtmlString:htmlString];
-    
+
 }
 
 - (void)didReceiveMemoryWarning {

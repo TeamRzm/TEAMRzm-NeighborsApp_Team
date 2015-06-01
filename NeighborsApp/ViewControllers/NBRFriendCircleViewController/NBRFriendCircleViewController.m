@@ -123,6 +123,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    viewControllerMode = FRIENDCIRCLECONTROLLER_MODE_NOMAL;
+    
     self.view.backgroundColor = kNBR_ProjectColor_BackGroundGray;
     
     //容器
@@ -461,7 +463,7 @@
                 [refreshControllerTop[requestIndex] finishRefreshingDirection:RefreshDirectionTop];
             }
             
-            totalRecord[currentSegmentIndex] = [responseDict numberWithKeyPath:@"data\\result\\totalRecord"];
+            totalRecord[requestIndex] = [responseDict numberWithKeyPath:@"data\\result\\totalRecord"];
             
             NSMutableArray *newContentArr = [[NSMutableArray alloc] init];
             

@@ -32,6 +32,8 @@
     NSArray         *boundTableViewDateSource;
     
 //    ASIHTTPRequest  *notifyGetRequest;
+    
+    UIView          *shareView;
 }
 @end
 
@@ -157,7 +159,46 @@
     
     boundTableView.tableHeaderView = tableViewHeadView;
     
+    [self configShareView];
+    
     [self requestNotifyGet];
+}
+
+- (void) configShareView
+{
+    shareView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kNBR_SCREEN_W, kNBR_SCREEN_H)];
+    shareView.backgroundColor = [UIColor colorWithRed:.5f green:.5f blue:.5f alpha:.7f];
+    
+    UIImageView *QRCodeImgView = [[UIImageView alloc] initWithFrame:CGRectMake(kNBR_SCREEN_W / 2.0f - (kNBR_SCREEN_W * .6f) / 2.0f,
+                                                                               kNBR_SCREEN_H / 2.0f - (kNBR_SCREEN_W * .6f) / 2.0f,
+                                                                               kNBR_SCREEN_W * .6f,
+                                                                               kNBR_SCREEN_W * .6f)];
+    QRCodeImgView.backgroundColor = [UIColor whiteColor];
+    [shareView addSubview:QRCodeImgView];
+    
+    UITapGestureRecognizer *viewTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideShareView)];
+    [shareView addGestureRecognizer:viewTap];
+    shareView.alpha = 0.0f;
+    
+    [self.tabBarController.view addSubview:shareView];
+}
+
+- (void) showShareView
+{
+    [UIView animateWithDuration:.25f animations:^{
+        shareView.alpha = 1.0f;
+    } completion:^(BOOL finished) {
+        
+    }];
+}
+
+- (void) hideShareView
+{
+    [UIView animateWithDuration:.25f animations:^{
+        shareView.alpha = 0.0f;
+    } completion:^(BOOL finished) {
+        
+    }];
 }
 
 - (void) requestNotifyGet
@@ -269,7 +310,14 @@
 }
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{    
+{
+    if (indexPath.section == 0 && indexPath.row == 1)
+    {
+        //好友分享
+        [self showShareView];
+        return ;
+    }
+    
     NSArray *nVCClassesLinkList = @[
                                     @[
                                         @"PlotCertListViewController", //小区认证

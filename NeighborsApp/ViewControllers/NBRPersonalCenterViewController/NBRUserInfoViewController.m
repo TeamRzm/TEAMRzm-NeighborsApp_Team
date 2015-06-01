@@ -109,12 +109,16 @@ typedef enum
         [nomalTextFiedArr addObject:subArr];
     }
     
-    [self requestUserInfo];
+    [self setTabbarRightButton];
+    [self setLogoutTableViewFootView];
     
+    [self requestUserInfo];
+}
+
+- (void) setTabbarRightButton
+{
     UIBarButtonItem *rightAddItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"tianjia01"] style:UIBarButtonItemStylePlain target:self action:@selector(rightBarbuttonAction:)];
     self.navigationItem.rightBarButtonItem = rightAddItem;
-    
-    [self setLogoutTableViewFootView];
 }
 
 - (void) showSexPicker
@@ -307,7 +311,8 @@ typedef enum
             {
                 ((UITextField*)nomalTextFiedArr[i][j]).userInteractionEnabled = YES;
             }
-            
+
+            ((UITextField*)nomalTextFiedArr[0][0]).userInteractionEnabled = NO;
             ((UITextField*)nomalTextFiedArr[1][4]).userInteractionEnabled = NO;
         }
         
@@ -329,21 +334,23 @@ typedef enum
         [self setLogoutTableViewFootView];
     }
     
-    [boundTableView reloadData];
-    
     CGContextRef context = UIGraphicsGetCurrentContext();
     [UIView beginAnimations:nil context:context];
     [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
     [UIView setAnimationDuration:.5f];
+    
+    [boundTableView reloadData];
+    
+    [UIView commitAnimations];
+    
     if (self.viewControllerState == INFOMATION_VIEWCONTROLLER_STATE_NOMAL)
     {
-        [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:boundTableView cache:YES];
+        [self setTabbarRightButton];
     }
     else
     {
-        [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:boundTableView cache:YES];
+        self.navigationItem.rightBarButtonItem = nil;
     }
-    [UIView commitAnimations];
 }
 
 - (void) requestUserInfo

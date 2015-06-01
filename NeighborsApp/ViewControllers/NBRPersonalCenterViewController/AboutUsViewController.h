@@ -6,8 +6,8 @@
 //  Copyright (c) 2015年 Martin.Ren. All rights reserved.
 //
 
-#import "StaticHtmlViewController.h"
+#import "TextShowerViewController.h"
 
-@interface AboutUsViewController : StaticHtmlViewController
+@interface AboutUsViewController : TextShowerViewController
 
 @end
