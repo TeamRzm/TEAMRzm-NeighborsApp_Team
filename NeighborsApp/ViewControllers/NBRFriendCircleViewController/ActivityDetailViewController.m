@@ -93,17 +93,6 @@
                                                                     [NSString stringWithFormat:@"%@  %@", self.dateEntity.dateDict[@"linkman"], self.dateEntity.dateDict[@"phone"]],
                                                                     ],
                                                                 @[
-                                                                    @[
-                                                                        @"t_avter_0",
-                                                                        @"t_avter_1",
-                                                                        @"t_avter_2",
-                                                                        @"t_avter_3",
-                                                                        @"t_avter_4",
-                                                                        @"t_avter_5",
-                                                                        @"t_avter_6",
-                                                                        @"t_avter_7",
-                                                                        @"t_avter_9",
-                                                                        ],
                                                                     ],
                                                                 ]];
 
@@ -111,7 +100,7 @@
 
 - (void) requestJoins
 {
-    activityJoinsRequest = [CreaterRequest_Activity CreateJoinsRequestWithID:self.dateEntity.activityID index:[NSString stringWithFormat:@"%d",dateIndex] size:kNBR_PAGE_SIZE_STR];
+    activityJoinsRequest = [CreaterRequest_Activity CreateJoinsRequestWithID:self.dateEntity.activityID index:[NSString stringWithFormat:@"%d",dateIndex] size:@"1000000"];
     
     __weak ASIHTTPRequest *blockRequest = activityJoinsRequest;
     
@@ -122,6 +111,7 @@
         if ([CreaterRequest_Activity CheckErrorResponse:reponseDict errorAlertInViewController:self])
         {
             [self configDate];
+            boundTableViewDataSource[2] = [reponseDict arrayWithKeyPath:@"data\\result\\data"];
             [boundTableView reloadData];
             return ;
         }
@@ -204,16 +194,7 @@
     }
     else if (indexPath.section == 2)
     {
-        NSArray *jionUserList = boundTableViewDataSource[indexPath.section][indexPath.row];
-        
-        if (jionUserList.count > 6) //H : 45
-        {
-            return 55.0f;
-        }
-        else
-        {
-            return 100.0f;
-        }
+        return 56.0f;
     }
     
     return 40.0f;
@@ -242,7 +223,14 @@
             
         case 2:
         {
-            return 1;
+            if (boundTableViewDataSource.count > 2)
+            {
+                return ((NSArray*)(boundTableViewDataSource[2])).count;
+            }
+            else
+            {
+                return 0;
+            }
         }
             break;
             
@@ -326,22 +314,63 @@
         UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kNBR_TABLEVIEW_CELL_NOIDENTIFIER];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
-        NSArray *jionUserList = boundTableViewDataSource[indexPath.section][indexPath.row];
+        NSMutableDictionary *subdic = boundTableViewDataSource[indexPath.section][indexPath.row];
         
-        for (int i = 0; i < jionUserList.count; i++)
-        {
-            EGOImageView *subIconImageView = [[EGOImageView alloc] initWithFrame:CGRectMake(
-                                                                                            10 + (50 * (i % 6)),
-                                                                                            5,
-                                                                                            45, 45
-                                                                                            )];
-            
-            subIconImageView.image = [UIImage imageNamed:jionUserList[i]];
-            subIconImageView.layer.cornerRadius = CGRectGetHeight(subIconImageView.frame) / 2.0f;
-            subIconImageView.layer.masksToBounds = YES;
-            
-            [cell.contentView addSubview:subIconImageView];
-        }
+        //头像
+        EGOImageView *avterImgView = [[EGOImageView alloc] initWithPlaceholderImage:[UIImage imageNamed:@"defaultAvater"]];
+        avterImgView.frame = CGRectMake(10.0f, 56 / 2.0f - 43 / 2.0f, 43, 43);
+        avterImgView.layer.cornerRadius = avterImgView.frame.size.width / 2.0f;
+        avterImgView.layer.masksToBounds = YES;
+        avterImgView.imageURL = [NSURL URLWithString:[subdic stringWithKeyPath:@"userInfo\\avatar"]];
+        [cell.contentView addSubview:avterImgView];
+        
+        //联系人
+        UILabel *titleLable = [[UILabel alloc] initWithFrame:CGRectMake(68.0f,
+                                                                        10,
+                                                                        kNBR_SCREEN_W - 68.0f - 10,
+                                                                        20.0f)];
+        titleLable.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME_BLOD size:14.0f];
+        titleLable.textColor = kNBR_ProjectColor_DeepGray;
+        titleLable.text = subdic[@"linkMan"];
+        //电话
+        
+        UILabel *phoneLable = [[UILabel alloc] initWithFrame:CGRectMake(68.0f,
+                                                                        titleLable.frame.origin.y+20.0f,
+                                                                        kNBR_SCREEN_W - 68.0f - 10,
+                                                                        20.0f)];
+        phoneLable.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME_BLOD size:13.0f];
+        phoneLable.textColor = kNBR_ProjectColor_MidGray;
+        phoneLable.text = subdic[@"phone"];
+        
+        //     职位
+        UILabel *dutyLable = [[UILabel alloc] initWithFrame:CGRectMake(kNBR_SCREEN_W-68.0f,
+                                                                       0,
+                                                                       68.0f - 10,
+                                                                       56)];
+        dutyLable.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME_BLOD size:13.0f];
+        dutyLable.textAlignment = NSTextAlignmentRight;
+        
+        NSDictionary *redFormat = @{
+                                    NSFontAttributeName : [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME_BLOD size:13.0f],
+                                    NSForegroundColorAttributeName : kNBR_ProjectColor_StandBlue,
+                                    };
+        
+        NSDictionary *grayFormat = @{
+                                    NSFontAttributeName : [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME_BLOD size:13.0f],
+                                    NSForegroundColorAttributeName : kNBR_ProjectColor_MidGray,
+                                    };
+        
+        NSMutableAttributedString *dutyLableAttString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@人", subdic[@"amount"]]];
+        
+        [dutyLableAttString addAttributes:redFormat range:NSMakeRange(0, dutyLableAttString.length - 1)];
+        [dutyLableAttString addAttributes:grayFormat range:NSMakeRange(dutyLableAttString.length - 1, 1)];
+        
+        dutyLable.attributedText = dutyLableAttString;
+        
+        [cell.contentView addSubview:avterImgView];
+        [cell.contentView addSubview:titleLable];
+        [cell.contentView addSubview:phoneLable];
+        [cell.contentView addSubview:dutyLable];
         
         return cell;
     }

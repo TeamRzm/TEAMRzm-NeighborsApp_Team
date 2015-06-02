@@ -269,6 +269,7 @@
 		5B6D32941ADDFE43009A922A /* expressionImage_custom.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5B6D32221ADDFE43009A922A /* expressionImage_custom.plist */; };
 		5B6D32951ADDFE43009A922A /* MLEmojiLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6D32241ADDFE43009A922A /* MLEmojiLabel.m */; };
 		5B6D32961ADDFE43009A922A /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6D32271ADDFE43009A922A /* TTTAttributedLabel.m */; };
+		5B7208F61B1E2D63006E67EA /* MeetingNotesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B7208F51B1E2D63006E67EA /* MeetingNotesViewController.m */; };
 		5B8B158A1ADC0BDE00AA87A2 /* NBRLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8B15881ADC0BDE00AA87A2 /* NBRLoginViewController.m */; };
 		5B8B158B1ADC0BDE00AA87A2 /* NBRLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B8B15891ADC0BDE00AA87A2 /* NBRLoginViewController.xib */; };
 		5B8B158F1ADC164900AA87A2 /* NBRBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8B158D1ADC164900AA87A2 /* NBRBaseViewController.m */; };
@@ -891,6 +892,8 @@
 		5B6D32241ADDFE43009A922A /* MLEmojiLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLEmojiLabel.m; sourceTree = "<group>"; };
 		5B6D32261ADDFE43009A922A /* TTTAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTAttributedLabel.h; sourceTree = "<group>"; };
 		5B6D32271ADDFE43009A922A /* TTTAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTAttributedLabel.m; sourceTree = "<group>"; };
+		5B7208F41B1E2D63006E67EA /* MeetingNotesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MeetingNotesViewController.h; path = ViewControllers/NBRServeiesViewController/IndustryCommittee/MeetingNotesViewController.h; sourceTree = "<group>"; };
+		5B7208F51B1E2D63006E67EA /* MeetingNotesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MeetingNotesViewController.m; path = ViewControllers/NBRServeiesViewController/IndustryCommittee/MeetingNotesViewController.m; sourceTree = "<group>"; };
 		5B8B15871ADC0BDE00AA87A2 /* NBRLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NBRLoginViewController.h; path = ViewControllers/NBRLoginViewController/NBRLoginViewController.h; sourceTree = "<group>"; };
 		5B8B15881ADC0BDE00AA87A2 /* NBRLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NBRLoginViewController.m; path = ViewControllers/NBRLoginViewController/NBRLoginViewController.m; sourceTree = "<group>"; };
 		5B8B15891ADC0BDE00AA87A2 /* NBRLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NBRLoginViewController.xib; path = ViewControllers/NBRLoginViewController/NBRLoginViewController.xib; sourceTree = "<group>"; };
@@ -1526,6 +1529,8 @@
 				5B1A5A8C1B1B033A0098BE63 /* MaintenanceFundViewController.h */,
 				5B1A5A8D1B1B033A0098BE63 /* MaintenanceFundViewController.m */,
 				5B1A5A8E1B1B033A0098BE63 /* MaintenanceFundViewController.xib */,
+				5B7208F41B1E2D63006E67EA /* MeetingNotesViewController.h */,
+				5B7208F51B1E2D63006E67EA /* MeetingNotesViewController.m */,
 			);
 			name = IndustryCommittee;
 			sourceTree = "<group>";
@@ -3220,6 +3225,7 @@
 				5BD83CE21AD61F4B00D1A3EC /* SBJsonStreamParser.m in Sources */,
 				5B10A7A21AE800D20034FA63 /* PlotCertListViewController.m in Sources */,
 				5BB655701AC31753007E0F85 /* NBRMyMessageViewController.m in Sources */,
+				5B7208F61B1E2D63006E67EA /* MeetingNotesViewController.m in Sources */,
 				5B8B158F1ADC164900AA87A2 /* NBRBaseViewController.m in Sources */,
 				5BD83C8D1AD61EF600D1A3EC /* ASIInputStream.m in Sources */,
 				5BED3BD71AF8FD0E00AA8001 /* CreaterRequest_Logroll.m in Sources */,

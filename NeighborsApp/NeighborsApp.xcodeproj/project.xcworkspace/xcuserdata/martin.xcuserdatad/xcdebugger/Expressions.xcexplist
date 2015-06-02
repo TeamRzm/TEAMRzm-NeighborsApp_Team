@@ -3,7 +3,12 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "-[NSDictionary(SafePath) numberWithKeyPath:]:NSDictionary+SafeObject.m">
+         contextName = "-[ComplaintsAndRepairViewController viewDidLoad]:ComplaintsAndRepairViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "subTableView">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "__61-[ComplaintsAndRepairViewController changedSegmengWithIndex:]_block_invoke:ComplaintsAndRepairViewController.m">
@@ -18,6 +23,9 @@
       </ContextState>
       <ContextState
          contextName = "-[ComplaintsAndRepairViewController scrollViewDidEndDecelerating:]:ComplaintsAndRepairViewController.m">
+      </ContextState>
+      <ContextState
+         contextName = "__46-[IndustryCommitteeViewController requestInfo]_block_invoke:IndustryCommitteeViewController.m">
       </ContextState>
       <ContextState
          contextName = "-[AbsEntity initWithDict:]:AbsEntity.m">
@@ -43,7 +51,16 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "__52-[MeetingNotesViewController requestMeetingNoteList]_block_invoke:MeetingNotesViewController.m">
+      </ContextState>
+      <ContextState
+         contextName = "__44-[ActivityDetailViewController requestJoins]_block_invoke:ActivityDetailViewController.m">
+      </ContextState>
+      <ContextState
          contextName = "+[ComplaintsCell heightForDataDict:]:ComplaintsCell.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[NBRSmallRosterViewController tableView:cellForRowAtIndexPath:]:NBRSmallRosterViewController.m">
       </ContextState>
       <ContextState
          contextName = "-[ComplaintsCell setDataDict:]:ComplaintsCell.m">
@@ -71,6 +88,9 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "-[ActivityDetailViewController tableView:cellForRowAtIndexPath:]:ActivityDetailViewController.m">
+      </ContextState>
+      <ContextState
          contextName = "__54-[NBRFriendCircleViewController requestList1WithFlag:]_block_invoke:NBRFriendCircleViewController.m">
       </ContextState>
       <ContextState
@@ -85,10 +105,27 @@
          contextName = "-[NSDictionary(SafePath) stringWithKeyPath:]:NSDictionary+SafeObject.m">
       </ContextState>
       <ContextState
+         contextName = "__42-[JoinsActivityViewController joinRequest]_block_invoke:JoinsActivityViewController.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[MeetingNotesViewController tableView:cellForRowAtIndexPath:]:MeetingNotesViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "cellDict">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "+[ComplaintsCell getHeightObjectWithDict:]:ComplaintsCell.m">
       </ContextState>
       <ContextState
          contextName = "__41-[PlotCertListViewController requestList]_block_invoke:PlotCertListViewController.m">
+      </ContextState>
+      <ContextState
+         contextName = "__45-[MemberListViewController requestMemberList]_block_invoke:MemberListViewController.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[MemberListViewController tableView:cellForRowAtIndexPath:]:MemberListViewController.m">
       </ContextState>
       <ContextState
          contextName = "__31-[FileUpLoadHelper uploadFile:]_block_invoke_2:FileUpLoadHelper.m">
@@ -105,12 +142,7 @@
          contextName = "-[ComplaintsAndRepairViewController numberOfSectionsInTableView:]:ComplaintsAndRepairViewController.m">
       </ContextState>
       <ContextState
-         contextName = "-[ComplaintsAndRepairViewController viewDidLoad]:ComplaintsAndRepairViewController.m">
-         <PersistentStrings>
-            <PersistentString
-               value = "subTableView">
-            </PersistentString>
-         </PersistentStrings>
+         contextName = "-[NSDictionary(SafePath) numberWithKeyPath:]:NSDictionary+SafeObject.m">
       </ContextState>
    </ContextStates>
 </VariablesViewState>

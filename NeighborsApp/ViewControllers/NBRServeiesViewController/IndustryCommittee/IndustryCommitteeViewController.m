@@ -12,6 +12,7 @@
 #import "NBRDynamicofPropertyViewController.h"
 #import "MaintenanceFundViewController.h"
 #import "MemberListViewController.h"
+#import "MeetingNotesViewController.h"
 
 @interface IndustryCommitteeViewController ()
 {
@@ -128,6 +129,16 @@
             [self.navigationController pushViewController:textShowVc animated:YES];
             
             return ;
+        }
+            break;
+            
+        case 5:
+        {
+            MeetingNotesViewController *meetingNoteVC = [[MeetingNotesViewController alloc] initWithNibName:nil bundle:nil];
+            
+            [self.navigationController pushViewController:meetingNoteVC animated:YES];
+            
+            return;
         }
             break;
             

@@ -61,6 +61,7 @@
     activityBackGoundImageView.frame = CGRectMake(10, 10, kNBR_SCREEN_W - 20, 150);
     activityBackGoundImageView.layer.borderColor = kNBR_ProjectColor_LightGray.CGColor;
     activityBackGoundImageView.layer.borderWidth = 0.5f;
+    activityBackGoundImageView.layer.masksToBounds = YES;
     [self.contentView addSubview:activityBackGoundImageView];
     
     //左上标签
