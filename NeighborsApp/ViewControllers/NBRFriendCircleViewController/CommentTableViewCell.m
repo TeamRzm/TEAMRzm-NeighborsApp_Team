@@ -370,7 +370,7 @@
                                                              addressStringSize.height)];
     
     //时间
-    CGSize commitDateStringSize = [entity.address sizeWithAttributes:@{NSFontAttributeName : addressContentFont}];
+    CGSize commitDateStringSize = [entity.commitDate sizeWithAttributes:@{NSFontAttributeName : addressContentFont}];
     UILabel *commitDateLable = [[UILabel alloc] initWithFrame:CGRectMake(addressLable.frame.origin.x + addressStringSize.width + 10,
                                                                 addressLable.frame.origin.y + (CGRectGetHeight(addressLable.frame) / 2.0f) - commitDateStringSize.height / 2.0f + 1,
                                                                 commitDateStringSize.width,

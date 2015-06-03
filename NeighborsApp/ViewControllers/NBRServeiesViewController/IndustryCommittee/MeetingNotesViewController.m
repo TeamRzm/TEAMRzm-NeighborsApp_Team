@@ -194,7 +194,7 @@
     [cell.contentView addSubview:titleLable];
     
     UILabel *contentLable = [[UILabel alloc] initWithFrame:CGRectMake(10 + 27 + 10, titleLable.frame.origin.y + titleLable.frame.size.height, kNBR_SCREEN_W - 10 - 27 - 10 * 2, 65 - 3 - 20)];
-    contentLable.textColor = kNBR_ProjectColor_DeepBlack;
+    contentLable.textColor = kNBR_ProjectColor_MidGray;
     contentLable.textAlignment = NSTextAlignmentLeft;
     contentLable.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME size:13.0f];
     contentLable.numberOfLines = 2;

@@ -13,6 +13,7 @@
 #import "MaintenanceFundViewController.h"
 #import "MemberListViewController.h"
 #import "MeetingNotesViewController.h"
+#import "VoteViewController.h"
 
 @interface IndustryCommitteeViewController ()
 {
@@ -103,6 +104,16 @@
             NBRDynamicofPropertyViewController *dynViewController = [[NBRDynamicofPropertyViewController alloc] initWithMode:DYNAMICO_PROPERTY_VIEWCONTROLLER_MODE_INDUSTRY];
             
             [self.navigationController pushViewController:dynViewController animated:YES];
+            
+            return ;
+        }
+            break;
+            
+        case 1:
+        {
+            VoteViewController *voteVC = [[VoteViewController alloc] initWithNibName:nil bundle:nil];
+            
+            [self.navigationController pushViewController:voteVC animated:YES];
             
             return ;
         }

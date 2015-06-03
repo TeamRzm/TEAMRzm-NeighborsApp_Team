@@ -270,6 +270,8 @@
 		5B6D32951ADDFE43009A922A /* MLEmojiLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6D32241ADDFE43009A922A /* MLEmojiLabel.m */; };
 		5B6D32961ADDFE43009A922A /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6D32271ADDFE43009A922A /* TTTAttributedLabel.m */; };
 		5B7208F61B1E2D63006E67EA /* MeetingNotesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B7208F51B1E2D63006E67EA /* MeetingNotesViewController.m */; };
+		5B7208F91B1F7396006E67EA /* VoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B7208F81B1F7396006E67EA /* VoteViewController.m */; };
+		5B7208FC1B1F741B006E67EA /* CreaterRequest_Vote.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B7208FB1B1F741B006E67EA /* CreaterRequest_Vote.m */; };
 		5B8B158A1ADC0BDE00AA87A2 /* NBRLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8B15881ADC0BDE00AA87A2 /* NBRLoginViewController.m */; };
 		5B8B158B1ADC0BDE00AA87A2 /* NBRLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B8B15891ADC0BDE00AA87A2 /* NBRLoginViewController.xib */; };
 		5B8B158F1ADC164900AA87A2 /* NBRBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8B158D1ADC164900AA87A2 /* NBRBaseViewController.m */; };
@@ -894,6 +896,10 @@
 		5B6D32271ADDFE43009A922A /* TTTAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTAttributedLabel.m; sourceTree = "<group>"; };
 		5B7208F41B1E2D63006E67EA /* MeetingNotesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MeetingNotesViewController.h; path = ViewControllers/NBRServeiesViewController/IndustryCommittee/MeetingNotesViewController.h; sourceTree = "<group>"; };
 		5B7208F51B1E2D63006E67EA /* MeetingNotesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MeetingNotesViewController.m; path = ViewControllers/NBRServeiesViewController/IndustryCommittee/MeetingNotesViewController.m; sourceTree = "<group>"; };
+		5B7208F71B1F7396006E67EA /* VoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VoteViewController.h; path = ViewControllers/NBRServeiesViewController/IndustryCommittee/VoteViewController.h; sourceTree = "<group>"; };
+		5B7208F81B1F7396006E67EA /* VoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VoteViewController.m; path = ViewControllers/NBRServeiesViewController/IndustryCommittee/VoteViewController.m; sourceTree = "<group>"; };
+		5B7208FA1B1F741B006E67EA /* CreaterRequest_Vote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreaterRequest_Vote.h; path = Request/Creater/CreaterRequest_Vote.h; sourceTree = "<group>"; };
+		5B7208FB1B1F741B006E67EA /* CreaterRequest_Vote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreaterRequest_Vote.m; path = Request/Creater/CreaterRequest_Vote.m; sourceTree = "<group>"; };
 		5B8B15871ADC0BDE00AA87A2 /* NBRLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NBRLoginViewController.h; path = ViewControllers/NBRLoginViewController/NBRLoginViewController.h; sourceTree = "<group>"; };
 		5B8B15881ADC0BDE00AA87A2 /* NBRLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NBRLoginViewController.m; path = ViewControllers/NBRLoginViewController/NBRLoginViewController.m; sourceTree = "<group>"; };
 		5B8B15891ADC0BDE00AA87A2 /* NBRLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NBRLoginViewController.xib; path = ViewControllers/NBRLoginViewController/NBRLoginViewController.xib; sourceTree = "<group>"; };
@@ -1447,6 +1453,8 @@
 				5B5B23091B0CC7CE0057590C /* CreaterRequest_Complaint.m */,
 				5B1F4EDF1B132AC000DEB937 /* CreaterRequest_Residence.h */,
 				5B1F4EE01B132AC000DEB937 /* CreaterRequest_Residence.m */,
+				5B7208FA1B1F741B006E67EA /* CreaterRequest_Vote.h */,
+				5B7208FB1B1F741B006E67EA /* CreaterRequest_Vote.m */,
 			);
 			name = Creater;
 			sourceTree = "<group>";
@@ -1531,6 +1539,8 @@
 				5B1A5A8E1B1B033A0098BE63 /* MaintenanceFundViewController.xib */,
 				5B7208F41B1E2D63006E67EA /* MeetingNotesViewController.h */,
 				5B7208F51B1E2D63006E67EA /* MeetingNotesViewController.m */,
+				5B7208F71B1F7396006E67EA /* VoteViewController.h */,
+				5B7208F81B1F7396006E67EA /* VoteViewController.m */,
 			);
 			name = IndustryCommittee;
 			sourceTree = "<group>";
@@ -3199,6 +3209,7 @@
 				5B6D318C1ADD1BC4009A922A /* ConversationEntity.m in Sources */,
 				5B332B461AE3A8C0002A0A73 /* XHViewState.m in Sources */,
 				5BD83C941AD61EF600D1A3EC /* ASICloudFilesObjectRequest.m in Sources */,
+				5B7208FC1B1F741B006E67EA /* CreaterRequest_Vote.m in Sources */,
 				5BED3BE11AFA870900AA8001 /* CreaterRequest_Village.m in Sources */,
 				5B8B15A41ADC17CB00AA87A2 /* EGOImageView.m in Sources */,
 				5B5E39461B0B830100705AF1 /* AboutUsViewController.m in Sources */,
@@ -3223,6 +3234,7 @@
 				5BD83C9D1AD61EF600D1A3EC /* Reachability.m in Sources */,
 				5BCA99FE1AFCE9B700960F21 /* RefreshTopView.m in Sources */,
 				5BD83CE21AD61F4B00D1A3EC /* SBJsonStreamParser.m in Sources */,
+				5B7208F91B1F7396006E67EA /* VoteViewController.m in Sources */,
 				5B10A7A21AE800D20034FA63 /* PlotCertListViewController.m in Sources */,
 				5BB655701AC31753007E0F85 /* NBRMyMessageViewController.m in Sources */,
 				5B7208F61B1E2D63006E67EA /* MeetingNotesViewController.m in Sources */,

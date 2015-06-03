@@ -58,13 +58,13 @@
         default:
         case VIEW_BREAKLINE_POSITION_TOP:
         {
-            postionPoint = CGPointMake([UIScreen mainScreen].bounds.size.width / 2.0f - _width / 2.0f, 0);
+            postionPoint = CGPointMake(self.frame.size.width / 2.0f - _width / 2.0f, 0);
         }
             break ;
             
         case VIEW_BREAKLINE_POSITION_BOTTOM:
         {
-            postionPoint = CGPointMake([UIScreen mainScreen].bounds.size.width / 2.0f - _width / 2.0f, self.frame.size.height - 1);
+            postionPoint = CGPointMake(self.frame.size.width / 2.0f - _width / 2.0f, self.frame.size.height - 1);
         }
             break ;
     }
