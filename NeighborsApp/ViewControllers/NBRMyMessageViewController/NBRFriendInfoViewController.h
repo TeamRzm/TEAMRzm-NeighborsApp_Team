@@ -15,6 +15,6 @@
     NSMutableArray *rightArr;
 }
 
-@property (nonatomic,strong) NSString *userId;
+@property (nonatomic, strong) NSDictionary *userInfoDict;
 
 @end

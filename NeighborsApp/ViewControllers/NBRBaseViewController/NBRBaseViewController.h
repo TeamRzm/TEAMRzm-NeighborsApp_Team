@@ -43,6 +43,12 @@
 
 - (void) takePhotoWithCount : (NSInteger) _count;
 
+//拨打电话
+- (void) callTel : (NSString*) telString;
+
+//验证小区入住情况，如果没有入住将引到入住
+- (BOOL) checkJoinVillage;
+
 //获得目标时间距离当前时间的字符串，比如 “x分钟前，x小时前，今天，昨天。等等格式”
 - (NSString*) nowDateStringForDistanceDateString : (NSString*) _dateString;
 + (NSString*) nowDateStringForDistanceDateString : (NSString*) _dateString;

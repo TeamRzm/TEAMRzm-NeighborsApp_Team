@@ -39,19 +39,31 @@ typedef struct {
     UILabel             *titleLable;
     UILabel             *contentLable;
     EGOImageView        *imageView;
+    NSInteger           contentLineNumber;
 }
 
 @end
 
 @implementation NewsTableViewCell
 
-- (void) setDateDict : (NSDictionary*) _dict
+- (id) initWithContentNumberOfLine : (NSInteger) numberOfLine
+{
+    self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kNBR_TABLEVIEW_CELL_NOIDENTIFIER];
+    
+    if (self)
+    {
+        contentLineNumber = numberOfLine;
+    }
+    return self;
+}
+
+- (void) setDateDict : (NSDictionary*) _dict numerOfLine : (NSInteger) numberOfLine
 {
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     
     _subImageViews = [[NSMutableArray alloc] init];
     
-    NewTableViewCellHeightStruct heightStruct = [NewsTableViewCell heighStureWithDict:_dict];
+    NewTableViewCellHeightStruct heightStruct = [NewsTableViewCell heighStureWithDict:_dict numberOfLine:numberOfLine];
     
     //标题
     titleLable = [[UILabel alloc] initWithFrame:heightStruct.titleFrame];
@@ -60,9 +72,14 @@ typedef struct {
     [self.contentView addSubview:titleLable];
     
     //内容
-    contentLable = [[UILabel alloc] initWithFrame:heightStruct.contentFrame];
+    contentLable = [[UILabel alloc] initWithFrame:CGRectMake(heightStruct.contentFrame.origin.x,
+                                                             heightStruct.contentFrame.origin.y,
+                                                             kNBR_SCREEN_W - 20,
+                                                             heightStruct.contentFrame.size.height)];
+    
     contentLable.attributedText = [[NSAttributedString alloc] initWithString:[_dict stringWithKeyPath:@"info"] attributes:NewsContentFormat];
-    contentLable.numberOfLines = 0;
+    contentLable.numberOfLines = numberOfLine;
+    contentLable.layer.masksToBounds = YES;
     [self.contentView addSubview:contentLable];
     
     //图片
@@ -96,7 +113,7 @@ typedef struct {
     }
 }
 
-+ (NewTableViewCellHeightStruct) heighStureWithDict : (NSDictionary *) _dict
++ (NewTableViewCellHeightStruct) heighStureWithDict : (NSDictionary *) _dict numberOfLine : (NSInteger) numerOfLine
 {
     NewTableViewCellHeightStruct heightStruce;
     
@@ -105,42 +122,56 @@ typedef struct {
                                                                           attributes:NewsTitleFormat
                                                                              context:nil];
     
-    CGRect tempContentFrame = [[_dict stringWithKeyPath:@"info"] boundingRectWithSize:CGSizeMake(kNBR_SCREEN_W - 20, 1000)
-                                                                              options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading
-                                                                           attributes:NewsContentFormat context:nil];
-    
     heightStruce.titleFrame = CGRectMake(10,
                                          5,
                                          CGRectGetWidth(tempTitleFrame),
                                          CGRectGetHeight(tempTitleFrame)
                                          );
     
-    if ([_dict stringWithKeyPath:@"image"].length <= 0)
+    
+    NSString *contentString;
+    
+    if (numerOfLine == 0)
     {
-        heightStruce.imageFrame = heightStruce.titleFrame;
+        contentString = [_dict stringWithKeyPath:@"info"];
     }
     else
     {
-        heightStruce.imageFrame = CGRectMake(10,
-                                             heightStruce.titleFrame.origin.y + CGRectGetHeight(heightStruce.titleFrame) + 10,
-                                             300,
-                                             140);
+        contentString = @"\n\n\n";
     }
     
+    CGRect tempContentFrame = [contentString boundingRectWithSize:CGSizeMake(kNBR_SCREEN_W - 20, 1000)
+                                                          options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading
+                                                       attributes:NewsContentFormat context:nil];
+    
+    
     heightStruce.contentFrame = CGRectMake(10,
-                                           heightStruce.imageFrame.origin.y + CGRectGetHeight(heightStruce.imageFrame) + 10,
+                                           heightStruce.titleFrame.origin.y + CGRectGetHeight(heightStruce.titleFrame),
                                            CGRectGetWidth(tempContentFrame),
                                            CGRectGetHeight(tempContentFrame)
                                            );
     
+    
+    if ([_dict stringWithKeyPath:@"image"].length <= 0)
+    {
+        heightStruce.imageFrame = heightStruce.contentFrame;
+    }
+    else
+    {
+        heightStruce.imageFrame = CGRectMake(10,
+                                             heightStruce.contentFrame.origin.y + CGRectGetHeight(heightStruce.contentFrame),
+                                             300,
+                                             140);
+    }
+    
     return heightStruce;
 }
 
-+ (CGFloat) heightWithDict : (NSDictionary*) _dict
++ (CGFloat) heightWithDict : (NSDictionary*) _dict numberOfLine : (NSInteger) numberofLine
 {
-    NewTableViewCellHeightStruct heightStruct = [NewsTableViewCell heighStureWithDict:_dict];
+    NewTableViewCellHeightStruct heightStruct = [NewsTableViewCell heighStureWithDict:_dict numberOfLine:numberofLine];
     
-    return heightStruct.contentFrame.origin.y + heightStruct.contentFrame.size.height + 5;
+    return heightStruct.imageFrame.origin.y + heightStruct.imageFrame.size.height + 8;
 }
 
 @end

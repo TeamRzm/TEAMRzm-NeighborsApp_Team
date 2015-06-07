@@ -53,6 +53,15 @@
                             NSForegroundColorAttributeName    : kNBR_ProjectColor_DeepGray,
                             };
     
+//    boundTableView.tableFooterView = tableViewFootView;
+    
+    [self requestJoins];
+}
+
+- (void) setDateEntity:(ActivityDateEntity *) tdateEntity
+{
+    _dateEntity = tdateEntity;
+    
     //FootView
     //报名按钮
     UIView *tableViewFootView = [[UIView alloc] initWithFrame:CGRectMake(0, kNBR_SCREEN_H - 60, kNBR_SCREEN_W, 60)];
@@ -65,13 +74,44 @@
     commitButton.layer.masksToBounds = YES;
     commitButton.titleLabel.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME_BLOD size:15.0f];
     [commitButton addTarget:self action:@selector(joinThisActivity) forControlEvents:UIControlEventTouchUpInside];
-    [commitButton setTitle:@"我要报名" forState:UIControlStateNormal];
     [tableViewFootView addSubview:commitButton];
-    
-//    boundTableView.tableFooterView = tableViewFootView;
     [self.view addSubview:tableViewFootView];
     
-    [self requestJoins];
+    switch (tdateEntity.activityState)
+    {
+        case ACTIVITY_STATE_VAIL:
+        {
+            [commitButton setTitle:@"活动已过期" forState:UIControlStateNormal];
+            commitButton.enabled = NO;
+        }
+            break;
+            
+        case ACTIVITY_STATE_END:
+        {
+            [commitButton setTitle:@"活动已结束" forState:UIControlStateNormal];
+            commitButton.enabled = NO;
+        }
+            break;
+            
+        case ACTIVITY_STATE_STARTING:
+        {
+            [commitButton setTitle:@"报名暂未开始，不能报名" forState:UIControlStateNormal];
+            commitButton.enabled = YES;
+        }
+            break;
+            
+        case ACTIVITY_STATE_RES:
+        {
+            [commitButton setTitle:@"我要报名" forState:UIControlStateNormal];
+            commitButton.enabled = YES;
+        }
+            break;
+            
+        default:
+            break;
+    }
+
+    return ;
 }
 
 - (void) joinThisActivity
@@ -376,6 +416,16 @@
     }
     
     return nil;
+}
+
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 2)
+    {
+        NSMutableDictionary *subdic = boundTableViewDataSource[indexPath.section][indexPath.row];
+        [self callTel:[subdic stringWithKeyPath:@"phone"]];
+        return ;
+    }
 }
 
 @end

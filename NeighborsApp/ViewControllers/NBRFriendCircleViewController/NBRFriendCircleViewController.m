@@ -236,6 +236,11 @@
 
 - (void) rightBarbuttonAction : (id) sender
 {
+    if (![self checkJoinVillage])
+    {
+        return ;
+    }
+    
     switch (currentSegmentIndex)
     {
         case 0:
@@ -367,6 +372,7 @@
         CommentTableViewCell *cell = [[CommentTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kNBR_TABLEVIEW_CELL_NOIDENTIFIER];
         cell.delegate = self;
         [cell setDateEntity:entity];
+//        [cell.avterImageView enableAvatarModeWithUserInfoDict:@{} pushedView:self];
         return cell;
     }
     else

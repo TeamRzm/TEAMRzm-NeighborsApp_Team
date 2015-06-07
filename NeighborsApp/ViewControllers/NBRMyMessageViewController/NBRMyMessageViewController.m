@@ -91,30 +91,6 @@
         newEntity.lastMessage = testMessagees[i];
         [leftTableViewDateSource addObject:newEntity];
     }
-    
-//    rightTableViewDateSource = [[NSMutableArray alloc] initWithArray:@[
-//                                                                      @{@"新家园小区"     : @[
-//                                                                                leftTableViewDateSource[0],
-//                                                                                leftTableViewDateSource[1],
-//                                                                                leftTableViewDateSource[2],
-//                                                                                leftTableViewDateSource[3]]
-//                                                                        },
-//                                                                      
-//                                                                      @{@"米兰春天"      : @[
-//                                                                                leftTableViewDateSource[4],
-//                                                                                leftTableViewDateSource[5],
-//                                                                                leftTableViewDateSource[6],
-//                                                                                leftTableViewDateSource[7]]
-//                                                                        },
-//                                                                      
-//                                                                      @{@"湘江世纪城小区" : @[
-//                                                                                leftTableViewDateSource[4],
-//                                                                                leftTableViewDateSource[5],
-//                                                                                leftTableViewDateSource[6],
-//                                                                                leftTableViewDateSource[7]]
-//                                                                        },
-//                                                                      ]];
-    
 }
 #endif
 
@@ -209,7 +185,6 @@
         {
             rightTableViewDateSource = (NSMutableArray *)[reponseDict arrayWithKeyPath:@"data\\result"];
             [rightTableView reloadData];
-
         }
     }];
     
@@ -393,13 +368,13 @@
     }
     else if (tableView == rightTableView)
     {
-        return cell;
         NSDictionary *sectionDictory = rightTableViewDateSource[indexPath.section];
         
-        ConversationEntity *subConversation = sectionDictory.allValues[0][indexPath.row];
+        NSDictionary *subCellDict = [sectionDictory arrayWithKeyPath:@"members"][indexPath.row];
         
         //头像
-        EGOImageView *avterImgView = [[EGOImageView alloc] initWithPlaceholderImage: [UIImage imageNamed:subConversation.lastMessage.from.avterUrl]];
+        EGOImageView *avterImgView = [[EGOImageView alloc] initWithPlaceholderImage: [UIImage imageNamed:@"defaultAvater"]];
+        avterImgView.imageURL = [NSURL URLWithString:[subCellDict stringWithKeyPath:@"avatar"]];
         avterImgView.frame = CGRectMake(10.0f, 56 / 2.0f - 43 / 2.0f, 43, 43);
         avterImgView.layer.cornerRadius = avterImgView.frame.size.width / 2.0f;
         avterImgView.layer.masksToBounds = YES;
@@ -417,7 +392,7 @@
                                                                         56.0f)];
         titleLable.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME_BLOD size:15.0f];
         titleLable.textColor = kNBR_ProjectColor_DeepGray;
-        titleLable.text = subConversation.lastMessage.from.nickName;
+        titleLable.text = [subCellDict stringWithKeyPath:@"nickName"];
 
         [cell.contentView addSubview:avterImgView];
         [cell.contentView addSubview:titleLable];

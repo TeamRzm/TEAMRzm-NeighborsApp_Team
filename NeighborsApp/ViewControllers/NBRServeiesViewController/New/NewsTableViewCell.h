@@ -20,7 +20,9 @@
 
 @property (nonatomic, assign) id<NewsTableViewCellDelegate> delegate;
 @property (nonatomic, readonly) NSMutableArray *subImageViews;
-- (void) setDateDict : (NSDictionary*) _dict;
-+ (CGFloat) heightWithDict : (NSDictionary*) _dict;
+
+- (id) initWithContentNumberOfLine : (NSInteger) numberOfLine;
+- (void) setDateDict : (NSDictionary*) _dict numerOfLine : (NSInteger) numberOfLine;
++ (CGFloat) heightWithDict : (NSDictionary*) _dict numberOfLine : (NSInteger) numberofLine;
 
 @end

@@ -120,7 +120,7 @@
     }
 
     [dataUploadRequest addData:fileData withFileName:@"uploadImg.jpg" andContentType:@"image/jpeg" forKey:@"data"];
-    
+
     __weak ASIFormDataRequest *blockRequest = dataUploadRequest;
     
     [dataUploadRequest setCompletionBlock:^{

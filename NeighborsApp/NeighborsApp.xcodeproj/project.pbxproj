@@ -289,6 +289,7 @@
 		5B955BEF1ADFE1EE00E8B335 /* FriendCircleContentEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B955BEE1ADFE1EE00E8B335 /* FriendCircleContentEntity.m */; };
 		5B955BF21ADFE42600E8B335 /* CommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B955BF11ADFE42600E8B335 /* CommentTableViewCell.m */; };
 		5B957E9E1B1C440200C5661F /* NSString+MoneyFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B957E9D1B1C440200C5661F /* NSString+MoneyFormat.m */; };
+		5BACCF811B24D08D0096F9E5 /* UIImage+UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BACCF801B24D08D0096F9E5 /* UIImage+UserInfo.m */; };
 		5BB655311AC31464007E0F85 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB655301AC31464007E0F85 /* main.m */; };
 		5BB655341AC31464007E0F85 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB655331AC31464007E0F85 /* AppDelegate.m */; };
 		5BB655371AC31464007E0F85 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB655361AC31464007E0F85 /* FirstViewController.m */; };
@@ -930,6 +931,8 @@
 		5B955BF11ADFE42600E8B335 /* CommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentTableViewCell.m; path = ViewControllers/NBRFriendCircleViewController/CommentTableViewCell.m; sourceTree = "<group>"; };
 		5B957E9C1B1C440200C5661F /* NSString+MoneyFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+MoneyFormat.h"; path = "Other/NSString+MoneyFormat.h"; sourceTree = "<group>"; };
 		5B957E9D1B1C440200C5661F /* NSString+MoneyFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+MoneyFormat.m"; path = "Other/NSString+MoneyFormat.m"; sourceTree = "<group>"; };
+		5BACCF7F1B24D08D0096F9E5 /* UIImage+UserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+UserInfo.h"; path = "MyUIViews/UIImage+UserInfo.h"; sourceTree = "<group>"; };
+		5BACCF801B24D08D0096F9E5 /* UIImage+UserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+UserInfo.m"; path = "MyUIViews/UIImage+UserInfo.m"; sourceTree = "<group>"; };
 		5BB6552B1AC31464007E0F85 /* NeighborsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NeighborsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BB6552F1AC31464007E0F85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5BB655301AC31464007E0F85 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -1587,6 +1590,8 @@
 				5BED3BDA1AFA4EC300AA8001 /* FileUpLoadHelper.m */,
 				5B3675801AFB0E5400841405 /* NSDictionary+SafeObject.h */,
 				5B3675811AFB0E5400841405 /* NSDictionary+SafeObject.m */,
+				5BACCF7F1B24D08D0096F9E5 /* UIImage+UserInfo.h */,
+				5BACCF801B24D08D0096F9E5 /* UIImage+UserInfo.m */,
 			);
 			name = Other;
 			sourceTree = "<group>";
@@ -3082,6 +3087,7 @@
 				5B6D31581ADCDFF6009A922A /* NBRRegViewController.m in Sources */,
 				5B332AC71AE26294002A0A73 /* CommitNewContentViewController.m in Sources */,
 				5BED3BDB1AFA4EC300AA8001 /* FileUpLoadHelper.m in Sources */,
+				5BACCF811B24D08D0096F9E5 /* UIImage+UserInfo.m in Sources */,
 				96FB995D1B0889790051A9B6 /* CreateRequest_Server.m in Sources */,
 				5B955BEF1ADFE1EE00E8B335 /* FriendCircleContentEntity.m in Sources */,
 				5BD83D231AD6223900D1A3EC /* SBJsonParser.m in Sources */,
@@ -3383,7 +3389,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Tao Tang (Y25L2DYWXP)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = NeighborsApp.pch;
 				INFOPLIST_FILE = NeighborsApp/Info.plist;
@@ -3396,7 +3402,7 @@
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "23a312a1-b0bf-404d-a981-c3c8e862c111";
+				PROVISIONING_PROFILE = "70216e33-ee7c-41ec-9cb2-7f639a9e3b3c";
 				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Debug;
@@ -3406,7 +3412,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Tao Tang (Y25L2DYWXP)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = NeighborsApp.pch;
 				INFOPLIST_FILE = NeighborsApp/Info.plist;
@@ -3419,7 +3425,7 @@
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "23a312a1-b0bf-404d-a981-c3c8e862c111";
+				PROVISIONING_PROFILE = "70216e33-ee7c-41ec-9cb2-7f639a9e3b3c";
 				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Release;

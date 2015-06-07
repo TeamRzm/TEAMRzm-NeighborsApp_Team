@@ -86,38 +86,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Other/AppSessionMrg.m"
-            timestampString = "453042109.257465"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
-            landmarkName = "-init"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ViewControllers/NBRPersonalCenterViewController/UpdatePwdViewController.m"
-            timestampString = "453042556.903377"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
-            landmarkName = "-updatePwdRequest"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -144,22 +112,6 @@
             startingLineNumber = "360"
             endingLineNumber = "360"
             landmarkName = "-fileUpLoadHelper:allDownloadedResponseDictArr:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ViewControllers/NBRServeiesViewController/ComplaintsAndRepair/ComplaintsAndRepairViewController.m"
-            timestampString = "454192553.793155"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "298"
-            endingLineNumber = "298"
-            landmarkName = "-complaintsCell:tapSubImageViews:allSubImageViews:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -218,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ViewControllers/NBRFriendCircleViewController/NBRFriendCircleViewController.m"
-            timestampString = "454875632.487075"
+            timestampString = "455399039.111698"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "439"
-            endingLineNumber = "439"
+            startingLineNumber = "445"
+            endingLineNumber = "445"
             landmarkName = "-requestList0WithType:"
             landmarkType = "5">
          </BreakpointContent>
@@ -240,6 +192,22 @@
             startingLineNumber = "116"
             endingLineNumber = "116"
             landmarkName = "-joinRequest"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MyUIViews/UIImage+UserInfo.m"
+            timestampString = "455399824.288551"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "17"
+            endingLineNumber = "17"
+            landmarkName = "-enableAvatarModeWithUserInfoDict:pushedView:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

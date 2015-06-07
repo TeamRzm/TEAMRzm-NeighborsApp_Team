@@ -7,8 +7,9 @@
 //
 
 #import "NBRBaseViewController.h"
+#import "PlotCertListViewController.h"
 
-@interface NBRBaseViewController ()<UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,CTAssetsPickerControllerDelegate,CLLocationManagerDelegate>
+@interface NBRBaseViewController ()<UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,CTAssetsPickerControllerDelegate,CLLocationManagerDelegate,UIAlertViewDelegate>
 {
     CTAssetsPickerController *imageSelectPicker;
     NSInteger                 selectImgaeCount;
@@ -18,6 +19,33 @@
 
 @implementation NBRBaseViewController
 
+- (BOOL) checkJoinVillage
+{
+    if (![AppSessionMrg shareInstance].isInVillage)
+    {
+        UIAlertView *noInVillageAlert = [[UIAlertView alloc] initWithTitle:@"温馨提示" message:@"您暂未入住小区，是否立即入住？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"现在入住", nil];
+        noInVillageAlert.tag = 0x1111;
+        noInVillageAlert.delegate = self;
+        [noInVillageAlert show];
+        return NO;
+    }
+    return YES;
+}
+
+#pragma mark UIAlertView Delegate
+- (void) alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    if (alertView.tag == 0x1111)
+    {
+        if (buttonIndex == 1)
+        {
+            PlotCertListViewController *plotCertListVc = [[PlotCertListViewController alloc] initWithSelect:NO selectDelegate:nil];
+            plotCertListVc.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:plotCertListVc animated:YES];
+            return ;
+        }
+    }
+}
 
 - (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -179,6 +207,12 @@
         [self removeLoadingView];
         [self showBannerMsgWithString:@"网络连接失败，请您检查您的网络设置"];
     }];
+}
+
+- (void) callTel:(NSString *)telString
+{
+    NSString *phoneCallCmdString = [NSString stringWithFormat:@"telprompt://%@",telString];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneCallCmdString]];
 }
 
 - (UIImage*) imageFromAssert : (ALAsset*) alasset

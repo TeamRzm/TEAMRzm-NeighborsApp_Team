@@ -71,16 +71,15 @@
 {
     dataArr = [[NSMutableArray alloc] init];
     
-    myTableview =[[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, kNBR_SCREEN_W, kNBR_SCREEN_H) style:UITableViewStyleGrouped];
+    myTableview =[[UITableView alloc] initWithFrame:CGRectMake(0.0f, 64.0f, kNBR_SCREEN_W, kNBR_SCREEN_H - 64.0f) style:UITableViewStyleGrouped];
     [myTableview setBackgroundView:nil];
     [myTableview setDelegate:self];
     [myTableview setDataSource:self];
     
     refreshController = [[RefreshControl alloc] initWithScrollView:myTableview delegate:self];
-    refreshController.enableInsetTop = YES;
+    refreshController.topEnabled = YES;
     
     [self.view addSubview:myTableview];
-    
 }
 
 -(void) GetDynamicList
@@ -88,7 +87,11 @@
     dynamicReq = [CreateRequest_Server CreateDynamicOfPropertyInfoWithIndex:ITOS(pageIndex) Flag:ITOS(viewControllerMode) Size:kNBR_PAGE_SIZE_STR];
     __weak ASIHTTPRequest *selfblock = dynamicReq;
     [selfblock setCompletionBlock:^{
+        
+        [refreshController finishRefreshingDirection:RefreshDirectionTop];
+        
         NSDictionary *reponseDict = selfblock.responseString.JSONValue;
+        
         [self removeLoadingView];
         
         if ([CreateRequest_Server CheckErrorResponse:reponseDict errorAlertInViewController:self])
@@ -143,7 +146,7 @@
     NewsTableViewCell *cell = [[NewsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kNBR_TABLEVIEW_CELL_NOIDENTIFIER];
     cell.delegate = self;
     
-    [cell setDateDict:subDict];
+    [cell setDateDict:subDict numerOfLine:3];
     
     return cell;
 }
@@ -152,7 +155,7 @@
 {
     NSDictionary *subDict = dataArr[indexPath.section];
     
-    return [NewsTableViewCell heightWithDict:subDict];
+    return [NewsTableViewCell heightWithDict:subDict numberOfLine:3];
 }
 
 - (void)didReceiveMemoryWarning {

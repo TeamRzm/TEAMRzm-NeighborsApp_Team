@@ -19,6 +19,9 @@
 
 
 - (BOOL)    userIsLogin;
+
+//是否入住小区
+- (BOOL)    isInVillage;
 - (void)    userLogout;
 - (void)    saveLoginState : (UserEntity*) _entity;
 - (void)    setSessionValue : (id) _value withKey : (NSString*) _key isSandBox : (BOOL) _inSandBox;

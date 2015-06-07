@@ -10,12 +10,11 @@
 
 @interface UserEntity : AbsEntity
 
-@property (nonatomic, strong) NSString* nickName;
-@property (nonatomic, strong) NSString* villageId;
-@property (nonatomic, strong) NSString* userId;
-@property (nonatomic, strong) NSString* userName;
-@property (nonatomic, strong) NSString* villageName;
-@property (nonatomic, strong) NSString* token;
-@property (nonatomic, strong) NSString* avatar;
+@property (nonatomic, copy)     NSString* nickName;
+@property (nonatomic, copy)     NSString* userId;
+@property (nonatomic, copy)     NSString* userName;
+@property (nonatomic, copy)     NSString* token;
+@property (nonatomic, copy)     NSString* avatar;
+@property (nonatomic, strong)   NSDictionary *region;
 
 @end

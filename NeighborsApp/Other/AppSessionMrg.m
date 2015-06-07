@@ -64,6 +64,19 @@
     }
 }
 
+- (BOOL) isInVillage
+{
+    if ([self userIsLogin])
+    {
+        if (_userEntity && _userEntity.region)
+        {
+            return YES;
+        }
+    }
+    
+    return NO;
+}
+
 - (id) init
 {
     self = [super init];
