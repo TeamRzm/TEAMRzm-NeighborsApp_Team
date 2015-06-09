@@ -15,7 +15,6 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="YIh-4A-CP8" kind="relationship" relationship="viewControllers" id="cKq-0t-q8c"/>
                         <segue destination="AMk-Uh-sYg" kind="relationship" relationship="viewControllers" id="ack-7b-KfA"/>
                         <segue destination="gvF-GY-Fdb" kind="relationship" relationship="viewControllers" id="TfT-ey-341"/>
                         <segue destination="ZTb-12-kBg" kind="relationship" relationship="viewControllers" id="0N5-4B-UYX"/>
@@ -101,7 +100,7 @@
             <objects>
                 <navigationController id="AMk-Uh-sYg" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="圈子" id="VEn-LB-9oC"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="6dY-oG-mfP">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="6dY-oG-mfP" customClass="NBRNavigationBar">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -118,7 +117,7 @@
             <objects>
                 <navigationController id="gvF-GY-Fdb" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="服务" id="xGs-T4-CqR"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Wxl-Sj-CIk">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Wxl-Sj-CIk" customClass="NBRNavigationBar">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -135,7 +134,7 @@
             <objects>
                 <navigationController id="ZTb-12-kBg" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="我的" id="M8z-Tg-Vd1"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4I5-1N-pEZ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4I5-1N-pEZ" customClass="NBRNavigationBar">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

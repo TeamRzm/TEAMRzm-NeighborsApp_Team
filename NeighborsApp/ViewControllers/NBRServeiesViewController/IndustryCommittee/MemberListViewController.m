@@ -104,7 +104,8 @@
     avterImgView.frame = CGRectMake(10.0f, 56 / 2.0f - 43 / 2.0f, 43, 43);
     avterImgView.layer.cornerRadius = avterImgView.frame.size.width / 2.0f;
     avterImgView.layer.masksToBounds = YES;
-    avterImgView.imageURL = [NSURL URLWithString:[subdic stringWithKeyPath:@"avatar"]];
+    avterImgView.imageURL = [NSURL URLWithString:[subdic stringWithKeyPath:@"userInfo\\avatar"]];
+    [avterImgView enableAvatarModeWithUserInfoDict:[subdic dictWithKeyPath:@"userInfo"] pushedView:self];
     [cell.contentView addSubview:avterImgView];
     
     //联系人

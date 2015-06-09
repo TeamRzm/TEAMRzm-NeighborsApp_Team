@@ -378,12 +378,10 @@
         avterImgView.frame = CGRectMake(10.0f, 56 / 2.0f - 43 / 2.0f, 43, 43);
         avterImgView.layer.cornerRadius = avterImgView.frame.size.width / 2.0f;
         avterImgView.layer.masksToBounds = YES;
-        [cell.contentView addSubview:avterImgView];
+        [avterImgView enableAvatarModeWithUserInfoDict:subCellDict pushedView:self];
         avterImgView.tag = indexPath.row;
         [avterImgView setUserInteractionEnabled:YES];
-        UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(AvterImageClicked:)];
-        [avterImgView addGestureRecognizer:gesture];
-
+        [cell.contentView addSubview:avterImgView];
         
         //标题
         UILabel *titleLable = [[UILabel alloc] initWithFrame:CGRectMake(68.0f,
@@ -433,13 +431,4 @@
     }
 }
 
-#pragma mark Gesture Method
-
--(void) AvterImageClicked:(UITapGestureRecognizer *) _gesture
-{
-    NBRFriendInfoViewController *infoview = [[NBRFriendInfoViewController alloc] init];
-    [infoview setHidesBottomBarWhenPushed:YES];
-    [self.navigationController pushViewController:infoview animated:YES];
-    
-}
 @end

@@ -155,6 +155,8 @@
     
     self.navigationItem.backBarButtonItem = backButtonItem;
     
+    [self.tabBarController.tabBar setTintColor:kNBR_ProjectColor_StandBlue];
+    
 }
 
 - (void) showBannerMsgWithString : (NSString *)_msg tappedBlock:(void (^)(ALAlertBanner *alertBanner))tappedBlock

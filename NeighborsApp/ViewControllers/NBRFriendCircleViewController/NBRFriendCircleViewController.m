@@ -123,7 +123,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    viewControllerMode = FRIENDCIRCLECONTROLLER_MODE_NOMAL;
+    if (viewControllerMode == FRIENDCIRCLECONTROLLER_MODE_NONE)
+    {
+        viewControllerMode = FRIENDCIRCLECONTROLLER_MODE_NOMAL;
+    }
     
     self.view.backgroundColor = kNBR_ProjectColor_BackGroundGray;
     
@@ -372,7 +375,7 @@
         CommentTableViewCell *cell = [[CommentTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kNBR_TABLEVIEW_CELL_NOIDENTIFIER];
         cell.delegate = self;
         [cell setDateEntity:entity];
-//        [cell.avterImageView enableAvatarModeWithUserInfoDict:@{} pushedView:self];
+        [cell.avterImageView enableAvatarModeWithUserInfoDict:[entity.dataDict dictWithKeyPath:@"userInfo"] pushedView:self];
         return cell;
     }
     else

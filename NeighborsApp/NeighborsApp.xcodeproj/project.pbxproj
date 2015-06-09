@@ -272,6 +272,7 @@
 		5B7208F61B1E2D63006E67EA /* MeetingNotesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B7208F51B1E2D63006E67EA /* MeetingNotesViewController.m */; };
 		5B7208F91B1F7396006E67EA /* VoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B7208F81B1F7396006E67EA /* VoteViewController.m */; };
 		5B7208FC1B1F741B006E67EA /* CreaterRequest_Vote.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B7208FB1B1F741B006E67EA /* CreaterRequest_Vote.m */; };
+		5B7391141B25B90E0038C31E /* AvatarImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B7391131B25B90E0038C31E /* AvatarImageView.m */; };
 		5B8B158A1ADC0BDE00AA87A2 /* NBRLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8B15881ADC0BDE00AA87A2 /* NBRLoginViewController.m */; };
 		5B8B158B1ADC0BDE00AA87A2 /* NBRLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B8B15891ADC0BDE00AA87A2 /* NBRLoginViewController.xib */; };
 		5B8B158F1ADC164900AA87A2 /* NBRBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8B158D1ADC164900AA87A2 /* NBRBaseViewController.m */; };
@@ -285,16 +286,15 @@
 		5B8B15B41ADC236700AA87A2 /* DefaultRes.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B8B15B31ADC236700AA87A2 /* DefaultRes.xcassets */; };
 		5B8B15B91ADCBA4A00AA87A2 /* NBRForgetPwdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8B15B71ADCBA4A00AA87A2 /* NBRForgetPwdViewController.m */; };
 		5B8B15BA1ADCBA4A00AA87A2 /* NBRForgetPwdViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B8B15B81ADCBA4A00AA87A2 /* NBRForgetPwdViewController.xib */; };
+		5B94BE951B2772CE0096469E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B94BE931B2772CE0096469E /* Main.storyboard */; };
 		5B955BEC1ADFD98A00E8B335 /* NBRServeiesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B955BEB1ADFD98900E8B335 /* NBRServeiesViewController.xib */; };
 		5B955BEF1ADFE1EE00E8B335 /* FriendCircleContentEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B955BEE1ADFE1EE00E8B335 /* FriendCircleContentEntity.m */; };
 		5B955BF21ADFE42600E8B335 /* CommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B955BF11ADFE42600E8B335 /* CommentTableViewCell.m */; };
 		5B957E9E1B1C440200C5661F /* NSString+MoneyFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B957E9D1B1C440200C5661F /* NSString+MoneyFormat.m */; };
-		5BACCF811B24D08D0096F9E5 /* UIImage+UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BACCF801B24D08D0096F9E5 /* UIImage+UserInfo.m */; };
 		5BB655311AC31464007E0F85 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB655301AC31464007E0F85 /* main.m */; };
 		5BB655341AC31464007E0F85 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB655331AC31464007E0F85 /* AppDelegate.m */; };
 		5BB655371AC31464007E0F85 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB655361AC31464007E0F85 /* FirstViewController.m */; };
 		5BB6553A1AC31464007E0F85 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB655391AC31464007E0F85 /* SecondViewController.m */; };
-		5BB6553D1AC31464007E0F85 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BB6553B1AC31464007E0F85 /* Main.storyboard */; };
 		5BB6553F1AC31464007E0F85 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BB6553E1AC31464007E0F85 /* Images.xcassets */; };
 		5BB655421AC31464007E0F85 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BB655401AC31464007E0F85 /* LaunchScreen.xib */; };
 		5BB6554E1AC31464007E0F85 /* NeighborsAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB6554D1AC31464007E0F85 /* NeighborsAppTests.m */; };
@@ -901,6 +901,8 @@
 		5B7208F81B1F7396006E67EA /* VoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VoteViewController.m; path = ViewControllers/NBRServeiesViewController/IndustryCommittee/VoteViewController.m; sourceTree = "<group>"; };
 		5B7208FA1B1F741B006E67EA /* CreaterRequest_Vote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreaterRequest_Vote.h; path = Request/Creater/CreaterRequest_Vote.h; sourceTree = "<group>"; };
 		5B7208FB1B1F741B006E67EA /* CreaterRequest_Vote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreaterRequest_Vote.m; path = Request/Creater/CreaterRequest_Vote.m; sourceTree = "<group>"; };
+		5B7391121B25B90E0038C31E /* AvatarImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AvatarImageView.h; path = Other/AvatarImageView.h; sourceTree = "<group>"; };
+		5B7391131B25B90E0038C31E /* AvatarImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AvatarImageView.m; path = Other/AvatarImageView.m; sourceTree = "<group>"; };
 		5B8B15871ADC0BDE00AA87A2 /* NBRLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NBRLoginViewController.h; path = ViewControllers/NBRLoginViewController/NBRLoginViewController.h; sourceTree = "<group>"; };
 		5B8B15881ADC0BDE00AA87A2 /* NBRLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NBRLoginViewController.m; path = ViewControllers/NBRLoginViewController/NBRLoginViewController.m; sourceTree = "<group>"; };
 		5B8B15891ADC0BDE00AA87A2 /* NBRLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NBRLoginViewController.xib; path = ViewControllers/NBRLoginViewController/NBRLoginViewController.xib; sourceTree = "<group>"; };
@@ -924,6 +926,7 @@
 		5B8B15B61ADCBA4A00AA87A2 /* NBRForgetPwdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NBRForgetPwdViewController.h; path = ViewControllers/NBRLoginViewController/NBRForgetPwdViewController.h; sourceTree = "<group>"; };
 		5B8B15B71ADCBA4A00AA87A2 /* NBRForgetPwdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NBRForgetPwdViewController.m; path = ViewControllers/NBRLoginViewController/NBRForgetPwdViewController.m; sourceTree = "<group>"; };
 		5B8B15B81ADCBA4A00AA87A2 /* NBRForgetPwdViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NBRForgetPwdViewController.xib; path = ViewControllers/NBRLoginViewController/NBRForgetPwdViewController.xib; sourceTree = "<group>"; };
+		5B94BE941B2772CE0096469E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5B955BEB1ADFD98900E8B335 /* NBRServeiesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NBRServeiesViewController.xib; path = ViewControllers/NBRServeiesViewController/NBRServeiesViewController.xib; sourceTree = "<group>"; };
 		5B955BED1ADFE1EE00E8B335 /* FriendCircleContentEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FriendCircleContentEntity.h; path = ViewControllers/NBRFriendCircleViewController/FriendCircleContentEntity.h; sourceTree = "<group>"; };
 		5B955BEE1ADFE1EE00E8B335 /* FriendCircleContentEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FriendCircleContentEntity.m; path = ViewControllers/NBRFriendCircleViewController/FriendCircleContentEntity.m; sourceTree = "<group>"; };
@@ -931,8 +934,6 @@
 		5B955BF11ADFE42600E8B335 /* CommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentTableViewCell.m; path = ViewControllers/NBRFriendCircleViewController/CommentTableViewCell.m; sourceTree = "<group>"; };
 		5B957E9C1B1C440200C5661F /* NSString+MoneyFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+MoneyFormat.h"; path = "Other/NSString+MoneyFormat.h"; sourceTree = "<group>"; };
 		5B957E9D1B1C440200C5661F /* NSString+MoneyFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+MoneyFormat.m"; path = "Other/NSString+MoneyFormat.m"; sourceTree = "<group>"; };
-		5BACCF7F1B24D08D0096F9E5 /* UIImage+UserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+UserInfo.h"; path = "MyUIViews/UIImage+UserInfo.h"; sourceTree = "<group>"; };
-		5BACCF801B24D08D0096F9E5 /* UIImage+UserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+UserInfo.m"; path = "MyUIViews/UIImage+UserInfo.m"; sourceTree = "<group>"; };
 		5BB6552B1AC31464007E0F85 /* NeighborsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NeighborsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BB6552F1AC31464007E0F85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5BB655301AC31464007E0F85 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -942,7 +943,6 @@
 		5BB655361AC31464007E0F85 /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
 		5BB655381AC31464007E0F85 /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
 		5BB655391AC31464007E0F85 /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
-		5BB6553C1AC31464007E0F85 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5BB6553E1AC31464007E0F85 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		5BB655411AC31464007E0F85 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		5BB655471AC31464007E0F85 /* NeighborsAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NeighborsAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1590,8 +1590,8 @@
 				5BED3BDA1AFA4EC300AA8001 /* FileUpLoadHelper.m */,
 				5B3675801AFB0E5400841405 /* NSDictionary+SafeObject.h */,
 				5B3675811AFB0E5400841405 /* NSDictionary+SafeObject.m */,
-				5BACCF7F1B24D08D0096F9E5 /* UIImage+UserInfo.h */,
-				5BACCF801B24D08D0096F9E5 /* UIImage+UserInfo.m */,
+				5B7391121B25B90E0038C31E /* AvatarImageView.h */,
+				5B7391131B25B90E0038C31E /* AvatarImageView.m */,
 			);
 			name = Other;
 			sourceTree = "<group>";
@@ -2117,13 +2117,13 @@
 		5BB6552D1AC31464007E0F85 /* NeighborsApp */ = {
 			isa = PBXGroup;
 			children = (
+				5B94BE931B2772CE0096469E /* Main.storyboard */,
 				5BB655321AC31464007E0F85 /* AppDelegate.h */,
 				5BB655331AC31464007E0F85 /* AppDelegate.m */,
 				5BB655351AC31464007E0F85 /* FirstViewController.h */,
 				5BB655361AC31464007E0F85 /* FirstViewController.m */,
 				5BB655381AC31464007E0F85 /* SecondViewController.h */,
 				5BB655391AC31464007E0F85 /* SecondViewController.m */,
-				5BB6553B1AC31464007E0F85 /* Main.storyboard */,
 				5BB6553E1AC31464007E0F85 /* Images.xcassets */,
 				5BB655401AC31464007E0F85 /* LaunchScreen.xib */,
 				5BB6552E1AC31464007E0F85 /* Supporting Files */,
@@ -2801,7 +2801,6 @@
 				5B6D32771ADDFE43009A922A /* Expression_77@2x.png in Resources */,
 				9603EA231B08314900E15A92 /* comment_yiwen.png in Resources */,
 				9603EA051B08314900E15A92 /* comment_pijiu.png in Resources */,
-				5BB6553D1AC31464007E0F85 /* Main.storyboard in Resources */,
 				9603EA261B08314900E15A92 /* comment_youxian.png in Resources */,
 				5B6D328B1ADDFE43009A922A /* Expression_95@2x.png in Resources */,
 				9603EA091B08314900E15A92 /* comment_qinqin.png in Resources */,
@@ -2942,6 +2941,7 @@
 				5B6D327C1ADDFE43009A922A /* Expression_81@2x.png in Resources */,
 				5B6D32601ADDFE43009A922A /* Expression_56@2x.png in Resources */,
 				5B4ADE081ADE305300810165 /* chatting_setmode_voice_btn_normal.png in Resources */,
+				5B94BE951B2772CE0096469E /* Main.storyboard in Resources */,
 				5B6D32521ADDFE43009A922A /* Expression_43@2x.png in Resources */,
 				5B6D32301ADDFE43009A922A /* Expression_12@2x.png in Resources */,
 				9603EA061B08314900E15A92 /* comment_pingpang.png in Resources */,
@@ -3087,7 +3087,6 @@
 				5B6D31581ADCDFF6009A922A /* NBRRegViewController.m in Sources */,
 				5B332AC71AE26294002A0A73 /* CommitNewContentViewController.m in Sources */,
 				5BED3BDB1AFA4EC300AA8001 /* FileUpLoadHelper.m in Sources */,
-				5BACCF811B24D08D0096F9E5 /* UIImage+UserInfo.m in Sources */,
 				96FB995D1B0889790051A9B6 /* CreateRequest_Server.m in Sources */,
 				5B955BEF1ADFE1EE00E8B335 /* FriendCircleContentEntity.m in Sources */,
 				5BD83D231AD6223900D1A3EC /* SBJsonParser.m in Sources */,
@@ -3197,6 +3196,7 @@
 				5BB655341AC31464007E0F85 /* AppDelegate.m in Sources */,
 				5B3A5A211B16013100D4651C /* IndustryCommitteeViewController.m in Sources */,
 				5B1500E41AE3F97E0033CEA2 /* ComentDetailViewController.m in Sources */,
+				5B7391141B25B90E0038C31E /* AvatarImageView.m in Sources */,
 				5B38BA411AF4E01D00775F64 /* CreaterRequest_Base.m in Sources */,
 				5B332B041AE2F647002A0A73 /* NSDateFormatter+timeIntervalFormatter.m in Sources */,
 				5B332B441AE3A8C0002A0A73 /* XHFileAttribute.m in Sources */,
@@ -3289,10 +3289,10 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		5BB6553B1AC31464007E0F85 /* Main.storyboard */ = {
+		5B94BE931B2772CE0096469E /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				5BB6553C1AC31464007E0F85 /* Base */,
+				5B94BE941B2772CE0096469E /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

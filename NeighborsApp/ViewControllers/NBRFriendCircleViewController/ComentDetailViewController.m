@@ -317,6 +317,7 @@
     boundTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kNBR_SCREEN_W, kNBR_SCREEN_H - 64 - 40) style:UITableViewStyleGrouped];
     boundTableView.delegate = self;
     boundTableView.dataSource = self;
+    boundTableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
 //    boundTableView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
     [self.view addSubview:boundTableView];
     

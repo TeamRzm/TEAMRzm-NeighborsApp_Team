@@ -146,7 +146,8 @@
     }
     
     cell.titleLable.text = [subCellDict stringWithKeyPath:@"name"];
-    cell.priceLable.text = ITOS([subCellDict numberWithKeyPath:@"goods"]);
+//    cell.priceLable.text = ITOS([subCellDict numberWithKeyPath:@"goods"]);
+    cell.priceLable.text = @"";
     cell.descLable.text = [subCellDict stringWithKeyPath:@"content"];
     cell.phoneLable.text = [subCellDict stringWithKeyPath:@"constract"];
 

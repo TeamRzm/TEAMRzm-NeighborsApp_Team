@@ -9,6 +9,7 @@
 #import "aya_MultimediaKeyBoard.h"
 #import "C_AmrControllerHelper.h"
 #import "NSString+ContverHtml.h"
+#import "UITextView+Placeholder.h"
 
 #define CRT_X(view) view.frame.origin.x
 #define CRT_Y(view) view.frame.origin.y
@@ -688,22 +689,20 @@
         
         
         inputTextView = [[UITextView alloc] initWithFrame:CGRectMake(5.0f+audioBtn.frame.size.width+5.0f,
-                                                                     45.0f / 2.0f - 35.0f / 2.0f,
-                                                                    235.0f,
+                                                                     45.0f / 2.0f - 35.0f / 2.0f + 1,
+                                                                    245.0f,
                                                                      35.0f)];
         [inputTextView setDelegate:self];
         [inputTextView setAutocapitalizationType:UITextAutocapitalizationTypeNone];
-        [inputTextView setReturnKeyType:UIReturnKeySend];
+//        [inputTextView setReturnKeyType:UIReturnKeySend];
         [inputTextView setTextAlignment:NSTextAlignmentLeft];
         [inputTextView setAutoresizesSubviews:YES];
-        [inputTextView setFont:[UIFont fontWithName:kNBR_DEFAULT_FONT_NAME size:13.0f]];
-        [inputTextView.layer setCornerRadius:5.0f];
+        [inputTextView setFont:[UIFont fontWithName:kNBR_DEFAULT_FONT_NAME size:14.0f]];
+        [inputTextView.layer setCornerRadius:3.0f];
         [inputTextView.layer setBorderColor:[UIColor colorWithRed:52.0f/255.0f green:52.0f/255.0f blue:52.0f/255.0f alpha:1.0f].CGColor];
         [inputTextView.layer setBorderWidth:0.2f];
-        
-        
-        
-        
+        [inputTextView setPlaceHolder:@"请输入内容..."];
+
         [inputTextView addObserver:self forKeyPath:@"contentSize" options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:NULL];
         
         [self addSubview:inputTextView];
@@ -736,17 +735,29 @@
                                      33.0,
                                      33.0f)];
         [faceBtn setBackgroundImage:imgFace forState:UIControlStateNormal];
-        [self addSubview:faceBtn];
+//        [self addSubview:faceBtn];
         
         
         //other msg btn
         otherMsgBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [otherMsgBtn setTag:KEYBOARD_STATUS_OTHER];
         [otherMsgBtn setContentMode:UIViewContentModeScaleAspectFit];
-        [otherMsgBtn setFrame:CGRectMake(kNBR_SCREEN_W-55.0f,
+        [otherMsgBtn setFrame:CGRectMake(kNBR_SCREEN_W - 55.0f,
                                          45.0f / 2.0f - 33.0f / 2.0f,
                                          33.0f,
                                          33.0f)];
+        
+        UIButton *senderButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [senderButton setTitle:@"发送" forState:UIControlStateNormal];
+        senderButton.titleLabel.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME_BLOD size:14.0f];
+        [senderButton setTitleColor:kNBR_ProjectColor_DeepGray forState:UIControlStateNormal];
+        [senderButton setContentMode:UIViewContentModeScaleAspectFit];
+        [senderButton setFrame:CGRectMake(kNBR_SCREEN_W - 80.0f,
+                                         45.0f / 2.0f - 34.0f / 2.0f - 1,
+                                         80.0f,
+                                         34.0f)];
+        [senderButton addTarget:self action:@selector(sendButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:senderButton];
         
         if (self.isCommentKeyboardType)
         {
@@ -761,7 +772,7 @@
             
         }
         
-        [self addSubview:otherMsgBtn];
+//        [self addSubview:otherMsgBtn];
 
         
         recoderBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -785,8 +796,21 @@
         
         
         [self addObserver:self forKeyPath:@"commentImgDate" options:NSKeyValueObservingOptionNew context:Nil];
+
+        [self addBreakLineWithPosition:VIEW_BREAKLINE_POSITION_TOP style:VIEW_BREAKLINE_STYLE_SOLID width:kNBR_SCREEN_W];
     }
     return self;
+}
+
+- (void) sendButtonAction : (id) sender
+{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(ayaKeyBoard:willFinishInputMsg:)])
+    {
+        NSString *retstr = inputTextView.text;
+        retstr = [retstr displayStrToTranStr];
+        [inputTextView setText:@""];
+        [self.delegate ayaKeyBoard:self willFinishInputMsg:retstr];
+    }
 }
 
 -(void)beginRecodering : (UIButton*) _sender
@@ -893,6 +917,8 @@
     CGRect keyboardRect = [aValue CGRectValue];
     
     currSysKeyboarFrame = keyboardRect;
+    
+    [self hidekeyboardview];
 }
 
 - (void) resetOtherResInputBtn
@@ -953,30 +979,31 @@
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
-    if ([text isEqualToString:@"\n"])
-    {
-        if ([textView.text length] == 0)
-        {
-            if (self.isCommentKeyboardType)
-            {
-                [self.delegate ayaKeyBoard:self willFinishInputMsg:@""];
-            }
-            
-            return NO;
-        }
-        
-        if (self.delegate && [self.delegate respondsToSelector:@selector(ayaKeyBoard:willFinishInputMsg:)])
-        {
-            NSString *retstr = textView.text;
-            retstr = [retstr displayStrToTranStr];
-            [textView setText:@""];
-            [self.delegate ayaKeyBoard:self willFinishInputMsg:retstr];
-            
-        }
-        return NO;
-    }
-    
     return YES;
+//    if ([text isEqualToString:@"\n"])
+//    {
+//        if ([textView.text length] == 0)
+//        {
+//            if (self.isCommentKeyboardType)
+//            {
+//                [self.delegate ayaKeyBoard:self willFinishInputMsg:@""];
+//            }
+//            
+//            return NO;
+//        }
+//        
+//        if (self.delegate && [self.delegate respondsToSelector:@selector(ayaKeyBoard:willFinishInputMsg:)])
+//        {
+//            NSString *retstr = textView.text;
+//            retstr = [retstr displayStrToTranStr];
+//            [textView setText:@""];
+//            [self.delegate ayaKeyBoard:self willFinishInputMsg:retstr];
+//            
+//        }
+//        return NO;
+//    }
+//    
+//    return YES;
 }
 
 -(void) SendfaceTo
@@ -1039,7 +1066,7 @@
         
         if (inputTextView.text.length>0)
         {
-            if (textView.contentSize.height > line5Size.height)
+            if (textView.contentSize.height >= line5Size.height)
             {
                 [inputTextView setFrame:CGRectMake(inputTextView.frame.origin.x, 5, textView.contentSize.width, line5Size.height)];
                 if (!([[UIDevice currentDevice].systemVersion floatValue] >= 7.0f))

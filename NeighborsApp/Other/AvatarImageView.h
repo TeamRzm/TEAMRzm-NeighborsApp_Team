@@ -1,5 +1,5 @@
 //
-//  UIImage+UserInfo.h
+//  AvatarImageView.h
 //  NeighborsApp
 //
 //  Created by Martin.Ren on 15/6/8.
@@ -7,12 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "EGOImageView.h"
 
-@interface UIImageView(UserInfo)
-
-@property (nonatomic, assign) UIViewController *pushedViewController;
-@property (nonatomic, strong) NSDictionary *userInfomationDict;
+@interface AvatarImageView : UIImageView
 
 - (void) enableAvatarModeWithUserInfoDict : (NSDictionary*) dict pushedView : (UIViewController*) _viewController;
 

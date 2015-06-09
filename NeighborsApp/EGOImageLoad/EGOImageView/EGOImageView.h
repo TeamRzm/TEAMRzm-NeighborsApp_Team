@@ -25,10 +25,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AvatarImageView.h"
 #import "EGOImageLoader.h"
 
 @protocol EGOImageViewDelegate;
-@interface EGOImageView : UIImageView<EGOImageLoaderObserver> {
+@interface EGOImageView : AvatarImageView<EGOImageLoaderObserver> {
 @private
 	NSURL* imageURL;
 	UIImage* placeholderImage;
