@@ -55,9 +55,6 @@
                                        @"Icon"  : @"me03"}
                                      ],
                                  @[
-                                     @{@"Title" : @"版本检测",
-                                       @"Icon"  : @"me05"},
-                                     
                                      @{@"Title" : @"免责声明",
                                        @"Icon"  : @"me06"},
                                      
@@ -73,8 +70,12 @@
     [self.view addSubview:boundTableView];
     
     //HeadView
-    tableViewHeadView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kNBR_SCREEN_W, 79.0f + 40.0f)];
-    tableViewHeadView.backgroundColor = kNBR_ProjectColor_StandBlue;
+    tableViewHeadView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kNBR_SCREEN_W, 100 + 40.0f)];
+
+    //HeadView Bacn Ground
+    UIImageView *hBackGoundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kNBR_SCREEN_W, 100 + 40.0f)];
+    hBackGoundImageView.image = [UIImage imageNamed:@"wode_bg"];
+    [tableViewHeadView addSubview:hBackGoundImageView];
     
     //顶部三个按钮
     tableViewHeadViewTitle[0] = @"          里手帮";
@@ -90,13 +91,13 @@
     for (int i = 0; i < 3; i++)
     {
         tableViewHeadViewButtons[i] = [UIButton buttonWithType:UIButtonTypeCustom];
-        tableViewHeadViewButtons[i].frame = CGRectMake(kNBR_SCREEN_W / 3.0f * i, 79.0f, kNBR_SCREEN_W / 3.0f, 40.0f);
-        tableViewHeadViewButtons[i].backgroundColor = UIColorFromRGB(0xFFFFFF);
+        tableViewHeadViewButtons[i].frame = CGRectMake(kNBR_SCREEN_W / 3.0f * i, 100.0f, kNBR_SCREEN_W / 3.0f, 40.0f);
         tableViewHeadViewButtons[i].titleLabel.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME_BLOD size:12.0f];
         tableViewHeadViewButtons[i].tag = i;
-        [tableViewHeadViewButtons[i] setTitleColor:kNBR_ProjectColor_StandBlue forState:UIControlStateNormal];
+        [tableViewHeadViewButtons[i] setTitleColor:kNBR_ProjectColor_StandWhite forState:UIControlStateNormal];
         [tableViewHeadViewButtons[i] setTitle:tableViewHeadViewTitle[i] forState:UIControlStateNormal];
         [tableViewHeadViewButtons[i] addTarget:self action:@selector(headViewSengmentButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+        [tableViewHeadViewButtons[i] setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.5f]];
         
         UIImage *iconImg = [UIImage imageNamed:tableViewHeadViewIconImg[i]];
         UIImageView *iconView = [[UIImageView alloc] initWithImage:iconImg];
@@ -112,7 +113,7 @@
     avterImageView.imageURL = [NSURL URLWithString:[AppSessionMrg shareInstance].userEntity.avatar];
     avterImageView.layer.cornerRadius = 3.0f;
     avterImageView.layer.masksToBounds = YES;
-    avterImageView.frame = CGRectMake(10, 79 / 2.0f - 50.0f / 2.0f, 50, 50);
+    avterImageView.frame = CGRectMake(kNBR_SCREEN_W / 2.0f - 50.0f / 2.0f, 79 / 2.0f - 50.0f / 2.0f, 50, 50);
     avterImageView.userInteractionEnabled = YES;
     
     UITapGestureRecognizer *avterImageViewGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(gotoUserInfoViewController)];
@@ -121,41 +122,34 @@
     [tableViewHeadView addSubview:avterImageView];
     
     //昵称
-    nikeNameLable = [[UILabel alloc] initWithFrame:CGRectMake(75.0f, avterImageView.frame.origin.y + 5, kNBR_SCREEN_W - 75 - 10, 20)];
+    nikeNameLable = [[UILabel alloc] initWithFrame:CGRectMake(0,
+                                                              avterImageView.frame.origin.y + CGRectGetHeight(avterImageView.frame) + 5,
+                                                              kNBR_SCREEN_W,
+                                                              20)];
     nikeNameLable.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME_BLOD size:13.0f];
     nikeNameLable.textColor = UIColorFromRGB(0xFFFFFF);
+    nikeNameLable.textAlignment = NSTextAlignmentCenter;
     nikeNameLable.text = [AppSessionMrg shareInstance].userEntity.nickName;
     
     [tableViewHeadView addSubview:nikeNameLable];
     
-    //积分
-    sorceLable = [[UILabel alloc] initWithFrame:CGRectMake(75.0f, avterImageView.frame.origin.y + 5 + 22, kNBR_SCREEN_W - 75 - 10, 20)];
-    sorceLable.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME size:10.0f];
-    sorceLable.textColor = UIColorFromRGB(0xFFFFFF);
-    sorceLable.text = @"积分 0";
-    [tableViewHeadView addSubview:sorceLable];
+//    //积分
+//    sorceLable = [[UILabel alloc] initWithFrame:CGRectMake(75.0f, avterImageView.frame.origin.y + 5 + 22, kNBR_SCREEN_W - 75 - 10, 20)];
+//    sorceLable.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME size:10.0f];
+//    sorceLable.textColor = UIColorFromRGB(0xFFFFFF);
+//    sorceLable.text = @"积分 0";
+//    [tableViewHeadView addSubview:sorceLable];
     
     //4个分割线装饰按钮
-    UIView *breakLineTop = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 79.0f, kNBR_SCREEN_W, 0.5)];
-    UIView *breakLineBottom = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 79.0f + 40, kNBR_SCREEN_W, 0.5)];
-    UIView *breakLineContent1 = [[UIView alloc] initWithFrame:CGRectMake(kNBR_SCREEN_W / 3.0f * 0, 79.0f, 0.5, 40.0f)];
-    UIView *breakLineContent2 = [[UIView alloc] initWithFrame:CGRectMake(kNBR_SCREEN_W / 3.0f * 1, 79.0f, 0.5, 40.0f)];
-    UIView *breakLineContent3 = [[UIView alloc] initWithFrame:CGRectMake(kNBR_SCREEN_W / 3.0f * 2, 79.0f, 0.5, 40.0f)];
-    UIView *breakLineContent4 = [[UIView alloc] initWithFrame:CGRectMake(kNBR_SCREEN_W / 3.0f * 3, 79.0f, 0.5, 40.0f)];
+
+    UIView *breakLineContent2 = [[UIView alloc] initWithFrame:CGRectMake(kNBR_SCREEN_W / 3.0f * 1, 104, 0.5, 30)];
+    UIView *breakLineContent3 = [[UIView alloc] initWithFrame:CGRectMake(kNBR_SCREEN_W / 3.0f * 2, 104, 0.5, 30)];
     
-    breakLineTop.backgroundColor = kNBR_ProjectColor_LightGray;
-    breakLineBottom.backgroundColor = kNBR_ProjectColor_LightGray;
-    breakLineContent1.backgroundColor = kNBR_ProjectColor_LightGray;
     breakLineContent2.backgroundColor = kNBR_ProjectColor_LightGray;
     breakLineContent3.backgroundColor = kNBR_ProjectColor_LightGray;
-    breakLineContent4.backgroundColor = kNBR_ProjectColor_LightGray;
     
-    [tableViewHeadView addSubview:breakLineTop];
-    [tableViewHeadView addSubview:breakLineBottom];
-    [tableViewHeadView addSubview:breakLineContent1];
     [tableViewHeadView addSubview:breakLineContent2];
     [tableViewHeadView addSubview:breakLineContent3];
-    [tableViewHeadView addSubview:breakLineContent4];
     
     boundTableView.tableHeaderView = tableViewHeadView;
     
@@ -167,12 +161,13 @@
 - (void) configShareView
 {
     shareView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kNBR_SCREEN_W, kNBR_SCREEN_H)];
-    shareView.backgroundColor = [UIColor colorWithRed:.5f green:.5f blue:.5f alpha:.7f];
+    shareView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:.4f];
     
     UIImageView *QRCodeImgView = [[UIImageView alloc] initWithFrame:CGRectMake(kNBR_SCREEN_W / 2.0f - (kNBR_SCREEN_W * .6f) / 2.0f,
                                                                                kNBR_SCREEN_H / 2.0f - (kNBR_SCREEN_W * .6f) / 2.0f,
                                                                                kNBR_SCREEN_W * .6f,
                                                                                kNBR_SCREEN_W * .6f)];
+    QRCodeImgView.image = [UIImage imageNamed:@"shareQRCode"];
     QRCodeImgView.backgroundColor = [UIColor whiteColor];
     [shareView addSubview:QRCodeImgView];
     
@@ -185,6 +180,8 @@
 
 - (void) showShareView
 {
+    [self.tabBarController.view bringSubviewToFront:shareView];
+    
     [UIView animateWithDuration:.25f animations:^{
         shareView.alpha = 1.0f;
     } completion:^(BOOL finished) {
@@ -325,7 +322,6 @@
                                         @"FeedBackViewController", //意见反馈
                                         ],
                                     @[
-                                        @"", //版本检测
                                         @"DisclaimersViewController", //免责声明
                                         @"AboutUsViewController", //关于我们
                                         ],

@@ -306,6 +306,8 @@
 		5BB8297B1AE5748B00877995 /* CommentEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB8297A1AE5748B00877995 /* CommentEntity.m */; };
 		5BBAC8A41AFBD14700536F1E /* CreaterRequest_Show.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BBAC8A31AFBD14700536F1E /* CreaterRequest_Show.m */; };
 		5BBAC8A71AFBD6B000536F1E /* SearchPlotListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BBAC8A61AFBD6B000536F1E /* SearchPlotListViewController.m */; };
+		5BC7EFF71B2A193A001D66FE /* ServerProjectDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BC7EFF61B2A193A001D66FE /* ServerProjectDetailViewController.m */; };
+		5BC7EFFD1B2B3946001D66FE /* AddPlotCertSubInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BC7EFFC1B2B3946001D66FE /* AddPlotCertSubInfoViewController.m */; };
 		5BCA99FA1AFCE9B700960F21 /* RefreshControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA99F11AFCE9B700960F21 /* RefreshControl.m */; };
 		5BCA99FB1AFCE9B700960F21 /* pull_refresh@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BCA99F31AFCE9B700960F21 /* pull_refresh@2x.png */; };
 		5BCA99FC1AFCE9B700960F21 /* pull_refresh@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BCA99F41AFCE9B700960F21 /* pull_refresh@3x.png */; };
@@ -964,6 +966,10 @@
 		5BBAC8A31AFBD14700536F1E /* CreaterRequest_Show.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreaterRequest_Show.m; path = Request/Creater/CreaterRequest_Show.m; sourceTree = "<group>"; };
 		5BBAC8A51AFBD6B000536F1E /* SearchPlotListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchPlotListViewController.h; path = ViewControllers/NBRPersonalCenterViewController/SearchPlotListViewController.h; sourceTree = "<group>"; };
 		5BBAC8A61AFBD6B000536F1E /* SearchPlotListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchPlotListViewController.m; path = ViewControllers/NBRPersonalCenterViewController/SearchPlotListViewController.m; sourceTree = "<group>"; };
+		5BC7EFF51B2A193A001D66FE /* ServerProjectDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServerProjectDetailViewController.h; path = ViewControllers/NBRServeiesViewController/ServerProject/ServerProjectDetailViewController.h; sourceTree = "<group>"; };
+		5BC7EFF61B2A193A001D66FE /* ServerProjectDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServerProjectDetailViewController.m; path = ViewControllers/NBRServeiesViewController/ServerProject/ServerProjectDetailViewController.m; sourceTree = "<group>"; };
+		5BC7EFFB1B2B3946001D66FE /* AddPlotCertSubInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddPlotCertSubInfoViewController.h; path = ViewControllers/NBRPersonalCenterViewController/AddPlotCertSubInfoViewController.h; sourceTree = "<group>"; };
+		5BC7EFFC1B2B3946001D66FE /* AddPlotCertSubInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddPlotCertSubInfoViewController.m; path = ViewControllers/NBRPersonalCenterViewController/AddPlotCertSubInfoViewController.m; sourceTree = "<group>"; };
 		5BCA99F01AFCE9B700960F21 /* RefreshControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshControl.h; sourceTree = "<group>"; };
 		5BCA99F11AFCE9B700960F21 /* RefreshControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefreshControl.m; sourceTree = "<group>"; };
 		5BCA99F31AFCE9B700960F21 /* pull_refresh@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pull_refresh@2x.png"; sourceTree = "<group>"; };
@@ -1288,6 +1294,8 @@
 				5B10A7A41AE80F770034FA63 /* AddPlotCertViewController.m */,
 				5BBAC8A51AFBD6B000536F1E /* SearchPlotListViewController.h */,
 				5BBAC8A61AFBD6B000536F1E /* SearchPlotListViewController.m */,
+				5BC7EFFB1B2B3946001D66FE /* AddPlotCertSubInfoViewController.h */,
+				5BC7EFFC1B2B3946001D66FE /* AddPlotCertSubInfoViewController.m */,
 			);
 			name = Plot;
 			sourceTree = "<group>";
@@ -1317,6 +1325,8 @@
 			children = (
 				5B1F4EEA1B13A8A800DEB937 /* ServerProjectViewController.h */,
 				5B1F4EEB1B13A8A800DEB937 /* ServerProjectViewController.m */,
+				5BC7EFF51B2A193A001D66FE /* ServerProjectDetailViewController.h */,
+				5BC7EFF61B2A193A001D66FE /* ServerProjectDetailViewController.m */,
 				5B3A5A261B16376400D4651C /* ServerProjectTableViewCell.h */,
 				5B3A5A271B16376400D4651C /* ServerProjectTableViewCell.m */,
 				5B3A5A281B16376400D4651C /* ServerProjectTableViewCell.xib */,
@@ -3217,6 +3227,7 @@
 				5BD83C941AD61EF600D1A3EC /* ASICloudFilesObjectRequest.m in Sources */,
 				5B7208FC1B1F741B006E67EA /* CreaterRequest_Vote.m in Sources */,
 				5BED3BE11AFA870900AA8001 /* CreaterRequest_Village.m in Sources */,
+				5BC7EFFD1B2B3946001D66FE /* AddPlotCertSubInfoViewController.m in Sources */,
 				5B8B15A41ADC17CB00AA87A2 /* EGOImageView.m in Sources */,
 				5B5E39461B0B830100705AF1 /* AboutUsViewController.m in Sources */,
 				5BCA99FA1AFCE9B700960F21 /* RefreshControl.m in Sources */,
@@ -3264,6 +3275,7 @@
 				5BB655311AC31464007E0F85 /* main.m in Sources */,
 				5BB6556A1AC31727007E0F85 /* NBRPersonalCenterViewController.m in Sources */,
 				5BD83C981AD61EF600D1A3EC /* ASIS3BucketRequest.m in Sources */,
+				5BC7EFF71B2A193A001D66FE /* ServerProjectDetailViewController.m in Sources */,
 				5B6D32961ADDFE43009A922A /* TTTAttributedLabel.m in Sources */,
 				5B38BA691AF6868900775F64 /* NBRUserInfoViewController.m in Sources */,
 				5B332B451AE3A8C0002A0A73 /* XHImageViewer.m in Sources */,

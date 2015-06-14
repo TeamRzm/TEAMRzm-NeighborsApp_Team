@@ -25,7 +25,12 @@
 }
 
 - (void) resignFirstResponderWithView : (UIView*) _resgignView;
+- (void) resignFirstResponder;
 - (void) setDoneStyleTextFile : (UITextField*) _textFiled;
+
+- (void) setDissMissLeftButton;
+
+- (void) setDissMissLeftButtonWithTitle : (NSString *) _leftTitle;
 
 - (void) showBannerMsgWithString : (NSString*) _msg;
 

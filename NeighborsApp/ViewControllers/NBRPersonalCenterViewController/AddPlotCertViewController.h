@@ -10,4 +10,9 @@
 
 @interface AddPlotCertViewController : NBRBaseViewController
 
+@property (nonatomic, strong) NSDictionary *plotDict;
+@property (nonatomic, copy)   NSString     *houseInfo;
+@property (nonatomic, copy)   NSString     *ownerName;
+@property (nonatomic, copy)   NSString     *ownerTelNum;
+
 @end

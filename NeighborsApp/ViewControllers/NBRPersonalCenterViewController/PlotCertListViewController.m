@@ -7,7 +7,7 @@
 //
 
 #import "PlotCertListViewController.h"
-#import "AddPlotCertViewController.h"
+#import "AddPlotCertSubInfoViewController.h"
 #import "CreaterRequest_Village.h"
 
 @interface PlotCertListViewController ()<UITableViewDataSource, UITableViewDelegate>
@@ -72,9 +72,14 @@
 
 - (void) addPlotCertButtonAction : (id) sender
 {
-    AddPlotCertViewController *nVC = [[AddPlotCertViewController alloc] initWithNibName:nil bundle:nil];
+    AddPlotCertSubInfoViewController *nVC = [[AddPlotCertSubInfoViewController alloc] initWithNibName:nil bundle:nil];
     nVC.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:nVC animated:YES];
+    
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:nVC];
+    
+    [self.tabBarController presentViewController:navController animated:YES completion:^{
+        
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

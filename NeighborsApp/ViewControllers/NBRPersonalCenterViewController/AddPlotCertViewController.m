@@ -8,60 +8,65 @@
 
 #import "AddPlotCertViewController.h"
 #import "CreaterRequest_Village.h"
-#import "SearchPlotListViewController.h"
+#import "UICheckBox.h"
 
-@interface AddPlotCertViewController () <UITableViewDataSource, UITableViewDelegate,SearchPlotListViewControllerDelegate>
+@interface AddPlotCertViewController () <UITableViewDataSource, UITableViewDelegate>
 {
     UITableView     *boundTableView;
     NSArray         *titlesArr;
+    NSArray         *placeHold;
     NSMutableArray  *textFieldArr;
     
     ASIHTTPRequest  *commentApplyVillage;
     
+    UICheckBox      *cb_0;
+    UICheckBox      *cb_1;
+    UICheckBox      *cb_2;
     
-    NSDictionary    *selectPlotDict;
+    NSInteger       cbIndex;
 }
 @end
 
 @implementation AddPlotCertViewController
 
+- (void) resetCheckBoxWithSender : (UICheckBox *) checkBox
+{
+    cb_0.check = NO;
+    cb_1.check = NO;
+    cb_2.check = NO;
+
+    checkBox.check = YES;
+    cbIndex = checkBox.tag;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    cbIndex = -1;
     self.title = @"添加认证";
     
     titlesArr = @[
-                  @"所在小区",
-                  @"业主姓名",
-                  @"业主电话",
-                  @"联系人",
-                  @"联系电话",
-                  @"与业主关系",
-                  @"楼层信息",
+                  @"我的姓名",
+                  @"我的电话",
+                  ];
+    
+    placeHold = @[
+                  @"请填写您的真实姓名",
+                  @"请输入您的电话",
                   ];
     
     textFieldArr = [[NSMutableArray alloc] init];
     
     for (int i = 0; i < titlesArr.count; i++)
     {
-        UITextField *newTextFiled;
-        if (i == 0)
-        {
-           newTextFiled = [[UITextField alloc] initWithFrame:CGRectMake(10, 0, kNBR_SCREEN_W - 40, 40.0f)];
-        }
-        else
-        {
-           newTextFiled = [[UITextField alloc] initWithFrame:CGRectMake(10, 0, kNBR_SCREEN_W - 20, 40.0f)];
-        }
-        
+        UITextField *newTextFiled = [[UITextField alloc] initWithFrame:CGRectMake(10, 0, kNBR_SCREEN_W - 20, 40.0f)];
+   
         [self setDoneStyleTextFile:newTextFiled];
         newTextFiled.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME size:13.0f];
         newTextFiled.textAlignment = NSTextAlignmentRight;
+        newTextFiled.placeholder = placeHold[i];
         [textFieldArr addObject:newTextFiled];
     }
-    
-    ((UITextField*)textFieldArr[0]).userInteractionEnabled = NO;
-    ((UITextField*)textFieldArr[0]).placeholder = @"请选择";
     
     boundTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kNBR_SCREEN_W, kNBR_SCREEN_H) style:UITableViewStyleGrouped];
     boundTableView.delegate = self;
@@ -69,15 +74,64 @@
     [self.view addSubview:boundTableView];
     
     
-    UIView *tableViewFootView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kNBR_SCREEN_W, 40)];
+    //FootView
+    UIView *tableViewFootView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kNBR_SCREEN_W, 135)];
+    
+    //ChckBox
+    cb_0 = [[UICheckBox alloc] initWithFrame:CGRectMake(10, 30 * 0 - 5, 35, 35) scale:.6];
+    cb_0.tag = 0;
+    [cb_0 setTintColor:kNBR_ProjectColor_StandRed];
+    [tableViewFootView addSubview:cb_0];
+    
+    UILabel *cb_0DescLable = [[UILabel alloc] initWithFrame:CGRectMake(45, 30 * 0 - 5, 320.0f - 50 - 10, 35)];
+    cb_0DescLable.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME size:13.0f];
+    cb_0DescLable.textColor = kNBR_ProjectColor_DeepGray;
+    cb_0DescLable.text = @"房产证在我名下";
+    [tableViewFootView addSubview:cb_0DescLable];
+    
+    cb_1 = [[UICheckBox alloc] initWithFrame:CGRectMake(10, 30 * 1 - 5, 35, 35) scale:.6];
+    cb_1.tag = 1;
+    [cb_1 setTintColor:kNBR_ProjectColor_StandRed];
+    [tableViewFootView addSubview:cb_1];
+    
+    UILabel *cb_1DescLable = [[UILabel alloc] initWithFrame:CGRectMake(45, 30 * 1 - 5, 320.0f - 50 - 10, 35)];
+    cb_1DescLable.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME size:13.0f];
+    cb_1DescLable.textColor = kNBR_ProjectColor_DeepGray;
+    cb_1DescLable.text = @"我是业主家属";
+    [tableViewFootView addSubview:cb_1DescLable];
+    
+    cb_2 = [[UICheckBox alloc] initWithFrame:CGRectMake(10, 30 * 2 - 5, 35, 35) scale:.6];
+    cb_2.tag = 2;
+    [cb_2 setTintColor:kNBR_ProjectColor_StandRed];
+    [tableViewFootView addSubview:cb_2];
+    
+    UILabel *cb_2DescLable = [[UILabel alloc] initWithFrame:CGRectMake(45, 30 * 2 - 5, 320.0f - 50 - 10, 35)];
+    cb_2DescLable.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME size:13.0f];
+    cb_2DescLable.textColor = kNBR_ProjectColor_DeepGray;
+    cb_2DescLable.text = @"我是租客";
+    [tableViewFootView addSubview:cb_2DescLable];
+    
+    __weak AddPlotCertViewController *blockSelf = self;
+    
+    [cb_0 setCheckBlock:^(UICheckBox *sender){
+        [blockSelf resetCheckBoxWithSender:sender];
+    }];
+    
+    [cb_1 setCheckBlock:^(UICheckBox *sender){
+        [blockSelf resetCheckBoxWithSender:sender];
+    }];
+    
+    [cb_2 setCheckBlock:^(UICheckBox *sender){
+        [blockSelf resetCheckBoxWithSender:sender];
+    }];
     
     UIButton *commitButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    commitButton.frame = CGRectMake(15, 0, kNBR_SCREEN_W - 30, 40);
+    commitButton.frame = CGRectMake(15, 95, kNBR_SCREEN_W - 30, 40);
     commitButton.backgroundColor = kNBR_ProjectColor_StandBlue;
     commitButton.layer.cornerRadius = 5.0f;
     commitButton.layer.masksToBounds = YES;
     commitButton.titleLabel.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME_BLOD size:15.0f];
-    [commitButton setTitle:@"提交认证" forState:UIControlStateNormal];
+    [commitButton setTitle:@"提交审核" forState:UIControlStateNormal];
     [commitButton addTarget:self action:@selector(commentToVerifty) forControlEvents:UIControlEventTouchUpInside];
     [tableViewFootView addSubview:commitButton];
     
@@ -86,12 +140,7 @@
 
 - (void) commentToVerifty
 {
-    if (!selectPlotDict)
-    {
-        [self showBannerMsgWithString:@"请选择所在小区"];
-        
-        return;
-    }
+    [self resignFirstResponder];
     
     for (int i = 0; i < titlesArr.count; i++)
     {
@@ -103,21 +152,20 @@
         }
     }
     
-//    @"所在小区",     0
-//    @"业主姓名",     1
-//    @"业主电话",     2
-//    @"联系人",       3
-//    @"联系电话",     4
-//    @"与业主关系",   5
-//    @"楼层信息",     6
+    if (cbIndex == -1)
+    {
+        [self showBannerMsgWithString:@"请选择与业主的关系"];
+        
+        return;
+    }
     
-    commentApplyVillage = [CreaterRequest_Village CreateApplyRequestWithID:[selectPlotDict stringWithKeyPath:@"villageId"]
+    commentApplyVillage = [CreaterRequest_Village CreateApplyRequestWithID:[self.plotDict stringWithKeyPath:@"villageId"]
                                                                       data:@""
-                                                                     phone:((UITextField*)textFieldArr[4]).text
-                                                                   contact:((UITextField*)textFieldArr[3]).text
-                                                                 ownerName:((UITextField*)textFieldArr[1]).text
-                                                                 ownerType:((UITextField*)textFieldArr[5]).text
-                                                                     house:((UITextField*)textFieldArr[6]).text];
+                                                                     phone:((UITextField*)textFieldArr[1]).text
+                                                                   contact:((UITextField*)textFieldArr[0]).text
+                                                                 ownerName:self.ownerName
+                                                                 ownerType:ITOS(cbIndex)
+                                                                     house:self.houseInfo];
     
     __weak ASIHTTPRequest *blockRequest = commentApplyVillage;
     
@@ -130,7 +178,9 @@
         {
             [self showBannerMsgWithString:[responseDict stringWithKeyPath:@"data\\code\\message"]];
             
-            [self.navigationController popViewControllerAnimated:YES];
+            [self.navigationController dismissViewControllerAnimated:YES completion:^{
+                
+            }];
             
             return ;
         }
@@ -179,11 +229,6 @@
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kNBR_TABLEVIEW_CELL_NOIDENTIFIER];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    if (indexPath.section == 0 && indexPath.row == 0)
-    {
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    }
-    
     //业主姓名Lable
     UILabel *nameLable = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, kNBR_SCREEN_W - 20, 40.0f)];
     nameLable.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME_BLOD size:13.0f];
@@ -196,24 +241,4 @@
     return cell;
 }
 
-- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (indexPath.section == 0 && indexPath.row == 0)
-    {
-        SearchPlotListViewController *nVC = [[SearchPlotListViewController alloc] initWithNibName:nil bundle:nil];
-        nVC.delegate = self;
-
-        [self.navigationController pushViewController:nVC animated:YES];
-    }
-}
-
-#pragma mark -SearchViewController Delegate
-
-- (void) searchPlotListViewController : (SearchPlotListViewController*) _viewcontroller didselectDict : (NSDictionary*) _dict
-{
-    selectPlotDict = _dict;
-    ((UITextField*)textFieldArr[0]).text = _dict[@"name"];
-    
-    [self.navigationController popViewControllerAnimated:YES];
-}
 @end

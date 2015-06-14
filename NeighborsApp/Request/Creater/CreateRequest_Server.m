@@ -40,4 +40,22 @@
 
 }
 
+//type 暂未使用的字段
++ (ASIHTTPRequest *) CreateFeedBackRequestWithInfo : (NSString*) _info
+                                              type : (NSString*) _type
+{
+    NSDictionary *parmsDict = @{
+                                @"info"    : _info,
+                                @"type"    : @"",
+                                };
+    
+    ASIHTTPRequest *request = [CreateRequest_Server GetRequestWithMethod:@"/api.feed/post.cmd"
+                                                               parmsDict:parmsDict
+                                                           requestMethod:REQUEST_METHOD_POST];
+    
+    return request;
+    
+
+}
+
 @end

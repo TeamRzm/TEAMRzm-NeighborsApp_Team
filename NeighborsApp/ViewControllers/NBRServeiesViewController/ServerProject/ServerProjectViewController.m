@@ -46,8 +46,17 @@
         
         if ([CreaterRequest_Conv CheckErrorResponse:responseDict errorAlertInViewController:self])
         {
-            boundDataSource = [[NSMutableArray alloc] initWithArray:[responseDict arrayWithKeyPath:@"data\\result\\data"]];
+            if (pageIndex == 0)
+            {
+                boundDataSource = [[NSMutableArray alloc] initWithArray:[responseDict arrayWithKeyPath:@"data\\result\\data"]];
+            }
+            else
+            {
+                [boundDataSource addObjectsFromArray:[responseDict arrayWithKeyPath:@"data\\result\\data"]];
+            }
+            
             [boundTableView reloadData];
+            
             return ;
         }
         
@@ -69,7 +78,7 @@
     [self.view addSubview:boundTableView];
     
     refreshController = [[RefreshControl alloc] initWithScrollView:boundTableView delegate:self];
-    refreshController.enableInsetTop = YES;
+    refreshController.topEnabled = YES;
     
     if ([CLLocationManager locationServicesEnabled])
     {
@@ -153,5 +162,38 @@
 
     return cell;
 }
+
+- (void) scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    if (boundDataSource.count >= totalCount)
+    {
+        return ;
+    }
+    
+    UITableViewCell *lastCell = [boundTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:boundDataSource.count - 1]];
+    
+    if ([boundTableView.visibleCells containsObject:lastCell])
+    {
+        if (isLoading)
+        {
+            return ;
+        }
+        
+        pageIndex++;
+        
+        [self requestList];
+    }
+}
+
+- (void)refreshControl:(RefreshControl *)refreshControl didEngageRefreshDirection:(RefreshDirection) direction
+{
+    if (direction == RefreshDirectionTop)
+    {
+        pageIndex = 0;
+        
+        [self requestList];
+    }
+}
+
 
 @end

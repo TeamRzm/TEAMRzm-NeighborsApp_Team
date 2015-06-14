@@ -22,5 +22,9 @@
 //获取当前小区花名册
 +(ASIHTTPRequest *) CreateSmallRosterInfoList;
 
+//type 暂未使用的字段
++ (ASIHTTPRequest *) CreateFeedBackRequestWithInfo : (NSString*) _info
+                                              type : (NSString*) _type;
+
 
 @end

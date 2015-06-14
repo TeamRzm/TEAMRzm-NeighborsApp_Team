@@ -7,22 +7,16 @@
 //
 
 #import "FeedBackViewController.h"
-#import "FriendCircleContentEntity.h"
-#import "CommentTableViewCell.h"
-#import "CommentEntity.h"
-#import "SubCommentTableViewCell.h"
-#import "XHImageViewer.h"
-#import "aya_MultimediaKeyBoard.h"
+#import "UITextView+Placeholder.h"
+#import "CreateRequest_Server.h"
 
-@interface FeedBackViewController ()<UITableViewDataSource, UITableViewDelegate,CommentTableViewCellDelegate,XHImageViewerDelegate,aya_MultimediaKeyBoardDelegate>
+
+@interface FeedBackViewController ()<UITableViewDataSource, UITableViewDelegate>
 {
     UITableView *boundTableView;
+    UITextView  *inputTextView;
     
-    NSMutableArray  *commentList;
-    
-    NSMutableArray  *boundTableViewDateSource;
-    
-    aya_MultimediaKeyBoard  *keyBoard;
+    ASIHTTPRequest *feekBackRequest;
 }
 @end
 
@@ -31,34 +25,77 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title = @"里手帮详情";
+    self.title = @"意见反馈";
     
-    commentList = [[NSMutableArray alloc] init];
-    boundTableViewDateSource = [[NSMutableArray alloc] init];
-    
-    CommentEntity *commentEntity = [[CommentEntity alloc] init];
-    commentEntity.avterIconURL = @"t_avter_2";
-    commentEntity.userName = @"邻家小妹";
-    commentEntity.content = @"意见反馈，意见反馈，意见反馈，好政策啊，咱们都要支持！来点个赞了。么么哒！！哈哈哈哈哈要够长,换行测试";
-    commentEntity.commitDate = @"2015年12月14日";
-    
-    boundTableViewDateSource = [[NSMutableArray alloc] initWithArray:@[
-                                                                       commentEntity,
-                                                                       commentEntity,
-                                                                       commentEntity,
-                                                                       commentEntity,
-                                                                       ]];
     boundTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kNBR_SCREEN_W, kNBR_SCREEN_H) style:UITableViewStyleGrouped];
     boundTableView.delegate = self;
     boundTableView.dataSource = self;
     boundTableView.contentInset = UIEdgeInsetsMake(0, 0, 44, 0);
+    boundTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:boundTableView];
     
-    //键盘
-    keyBoard = [[aya_MultimediaKeyBoard alloc] initWithKeyBoardTypeIsComment:YES];
-    keyBoard.backgroundColor = [UIColor whiteColor];
-    [keyBoard setDelegate:self];
-    [self.view addSubview:keyBoard];
+    inputTextView = [[UITextView alloc] initWithFrame:CGRectMake(10, 10, kNBR_SCREEN_W - 20, 200)];
+    inputTextView.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME size:14.0f];
+    inputTextView.layer.masksToBounds = YES;
+    inputTextView.layer.cornerRadius = 3.0f;
+    inputTextView.layer.borderColor = [UIColor grayColor].CGColor;
+    inputTextView.layer.borderWidth = 0.5f;
+    [inputTextView setPlaceHolder:@"请输入..."];
+    [self performSelector:@selector(perfromDelayToBecom) withObject:nil afterDelay:1.0f];
+    
+    //提交按钮
+    UIView *tableViewFootView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kNBR_SCREEN_W, 40)];
+    
+    UIButton *commitButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    commitButton.frame = CGRectMake(15, 0, kNBR_SCREEN_W - 30, 40);
+    commitButton.backgroundColor = kNBR_ProjectColor_StandBlue;
+    commitButton.layer.cornerRadius = 5.0f;
+    commitButton.layer.masksToBounds = YES;
+    commitButton.titleLabel.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME_BLOD size:15.0f];
+    [commitButton setTitle:@"提交反馈" forState:UIControlStateNormal];
+    [commitButton addTarget:self action:@selector(commitFackBack:) forControlEvents:UIControlEventTouchUpInside];
+    [tableViewFootView addSubview:commitButton];
+    
+    
+    boundTableView.tableFooterView = tableViewFootView;
+}
+
+- (void) perfromDelayToBecom
+{
+    [inputTextView becomeFirstResponder];
+}
+
+- (void) commitFackBack : (UIButton*) sender
+{
+    if (inputTextView.text.length <= 0)
+    {
+        [self showBannerMsgWithString:@"请输入反馈的内容。"];
+        return ;
+    }
+    
+    feekBackRequest = [CreateRequest_Server CreateFeedBackRequestWithInfo:inputTextView.text type:@""];
+    
+    __weak ASIHTTPRequest *blockRequest = feekBackRequest;
+    
+    [blockRequest setCompletionBlock:^{
+        
+        [self removeLoadingView];
+        
+        NSDictionary *responseDict = blockRequest.responseString.JSONValue;
+        
+        if ([CreateRequest_Server CheckErrorResponse:responseDict errorAlertInViewController:self])
+        {
+            [self showBannerMsgWithString:@"反馈成功"];
+            [self.navigationController popViewControllerAnimated:YES];
+            return ;
+        }
+        
+    }];
+    
+    [self setDefaultRequestFaild:blockRequest];
+    
+    [self addLoadingView];
+    [feekBackRequest startAsynchronous];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -68,7 +105,7 @@
 
 - (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return .1f;
+    return 1;;
 }
 
 - (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
@@ -76,68 +113,29 @@
     return 1;
 }
 
+- (CGFloat) tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 5.0f;
+}
+
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return boundTableViewDateSource.count;
+    return 1;
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [SubCommentTableViewCell HeightWithEntity:boundTableViewDateSource[indexPath.row]];
+    return 220.0f;
 }
 
 - (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    CommentEntity *cellEntity = boundTableViewDateSource[indexPath.row];
-    
-    SubCommentTableViewCell *cell = [[SubCommentTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kNBR_TABLEVIEW_CELL_NOIDENTIFIER];
-    
-    [cell setDataEntity:cellEntity];
-    
+    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kNBR_TABLEVIEW_CELL_NOIDENTIFIER];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.backgroundColor = [UIColor clearColor];
+    [cell.contentView addSubview:inputTextView];
     
     return cell;
-}
-
-- (void) commentTableViewCell : (CommentTableViewCell*) _cell tapSubImageViews : (UIImageView*) tapView allSubImageViews : (NSMutableArray *) _allSubImageviews
-{
-    XHImageViewer *imageViewer = [[XHImageViewer alloc] init];
-    imageViewer.delegate = self;
-    [imageViewer showWithImageViews:_allSubImageviews selectedView:tapView];
-}
-
-- (void)imageViewer:(XHImageViewer *)imageViewer  willDismissWithSelectedView:(UIImageView*)selectedView
-{
-    
-    return ;
-}
-
-
-#pragma mark -- Keyboard Delegate
-//Keyboard Delegate
-- (void) ayaKeyBoard:(aya_MultimediaKeyBoard*) _keyboard willChangedKeyBoardStatus : (KEYBOARD_STATUS) _status currKeyboardHeight : (CGFloat) _height
-{
-    
-}
-
-- (void) ayaKeyBoard:(aya_MultimediaKeyBoard*) _keyboard willFinishInputMsg : (NSString*) _string
-{
-    [keyBoard hidekeyboardview];
-}
-
-- (void) ayaKeyBoard:(aya_MultimediaKeyBoard*) _keyboard willSelectOtherBoardIndex : (NSInteger) _index
-{
-    
-}
-
-- (void) ayaKeyBoard:(aya_MultimediaKeyBoard*) _keyboard willFinishInputAmrData : (NSData*) _amrStrame timeLen : (NSTimeInterval) _timeLen
-{
-    
-}
-
-- (void) ayaKeyBoard:(aya_MultimediaKeyBoard*) _keyboard quikLookImg : (UIImage*) _limg
-{
-    
 }
 
 @end

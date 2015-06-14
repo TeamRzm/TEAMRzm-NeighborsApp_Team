@@ -174,6 +174,7 @@
 {
     if (direction == RefreshDirectionTop)
     {
+        pageIndex = 0;
         [self GetDynamicList];
     }
 }

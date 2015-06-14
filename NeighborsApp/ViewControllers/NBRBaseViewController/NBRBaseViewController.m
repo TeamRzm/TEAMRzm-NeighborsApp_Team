@@ -174,6 +174,25 @@
     [banner show];
 }
 
+- (void) setDissMissLeftButton
+{
+    [self setDissMissLeftButtonWithTitle:@"返回"];
+}
+
+- (void) setDissMissLeftButtonWithTitle : (NSString *) _leftTitle
+{
+    UIBarButtonItem *dissmissButton = [[UIBarButtonItem alloc] initWithTitle:_leftTitle style:UIBarButtonItemStyleDone target:self action:@selector(dissmissMySelf:)];
+    
+    self.navigationItem.leftBarButtonItem = dissmissButton;
+}
+
+- (void) dissmissMySelf : (id) sender
+{
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
+}
+
 - (void) showBannerMsgWithString : (NSString*) _msg
 {
     [self showBannerMsgWithString:_msg tappedBlock:^(ALAlertBanner *alertBanner) {
@@ -184,6 +203,13 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void) resignFirstResponder
+{
+    UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
+    UIView *firstResponder = [keyWindow performSelector:@selector(firstResponder)];
+    [firstResponder resignFirstResponder];
 }
 
 - (void) resignFirstResponderWithView : (UIView*) _resgignView
