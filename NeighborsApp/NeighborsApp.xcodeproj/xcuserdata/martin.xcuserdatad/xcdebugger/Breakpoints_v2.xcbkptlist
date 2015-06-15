@@ -41,22 +41,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Request/Creater/CreaterRequest_Activity.m"
-            timestampString = "452843227.476812"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "80"
-            endingLineNumber = "80"
-            landmarkName = "+CreateActivityPostRequestWithTitle:begin:end:joins:tag:phone:constract:address:regstart:regend:fee:content:files:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "ViewControllers/NBRTabbarController/NBRTabbarController.m"
             timestampString = "453056658.659201"
             startingColumnNumber = "9223372036854775807"
@@ -64,22 +48,6 @@
             startingLineNumber = "30"
             endingLineNumber = "30"
             landmarkName = "-showLoginViewControllerWithAnimtion:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ViewControllers/NBRFriendCircleViewController/CommitNewContentViewController.m"
-            timestampString = "456027632.257886"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "363"
-            endingLineNumber = "363"
-            landmarkName = "-fileUpLoadHelper:allDownloadedResponseDictArr:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -112,22 +80,6 @@
             startingLineNumber = "17"
             endingLineNumber = "17"
             landmarkName = "-enableAvatarModeWithUserInfoDict:pushedView:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ViewControllers/NBRFriendCircleViewController/NBRFriendCircleViewController.m"
-            timestampString = "456027994.141487"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "118"
-            endingLineNumber = "118"
-            landmarkName = "-configViewControllerMode"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

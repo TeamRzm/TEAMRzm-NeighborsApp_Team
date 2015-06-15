@@ -284,12 +284,16 @@ NSString * const CTAssetsPickerSelectedAssetsChangedNotification = @"CTAssetsPic
 
 - (NSString *)noAssetsMessage
 {
-    NSString *format;
+    NSString *format = @"";
     
     if ([self isCameraDeviceAvailable])
-        format = CTAssetsPickerControllerLocalizedString(@"You can take photos and videos using the camera, or sync photos and videos onto your %@\nusing iTunes.");
+    {
+//        format = CTAssetsPickerControllerLocalizedString(@"You can take photos and videos using the camera, or sync photos and videos onto your %@\nusing iTunes.");
+    }
     else
-        format = CTAssetsPickerControllerLocalizedString(@"You can sync photos and videos onto your %@ using iTunes.");
+    {
+//        format = CTAssetsPickerControllerLocalizedString(@"You can sync photos and videos onto your %@ using iTunes.");
+    }
     
     return [NSString stringWithFormat:format, self.deviceModel];
 }
@@ -374,11 +378,11 @@ NSString * const CTAssetsPickerSelectedAssetsChangedNotification = @"CTAssetsPic
     UILabel *title =
     [self auxiliaryLabelWithFont:[UIFont boldSystemFontOfSize:17.0]
                            color:[UIColor colorWithRed:129.0/255.0 green:136.0/255.0 blue:148.0/255.0 alpha:1]
-                            text:CTAssetsPickerControllerLocalizedString(@"This app does not have access to your photos or videos.")];
+                            text:CTAssetsPickerControllerLocalizedString(@"此应用程序对您的照片或视频没有访问权。")];
     UILabel *message =
     [self auxiliaryLabelWithFont:[UIFont systemFontOfSize:14.0]
                            color:[UIColor colorWithRed:129.0/255.0 green:136.0/255.0 blue:148.0/255.0 alpha:1]
-                            text:CTAssetsPickerControllerLocalizedString(@"You can enable access in Privacy Settings.")];
+                            text:CTAssetsPickerControllerLocalizedString(@"您可以在隐私设置中启用访问权。")];
     
     UIView *centerView = [self centerViewWithViews:@[padlock, title, message]];
     
@@ -393,7 +397,7 @@ NSString * const CTAssetsPickerSelectedAssetsChangedNotification = @"CTAssetsPic
     UILabel *title =
     [self auxiliaryLabelWithFont:[UIFont systemFontOfSize:26.0]
                            color:[UIColor colorWithRed:153.0/255.0 green:153.0/255.0 blue:153.0/255.0 alpha:1]
-                            text:CTAssetsPickerControllerLocalizedString(@"No Photos or Videos")];
+                            text:CTAssetsPickerControllerLocalizedString(@"无照片或视频")];
     
     UILabel *message =
     [self auxiliaryLabelWithFont:[UIFont systemFontOfSize:18.0]
@@ -432,17 +436,17 @@ NSString * const CTAssetsPickerSelectedAssetsChangedNotification = @"CTAssetsPic
     NSString *format;
     
     if (photoSelected && videoSelected)
-        format = CTAssetsPickerControllerLocalizedString(@"%ld Items Selected");
+        format = CTAssetsPickerControllerLocalizedString(@"%已选择%ld项");
     
     else if (photoSelected)
         format = (self.selectedAssets.count > 1) ?
-        CTAssetsPickerControllerLocalizedString(@"%ld Photos Selected") :
-        CTAssetsPickerControllerLocalizedString(@"%ld Photo Selected");
+        CTAssetsPickerControllerLocalizedString(@"已选择%ld张照片") :
+        CTAssetsPickerControllerLocalizedString(@"已选择%ld张照片");
     
     else if (videoSelected)
         format = (self.selectedAssets.count > 1) ?
-        CTAssetsPickerControllerLocalizedString(@"%ld Videos Selected") :
-        CTAssetsPickerControllerLocalizedString(@"%ld Video Selected");
+        CTAssetsPickerControllerLocalizedString(@"已选择%ld个视频") :
+        CTAssetsPickerControllerLocalizedString(@"已选择%ld个视频");
     
     return [NSString stringWithFormat:format, (long)self.selectedAssets.count];
 }

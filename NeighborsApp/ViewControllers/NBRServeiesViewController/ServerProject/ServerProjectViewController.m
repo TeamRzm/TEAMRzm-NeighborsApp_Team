@@ -11,6 +11,7 @@
 #import "RefreshControl.h"
 #import "CCLocationManager.h"
 #import "ServerProjectTableViewCell.h"
+#import "ServerProjectDetailViewController.h"
 
 @interface ServerProjectViewController ()<UITableViewDataSource, UITableViewDelegate,RefreshControlDelegate,CLLocationManagerDelegate>
 {
@@ -35,11 +36,14 @@
 
 - (void) requestList
 {
-    convListReuqest = [CreaterRequest_Conv CreateListRequestWithIndex:ITOS(pageIndex) size:kNBR_PAGE_SIZE_STR lat:lat lng:lng];
+    convListReuqest = [CreaterRequest_Conv CreateListRequestWithIndex:ITOS(pageIndex) size:kNBR_PAGE_SIZE_STR lat:@"" lng:@""];
     
     ASIHTTPRequest *blockRequest = convListReuqest;
     
     [blockRequest setCompletionBlock:^{
+        
+        [refreshController finishRefreshingDirection:RefreshDirectionTop];
+        
         [self removeLoadingView];
         
         NSDictionary *responseDict = convListReuqest.responseString.JSONValue;
@@ -72,7 +76,7 @@
     
     self.title = @"特约服务";
     
-    boundTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kNBR_SCREEN_W, kNBR_SCREEN_H) style:UITableViewStyleGrouped];
+    boundTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kNBR_SCREEN_W, kNBR_SCREEN_H - 64) style:UITableViewStyleGrouped];
     boundTableView.delegate = self;
     boundTableView.dataSource = self;
     [self.view addSubview:boundTableView];
@@ -80,29 +84,32 @@
     refreshController = [[RefreshControl alloc] initWithScrollView:boundTableView delegate:self];
     refreshController.topEnabled = YES;
     
-    if ([CLLocationManager locationServicesEnabled])
-    {
-        [UIApplication sharedApplication].idleTimerDisabled = TRUE;
-        locationmanager = [[CLLocationManager alloc] init];
-        [locationmanager requestAlwaysAuthorization];        //NSLocationAlwaysUsageDescription
-        locationmanager.delegate = self;
-        
-        
-        [[CCLocationManager shareLocation] getLocationCoordinate:^(CLLocationCoordinate2D locationCorrrdinate) {
-            lat = [NSString stringWithFormat:@"%f", locationCorrrdinate.latitude];
-            lng = [NSString stringWithFormat:@"%f", locationCorrrdinate.longitude];
-            
-            [self requestList];
-        }];
-        
-        [self addLoadingView];
-    }
-    else
-    {
-        [self showBannerMsgWithString:@"该功能需要使用定位服务"];
-        
-        return ;
-    }
+//    if ([CLLocationManager locationServicesEnabled])
+//    {
+//        [UIApplication sharedApplication].idleTimerDisabled = TRUE;
+//        locationmanager = [[CLLocationManager alloc] init];
+//        [locationmanager requestAlwaysAuthorization];        //NSLocationAlwaysUsageDescription
+//        locationmanager.delegate = self;
+//        
+//        
+//        [[CCLocationManager shareLocation] getLocationCoordinate:^(CLLocationCoordinate2D locationCorrrdinate) {
+//            lat = [NSString stringWithFormat:@"%f", locationCorrrdinate.latitude];
+//            lng = [NSString stringWithFormat:@"%f", locationCorrrdinate.longitude];
+//            
+//            [self requestList];
+//        }];
+//        
+//        [self addLoadingView];
+//    }
+//    else
+//    {
+//        [self showBannerMsgWithString:@"该功能需要使用定位服务"];
+//        
+//        return ;
+//    }
+    
+    [self requestList];
+    [self addLoadingView];
     
     return ;
 }
@@ -183,6 +190,14 @@
         
         [self requestList];
     }
+}
+
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSDictionary *subCellDict = boundDataSource[indexPath.row];
+    
+    ServerProjectDetailViewController *nVC = [[ServerProjectDetailViewController alloc] initWithDict:subCellDict];
+    [self.navigationController pushViewController:nVC animated:YES];
 }
 
 - (void)refreshControl:(RefreshControl *)refreshControl didEngageRefreshDirection:(RefreshDirection) direction

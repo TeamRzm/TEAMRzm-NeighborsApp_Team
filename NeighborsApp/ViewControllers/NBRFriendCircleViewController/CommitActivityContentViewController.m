@@ -53,6 +53,16 @@
     }];
 }
 
+- (NSString*) actDateStringWithString : (NSString*) string
+{
+    string = [string stringByReplacingOccurrencesOfString:@"年" withString:@"-"];
+    string = [string stringByReplacingOccurrencesOfString:@"月" withString:@"-"];
+    string = [string stringByReplacingOccurrencesOfString:@"日" withString:@"-"];
+    string = [string stringByAppendingString:@":00"];
+    
+    return string;
+}
+
 - (void) datePickerChangedDate : (UIDatePicker*) picker
 {
     NSDateFormatter *formater = [[NSDateFormatter alloc] init];
@@ -164,7 +174,7 @@
                     @"活动地点",
                     @"活动人数",
                     @"活动费用",
-                    @"开始日期",
+                    @"报名开始日期",
                     @"报名结束日期",
                     @"联系人",
                     @"联系电话",
@@ -251,13 +261,17 @@
     [commitButton addTarget:self action:@selector(postThisActivity) forControlEvents:UIControlEventTouchUpInside];
     [tableViewFootView addSubview:commitButton];
     
-    
     boundTableView.tableFooterView = tableViewFootView;
-
 }
 
 - (void) postThisActivity
 {
+    if (!isSelectImage)
+    {
+        [self showBannerMsgWithString:@"请选择活动图片。"];
+        return ;
+    }
+    
     for (int i = 0; i < cellTitiles.count; i++)
     {
         if ( ((UITextField*)cellTextFields[i]).text.length <= 0 )
@@ -414,15 +428,15 @@
     }
     
     postActivityRequest = [CreaterRequest_Activity CreateActivityPostRequestWithTitle:((UITextField*)cellTextFields[0]).text
-                                                                                begin:((UITextField*)cellTextFields[1]).text
-                                                                                  end:((UITextField*)cellTextFields[2]).text
+                                                                                begin:[self actDateStringWithString:((UITextField*)cellTextFields[1]).text]
+                                                                                  end:[self actDateStringWithString:((UITextField*)cellTextFields[2]).text]
                                                                                 joins:((UITextField*)cellTextFields[4]).text
                                                                                   tag:@"0"
                                                                                 phone:((UITextField*)cellTextFields[9]).text
                                                                             constract:((UITextField*)cellTextFields[8]).text
                                                                               address:((UITextField*)cellTextFields[3]).text
-                                                                             regstart:((UITextField*)cellTextFields[6]).text
-                                                                               regend:((UITextField*)cellTextFields[7]).text
+                                                                             regstart:[self actDateStringWithString:((UITextField*)cellTextFields[6]).text]
+                                                                               regend:[self actDateStringWithString:((UITextField*)cellTextFields[7]).text]
                                                                                   fee:((UITextField*)cellTextFields[5]).text
                                                                               content:((UITextField*)cellTextFields[0]).text
                                                                                 files:filesArr];

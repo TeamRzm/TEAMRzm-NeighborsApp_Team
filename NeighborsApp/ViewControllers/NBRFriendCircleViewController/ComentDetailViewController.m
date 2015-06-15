@@ -325,10 +325,14 @@
     refreshController.topEnabled = YES;
     
     //键盘
-    keyBoard = [[aya_MultimediaKeyBoard alloc] initWithKeyBoardTypeIsComment:YES];
-    keyBoard.backgroundColor = [UIColor whiteColor];
-    [keyBoard setDelegate:self];
-    [self.view addSubview:keyBoard];
+    
+    if ([AppSessionMrg shareInstance].isInVillage)
+    {
+        keyBoard = [[aya_MultimediaKeyBoard alloc] initWithKeyBoardTypeIsComment:YES];
+        keyBoard.backgroundColor = [UIColor whiteColor];
+        [keyBoard setDelegate:self];
+        [self.view addSubview:keyBoard];
+    }
     
     [self requestReplies];
     [self isMyCommitDate];

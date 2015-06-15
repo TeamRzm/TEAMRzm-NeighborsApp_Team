@@ -100,6 +100,10 @@
     switch (_entity.activityState)
     {
         case ACTIVITY_STATE_RES:
+            leftTagImageView.image = [UIImage imageNamed:@"activity_01"];
+            tagStringLabel.text = [NSString stringWithFormat:@"报名中\n%@", _entity.leftTagStr];
+            break;
+            
         case ACTIVITY_STATE_STARTING:
             leftTagImageView.image = [UIImage imageNamed:@"activity_01"];
             tagStringLabel.text = [NSString stringWithFormat:@"已开始\n%@", _entity.leftTagStr];

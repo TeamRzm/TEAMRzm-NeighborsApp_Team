@@ -79,7 +79,7 @@
 {
     NSString *label = [self.assetsGroup valueForProperty:ALAssetsGroupPropertyName];
     
-    return [label stringByAppendingFormat:CTAssetsPickerControllerLocalizedString(@"%ld Photos"), (long)self.assetsGroup.numberOfAssets];
+    return [label stringByAppendingFormat:CTAssetsPickerControllerLocalizedString(@"%ld张照片"), (long)self.assetsGroup.numberOfAssets];
 }
 
 @end

@@ -122,14 +122,14 @@
     if (self.picker.showsCancelButton)
     {
         self.navigationItem.leftBarButtonItem =
-        [[UIBarButtonItem alloc] initWithTitle:CTAssetsPickerControllerLocalizedString(@"Cancel")
+        [[UIBarButtonItem alloc] initWithTitle:CTAssetsPickerControllerLocalizedString(@"取消")
                                          style:UIBarButtonItemStylePlain
                                         target:self.picker
                                         action:@selector(dismiss:)];
     }
     
     self.navigationItem.rightBarButtonItem =
-    [[UIBarButtonItem alloc] initWithTitle:CTAssetsPickerControllerLocalizedString(@"Done")
+    [[UIBarButtonItem alloc] initWithTitle:CTAssetsPickerControllerLocalizedString(@"完成")
                                      style:UIBarButtonItemStyleDone
                                     target:self.picker
                                     action:@selector(finishPickingAssets:)];
@@ -148,7 +148,7 @@
 - (void)localize
 {
     if (!self.picker.title)
-        self.title = CTAssetsPickerControllerLocalizedString(@"Photos");
+        self.title = CTAssetsPickerControllerLocalizedString(@"照片");
     else
         self.title = self.picker.title;
 }

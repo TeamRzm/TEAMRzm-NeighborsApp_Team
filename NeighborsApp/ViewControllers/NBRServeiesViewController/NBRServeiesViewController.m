@@ -13,6 +13,7 @@
 #import "PlotCertListViewController.h"
 #import "ServerProjectViewController.h"
 #import "IndustryCommitteeViewController.h"
+#import "NBRNewsDetailViewController.h"
 
 #import "CreateRequest_Server.h"
 #import "CreaterRequest_Residence.h"
@@ -123,6 +124,10 @@
         avterImgView.frame = CGRectMake(0+j*kNBR_SCREEN_W, 0.0f,kNBR_SCREEN_W,headerScrollview.frame.size.height);
         avterImgView.tag = j;
         [avterImgView setContentMode:UIViewContentModeScaleAspectFill];
+        
+        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(headViewTap:)];
+        [avterImgView addGestureRecognizer:tapGesture];
+        avterImgView.userInteractionEnabled = YES;
         [headerScrollview addSubview:avterImgView];
     }
     
@@ -138,6 +143,17 @@
     [pagcontrol addTarget:self action:@selector(PageValueChange:) forControlEvents:UIControlEventValueChanged];
     [pagcontrol setCurrentPage:0];
     [headerview addSubview:pagcontrol];
+}
+
+- (void) headViewTap : (UITapGestureRecognizer*) gesture
+{
+    NSDictionary *subDict = scrollDataArr[gesture.view.tag];
+    
+    NBRNewsDetailViewController *detaillViewController = [[NBRNewsDetailViewController alloc] initWithNibName:nil bundle:nil];
+    detaillViewController.hidesBottomBarWhenPushed = YES;
+    detaillViewController.dataDict = subDict;
+    
+    [self.navigationController pushViewController:detaillViewController animated:YES];
 }
 
 #pragma mark tableview delegate

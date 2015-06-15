@@ -541,13 +541,13 @@
 {
     if (!commentImgDate)
     {
-        UIActionSheet *picSheet = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", @"") destructiveButtonTitle:nil otherButtonTitles:@"图片库",@"直接拍照", nil];
+        UIActionSheet *picSheet = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:NSLocalizedString(@"取消", @"") destructiveButtonTitle:nil otherButtonTitles:@"图片库",@"直接拍照", nil];
         [picSheet setTag:0xFF01];
         [picSheet showInView:self];
     }
     else
     {
-        UIActionSheet *picSheet = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", @"") destructiveButtonTitle:nil otherButtonTitles:@"预览", @"删除图片",nil];
+        UIActionSheet *picSheet = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:NSLocalizedString(@"取消", @"") destructiveButtonTitle:nil otherButtonTitles:@"预览", @"删除图片",nil];
         [picSheet setTag:0xFF02];
         [picSheet showInView:self];
     }

@@ -73,8 +73,6 @@
             [self requestList0WithType:@"0"];
             [self requestList0WithType:@"1"];
             [self requestList1WithFlag:@"0"];
-            
-            currentSegmentIndex = 0;
         }
             break;
             

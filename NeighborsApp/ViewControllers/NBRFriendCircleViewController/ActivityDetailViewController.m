@@ -20,6 +20,7 @@
     NSDictionary    *contentStringFormat;
     
     ASIHTTPRequest  *activityJoinsRequest;
+    NSDictionary    *joinListDict;
     NSInteger       dateIndex;
 }
 @end
@@ -31,10 +32,9 @@
     // Do any additional setup after loading the view.
     self.title = @"活动详情";
     
-    boundTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kNBR_SCREEN_W, kNBR_SCREEN_H - 60) style:UITableViewStyleGrouped];
+    boundTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kNBR_SCREEN_W, kNBR_SCREEN_H - 60 - 64) style:UITableViewStyleGrouped];
     boundTableView.delegate = self;
     boundTableView.dataSource = self;
-    [self.view addSubview:boundTableView];
     
     boundTableViewDataSource = [[NSMutableArray alloc] init];
     
@@ -96,7 +96,7 @@
         case ACTIVITY_STATE_STARTING:
         {
             [commitButton setTitle:@"报名暂未开始，不能报名" forState:UIControlStateNormal];
-            commitButton.enabled = YES;
+            commitButton.enabled = NO;
         }
             break;
             
@@ -132,6 +132,7 @@
                                                                     self.dateEntity.dateDict[@"address"],
                                                                     [NSString stringWithFormat:@"%@  %@", self.dateEntity.dateDict[@"linkman"], self.dateEntity.dateDict[@"phone"]],
                                                                     ],
+                                                                
                                                                 @[
                                                                     ],
                                                                 ]];
@@ -140,7 +141,7 @@
 
 - (void) requestJoins
 {
-    activityJoinsRequest = [CreaterRequest_Activity CreateJoinsRequestWithID:self.dateEntity.activityID index:[NSString stringWithFormat:@"%d",dateIndex] size:@"1000000"];
+    activityJoinsRequest = [CreaterRequest_Activity CreateJoinsRequestWithID:self.dateEntity.activityID index:[NSString stringWithFormat:@"%d",dateIndex] size:@"9999"];
     
     __weak ASIHTTPRequest *blockRequest = activityJoinsRequest;
     
@@ -151,8 +152,15 @@
         if ([CreaterRequest_Activity CheckErrorResponse:reponseDict errorAlertInViewController:self])
         {
             [self configDate];
+            
+            joinListDict = reponseDict;
+        
             boundTableViewDataSource[2] = [reponseDict arrayWithKeyPath:@"data\\result\\data"];
-            [boundTableView reloadData];
+
+            [self.view addSubview:boundTableView];
+//            [boundTableView reloadData];
+//            [boundTableView reloadSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationAutomatic];
+            
             return ;
         }
         
@@ -208,8 +216,44 @@
         UILabel *sectionHeaderLable = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, kNBR_SCREEN_W - 30, 30)];
         sectionHeaderLable.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME_BLOD size:14.0f];
         sectionHeaderLable.textColor = kNBR_ProjectColor_DeepBlack;
-        sectionHeaderLable.text = section == 1 ? @"活动描述" : @"报名人员";
+
         [sectionHeaderView addSubview:sectionHeaderLable];
+        
+        if (section == 1)
+        {
+            sectionHeaderLable.text = @"活动描述";
+        }
+        else if (boundTableViewDataSource.count >= 3)
+        {
+            NSString *leftStr = ITOS([self.dateEntity.dateDict numberWithKeyPath:@"applies"]);
+            NSString *rightStr = ITOS([self.dateEntity.dateDict numberWithKeyPath:@"joins"]);
+            
+            NSString *joinCountString = [NSString stringWithFormat:@"报名人员 (%@/%@) 人", leftStr, rightStr];
+            
+            NSDictionary *titleFormat = @{
+                                          NSFontAttributeName : [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME_BLOD size:14.0f],
+                                          NSForegroundColorAttributeName : kNBR_ProjectColor_DeepBlack,
+                                          };
+            
+            NSDictionary *redFormat = @{
+                                            NSFontAttributeName : [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME_BLOD size:13.0f],
+                                            NSForegroundColorAttributeName : kNBR_ProjectColor_StandBlue,
+                                        };
+            
+            NSDictionary *grayFormat = @{
+                                         NSFontAttributeName : [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME size:13.0f],
+                                         NSForegroundColorAttributeName : kNBR_ProjectColor_MidGray,
+                                         };
+            
+            NSMutableAttributedString *attString = [[NSMutableAttributedString alloc] initWithString:joinCountString];
+            [attString addAttributes:titleFormat range:NSMakeRange(0, 4)];
+            [attString addAttributes:grayFormat range:NSMakeRange(4, 2)];
+            [attString addAttributes:redFormat range:NSMakeRange(6, leftStr.length)];
+            [attString addAttributes:grayFormat range:NSMakeRange(6 + leftStr.length, joinCountString.length - (6 + leftStr.length))];
+            
+            sectionHeaderLable.attributedText = attString;
+
+        }
         
         return sectionHeaderView;
     }

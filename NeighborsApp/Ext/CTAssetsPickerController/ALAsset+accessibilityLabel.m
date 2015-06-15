@@ -45,7 +45,7 @@
     [accessibilityLabels addObject:[self dateAccessibilityLabel]];
     
     if (!self.defaultRepresentation)
-        [accessibilityLabels addObject:CTAssetsPickerControllerLocalizedString(@"Not available")];
+        [accessibilityLabels addObject:CTAssetsPickerControllerLocalizedString(@"不可用")];
     
     return [accessibilityLabels componentsJoinedByString:@", "];
 }
@@ -54,10 +54,10 @@
 - (NSString *)typeAccessibilityLabel
 {
     if ([self isVideo]) {
-        return CTAssetsPickerControllerLocalizedString(@"Video");
+        return CTAssetsPickerControllerLocalizedString(@"视频");
     }
 
-    return CTAssetsPickerControllerLocalizedString(@"Photo");
+    return CTAssetsPickerControllerLocalizedString(@"照片");
 }
 
 - (NSString *)durationAccessibilityLabel
@@ -72,10 +72,10 @@
     CGSize dimension = self.defaultRepresentation.dimensions;
     
     if (dimension.height >= dimension.width) {
-        return CTAssetsPickerControllerLocalizedString(@"Portrait");
+        return CTAssetsPickerControllerLocalizedString(@"纵向");
     }
     
-    return CTAssetsPickerControllerLocalizedString(@"Landscape");
+    return CTAssetsPickerControllerLocalizedString(@"横向");
 }
 
 - (NSString *)dateAccessibilityLabel
