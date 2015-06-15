@@ -52,6 +52,10 @@
             
             return ;
         }
+        else
+        {
+            [self.navigationController popViewControllerAnimated:YES];
+        }
     }];
     
     [self setDefaultRequestFaild:infoRequest];

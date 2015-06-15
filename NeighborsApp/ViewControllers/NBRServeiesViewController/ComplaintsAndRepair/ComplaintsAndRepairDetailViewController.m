@@ -47,7 +47,11 @@
                                                                       @[detailDataSource],
                                                                       [resposneDict arrayWithKeyPath:@"data\\result"],
                                                                       ]];
-            [self addBottomView];
+            if ([detailDataSource numberWithKeyPath:@"state"] >= 4)
+            {
+                boundTableView.frame = CGRectMake(0, 0, kNBR_SCREEN_W, kNBR_SCREEN_H - 50);
+                [self addBottomView];
+            }
             [boundTableView reloadData];
             
             return ;
@@ -81,19 +85,6 @@
     [viewControllerBottomView addBreakLineWithPosition:VIEW_BREAKLINE_POSITION_TOP style:VIEW_BREAKLINE_STYLE_SOLID width:kNBR_SCREEN_W];
     [viewControllerBottomView addBreakLineWithPosition:VIEW_BREAKLINE_POSITION_BOTTOM style:VIEW_BREAKLINE_STYLE_SOLID width:kNBR_SCREEN_W];
     
-//    UILabel *helpButton = [[UILabel alloc] initWithFrame:CGRectMake(kNBR_SCREEN_W / 2.0f - (70 + 110 + 10) / 2.0f,
-//                                                                    50.0f / 2.0f - 30.0f / 2.0f,
-//                                                                    70.0f, 30.0f)];
-//    helpButton.layer.cornerRadius = 3.0f;
-//    helpButton.layer.borderWidth = 1.0f;
-//    helpButton.layer.borderColor = kNBR_ProjectColor_DeepBlack.CGColor;
-//    helpButton.layer.masksToBounds = YES;
-//    helpButton.textColor = kNBR_ProjectColor_DeepBlack;
-//    helpButton.text = @"帮助";
-//    helpButton.textAlignment = NSTextAlignmentCenter;
-//    helpButton.font = [UIFont fontWithName:kNBR_DEFAULT_FONT_NAME_BLOD size:14.0f];
-//    helpButton.userInteractionEnabled = YES;
-//    [viewControllerBottomView addSubview:helpButton];
     
     UILabel *comentButton = [[UILabel alloc] initWithFrame:CGRectMake(kNBR_SCREEN_W / 2.0f - 110.0f / 2.0f,
                                                                       50.0f / 2.0f - 30.0f / 2.0f,
@@ -125,7 +116,7 @@
         self.title = @"报修详情";
     }
     
-    boundTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kNBR_SCREEN_W, kNBR_SCREEN_H - 50) style:UITableViewStyleGrouped];
+    boundTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kNBR_SCREEN_W, kNBR_SCREEN_H) style:UITableViewStyleGrouped];
     boundTableView.dataSource = self;
     boundTableView.delegate = self;
     boundTableView.separatorStyle = UITableViewCellSeparatorStyleNone;

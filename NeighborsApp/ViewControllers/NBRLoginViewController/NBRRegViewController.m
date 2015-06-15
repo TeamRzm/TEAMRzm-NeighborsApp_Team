@@ -55,6 +55,8 @@
     
     [blockRequest setCompletionBlock:^{
         
+        [self removeLoadingView];
+        
         NSDictionary *responseDict = [blockRequest.responseString JSONValue];
         
         if ([CreaterRequest_Verify CheckErrorResponse:responseDict errorAlertInViewController:self])
@@ -72,11 +74,13 @@
     [self setDefaultRequestFaild:blockRequest];
     
     [blockRequest startAsynchronous];
+    [self addLoadingView];
 }
 
 
 - (IBAction)commitButtonTouchUpInSide:(id)sender
 {
+    [self resignFirstResponder];
     
     if (nickTextField.text.length <= 0)
     {
@@ -129,7 +133,7 @@
     
     
     [blockRequest setCompletionBlock:^{
-        [self addLoadingView];
+        [self removeLoadingView];
         NSDictionary *responseDict = [blockRequest.responseString JSONValue];
         
         if ([CreaterRequest_Verify CheckErrorResponse:responseDict errorAlertInViewController:self])
@@ -144,8 +148,8 @@
     
     [self setDefaultRequestFaild:blockRequest];
     
+    [self addLoadingView];
     [regRequest startAsynchronous];
-    [self removeLoadingView];
     
     return;
 }

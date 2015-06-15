@@ -141,6 +141,8 @@
     
     [blockRequest setCompletionBlock:^{
         
+        [self removeLoadingView];
+        
         NSDictionary *responseDict = [blockRequest.responseString JSONValue];
         
         if ([CreaterRequest_Verify CheckErrorResponse:responseDict errorAlertInViewController:self])
@@ -158,6 +160,7 @@
     [self setDefaultRequestFaild:blockRequest];
     
     [blockRequest startAsynchronous];
+    [self addLoadingView];
 
 }
 
@@ -235,6 +238,8 @@
 
 - (IBAction)commitButtonTouchUpInSide:(id)sender
 {
+    [self resignFirstResponder];
+    
     if (phoneNumberTextField.text.length <= 0)
     {
         [self showBannerMsgWithString:@"请输入手机号"];

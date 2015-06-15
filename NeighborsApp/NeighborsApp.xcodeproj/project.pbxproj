@@ -291,6 +291,7 @@
 		5B955BEF1ADFE1EE00E8B335 /* FriendCircleContentEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B955BEE1ADFE1EE00E8B335 /* FriendCircleContentEntity.m */; };
 		5B955BF21ADFE42600E8B335 /* CommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B955BF11ADFE42600E8B335 /* CommentTableViewCell.m */; };
 		5B957E9E1B1C440200C5661F /* NSString+MoneyFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B957E9D1B1C440200C5661F /* NSString+MoneyFormat.m */; };
+		5BAC3E2F1B2DF58500D19BCB /* NBRNewsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BAC3E2E1B2DF58500D19BCB /* NBRNewsDetailViewController.m */; };
 		5BB655311AC31464007E0F85 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB655301AC31464007E0F85 /* main.m */; };
 		5BB655341AC31464007E0F85 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB655331AC31464007E0F85 /* AppDelegate.m */; };
 		5BB655371AC31464007E0F85 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB655361AC31464007E0F85 /* FirstViewController.m */; };
@@ -936,6 +937,8 @@
 		5B955BF11ADFE42600E8B335 /* CommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentTableViewCell.m; path = ViewControllers/NBRFriendCircleViewController/CommentTableViewCell.m; sourceTree = "<group>"; };
 		5B957E9C1B1C440200C5661F /* NSString+MoneyFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+MoneyFormat.h"; path = "Other/NSString+MoneyFormat.h"; sourceTree = "<group>"; };
 		5B957E9D1B1C440200C5661F /* NSString+MoneyFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+MoneyFormat.m"; path = "Other/NSString+MoneyFormat.m"; sourceTree = "<group>"; };
+		5BAC3E2D1B2DF58500D19BCB /* NBRNewsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NBRNewsDetailViewController.h; path = ViewControllers/NBRServeiesViewController/NBRNewsDetailViewController.h; sourceTree = "<group>"; };
+		5BAC3E2E1B2DF58500D19BCB /* NBRNewsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NBRNewsDetailViewController.m; path = ViewControllers/NBRServeiesViewController/NBRNewsDetailViewController.m; sourceTree = "<group>"; };
 		5BB6552B1AC31464007E0F85 /* NeighborsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NeighborsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BB6552F1AC31464007E0F85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5BB655301AC31464007E0F85 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -2252,6 +2255,8 @@
 				5B955BEB1ADFD98900E8B335 /* NBRServeiesViewController.xib */,
 				96FB99581B0885FF0051A9B6 /* NBRDynamicofPropertyViewController.h */,
 				96FB99591B0885FF0051A9B6 /* NBRDynamicofPropertyViewController.m */,
+				5BAC3E2D1B2DF58500D19BCB /* NBRNewsDetailViewController.h */,
+				5BAC3E2E1B2DF58500D19BCB /* NBRNewsDetailViewController.m */,
 				96FB995E1B089C370051A9B6 /* NBRSmallRosterViewController.h */,
 				96FB995F1B089C370051A9B6 /* NBRSmallRosterViewController.m */,
 			);
@@ -3197,6 +3202,7 @@
 				5B332B001AE2F647002A0A73 /* CTAssetsViewCell.m in Sources */,
 				5B4FD5231B0871A0005DA131 /* XGSign.m in Sources */,
 				5BD83C8C1AD61EF600D1A3EC /* ASIHTTPRequest.m in Sources */,
+				5BAC3E2F1B2DF58500D19BCB /* NBRNewsDetailViewController.m in Sources */,
 				5B332B431AE3A8C0002A0A73 /* XHCacheManager.m in Sources */,
 				5B957E9E1B1C440200C5661F /* NSString+MoneyFormat.m in Sources */,
 				5B6D316B1ADCE747009A922A /* ALAlertBannerManager.m in Sources */,

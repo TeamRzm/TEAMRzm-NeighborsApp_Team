@@ -281,6 +281,9 @@ const NSInteger CommitImageViewWidthCount     = 5;
     contratTextField.placeholder = @"请输入联系人姓名";
     phoneTextField.placeholder = @"请输入手机号码";
     
+    contratTextField.text = [AppSessionMrg shareInstance].userEntity.nickName;
+    phoneTextField.text = [AppSessionMrg shareInstance].userEntity.userName;
+    
     contratTextField.textAlignment = NSTextAlignmentRight;
     phoneTextField.textAlignment = NSTextAlignmentRight;
     
@@ -646,14 +649,14 @@ const NSInteger CommitImageViewWidthCount     = 5;
 
 - (BOOL)assetsPickerController:(CTAssetsPickerController *)picker shouldSelectAsset:(ALAsset *)asset
 {
-    if (picker.selectedAssets.count >= 10)
+    if (picker.selectedAssets.count >= 3)
     {
         UIAlertView *alertView =
-        [[UIAlertView alloc] initWithTitle:@"Attention"
-                                   message:@"Please select not more than 10 assets"
+        [[UIAlertView alloc] initWithTitle:@"温馨提示"
+                                   message:@"最多只能选择3张图片"
                                   delegate:nil
                          cancelButtonTitle:nil
-                         otherButtonTitles:@"OK", nil];
+                         otherButtonTitles:@"确定", nil];
         
         [alertView show];
     }
@@ -670,7 +673,7 @@ const NSInteger CommitImageViewWidthCount     = 5;
         [alertView show];
     }
     
-    return (picker.selectedAssets.count < 10 && asset.defaultRepresentation != nil);
+    return (picker.selectedAssets.count < 3 && asset.defaultRepresentation != nil);
 }
 
 #pragma mark - UIImagePickerControllerDelegate

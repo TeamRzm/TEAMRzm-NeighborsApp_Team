@@ -121,6 +121,8 @@
 
 - (IBAction)loginButtonAction:(id)sender
 {
+    [self resignFirstResponder];
+    
     if (userNameTextField.text.length <= 0)
     {
         [self showBannerMsgWithString:@"账号/手机号码"];

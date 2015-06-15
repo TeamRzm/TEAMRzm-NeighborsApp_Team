@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ViewControllers/NBRFriendCircleViewController/CommitNewContentViewController.m"
-            timestampString = "453927490.195306"
+            timestampString = "456027632.257886"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "676"
-            endingLineNumber = "676"
+            startingLineNumber = "679"
+            endingLineNumber = "679"
             landmarkName = "@implementation CommitNewContentViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ViewControllers/NBRFriendCircleViewController/CommitNewContentViewController.m"
-            timestampString = "453823193.887623"
+            timestampString = "456027632.257886"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "360"
-            endingLineNumber = "360"
+            startingLineNumber = "363"
+            endingLineNumber = "363"
             landmarkName = "-fileUpLoadHelper:allDownloadedResponseDictArr:"
             landmarkType = "5">
          </BreakpointContent>
@@ -112,6 +112,22 @@
             startingLineNumber = "17"
             endingLineNumber = "17"
             landmarkName = "-enableAvatarModeWithUserInfoDict:pushedView:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ViewControllers/NBRFriendCircleViewController/NBRFriendCircleViewController.m"
+            timestampString = "456027994.141487"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
+            landmarkName = "-configViewControllerMode"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

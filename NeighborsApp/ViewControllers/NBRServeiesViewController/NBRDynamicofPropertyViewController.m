@@ -13,6 +13,7 @@
 #import "XHImageViewer.h"
 
 #import "RefreshControl.h"
+#import "NBRNewsDetailViewController.h"
 
 @interface NBRDynamicofPropertyViewController ()<NewsTableViewCellDelegate,XHImageViewerDelegate,RefreshControlDelegate>
 {
@@ -33,7 +34,7 @@
     self = [super initWithNibName:nil bundle:nil];
     if (self)
     {
-        
+        viewControllerMode = _mode;
     }
     return self;
 }
@@ -156,6 +157,16 @@
     NSDictionary *subDict = dataArr[indexPath.section];
     
     return [NewsTableViewCell heightWithDict:subDict numberOfLine:3];
+}
+
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSDictionary *subDict = dataArr[indexPath.section];
+    
+    NBRNewsDetailViewController *detaillViewController = [[NBRNewsDetailViewController alloc] initWithNibName:nil bundle:nil];
+    detaillViewController.dataDict = subDict;
+    
+    [self.navigationController pushViewController:detaillViewController animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

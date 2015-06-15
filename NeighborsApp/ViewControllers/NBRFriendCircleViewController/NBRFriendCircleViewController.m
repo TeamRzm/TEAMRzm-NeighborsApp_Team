@@ -57,6 +57,61 @@
     return self;
 }
 
+- (void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    switch (viewControllerMode)
+    {
+        case FRIENDCIRCLECONTROLLER_MODE_NONE:
+        case FRIENDCIRCLECONTROLLER_MODE_NOMAL:
+        {
+            dataIndex[0] = 0;
+            dataIndex[1] = 0;
+            dataIndex[2] = 0;
+            
+            [self requestList0WithType:@"0"];
+            [self requestList0WithType:@"1"];
+            [self requestList1WithFlag:@"0"];
+            
+            currentSegmentIndex = 0;
+        }
+            break;
+            
+        case FRIENDCIRCLECONTROLLER_MODE_LOROLL:
+        {
+            dataIndex[0] = 0;
+
+            [self requestList0WithType:@"0"];
+            
+            currentSegmentIndex = 0;
+        }
+            break;
+            
+        case FRIENDCIRCLECONTROLLER_MODE_ACTIVITY:
+        {
+            dataIndex[1] = 0;
+            [self requestList1WithFlag:@"1"];
+            
+            currentSegmentIndex = 1;
+        }
+            break;
+            
+        case FRIENDCIRCLECONTROLLER_MODE_WARNNING:
+        {
+            dataIndex[2] = 0;
+            [self requestList0WithType:@"1"];
+            
+            currentSegmentIndex = 2;
+        }
+            break;
+            
+        default:
+            break;
+    }
+
+}
+
 - (void) configViewControllerMode
 {
     switch (viewControllerMode)
@@ -64,16 +119,18 @@
         case FRIENDCIRCLECONTROLLER_MODE_NONE:
         case FRIENDCIRCLECONTROLLER_MODE_NOMAL:
         {
-            [self requestList0WithType:@"0"];
-            [self requestList0WithType:@"1"];
-            [self requestList1WithFlag:@"0"];
+//            [self requestList0WithType:@"0"];
+//            [self requestList0WithType:@"1"];
+//            [self requestList1WithFlag:@"0"];
+            currentSegmentIndex = 0;
         }
             break;
             
         case FRIENDCIRCLECONTROLLER_MODE_LOROLL:
         {
-            [self requestList0WithType:@"0"];
+//            [self requestList0WithType:@"0"];
             self.title = @"我的里手帮";
+            currentSegmentIndex = 0;
             
             [segmentChangedView removeFromSuperview];
             subTableView[0].frame = CGRectMake(0, 0, kNBR_SCREEN_W, kNBR_SCREEN_H - 64.0f);
@@ -87,8 +144,9 @@
             
         case FRIENDCIRCLECONTROLLER_MODE_ACTIVITY:
         {
-            [self requestList1WithFlag:@"1"];
+//            [self requestList1WithFlag:@"1"];
             self.title = @"我的活动";
+            currentSegmentIndex = 1;
             
             [segmentChangedView removeFromSuperview];
             subTableView[1].frame = CGRectMake(kNBR_SCREEN_W * 1.0f, 0, kNBR_SCREEN_W, kNBR_SCREEN_H - 64.0f);
@@ -101,8 +159,9 @@
             
         case FRIENDCIRCLECONTROLLER_MODE_WARNNING:
         {
-            [self requestList0WithType:@"1"];
+//            [self requestList0WithType:@"1"];
             self.title = @"我的安全预警";
+            currentSegmentIndex = 2;
             
             [segmentChangedView removeFromSuperview];
             subTableView[2].frame = CGRectMake(kNBR_SCREEN_W * 2.0f, 0, kNBR_SCREEN_W, kNBR_SCREEN_H - 64.0f);

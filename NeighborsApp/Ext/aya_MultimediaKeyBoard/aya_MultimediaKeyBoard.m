@@ -690,7 +690,7 @@
         
         inputTextView = [[UITextView alloc] initWithFrame:CGRectMake(5.0f+audioBtn.frame.size.width+5.0f,
                                                                      45.0f / 2.0f - 35.0f / 2.0f + 1,
-                                                                    245.0f,
+                                                                    kNBR_SCREEN_W - 80,
                                                                      35.0f)];
         [inputTextView setDelegate:self];
         [inputTextView setAutocapitalizationType:UITextAutocapitalizationTypeNone];
